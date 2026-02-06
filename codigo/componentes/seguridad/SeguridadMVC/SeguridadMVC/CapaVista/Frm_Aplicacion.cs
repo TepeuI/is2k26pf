@@ -351,7 +351,7 @@ namespace Capa_Vista_Seguridad
             Rdb_estado_activo.Checked = true;
             Rdb_inactivo.Checked = false;
             Cbo_id_modulo.SelectedItem = null;
-            Cbo_id_reporte.SelectedIndex = 0;
+            Cbo_id_reporte.SelectedIndex = -1;
 
             //Restaurar estado de controles según permisos
             bool puedeEditar = (_canIngresar || _canModificar);
