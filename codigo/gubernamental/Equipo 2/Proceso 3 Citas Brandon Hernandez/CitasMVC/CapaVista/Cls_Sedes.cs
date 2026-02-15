@@ -7,15 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-//Danilo Mazariegos 0901-19-25059
-namespace Capa_Vista_Seguridad
+using Capa_Controlador_Navegador;
+namespace CapaVista
 {
-    public partial class Frm_Modulo_V2 : Form
+    public partial class Cls_Sedes : Form
     {
-
-        private Timer timerBotones; // 🔹 temporizador para vigilar los botones
-        public Frm_Modulo_V2()
+        public Cls_Sedes()
         {
             InitializeComponent();
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config = new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
@@ -26,30 +23,28 @@ namespace Capa_Vista_Seguridad
                 PosY = 300,
                 ColorFondo = Color.AliceBlue,
                 TipoScrollBars = ScrollBars.Both,
-                Nombre = "dgv_empleados"
+                Nombre = "dgv_sedes"
             };
-
             string[] columnas = {
-
-                    "tbl_modulo",
-                    "Pk_Id_Modulo",
-                    "Cmp_Nombre_Modulo",
-                    "Cmp_Descripcion_Modulo",
-                    "Cmp_Estado_Modulo"
-
+                    "Tbl_Sede",
+                    "Pk_Id_sede",
+                    "Cmp_Departamento",
+                    "Cmp_Municipio",
+                    "Cmp_Direccion"
+                 
             };
 
             string[] sEtiquetas = {
-                    "Id Modulo ",
-                    "Nombre Modulo",
-                    "Descripción",
-                    "Estado"
+                    "Id Sede ",
+                    "Departamento",
+                    "Municipio",
+                    "Direccion"
+             
 
                 };
 
 
-            int id_aplicacion = 303;
-
+            int id_aplicacion = 301;
             int id_Modulo = 4;
             navegador1.IPkId_Aplicacion = id_aplicacion;
             navegador1.IPkId_Modulo = id_Modulo;
@@ -59,7 +54,8 @@ namespace Capa_Vista_Seguridad
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
 
-            // ==============================
+           
         }
     }
-}
+    }
+
