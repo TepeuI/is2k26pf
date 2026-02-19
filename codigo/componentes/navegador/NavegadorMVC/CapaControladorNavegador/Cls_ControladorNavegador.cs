@@ -58,17 +58,16 @@ namespace Capa_Controlador_Navegador
 
         // Asigna alias validando tabla y columnas
         // ======================= Pedro Ibañez =======================
-        // ======================= Modificaciones: Kenph Luna =======================
         // Creacion de Metodo: Asignar Alias Original, generación de Textboxes antes de las modificaciones
         //Modificación de metodo: Validación de tipo de campo para cada dato
         //Modificacion de metodo: se agrego parametro para etiquetas personalizadas por el usuario. Hecho por: Kenph Luna 10/10/2025
-        //Ahora los label permiten diferencia entre etiqueta y no se sobreponen sobre los controles
-        public bool AsignarAlias(string[] sAlias, Control contenedor, int iStartX, int iStartY, string[] sEtiquetasPersonalizadas = null)
+        public bool AsignarAlias(string[] sAlias, Control contenedor, int iStartX, int iStartY,
+                          int iMaxPorFila = 3, string[] sEtiquetasPersonalizadas = null)
         {
-            // --- validaciones
+            // Validaciones básicas
             if (!dao.ExisteTabla(sAlias[0]))
             {
-                MessageBox.Show($"La tabla '{sAlias[0]}' no existe.");
+                MessageBox.Show($"La tabla '{sAlias[0]}' no existe en la base de datos.");
                 return false;
             }
             if (!ValidarColumnas(sAlias[0], sAlias.Skip(1).ToArray(), out List<string> columnasBD))
@@ -77,108 +76,134 @@ namespace Capa_Controlador_Navegador
             string sNombreTabla = sAlias[0];
             Dictionary<string, string> dTiposColumnas;
             try { dTiposColumnas = dao.ObtenerTiposDeColumnas(sNombreTabla); }
-            catch (Exception ex) { return false; }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-            // --- configuración del espaciado
+            if (sEtiquetasPersonalizadas != null && sEtiquetasPersonalizadas.Length != sAlias.Length - 1)
+            {
+                MessageBox.Show("El número de etiquetas personalizadas no coincide con el número de campos.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // --- Configuración base de posicionamiento ---
             int x = iStartX;
             int y = iStartY;
-            int separacionEntreGrupos = 30; // Espacio entre el fin del Combo y el siguiente Label
-            int separacionLabelControl = 5; // Espacio entre Label y su Combo
-            int alturaFila = 40;            // Salto de línea
-            int anchoCombo = 200;           // Ancho estándar de los combos
-            int margenDerecho = 20;
-
-            contenedor.SuspendLayout(); // Congelar pintado para velocidad
+            int margenX = 400; // separación horizontal
+            int margenY = 45;  // separación vertical
+            int contadorColumna = 0;
 
             for (int i = 1; i < sAlias.Length; i++)
             {
                 string campo = sAlias[i];
 
-                // --- obtiene el texto
-                string textoLabel = (sEtiquetasPersonalizadas != null && (i - 1) < sEtiquetasPersonalizadas.Length && !string.IsNullOrWhiteSpace(sEtiquetasPersonalizadas[i - 1]))
+                // Etiqueta personalizada o nombre limpio
+                string textoLabel =
+                    (sEtiquetasPersonalizadas != null && (i - 1) < sEtiquetasPersonalizadas.Length
+                     && !string.IsNullOrWhiteSpace(sEtiquetasPersonalizadas[i - 1]))
                     ? sEtiquetasPersonalizadas[i - 1]
                     : campo.Replace("Cmp_", "").Replace("Pk_", "").Replace("Fk_", "");
 
                 if (!string.IsNullOrEmpty(textoLabel))
                     textoLabel = char.ToUpper(textoLabel[0]) + textoLabel.Substring(1);
 
-                textoLabel += ":"; // Agregamos los dos puntos aquí para medirlos también
+                // Crear Label
+                Label lbl = new Label
+                {
+                    Text = $"{textoLabel}:",
+                    Font = new Font("Rockwell", 10, FontStyle.Bold),
+                    AutoSize = true,
+                    Location = new Point(x, y + 5)
+                };
 
-                // --- se crean los controles
+                // Crear control según tipo
                 string tipo = dTiposColumnas.ContainsKey(campo) ? dTiposColumnas[campo] : "varchar";
                 Control control;
 
                 if (tipo.Contains("date"))
                 {
-                    control = new DateTimePicker { Name = "Dtp_" + campo, Format = DateTimePickerFormat.Short, Width = anchoCombo };
+                    control = new DateTimePicker
+                    {
+                        Name = "Dtp_" + campo,
+                        Font = new Font("Rockwell", 10, FontStyle.Regular),
+                        Format = DateTimePickerFormat.Short,
+                        Width = 200,
+                        Location = new Point(x + 180, y)
+                    };
                 }
                 else if (tipo.Contains("bit") || tipo.Contains("tinyint"))
                 {
-                    control = new CheckBox { Name = "Chk_" + campo, Text = "Si/No", AutoSize = true };
+                    control = new CheckBox
+                    {
+                        Name = "Chk_" + campo,
+                        Font = new Font("Rockwell", 10, FontStyle.Regular),
+                        AutoSize = true,
+                        Location = new Point(x + 180, y + 5)
+                    };
                 }
                 else
                 {
-                    var cbo = new ComboBox { Name = "Cbo_" + campo, Width = anchoCombo, DropDownStyle = ComboBoxStyle.DropDownList };
+                    // Usamos ComboBox genérico para mantener compatibilidad con tus métodos
+                    var cbo = new ComboBox
+                    {
+                        Name = "Cbo_" + campo,
+                        Font = new Font("Rockwell", 10, FontStyle.Regular),
+                        Width = 200,
+                        Location = new Point(x + 180, y)
+                    };
+
                     try
                     {
                         List<string> items = sentencias.ObtenerValoresColumna(sNombreTabla, campo);
                         cbo.Items.AddRange(items.ToArray());
                     }
-                    catch { }
-                    if (i == 1) cbo.Enabled = false; // Bloquear PK
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al cargar {campo}: {ex.Message}", "Advertencia",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    // Bloquear PK (primer campo)
+                    if (i == 1)
+                    {
+                        cbo.SelectedIndexChanged += (s, e) =>
+                        {
+                            if (cbo.SelectedIndex >= 0) cbo.Enabled = false;
+                        };
+                    }
+
                     control = cbo;
                 }
-                control.Font = new Font("Rockwell", 10, FontStyle.Regular);
 
-                // ---medicion del label
-                Font fuenteLabel = new Font("Rockwell", 10, FontStyle.Bold);
-                Size tamanoTexto = TextRenderer.MeasureText(textoLabel, fuenteLabel);
-
-                int anchoLabel = tamanoTexto.Width;
-                int altoLabel = tamanoTexto.Height;
-
-                // Si es un Checkbox, su ancho real es variable
-                int anchoControlReal = (control is CheckBox) ? 80 : control.Width;
-
-                // --- calculo de posicion ---
-                // Ancho total que ocupará este par: [Label] + [Espacio] + [Control]
-                int anchoGrupo = anchoLabel + separacionLabelControl + anchoControlReal;
-
-                if (x + anchoGrupo > contenedor.Width - margenDerecho)
-                {
-                    x = iStartX;       // Reset X
-                    y += alturaFila;   // Salto de línea
-                }
-
-                // --- posiciona el label
-                Label lbl = new Label
-                {
-                    Text = textoLabel,
-                    Font = fuenteLabel,
-                    AutoSize = true,
-                    Location = new Point(x, y + 4) // +4 para centrar verticalmente con el combo
-                };
-
-                // --- posiciona el control
-                // El control va donde termina el texto medido + separación
-                control.Location = new Point(x + anchoLabel + separacionLabelControl, y);
-
-                // --- se agrega al formulario
+                // Agregar controles directamente al contenedor
                 contenedor.Controls.Add(lbl);
                 contenedor.Controls.Add(control);
 
-                // --- Actualiza x para el siguiente
-                x = control.Location.X + control.Width + separacionEntreGrupos;
+                // Posicionar siguiente par
+                contadorColumna++;
+                if (contadorColumna >= iMaxPorFila)
+                {
+                    contadorColumna = 0;
+                    x = iStartX;
+                    y += margenY;
+                }
+                else
+                {
+                    x += margenX;
+                }
             }
 
-            // Ajuste de Scroll final
-            if (contenedor is Form f)
+            // Ajustar tamaño del formulario si es necesario
+            int limiteInferior = y + 100;
+            if (limiteInferior > contenedor.Height && contenedor is Form f)
             {
-                f.AutoScrollMinSize = new Size(0, y + 100);
                 f.AutoScroll = true;
+                f.Height = limiteInferior;
             }
 
-            contenedor.ResumeLayout(false);
             return true;
         }
 

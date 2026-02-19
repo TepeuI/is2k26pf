@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Capa_Controlador_Navegador;
 using Capa_Vista_Reporteador;
 using Capa_Modelo_Seguridad;
-
+using System.Reflection;
 
 namespace Capa_Vista_Navegador
 {
@@ -41,16 +41,19 @@ namespace Capa_Vista_Navegador
         // carga los alias y etiquetas al iniciar el navegador
         private void Navegador_Load(object sender, EventArgs e)
         {
-            // ... (Tu código de permisos y botones sigue igual) ...
+            // Los botones se inicializan en su estado inicial, Reportes, ingresar e imprimir
+            // Obtener permisos del usuario conectado
             Cls_Privilegios_Seguridad privilegios = new Cls_Privilegios_Seguridad();
+
             Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(IPkId_Aplicacion, IPkId_Modulo);
+
 
             BotonesEstadoCRUD(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
-                permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
-                false,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
             );
 
@@ -63,14 +66,8 @@ namespace Capa_Vista_Navegador
                     // Instancia del controlador
                     Cls_ControladorNavegador controladorNavegador = new Cls_ControladorNavegador();
 
-                    // --- CAMBIO AQUÍ ---
-                    // Eliminamos el '3'.
-                    // Parámetros: (Alias, Contenedor/Form, X, Y, Etiquetas)
-                    controladorNavegador.AsignarAlias(SAlias, this, 20, 100, SEtiquetas);
-
-                    // Si tu método AsignarAlias nuevo está en otra clase, asegúrate de haber copiado
-                    // el código nuevo en Cls_ControladorNavegador.cs
-
+                    // Genera dinámicamente los labels y combos
+                    controladorNavegador.AsignarAlias(SAlias, this, 20, 100, 3, SEtiquetas);
                     ctrl.DesactivarTodosComboBoxes(this); // KEVIN NATARENO, 11/10/2025
                 }
                 catch (Exception ex)
@@ -84,7 +81,7 @@ namespace Capa_Vista_Navegador
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
             ctrl.LimpiarCombos(this, SAlias); // KEVIN NATARENO, 11/10/2025
-
+            
             if (SAlias == null || SAlias.Length < 2)
             {
                 MessageBox.Show("No se han definido los alias de la tabla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,6 +90,7 @@ namespace Capa_Vista_Navegador
 
             
             Btn_ingresar.Enabled = false;
+            Btn_guardar.Enabled = true;
             Btn_cancelar.Enabled = true;
             mostrarDatos();
             ctrl.ActivarTodosComboBoxes(this);
@@ -239,25 +237,27 @@ namespace Capa_Vista_Navegador
         public void BotonesEstadoCRUD(
                   bool ingresar,
                   bool modificar,
-                  bool guardar,
+                  //bool guardar,
                   bool eliminar,
                   bool consultar,
                   bool imprimir)
         {
             Btn_ingresar.Enabled = ingresar;
             Btn_modificar.Enabled = modificar;
-            Btn_guardar.Enabled = guardar;
+            //Btn_guardar.Enabled = guardar;
             Btn_eliminar.Enabled = eliminar;
             Btn_consultar.Enabled = consultar;
             Btn_imprimir.Enabled = imprimir;
 
             // Botones de navegación, se mantienen activos
+            Btn_guardar.Enabled = false;
             Btn_cancelar.Enabled = false;
             Btn_refrescar.Enabled = true;
             Btn_inicio.Enabled = true;
             Btn_anterior.Enabled = true;
             Btn_sig.Enabled = true;
             Btn_fin.Enabled = true;
+            Btn_ayuda.Enabled = true;
         }
 
 
@@ -271,9 +271,9 @@ namespace Capa_Vista_Navegador
             BotonesEstadoCRUD(
               permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
-              permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+              //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
-              false,
+              permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
           );
             ctrl.LimpiarCombos(this, SAlias);
@@ -432,9 +432,9 @@ namespace Capa_Vista_Navegador
             BotonesEstadoCRUD(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
-                permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
-                false,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
             );
 
@@ -521,21 +521,45 @@ namespace Capa_Vista_Navegador
             Dgv_Datos.FirstDisplayedScrollingRowIndex = ultimaFila;
 
         }
-
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
-            // ======================= Btn Ayuda = Stevens Cambranes = 8/10/2025 =======================
             try
             {
-                string sRutaAyuda = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\..\ManualNavegador\Ayuda_Navegador.chm"));
-                // este archivo se metio directamente en el directorio CapaVistaNavegador y la carpeta tendria que aparecer con los HTML
-                Help.ShowHelp(this, sRutaAyuda, "Manual_De_Usuario_Navegador.html");
+                // Ruta donde está la DLL
+                string rutaDll = Path.GetDirectoryName(
+                    Assembly.GetExecutingAssembly().Location
+                );
+
+                // Ruta a la carpeta ManualNavegador
+                string rutaAyuda = Path.Combine(
+                    rutaDll,
+                    "ManualNavegador",
+                    "Ayuda_Navegador.chm"
+                );
+
+                if (!File.Exists(rutaAyuda))
+                {
+                    MessageBox.Show(
+                        "No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                        "Ayuda",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
+                Help.ShowHelp(
+                    this,
+                    rutaAyuda,
+                    "Manual_De_Usuario_Navegador.html"
+                );
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al abrir la ayuda: " + ex.Message);
             }
         }
+
 
         // ======================= Salir/Exit = Fernando Miranda = 20/09/2025 =======================
         private void Btn_salir_Click_1(object sender, EventArgs e)
