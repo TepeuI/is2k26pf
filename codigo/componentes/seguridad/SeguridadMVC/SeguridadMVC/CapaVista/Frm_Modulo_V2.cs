@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Danilo Mazariegos 0901-19-25059
 namespace Capa_Vista_Seguridad
 {
-    public partial class Frm_PruebaNavegador : Form
+    public partial class Frm_Modulo_V2 : Form
     {
 
-        public Frm_PruebaNavegador()
+        private Timer timerBotones; // 🔹 temporizador para vigilar los botones
+        public Frm_Modulo_V2()
         {
             InitializeComponent();
-            //parametros para navegador
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config = new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
             {
                 Ancho = 1100,
@@ -29,19 +30,23 @@ namespace Capa_Vista_Seguridad
             };
 
             string[] columnas = {
-    "tbl_contacto",
-    "Pk_Contacto_Id",
-    "Cmp_Correo",
-    "Cmp_Telefono"
-};
+                    "tbl_modulo",
+                    "Pk_Id_Modulo",
+                    "Cmp_Nombre_Modulo",
+                    "Cmp_Descripcion_Modulo",
+                    "Cmp_Estado_Modulo"
+
+            };
 
             string[] sEtiquetas = {
-    "Código Contacto",
-    "Correo Electrónico",
-    "Teléfono"
-};
+                    "Id Modulo ",
+                    "Nombre Modulo",
+                    "Descripción",
+                    "Estado"
 
-            int id_aplicacion = 303;
+                };
+            //Pendiente
+            int id_aplicacion = 304;
             int id_Modulo = 4;
             navegador1.IPkId_Aplicacion = id_aplicacion;
             navegador1.IPkId_Modulo = id_Modulo;
@@ -50,6 +55,8 @@ namespace Capa_Vista_Seguridad
             navegador1.SAlias = columnas;
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
+
+            // ==============================
         }
     }
 }
