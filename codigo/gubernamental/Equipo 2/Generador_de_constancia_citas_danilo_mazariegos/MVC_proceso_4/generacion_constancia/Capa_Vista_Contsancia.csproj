@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Contsancia">
+      <HintPath>..\Capa_Controlador_Contsancia\bin\Debug\Capa_Controlador_Contsancia.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,35 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm_boleta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_boleta.Designer.cs">
-      <DependentUpon>Frm_boleta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_datos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_datos.Designer.cs">
       <DependentUpon>Frm_datos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_sede.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_sede.Designer.cs">
-      <DependentUpon>Frm_sede.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Frm_boleta.resx">
-      <DependentUpon>Frm_boleta.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_datos.resx">
       <DependentUpon>Frm_datos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_sede.resx">
-      <DependentUpon>Frm_sede.cs</DependentUpon>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

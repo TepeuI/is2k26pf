@@ -12,7 +12,7 @@ namespace Capa_Modelo_Contsancias
         // Devuelve la cadena de conexión ODBC
         public string ObtenerCadenaConexion()
         {
-            return "Dsn=bd_hoteleria";
+            return "Dsn=bd_migracion";
         }
 
         // Abre y retorna una nueva conexión ODBC
