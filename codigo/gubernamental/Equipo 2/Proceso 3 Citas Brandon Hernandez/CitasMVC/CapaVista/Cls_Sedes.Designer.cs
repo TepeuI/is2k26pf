@@ -1,5 +1,5 @@
 ﻿
-namespace CapaVista
+namespace CapaVista_Citas
 {
     partial class Cls_Sedes
     {
@@ -34,23 +34,24 @@ namespace CapaVista
             // 
             // navegador1
             // 
+            this.navegador1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.navegador1.IPkId_Aplicacion = 0;
             this.navegador1.IPkId_Modulo = 0;
-            this.navegador1.Location = new System.Drawing.Point(13, 13);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
+            this.navegador1.Location = new System.Drawing.Point(1, 3);
             this.navegador1.Name = "navegador1";
             this.navegador1.SAlias = null;
             this.navegador1.SEtiquetas = null;
-            this.navegador1.Size = new System.Drawing.Size(1513, 648);
+            this.navegador1.Size = new System.Drawing.Size(1168, 605);
             this.navegador1.SNombreTabla = null;
             this.navegador1.TabIndex = 0;
             // 
             // Cls_Sedes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1546, 742);
+            this.ClientSize = new System.Drawing.Size(1160, 603);
             this.Controls.Add(this.navegador1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Cls_Sedes";
             this.Text = "Cls_Sedes";
             this.ResumeLayout(false);

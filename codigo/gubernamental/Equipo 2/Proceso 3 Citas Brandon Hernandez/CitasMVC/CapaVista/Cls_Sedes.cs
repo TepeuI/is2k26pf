@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Navegador;
-namespace CapaVista
+namespace CapaVista_Citas
 {
     public partial class Cls_Sedes : Form
     {
