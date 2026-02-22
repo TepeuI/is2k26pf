@@ -52,12 +52,51 @@
     <Compile Include="Frm_Principal.Designer.cs">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_VistaExpediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_VistaExpediente.Designer.cs">
+      <DependentUpon>Frm_VistaExpediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_VistaExpediente.resx">
+      <DependentUpon>Frm_VistaExpediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_modificar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_refrescar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_salir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
