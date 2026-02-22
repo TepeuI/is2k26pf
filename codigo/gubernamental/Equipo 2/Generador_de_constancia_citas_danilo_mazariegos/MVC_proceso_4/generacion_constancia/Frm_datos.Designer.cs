@@ -29,148 +29,149 @@ namespace generacion_constancia
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.Txt_apellido = new System.Windows.Forms.TextBox();
+            this.Txt_nombre = new System.Windows.Forms.TextBox();
+            this.Txt_dpi = new System.Windows.Forms.TextBox();
+            this.Cbo_tramite = new System.Windows.Forms.ComboBox();
+            this.Lbl_nombre = new System.Windows.Forms.Label();
+            this.Lbl_tramite = new System.Windows.Forms.Label();
+            this.Lbl_dpi = new System.Windows.Forms.Label();
+            this.Lbl_apellido = new System.Windows.Forms.Label();
+            this.Btn_cita = new System.Windows.Forms.Button();
+            this.Gpb_datos_cita = new System.Windows.Forms.GroupBox();
+            this.Gpb_datos_cita.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Txt_apellido
             // 
-            this.textBox1.Location = new System.Drawing.Point(117, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 20);
-            this.textBox1.TabIndex = 1;
+            this.Txt_apellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(238)))));
+            this.Txt_apellido.Location = new System.Drawing.Point(160, 87);
+            this.Txt_apellido.Name = "Txt_apellido";
+            this.Txt_apellido.Size = new System.Drawing.Size(198, 23);
+            this.Txt_apellido.TabIndex = 1;
             // 
-            // textBox2
+            // Txt_nombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(117, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 20);
-            this.textBox2.TabIndex = 2;
+            this.Txt_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(238)))));
+            this.Txt_nombre.Location = new System.Drawing.Point(160, 52);
+            this.Txt_nombre.Name = "Txt_nombre";
+            this.Txt_nombre.Size = new System.Drawing.Size(198, 23);
+            this.Txt_nombre.TabIndex = 2;
             // 
-            // textBox3
+            // Txt_dpi
             // 
-            this.textBox3.Location = new System.Drawing.Point(117, 109);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(198, 20);
-            this.textBox3.TabIndex = 3;
+            this.Txt_dpi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(238)))));
+            this.Txt_dpi.Location = new System.Drawing.Point(160, 122);
+            this.Txt_dpi.Name = "Txt_dpi";
+            this.Txt_dpi.Size = new System.Drawing.Size(198, 23);
+            this.Txt_dpi.TabIndex = 3;
             // 
-            // comboBox1
+            // Cbo_tramite
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(117, 144);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(198, 21);
-            this.comboBox1.TabIndex = 4;
+            this.Cbo_tramite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(238)))));
+            this.Cbo_tramite.FormattingEnabled = true;
+            this.Cbo_tramite.Location = new System.Drawing.Point(160, 160);
+            this.Cbo_tramite.Name = "Cbo_tramite";
+            this.Cbo_tramite.Size = new System.Drawing.Size(198, 25);
+            this.Cbo_tramite.TabIndex = 4;
             // 
-            // label1
+            // Lbl_nombre
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "NOMBRE";
+            this.Lbl_nombre.AutoSize = true;
+            this.Lbl_nombre.Font = new System.Drawing.Font("Rockwell", 10.2F);
+            this.Lbl_nombre.Location = new System.Drawing.Point(88, 52);
+            this.Lbl_nombre.Name = "Lbl_nombre";
+            this.Lbl_nombre.Size = new System.Drawing.Size(66, 17);
+            this.Lbl_nombre.TabIndex = 5;
+            this.Lbl_nombre.Text = "NOMBRE";
             // 
-            // label2
+            // Lbl_tramite
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 147);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "TIPO DE TRAMITE";
+            this.Lbl_tramite.AutoSize = true;
+            this.Lbl_tramite.Font = new System.Drawing.Font("Rockwell", 10.2F);
+            this.Lbl_tramite.Location = new System.Drawing.Point(29, 160);
+            this.Lbl_tramite.Name = "Lbl_tramite";
+            this.Lbl_tramite.Size = new System.Drawing.Size(125, 17);
+            this.Lbl_tramite.TabIndex = 6;
+            this.Lbl_tramite.Text = "TIPO DE TRAMITE";
             // 
-            // label3
+            // Lbl_dpi
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(86, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "DPI";
+            this.Lbl_dpi.AutoSize = true;
+            this.Lbl_dpi.Font = new System.Drawing.Font("Rockwell", 10.2F);
+            this.Lbl_dpi.Location = new System.Drawing.Point(124, 122);
+            this.Lbl_dpi.Name = "Lbl_dpi";
+            this.Lbl_dpi.Size = new System.Drawing.Size(30, 17);
+            this.Lbl_dpi.TabIndex = 7;
+            this.Lbl_dpi.Text = "DPI";
             // 
-            // label4
+            // Lbl_apellido
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "APELLIDO";
+            this.Lbl_apellido.AutoSize = true;
+            this.Lbl_apellido.Font = new System.Drawing.Font("Rockwell", 10.2F);
+            this.Lbl_apellido.Location = new System.Drawing.Point(80, 90);
+            this.Lbl_apellido.Name = "Lbl_apellido";
+            this.Lbl_apellido.Size = new System.Drawing.Size(74, 17);
+            this.Lbl_apellido.TabIndex = 8;
+            this.Lbl_apellido.Text = "APELLIDO";
             // 
-            // button1
+            // Btn_cita
             // 
-            this.button1.Location = new System.Drawing.Point(355, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 54);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "GENERAR CITA";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_cita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.Btn_cita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.Btn_cita.Location = new System.Drawing.Point(384, 145);
+            this.Btn_cita.Name = "Btn_cita";
+            this.Btn_cita.Size = new System.Drawing.Size(129, 53);
+            this.Btn_cita.TabIndex = 9;
+            this.Btn_cita.Text = "GENERAR CITA";
+            this.Btn_cita.UseVisualStyleBackColor = false;
             // 
-            // groupBox1
+            // Gpb_datos_cita
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(89, 60);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(464, 185);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "DATOS DEL SOLICITANTE";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(583, 270);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "CANCELAR";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Gpb_datos_cita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
+            this.Gpb_datos_cita.Controls.Add(this.Btn_cita);
+            this.Gpb_datos_cita.Controls.Add(this.Lbl_apellido);
+            this.Gpb_datos_cita.Controls.Add(this.Lbl_dpi);
+            this.Gpb_datos_cita.Controls.Add(this.Lbl_tramite);
+            this.Gpb_datos_cita.Controls.Add(this.Lbl_nombre);
+            this.Gpb_datos_cita.Controls.Add(this.Cbo_tramite);
+            this.Gpb_datos_cita.Controls.Add(this.Txt_dpi);
+            this.Gpb_datos_cita.Controls.Add(this.Txt_nombre);
+            this.Gpb_datos_cita.Controls.Add(this.Txt_apellido);
+            this.Gpb_datos_cita.Font = new System.Drawing.Font("Rockwell", 10.2F);
+            this.Gpb_datos_cita.Location = new System.Drawing.Point(67, 40);
+            this.Gpb_datos_cita.Name = "Gpb_datos_cita";
+            this.Gpb_datos_cita.Size = new System.Drawing.Size(536, 226);
+            this.Gpb_datos_cita.TabIndex = 10;
+            this.Gpb_datos_cita.TabStop = false;
+            this.Gpb_datos_cita.Text = "DATOS DEL SOLICITANTE";
             // 
             // Frm_datos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(670, 305);
             this.ControlBox = false;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Gpb_datos_cita);
             this.Name = "Frm_datos";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Gpb_datos_cita.ResumeLayout(false);
+            this.Gpb_datos_cita.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox Txt_apellido;
+        private System.Windows.Forms.TextBox Txt_nombre;
+        private System.Windows.Forms.TextBox Txt_dpi;
+        private System.Windows.Forms.ComboBox Cbo_tramite;
+        private System.Windows.Forms.Label Lbl_nombre;
+        private System.Windows.Forms.Label Lbl_tramite;
+        private System.Windows.Forms.Label Lbl_dpi;
+        private System.Windows.Forms.Label Lbl_apellido;
+        private System.Windows.Forms.Button Btn_cita;
+        private System.Windows.Forms.GroupBox Gpb_datos_cita;
     }
 }
