@@ -17,44 +17,44 @@ namespace CapaControlador_Citas
         {
             return prDAO.fun_Obtener_sedes();
         }
-            
-        public void bInsertarCita(int fkIdSede, DateTime fechaHora)
-        {
-            if (fechaHora < DateTime.Now)
+       public bool bInsertarCita(int fkIdSede, DateTime fechaHora)
             {
-                MessageBox.Show("No se puede ingresar una cita con fecha y hora anterior a la del sistema.",
-                    "Fecha/Hora inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                // Validación: no permitir citas en el pasado
+                if (fechaHora < DateTime.Now)
+                {
+                    MessageBox.Show("No se puede ingresar una cita con fecha y hora anterior a la del sistema.",
+                        "Fecha/Hora inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
 
-            // (Opcional) Validación de sede
-            if (fkIdSede <= 0)
-            {
-                MessageBox.Show("Debe seleccionar una sede válida.",
-                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            Cls_Citas nuevaCita = new Cls_Citas
-            {
-                iFk_Id_Sede = fkIdSede,
-                dCmp_Fecha_Hora = fechaHora
-               
-            };
+                if (fkIdSede <= 0)
+                {
+                    MessageBox.Show("Debe seleccionar una sede válida.",
+                        "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
 
-            bool ok = prDAO.bInsertar_Citas(nuevaCita);
+                Cls_Citas nuevaCita = new Cls_Citas
+                {
+                    iFk_Id_Sede = fkIdSede,
+                    dCmp_Fecha_Hora = fechaHora
+                };
 
-            if (ok)
-            {
-                MessageBox.Show("Cita registrada correctamente.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
+                bool ok = prDAO.bInsertar_Citas(nuevaCita);
+
+                if (ok)
+                {
+                    MessageBox.Show("Cita registrada correctamente.",
+                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+
                 MessageBox.Show("No se pudo registrar la cita.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
         }
     }
     
-}
+

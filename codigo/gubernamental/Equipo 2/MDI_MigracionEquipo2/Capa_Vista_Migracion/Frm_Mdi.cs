@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_CheckList_Entrevista;
+using CapaVista_Citas;
+using Capa_Vista_Datos_Cliente;
+using CapaVistaAlertas;
 namespace Capa_Vista_Migracion
 {
     public partial class Frm_Mdi : Form
@@ -32,6 +35,30 @@ namespace Capa_Vista_Migracion
         {
             Frm_CheckList chklist = new Frm_CheckList();
             chklist.ShowDialog();
+        }
+
+        private void sedesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Sedes sedes = new Frm_Sedes();
+            sedes.ShowDialog();
+        }
+
+        private void citasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           Frm_Citas citas = new Frm_Citas();
+            citas.ShowDialog();
+        }
+
+        private void datosClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Datos_Solicitante datos = new Frm_Datos_Solicitante();
+            datos.ShowDialog();
+        }
+
+        private void alertasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Alertas alertas = new Frm_Alertas();
+            alertas.ShowDialog();
         }
     }
 }

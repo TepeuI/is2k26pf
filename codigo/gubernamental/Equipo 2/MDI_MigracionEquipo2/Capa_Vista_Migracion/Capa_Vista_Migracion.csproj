@@ -31,11 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CapaVistaAlertas">
+      <HintPath>..\..\Proceso 6 Alertas entrevista Pablo Quiroa\Alertas_Entrevista\CapaVistaAlertas\bin\Debug\CapaVistaAlertas.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_Citas">
+      <HintPath>..\..\Proceso 3 Citas Brandon Hernandez\CitasMVC\CapaVista\bin\Debug\CapaVista_Citas.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Controlador_Seguridad">
       <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_CheckList_Entrevista">
       <HintPath>..\..\Proceso 6 CheckList Entrevista Pedro Ibañez\CheckList_Entrevista\Capa_Vista_CheckList_Entrevista\bin\Debug\Capa_Vista_CheckList_Entrevista.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Datos_Cliente">
+      <HintPath>..\..\proceso2-ingreso-datos-cliente\Datos_Cliente\Capa_Vista_Datos_Cliente\bin\Debug\Capa_Vista_Datos_Cliente.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

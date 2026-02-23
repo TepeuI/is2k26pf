@@ -40,6 +40,9 @@
     <Reference Include="Capa_Controlador_Navegador">
       <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Contsancias">
+      <HintPath>..\..\..\Generador_de_constancia_citas_danilo_mazariegos\MVC_proceso_4\generacion_constancia\bin\Debug\Capa_Vista_Contsancias.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
@@ -55,23 +58,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cls_Citas.cs">
+    <Compile Include="Frm_Citas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cls_Citas.Designer.cs">
-      <DependentUpon>Cls_Citas.cs</DependentUpon>
+    <Compile Include="Frm_Citas.Designer.cs">
+      <DependentUpon>Frm_Citas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cls_Citas_Administrativas.cs">
+    <Compile Include="Frm_Citas_Administrativas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cls_Citas_Administrativas.Designer.cs">
-      <DependentUpon>Cls_Citas_Administrativas.cs</DependentUpon>
+    <Compile Include="Frm_Citas_Administrativas.Designer.cs">
+      <DependentUpon>Frm_Citas_Administrativas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cls_Sedes.cs">
+    <Compile Include="Frm_Sedes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cls_Sedes.Designer.cs">
-      <DependentUpon>Cls_Sedes.cs</DependentUpon>
+    <Compile Include="Frm_Sedes.Designer.cs">
+      <DependentUpon>Frm_Sedes.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -81,14 +84,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Cls_Citas.resx">
-      <DependentUpon>Cls_Citas.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Citas.resx">
+      <DependentUpon>Frm_Citas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cls_Citas_Administrativas.resx">
-      <DependentUpon>Cls_Citas_Administrativas.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Citas_Administrativas.resx">
+      <DependentUpon>Frm_Citas_Administrativas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cls_Sedes.resx">
-      <DependentUpon>Cls_Sedes.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Sedes.resx">
+      <DependentUpon>Frm_Sedes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
