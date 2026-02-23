@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_CheckList_Entrevista">
+      <HintPath>..\Capa_Controlador_CheckList_Entrevista\bin\Debug\Capa_Controlador_CheckList_Entrevista.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Controlador_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
