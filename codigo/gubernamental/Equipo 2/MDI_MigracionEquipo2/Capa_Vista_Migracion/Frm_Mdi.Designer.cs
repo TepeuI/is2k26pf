@@ -37,14 +37,14 @@ namespace Capa_Vista_Migracion
             this.catálogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preguntasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sedesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.citasAdministrativasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sedesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.citasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +88,7 @@ namespace Capa_Vista_Migracion
             this.menuStrip1.MaximumSize = new System.Drawing.Size(0, 503);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 1069, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1668, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1518, 28);
             this.menuStrip1.TabIndex = 100;
             this.menuStrip1.Text = "MenuStrip";
             // 
@@ -104,7 +104,7 @@ namespace Capa_Vista_Migracion
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.cerrarSesiónToolStripMenuItem.Text = "Salir";
             // 
             // catálogosToolStripMenuItem
@@ -122,16 +122,23 @@ namespace Capa_Vista_Migracion
             // alertasToolStripMenuItem
             // 
             this.alertasToolStripMenuItem.Name = "alertasToolStripMenuItem";
-            this.alertasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.alertasToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.alertasToolStripMenuItem.Text = "Alertas";
             this.alertasToolStripMenuItem.Click += new System.EventHandler(this.alertasToolStripMenuItem_Click);
             // 
             // preguntasToolStripMenuItem
             // 
             this.preguntasToolStripMenuItem.Name = "preguntasToolStripMenuItem";
-            this.preguntasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.preguntasToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.preguntasToolStripMenuItem.Text = "Preguntas";
             this.preguntasToolStripMenuItem.Click += new System.EventHandler(this.preguntasToolStripMenuItem_Click);
+            // 
+            // sedesToolStripMenuItem
+            // 
+            this.sedesToolStripMenuItem.Name = "sedesToolStripMenuItem";
+            this.sedesToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.sedesToolStripMenuItem.Text = "Sedes";
+            this.sedesToolStripMenuItem.Click += new System.EventHandler(this.sedesToolStripMenuItem_Click);
             // 
             // procesosToolStripMenuItem
             // 
@@ -158,27 +165,6 @@ namespace Capa_Vista_Migracion
             this.checkListToolStripMenuItem.Text = "CheckList Entrevista";
             this.checkListToolStripMenuItem.Click += new System.EventHandler(this.checkListToolStripMenuItem_Click);
             // 
-            // herramientasToolStripMenuItem
-            // 
-            this.herramientasToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
-            this.herramientasToolStripMenuItem.Text = "Reportes";
-            // 
-            // asignacionesToolStripMenuItem
-            // 
-            this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.asignacionesToolStripMenuItem.Name = "asignacionesToolStripMenuItem";
-            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
-            this.asignacionesToolStripMenuItem.Text = "Ayudas";
-            // 
-            // sedesToolStripMenuItem
-            // 
-            this.sedesToolStripMenuItem.Name = "sedesToolStripMenuItem";
-            this.sedesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.sedesToolStripMenuItem.Text = "Sedes";
-            this.sedesToolStripMenuItem.Click += new System.EventHandler(this.sedesToolStripMenuItem_Click);
-            // 
             // citasToolStripMenuItem
             // 
             this.citasToolStripMenuItem.Name = "citasToolStripMenuItem";
@@ -193,6 +179,20 @@ namespace Capa_Vista_Migracion
             this.datosClientesToolStripMenuItem.Text = "Datos Clientes";
             this.datosClientesToolStripMenuItem.Click += new System.EventHandler(this.datosClientesToolStripMenuItem_Click);
             // 
+            // herramientasToolStripMenuItem
+            // 
+            this.herramientasToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
+            this.herramientasToolStripMenuItem.Text = "Reportes";
+            // 
+            // asignacionesToolStripMenuItem
+            // 
+            this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.asignacionesToolStripMenuItem.Name = "asignacionesToolStripMenuItem";
+            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.asignacionesToolStripMenuItem.Text = "Ayudas";
+            // 
             // Frm_Mdi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -202,7 +202,7 @@ namespace Capa_Vista_Migracion
             this.Controls.Add(this.Pnl_Superior);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Frm_Mdi";
-            this.Text = "Cls_Vista";
+            this.Text = "Migracion";
             this.Pnl_Superior.ResumeLayout(false);
             this.Pnl_Superior.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
