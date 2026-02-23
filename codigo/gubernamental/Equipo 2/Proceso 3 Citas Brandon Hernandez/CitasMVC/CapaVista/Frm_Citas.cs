@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaControlador_Citas;
-
+using generacion_constancia;
 namespace CapaVista_Citas
 {
-    public partial class Cls_Citas : Form
+    public partial class Frm_Citas : Form
     {
         private readonly Cls_CitasControlador prcontrolador = new Cls_CitasControlador();
-        public Cls_Citas()
+        public Frm_Citas()
         {
             InitializeComponent();
             
@@ -58,26 +58,36 @@ namespace CapaVista_Citas
         private void Btn_Constancia_Click(object sender, EventArgs e)
         {
 
-
-            if (Cbo_Sedes.SelectedIndex == -1 || Cbo_Sedes.SelectedIndex == -1)
+            if (Cbo_Sedes.SelectedIndex == -1)
             {
-
-                MessageBox.Show("Debe Seleccionar una sede", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe Seleccionar una sede", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             int iIdSede = Convert.ToInt32(Cbo_Sedes.SelectedValue);
-            DateTime fecha = Dtp_Fecha.Value.Date;         // solo fecha
-            TimeSpan hora = Dtp_Hora.Value.TimeOfDay;      // solo hora
-            DateTime fechayhora = fecha.Add(hora);         // combinado (fecha + hora)
 
-            prcontrolador.bInsertarCita(iIdSede, fechayhora);
-            fun_Cargar_Combos();
+            DateTime fecha = Dtp_Fecha.Value.Date;
+            TimeSpan hora = Dtp_Hora.Value.TimeOfDay;
+            DateTime fechayhora = fecha.Add(hora);
+
+            bool ok = prcontrolador.bInsertarCita(iIdSede, fechayhora);
+
+            if (ok)
+            {
+                this.Hide();
+                Frm_datos constancia = new Frm_datos();
+                constancia.ShowDialog();
+                this.Close();
+            }
+        
 
 
 
 
 
-        }
+
+    }
 
         private void Cls_CItas_Load(object sender, EventArgs e)
         {

@@ -1,7 +1,7 @@
 ﻿
 namespace CapaVista_Citas
 {
-    partial class Cls_Citas
+    partial class Frm_Citas
     {
         /// <summary>
         /// Required designer variable.

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using Capa_Controlador_Navegador;
 namespace CapaVista_Citas
 {
-    public partial class Cls_Sedes : Form
+    public partial class Frm_Sedes : Form
     {
-        public Cls_Sedes()
+        public Frm_Sedes()
         {
             InitializeComponent();
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config = new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView

@@ -7,7 +7,7 @@ namespace CapaModelo_Citas
     {
         public string ObtenerCadenaConexion()
         {
-            return "Dsn=bd_hoteleria";
+            return "Dsn=bd_migracion";
         }
         public OdbcConnection conexion()
         {
