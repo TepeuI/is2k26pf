@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Datos_Solicitante">
+      <HintPath>..\Capa_Controlador_Datos_Solicitante\bin\Debug\Capa_Controlador_Datos_Solicitante.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
