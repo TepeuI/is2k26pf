@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Controlador_Navegador;
-namespace CapaVista_Citas
+
+namespace CapaVistaAlertas
 {
-    public partial class Cls_Sedes : Form
+    public partial class Frm_Alertas_Maestro : Form
     {
-        public Cls_Sedes()
+        public Frm_Alertas_Maestro()
         {
             InitializeComponent();
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config = new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
@@ -23,23 +23,23 @@ namespace CapaVista_Citas
                 PosY = 300,
                 ColorFondo = Color.AliceBlue,
                 TipoScrollBars = ScrollBars.Both,
-                Nombre = "dgv_sedes"
+                Nombre = "dgv_alertas"
             };
+
             string[] columnas = {
-                    "Tbl_Sede",
-                    "Pk_Id_sede",
-                    "Cmp_Departamento",
-                    "Cmp_Municipio",
-                    "Cmp_Direccion"
-                 
+                    "Tbl_alertas",
+                    "Pk_Id_alerta",
+                    "Cmp_Enunciado_Alerta",
+                    "Cmp_Nivel"
+                    
+
             };
 
             string[] sEtiquetas = {
-                    "Id Sede ",
-                    "Departamento",
-                    "Municipio",
-                    "Direccion"
-             
+                    "Id Alerta ",
+                    "Enunciado alerta",
+                    "Nivel alerta",
+                   
 
                 };
 
@@ -54,8 +54,7 @@ namespace CapaVista_Citas
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
 
-           
+            // ==============================
         }
     }
-    }
-
+}

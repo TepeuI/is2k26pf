@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_ValidarCliente
 {
-    public partial class Frm_Principal : Form
+    public partial class Frm_VistaExpediente : Form
     {
-        public Frm_Principal()
+        public Frm_VistaExpediente()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Frm_VistaExpediente VistaExpediente = new Frm_VistaExpediente();
-
-            VistaExpediente.ShowDialog();
-            this.Close();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
-namespace CapaVista_Citas
+namespace CapaVistaAlertas
 {
-    partial class Cls_Sedes
+    partial class Frm_Alertas_Maestro
     {
         /// <summary>
         /// Required designer variable.
@@ -34,26 +34,25 @@ namespace CapaVista_Citas
             // 
             // navegador1
             // 
-            this.navegador1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.navegador1.IPkId_Aplicacion = 0;
             this.navegador1.IPkId_Modulo = 0;
-            this.navegador1.Location = new System.Drawing.Point(1, 3);
+            this.navegador1.Location = new System.Drawing.Point(13, 13);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
             this.navegador1.SAlias = null;
             this.navegador1.SEtiquetas = null;
-            this.navegador1.Size = new System.Drawing.Size(1168, 605);
+            this.navegador1.Size = new System.Drawing.Size(1573, 601);
             this.navegador1.SNombreTabla = null;
             this.navegador1.TabIndex = 0;
             // 
-            // Cls_Sedes
+            // Frm_Alertas_Maestro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1160, 603);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.navegador1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Cls_Sedes";
-            this.Text = "Cls_Sedes";
+            this.Name = "Frm_Alertas_Maestro";
+            this.Text = "Frm_Alertas_Maestro";
             this.ResumeLayout(false);
 
         }
