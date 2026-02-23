@@ -67,7 +67,7 @@ namespace Capa_Vista_Navegador
                     Cls_ControladorNavegador controladorNavegador = new Cls_ControladorNavegador();
 
                     // Genera dinámicamente los labels y combos
-                    controladorNavegador.AsignarAlias(SAlias, this, 20, 100, 3, SEtiquetas);
+                    controladorNavegador.AsignarAlias(SAlias, this, 20, 100, SEtiquetas);
                     ctrl.DesactivarTodosComboBoxes(this); // KEVIN NATARENO, 11/10/2025
                 }
                 catch (Exception ex)

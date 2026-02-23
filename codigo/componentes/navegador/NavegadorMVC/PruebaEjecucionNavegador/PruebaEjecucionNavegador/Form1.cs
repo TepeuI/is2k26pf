@@ -15,6 +15,12 @@ namespace PruebaEjecucionNavegador
         public Form1()
         {
             InitializeComponent();
+            navegador1.Load += Navegador1_Load;
+
+           void Navegador1_Load(object sender, EventArgs e)
+            {
+                navegador1.BotonesEstadoCRUD(true, true, true, true, true);
+            }
             //parametros para navegador
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config = new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
             {
@@ -27,30 +33,18 @@ namespace PruebaEjecucionNavegador
                 Nombre = "dgv_empleados"
             };
 
-                        string[] columnas = {
-                "tbl_usuario",
-                "Pk_Id_Usuario",
-                "Fk_Id_Empleado",
-                "Cmp_Nombre_Usuario",
-                "Cmp_Contrasena_Usuario",
-                "Cmp_Intentos_Fallidos_Usuario",
-                "Cmp_Estado_Usuario",
-                "Cmp_FechaCreacion_Usuario",
-                "Cmp_Ultimo_Cambio_Contrasenea",
-                "Cmp_Pidio_Cambio_Contrasenea"
-            };
+            string[] columnas = {
+                    "tbl_contacto",
+                    "Pk_Contacto_Id",
+                    "Cmp_Correo",
+                    "Cmp_Telefono"
+};
 
-                        string[] sEtiquetas = {
-                "Código Usuario",
-                "Código Empleado",
-                "Nombre de Usuario",
-                "Contraseña",
-                "Intentos Fallidos",
-                "Estado del Usuario",
-                "Fecha de Creación",
-                "Último Cambio de Contraseña",
-                "Solicitó Cambio de Contraseña"
-            };
+            string[] sEtiquetas = {
+                    "Código Contacto Personal Extremadamente Largo",
+                    "Correo Electrónico",
+                    "Teléfono"
+};
 
 
 
