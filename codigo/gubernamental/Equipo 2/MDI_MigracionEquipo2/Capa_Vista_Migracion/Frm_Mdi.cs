@@ -27,8 +27,8 @@ namespace Capa_Vista_Migracion
 
         private void preguntasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Preguntas Frm = new Frm_Preguntas();
-            Frm.ShowDialog();
+            Frm_Mantenimiento_Preguntas navpreg = new Frm_Mantenimiento_Preguntas();
+            navpreg.ShowDialog();
         }
 
         private void checkListToolStripMenuItem_Click(object sender, EventArgs e)
