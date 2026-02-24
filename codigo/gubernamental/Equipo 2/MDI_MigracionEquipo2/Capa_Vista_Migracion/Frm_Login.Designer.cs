@@ -157,7 +157,7 @@ namespace Capa_Vista_Migracion
             this.Controls.Add(this.Gbp_Campos);
             this.Controls.Add(this.Pcb_Imgane);
             this.Name = "Frm_Login";
-            this.Text = "z";
+            this.Text = "login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_Login_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.Pcb_Imgane)).EndInit();
             this.Gbp_Campos.ResumeLayout(false);
