@@ -73,7 +73,8 @@ namespace Capa_Vista_CheckList_Entrevista
 
             if (dtPreguntasFiltradas == null)
             {
-                MessageBox.Show(sMensajeError);
+                MessageBox.Show(sMensajeError,"ERROR", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
             }
             else
             {
@@ -122,8 +123,17 @@ namespace Capa_Vista_CheckList_Entrevista
     }
     else
     {
-        MessageBox.Show("Seleccione una fila");
+        MessageBox.Show("Seleccione una fila","Aviso",MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
     }
+        }
+
+        private void BTN_RECARGAR_Click(object sender, EventArgs e)
+        {
+            Cbo_Pregunta_Id.SelectedIndex = -1;
+            Cbo_Nivel_Pregunta.SelectedIndex = -1;
+            cargar_preguntas();
+            fun_CargarCombos();
         }
     }
 }

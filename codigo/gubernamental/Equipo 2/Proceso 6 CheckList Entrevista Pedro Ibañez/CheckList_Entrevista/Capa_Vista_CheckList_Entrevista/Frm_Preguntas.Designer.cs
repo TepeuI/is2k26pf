@@ -40,6 +40,7 @@ namespace Capa_Vista_CheckList_Entrevista
             this.Btn_Agregar = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.BTN_FILTRAR_NV = new System.Windows.Forms.Button();
+            this.BTN_RECARGAR = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PREGUNTAS_REP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@ namespace Capa_Vista_CheckList_Entrevista
             this.DGV_PREGUNTAS_REP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_PREGUNTAS_REP.Location = new System.Drawing.Point(12, 82);
             this.DGV_PREGUNTAS_REP.Name = "DGV_PREGUNTAS_REP";
-            this.DGV_PREGUNTAS_REP.Size = new System.Drawing.Size(740, 347);
+            this.DGV_PREGUNTAS_REP.Size = new System.Drawing.Size(837, 347);
             this.DGV_PREGUNTAS_REP.TabIndex = 2;
             // 
             // Lbl_Pregunta
@@ -147,11 +148,25 @@ namespace Capa_Vista_CheckList_Entrevista
             this.BTN_FILTRAR_NV.UseVisualStyleBackColor = true;
             this.BTN_FILTRAR_NV.Click += new System.EventHandler(this.BTN_FILTRAR_NV_Click);
             // 
+            // BTN_RECARGAR
+            // 
+            this.BTN_RECARGAR.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_RECARGAR.Image = ((System.Drawing.Image)(resources.GetObject("BTN_RECARGAR.Image")));
+            this.BTN_RECARGAR.Location = new System.Drawing.Point(756, 5);
+            this.BTN_RECARGAR.Name = "BTN_RECARGAR";
+            this.BTN_RECARGAR.Size = new System.Drawing.Size(86, 67);
+            this.BTN_RECARGAR.TabIndex = 13;
+            this.BTN_RECARGAR.Text = "RECARGAR";
+            this.BTN_RECARGAR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BTN_RECARGAR.UseVisualStyleBackColor = true;
+            this.BTN_RECARGAR.Click += new System.EventHandler(this.BTN_RECARGAR_Click);
+            // 
             // Frm_Preguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 505);
+            this.ClientSize = new System.Drawing.Size(882, 505);
+            this.Controls.Add(this.BTN_RECARGAR);
             this.Controls.Add(this.BTN_FILTRAR_NV);
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Agregar);
@@ -182,5 +197,6 @@ namespace Capa_Vista_CheckList_Entrevista
         private System.Windows.Forms.Button Btn_Agregar;
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button BTN_FILTRAR_NV;
+        private System.Windows.Forms.Button BTN_RECARGAR;
     }
 }
