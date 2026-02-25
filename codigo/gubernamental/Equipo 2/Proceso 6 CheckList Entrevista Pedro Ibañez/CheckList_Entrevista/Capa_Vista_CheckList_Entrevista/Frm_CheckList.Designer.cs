@@ -32,14 +32,14 @@ namespace Capa_Vista_CheckList_Entrevista
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CheckList));
             this.label1 = new System.Windows.Forms.Label();
             this.GB_ENCABEZADO = new System.Windows.Forms.GroupBox();
-            this.Lbl_IDentrevista = new System.Windows.Forms.Label();
-            this.Lbl_DPI = new System.Windows.Forms.Label();
-            this.Lbl_Fecha = new System.Windows.Forms.Label();
-            this.Lbl_P = new System.Windows.Forms.Label();
-            this.TXT_ID_ENTREVISTA = new System.Windows.Forms.TextBox();
-            this.CBO_DPI_SOLICITANTE = new System.Windows.Forms.ComboBox();
-            this.DTP_FECHA_ENTREVISTA = new System.Windows.Forms.DateTimePicker();
             this.Lbl_Cant_Pregunta = new System.Windows.Forms.Label();
+            this.DTP_FECHA_ENTREVISTA = new System.Windows.Forms.DateTimePicker();
+            this.CBO_DPI_SOLICITANTE = new System.Windows.Forms.ComboBox();
+            this.TXT_ID_ENTREVISTA = new System.Windows.Forms.TextBox();
+            this.Lbl_P = new System.Windows.Forms.Label();
+            this.Lbl_Fecha = new System.Windows.Forms.Label();
+            this.Lbl_DPI = new System.Windows.Forms.Label();
+            this.Lbl_IDentrevista = new System.Windows.Forms.Label();
             this.btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -54,6 +54,10 @@ namespace Capa_Vista_CheckList_Entrevista
             this.GB_PREGUNTAS = new System.Windows.Forms.GroupBox();
             this.Btn_Remover_Pregunta = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
+            this.IdPregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Enunciado_Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nivel_Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Respuesta_Aceptable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GB_ENCABEZADO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PREGUNTAS_ENTREVISTA)).BeginInit();
             this.GB_ESTADO.SuspendLayout();
@@ -88,35 +92,37 @@ namespace Capa_Vista_CheckList_Entrevista
             this.GB_ENCABEZADO.TabStop = false;
             this.GB_ENCABEZADO.Text = "ENCABEZADO";
             // 
-            // Lbl_IDentrevista
+            // Lbl_Cant_Pregunta
             // 
-            this.Lbl_IDentrevista.AutoSize = true;
-            this.Lbl_IDentrevista.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_IDentrevista.Location = new System.Drawing.Point(24, 34);
-            this.Lbl_IDentrevista.Name = "Lbl_IDentrevista";
-            this.Lbl_IDentrevista.Size = new System.Drawing.Size(89, 16);
-            this.Lbl_IDentrevista.TabIndex = 0;
-            this.Lbl_IDentrevista.Text = "Id_Entrevista:";
+            this.Lbl_Cant_Pregunta.AutoSize = true;
+            this.Lbl_Cant_Pregunta.Location = new System.Drawing.Point(641, 75);
+            this.Lbl_Cant_Pregunta.Name = "Lbl_Cant_Pregunta";
+            this.Lbl_Cant_Pregunta.Size = new System.Drawing.Size(27, 19);
+            this.Lbl_Cant_Pregunta.TabIndex = 7;
+            this.Lbl_Cant_Pregunta.Text = "00";
             // 
-            // Lbl_DPI
+            // DTP_FECHA_ENTREVISTA
             // 
-            this.Lbl_DPI.AutoSize = true;
-            this.Lbl_DPI.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_DPI.Location = new System.Drawing.Point(24, 75);
-            this.Lbl_DPI.Name = "Lbl_DPI";
-            this.Lbl_DPI.Size = new System.Drawing.Size(98, 16);
-            this.Lbl_DPI.TabIndex = 1;
-            this.Lbl_DPI.Text = "DPI_Solicitante:";
+            this.DTP_FECHA_ENTREVISTA.Location = new System.Drawing.Point(607, 34);
+            this.DTP_FECHA_ENTREVISTA.Name = "DTP_FECHA_ENTREVISTA";
+            this.DTP_FECHA_ENTREVISTA.Size = new System.Drawing.Size(200, 26);
+            this.DTP_FECHA_ENTREVISTA.TabIndex = 6;
             // 
-            // Lbl_Fecha
+            // CBO_DPI_SOLICITANTE
             // 
-            this.Lbl_Fecha.AutoSize = true;
-            this.Lbl_Fecha.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Fecha.Location = new System.Drawing.Point(488, 34);
-            this.Lbl_Fecha.Name = "Lbl_Fecha";
-            this.Lbl_Fecha.Size = new System.Drawing.Size(112, 16);
-            this.Lbl_Fecha.TabIndex = 2;
-            this.Lbl_Fecha.Text = "Fecha_Entrevista:";
+            this.CBO_DPI_SOLICITANTE.FormattingEnabled = true;
+            this.CBO_DPI_SOLICITANTE.Location = new System.Drawing.Point(129, 75);
+            this.CBO_DPI_SOLICITANTE.Name = "CBO_DPI_SOLICITANTE";
+            this.CBO_DPI_SOLICITANTE.Size = new System.Drawing.Size(162, 27);
+            this.CBO_DPI_SOLICITANTE.TabIndex = 5;
+            // 
+            // TXT_ID_ENTREVISTA
+            // 
+            this.TXT_ID_ENTREVISTA.Enabled = false;
+            this.TXT_ID_ENTREVISTA.Location = new System.Drawing.Point(129, 29);
+            this.TXT_ID_ENTREVISTA.Name = "TXT_ID_ENTREVISTA";
+            this.TXT_ID_ENTREVISTA.Size = new System.Drawing.Size(162, 26);
+            this.TXT_ID_ENTREVISTA.TabIndex = 4;
             // 
             // Lbl_P
             // 
@@ -128,37 +134,35 @@ namespace Capa_Vista_CheckList_Entrevista
             this.Lbl_P.TabIndex = 3;
             this.Lbl_P.Text = "Cantidad De Preguntas:";
             // 
-            // TXT_ID_ENTREVISTA
+            // Lbl_Fecha
             // 
-            this.TXT_ID_ENTREVISTA.Enabled = false;
-            this.TXT_ID_ENTREVISTA.Location = new System.Drawing.Point(129, 29);
-            this.TXT_ID_ENTREVISTA.Name = "TXT_ID_ENTREVISTA";
-            this.TXT_ID_ENTREVISTA.Size = new System.Drawing.Size(162, 26);
-            this.TXT_ID_ENTREVISTA.TabIndex = 4;
+            this.Lbl_Fecha.AutoSize = true;
+            this.Lbl_Fecha.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Fecha.Location = new System.Drawing.Point(488, 34);
+            this.Lbl_Fecha.Name = "Lbl_Fecha";
+            this.Lbl_Fecha.Size = new System.Drawing.Size(112, 16);
+            this.Lbl_Fecha.TabIndex = 2;
+            this.Lbl_Fecha.Text = "Fecha_Entrevista:";
             // 
-            // CBO_DPI_SOLICITANTE
+            // Lbl_DPI
             // 
-            this.CBO_DPI_SOLICITANTE.FormattingEnabled = true;
-            this.CBO_DPI_SOLICITANTE.Location = new System.Drawing.Point(129, 75);
-            this.CBO_DPI_SOLICITANTE.Name = "CBO_DPI_SOLICITANTE";
-            this.CBO_DPI_SOLICITANTE.Size = new System.Drawing.Size(162, 27);
-            this.CBO_DPI_SOLICITANTE.TabIndex = 5;
+            this.Lbl_DPI.AutoSize = true;
+            this.Lbl_DPI.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_DPI.Location = new System.Drawing.Point(24, 75);
+            this.Lbl_DPI.Name = "Lbl_DPI";
+            this.Lbl_DPI.Size = new System.Drawing.Size(98, 16);
+            this.Lbl_DPI.TabIndex = 1;
+            this.Lbl_DPI.Text = "DPI_Solicitante:";
             // 
-            // DTP_FECHA_ENTREVISTA
+            // Lbl_IDentrevista
             // 
-            this.DTP_FECHA_ENTREVISTA.Location = new System.Drawing.Point(607, 34);
-            this.DTP_FECHA_ENTREVISTA.Name = "DTP_FECHA_ENTREVISTA";
-            this.DTP_FECHA_ENTREVISTA.Size = new System.Drawing.Size(200, 26);
-            this.DTP_FECHA_ENTREVISTA.TabIndex = 6;
-            // 
-            // Lbl_Cant_Pregunta
-            // 
-            this.Lbl_Cant_Pregunta.AutoSize = true;
-            this.Lbl_Cant_Pregunta.Location = new System.Drawing.Point(641, 75);
-            this.Lbl_Cant_Pregunta.Name = "Lbl_Cant_Pregunta";
-            this.Lbl_Cant_Pregunta.Size = new System.Drawing.Size(27, 19);
-            this.Lbl_Cant_Pregunta.TabIndex = 7;
-            this.Lbl_Cant_Pregunta.Text = "00";
+            this.Lbl_IDentrevista.AutoSize = true;
+            this.Lbl_IDentrevista.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_IDentrevista.Location = new System.Drawing.Point(24, 34);
+            this.Lbl_IDentrevista.Name = "Lbl_IDentrevista";
+            this.Lbl_IDentrevista.Size = new System.Drawing.Size(89, 16);
+            this.Lbl_IDentrevista.TabIndex = 0;
+            this.Lbl_IDentrevista.Text = "Id_Entrevista:";
             // 
             // btn_Guardar
             // 
@@ -242,6 +246,11 @@ namespace Capa_Vista_CheckList_Entrevista
             // DGV_PREGUNTAS_ENTREVISTA
             // 
             this.DGV_PREGUNTAS_ENTREVISTA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_PREGUNTAS_ENTREVISTA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPregunta,
+            this.Enunciado_Pregunta,
+            this.Nivel_Pregunta,
+            this.Respuesta_Aceptable});
             this.DGV_PREGUNTAS_ENTREVISTA.Location = new System.Drawing.Point(20, 105);
             this.DGV_PREGUNTAS_ENTREVISTA.Name = "DGV_PREGUNTAS_ENTREVISTA";
             this.DGV_PREGUNTAS_ENTREVISTA.Size = new System.Drawing.Size(789, 310);
@@ -320,6 +329,26 @@ namespace Capa_Vista_CheckList_Entrevista
             this.Btn_Salir.UseVisualStyleBackColor = false;
             this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
+            // IdPregunta
+            // 
+            this.IdPregunta.HeaderText = "IdPregunta";
+            this.IdPregunta.Name = "IdPregunta";
+            // 
+            // Enunciado_Pregunta
+            // 
+            this.Enunciado_Pregunta.HeaderText = "Enunciado_Pregunta";
+            this.Enunciado_Pregunta.Name = "Enunciado_Pregunta";
+            // 
+            // Nivel_Pregunta
+            // 
+            this.Nivel_Pregunta.HeaderText = "Nivel_Pregunta";
+            this.Nivel_Pregunta.Name = "Nivel_Pregunta";
+            // 
+            // Respuesta_Aceptable
+            // 
+            this.Respuesta_Aceptable.HeaderText = "Respuesta_Aceptable";
+            this.Respuesta_Aceptable.Name = "Respuesta_Aceptable";
+            // 
             // Frm_CheckList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,5 +404,9 @@ namespace Capa_Vista_CheckList_Entrevista
         private System.Windows.Forms.GroupBox GB_PREGUNTAS;
         private System.Windows.Forms.Button Btn_Remover_Pregunta;
         private System.Windows.Forms.Button Btn_Salir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPregunta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Enunciado_Pregunta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nivel_Pregunta;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Respuesta_Aceptable;
     }
 }

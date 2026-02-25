@@ -30,7 +30,7 @@ namespace Capa_Vista_CheckList_Entrevista
 
         private void Btn_Agregar_Pregunta_Click(object sender, EventArgs e)
         {
-            Frm_Preguntas form_preguntas = new Frm_Preguntas();
+            Frm_Preguntas form_preguntas = new Frm_Preguntas(this);
 
             form_preguntas.ShowDialog();
         }
@@ -38,6 +38,11 @@ namespace Capa_Vista_CheckList_Entrevista
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void AgregarPregunta(string id, string pregunta, string nivel)
+        {
+            DGV_PREGUNTAS_ENTREVISTA.Rows.Add(id, pregunta, nivel);
         }
     }
 }

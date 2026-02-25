@@ -12,13 +12,13 @@ namespace Capa_Modelo_CheckList_Entrevista
         private readonly string ConexionODBC = "Dsn=bd_migracion"; // DSN de odbc
 
         //retorna conexion cerrada para que el DAO la abra y cierre cuando sea necesario
-        public OdbcConnection conexion()
+        public OdbcConnection oConexion()
         {
             return new OdbcConnection(ConexionODBC); // crea una nueva conexión
         }
 
         // Cierra la conexión si está abierta
-        public void desconexion(OdbcConnection conn)
+        public void oDesconexion(OdbcConnection conn)
         {
             if (conn != null && conn.State == System.Data.ConnectionState.Open)
             {

@@ -39,7 +39,7 @@ CREATE TABLE tbl_checklist_entrevista (
 -- Tabla: tbl_preguntas_alertas
 -- ============================================
 
-CREATE TABLE tbl_preguntas_alertas (
+CREATE TABLE tbl_preguntas (
 
     pk_pregunta_id INT AUTO_INCREMENT PRIMARY KEY,
     
@@ -55,20 +55,25 @@ CREATE TABLE tbl_preguntas_alertas (
 
 CREATE TABLE tbl_checklist_detalle_entrevista (
 
-    pk_detalle_id INT AUTO_INCREMENT PRIMARY KEY,
+    fk_pregunta_id INT NOT NULL,
+    fk_checklist_id INT NOT NULL,
     
-    fk_pregunta_id INT,
-    fk_checklist_id INT,
+    Cmp_Respuesta_Pregunta BOOLEAN NOT NULL DEFAULT 0,
     
-    Cmp_Respuesta_Pregunta BOOLEAN,
-    
-    CONSTRAINT fk_detalle_pregunta
+    CONSTRAINT pk_tbl_checklist_detalle_entrevista
+    PRIMARY KEY (fk_pregunta_id, fk_checklist_id),
+
+    CONSTRAINT fk_tbl_detalle_pregunta
     FOREIGN KEY (fk_pregunta_id)
-    REFERENCES tbl_preguntas_alertas(pk_pregunta_id),
-    
-    CONSTRAINT fk_detalle_checklist
+    REFERENCES tbl_preguntas(pk_pregunta_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+
+    CONSTRAINT fk_tbl_detalle_checklist
     FOREIGN KEY (fk_checklist_id)
     REFERENCES tbl_checklist_entrevista(pk_checklist_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 
 );
 
@@ -112,3 +117,35 @@ CREATE TABLE tbl_detalle_alertas (
     REFERENCES tbl_alertas_encabezado(pk_alerta_id)
 
 );
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Presenta su DPI original en buen estado?', 1);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Presenta fotocopia legible de ambos lados del DPI?', 1);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Realizó el pago correspondiente al trámite de pasaporte?', 1);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Presenta el comprobante de pago original?', 1);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Cuenta con cita programada para el trámite?', 1);
+
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Los datos personales coinciden con el DPI presentado?', 2);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿El solicitante es mayor de edad?', 2);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Presenta pasaporte anterior en caso de renovación?', 2);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿La documentación está completa según los requisitos establecidos?', 2);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿La fotografía cumple con los requisitos oficiales?', 2);
+
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Se verificó la autenticidad del DPI?', 3);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Se validó el pago en el sistema?', 3);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Se registraron correctamente los datos biométricos?', 3);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿El trámite fue aprobado por el responsable?', 3);
+
+INSERT INTO tbl_preguntas (Cmp_Enunciado_Pregunta, Cmp_Nivel) VALUES ('¿Se entregó el comprobante de finalización del trámite?', 3);

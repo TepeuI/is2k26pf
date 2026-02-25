@@ -33,7 +33,7 @@ namespace Capa_Vista_CheckList_Entrevista
 
             string[] columnas = {
 
-                "tbl_preguntas_alertas",
+                "tbl_preguntas",
                 "pk_pregunta_id",
                 "Cmp_Enunciado_Pregunta",
                 "Cmp_Nivel"
