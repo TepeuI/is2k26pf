@@ -32,6 +32,7 @@ namespace Capa_Vista_CheckList_Entrevista
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CheckList));
             this.label1 = new System.Windows.Forms.Label();
             this.GB_ENCABEZADO = new System.Windows.Forms.GroupBox();
+            this.Cbo_Id_Entrevista = new System.Windows.Forms.ComboBox();
             this.Lbl_Cant_Pregunta = new System.Windows.Forms.Label();
             this.DTP_FECHA_ENTREVISTA = new System.Windows.Forms.DateTimePicker();
             this.CBO_DPI_SOLICITANTE = new System.Windows.Forms.ComboBox();
@@ -55,10 +56,9 @@ namespace Capa_Vista_CheckList_Entrevista
             this.ChB_Rechazado = new System.Windows.Forms.CheckBox();
             this.GB_ESTADO = new System.Windows.Forms.GroupBox();
             this.GB_PREGUNTAS = new System.Windows.Forms.GroupBox();
+            this.BTN_LIMPIAR_PREG = new System.Windows.Forms.Button();
             this.Btn_Remover_Pregunta = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
-            this.BTN_LIMPIAR_PREG = new System.Windows.Forms.Button();
-            this.Cbo_Id_Entrevista = new System.Windows.Forms.ComboBox();
             this.BTN_LIMPIAR_ENCABEZADO = new System.Windows.Forms.Button();
             this.GB_ENCABEZADO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PREGUNTAS_ENTREVISTA)).BeginInit();
@@ -94,14 +94,22 @@ namespace Capa_Vista_CheckList_Entrevista
             this.GB_ENCABEZADO.TabStop = false;
             this.GB_ENCABEZADO.Text = "ENCABEZADO";
             // 
+            // Cbo_Id_Entrevista
+            // 
+            this.Cbo_Id_Entrevista.FormattingEnabled = true;
+            this.Cbo_Id_Entrevista.Location = new System.Drawing.Point(129, 29);
+            this.Cbo_Id_Entrevista.Name = "Cbo_Id_Entrevista";
+            this.Cbo_Id_Entrevista.Size = new System.Drawing.Size(162, 27);
+            this.Cbo_Id_Entrevista.TabIndex = 8;
+            // 
             // Lbl_Cant_Pregunta
             // 
             this.Lbl_Cant_Pregunta.AutoSize = true;
             this.Lbl_Cant_Pregunta.Location = new System.Drawing.Point(641, 75);
             this.Lbl_Cant_Pregunta.Name = "Lbl_Cant_Pregunta";
-            this.Lbl_Cant_Pregunta.Size = new System.Drawing.Size(27, 19);
+            this.Lbl_Cant_Pregunta.Size = new System.Drawing.Size(18, 19);
             this.Lbl_Cant_Pregunta.TabIndex = 7;
-            this.Lbl_Cant_Pregunta.Text = "00";
+            this.Lbl_Cant_Pregunta.Text = "0";
             // 
             // DTP_FECHA_ENTREVISTA
             // 
@@ -114,6 +122,7 @@ namespace Capa_Vista_CheckList_Entrevista
             // 
             this.CBO_DPI_SOLICITANTE.FormattingEnabled = true;
             this.CBO_DPI_SOLICITANTE.Location = new System.Drawing.Point(129, 75);
+            this.CBO_DPI_SOLICITANTE.MaxLength = 13;
             this.CBO_DPI_SOLICITANTE.Name = "CBO_DPI_SOLICITANTE";
             this.CBO_DPI_SOLICITANTE.Size = new System.Drawing.Size(162, 27);
             this.CBO_DPI_SOLICITANTE.TabIndex = 5;
@@ -169,6 +178,7 @@ namespace Capa_Vista_CheckList_Entrevista
             this.btn_Guardar.Text = "GUARDAR";
             this.btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Guardar.UseVisualStyleBackColor = false;
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
             // 
             // Btn_Cancelar
             // 
@@ -322,6 +332,18 @@ namespace Capa_Vista_CheckList_Entrevista
             this.GB_PREGUNTAS.TabStop = false;
             this.GB_PREGUNTAS.Text = "PREGUNTAS REALIZADAS";
             // 
+            // BTN_LIMPIAR_PREG
+            // 
+            this.BTN_LIMPIAR_PREG.Image = ((System.Drawing.Image)(resources.GetObject("BTN_LIMPIAR_PREG.Image")));
+            this.BTN_LIMPIAR_PREG.Location = new System.Drawing.Point(261, 19);
+            this.BTN_LIMPIAR_PREG.Name = "BTN_LIMPIAR_PREG";
+            this.BTN_LIMPIAR_PREG.Size = new System.Drawing.Size(113, 80);
+            this.BTN_LIMPIAR_PREG.TabIndex = 12;
+            this.BTN_LIMPIAR_PREG.Text = "LIMPIAR";
+            this.BTN_LIMPIAR_PREG.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BTN_LIMPIAR_PREG.UseVisualStyleBackColor = true;
+            this.BTN_LIMPIAR_PREG.Click += new System.EventHandler(this.BTN_LIMPIAR_PREG_Click);
+            // 
             // Btn_Remover_Pregunta
             // 
             this.Btn_Remover_Pregunta.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Remover_Pregunta.Image")));
@@ -346,26 +368,6 @@ namespace Capa_Vista_CheckList_Entrevista
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir.UseVisualStyleBackColor = false;
             this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
-            // 
-            // BTN_LIMPIAR_PREG
-            // 
-            this.BTN_LIMPIAR_PREG.Image = ((System.Drawing.Image)(resources.GetObject("BTN_LIMPIAR_PREG.Image")));
-            this.BTN_LIMPIAR_PREG.Location = new System.Drawing.Point(261, 19);
-            this.BTN_LIMPIAR_PREG.Name = "BTN_LIMPIAR_PREG";
-            this.BTN_LIMPIAR_PREG.Size = new System.Drawing.Size(113, 80);
-            this.BTN_LIMPIAR_PREG.TabIndex = 12;
-            this.BTN_LIMPIAR_PREG.Text = "LIMPIAR";
-            this.BTN_LIMPIAR_PREG.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BTN_LIMPIAR_PREG.UseVisualStyleBackColor = true;
-            this.BTN_LIMPIAR_PREG.Click += new System.EventHandler(this.BTN_LIMPIAR_PREG_Click);
-            // 
-            // Cbo_Id_Entrevista
-            // 
-            this.Cbo_Id_Entrevista.FormattingEnabled = true;
-            this.Cbo_Id_Entrevista.Location = new System.Drawing.Point(129, 29);
-            this.Cbo_Id_Entrevista.Name = "Cbo_Id_Entrevista";
-            this.Cbo_Id_Entrevista.Size = new System.Drawing.Size(162, 27);
-            this.Cbo_Id_Entrevista.TabIndex = 8;
             // 
             // BTN_LIMPIAR_ENCABEZADO
             // 

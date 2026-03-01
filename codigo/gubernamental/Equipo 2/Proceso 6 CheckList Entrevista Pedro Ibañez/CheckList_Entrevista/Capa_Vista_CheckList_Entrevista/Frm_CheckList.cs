@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Capa_Controlador_CheckList_Entrevista;
 
 namespace Capa_Vista_CheckList_Entrevista
 {
@@ -20,7 +20,11 @@ namespace Capa_Vista_CheckList_Entrevista
             DGV_PREGUNTAS_ENTREVISTA.RowsRemoved += DGV_PREGUNTAS_ENTREVISTA_RowsRemoved;
             Estado_Inicial_Controles();
             Estado_Inicial_Botones();
+            fun_cargar_combos();
         }
+
+        Cls_Controlador_EncabezadoChLst ctrl = new Cls_Controlador_EncabezadoChLst();
+
         //AUMENTO AUTOMATICO DEL LABEL
         private void ActualizarTotal()
         {
@@ -40,6 +44,22 @@ namespace Capa_Vista_CheckList_Entrevista
         }
         //===========================
 
+        //Cargar ComBoBoxes
+        private void fun_cargar_combos()
+        {
+            DataTable dtIDCheckList = ctrl.fun_CargarIdsEncabezado();
+            Cbo_Id_Entrevista.DataSource = dtIDCheckList;
+            Cbo_Id_Entrevista.DisplayMember = "pk_checklist_id";
+            Cbo_Id_Entrevista.ValueMember = "pk_checklist_id";
+            Cbo_Id_Entrevista.SelectedIndex = -1;
+
+            DataTable dtSolicitante = ctrl.fun_CargarIdsSolicitante();
+            CBO_DPI_SOLICITANTE.DataSource = dtSolicitante;
+            CBO_DPI_SOLICITANTE.DisplayMember = "Solicitante";
+            CBO_DPI_SOLICITANTE.ValueMember = "pk_solicitante_id";
+            CBO_DPI_SOLICITANTE.SelectedIndex = -1;
+        }
+        //===========================
         //ESTADOS Controles
         private void Estado_Inicial_Controles()
         {
@@ -67,7 +87,7 @@ namespace Capa_Vista_CheckList_Entrevista
         {
             Btn_Agregar_Entrevista.Enabled = true;
             Btn_Cancelar.Enabled = false;
-            Btn_Modificar.Enabled = true;
+            Btn_Modificar.Enabled = false;
             Btn_Reporte.Enabled = true;
             Btn_Ayuda.Enabled = true;
             Btn_Salir.Enabled = true;
@@ -97,9 +117,10 @@ namespace Capa_Vista_CheckList_Entrevista
 
         void LimpiarControles()
         {
-            Cbo_Id_Entrevista.SelectedIndex = -1;
-            CBO_DPI_SOLICITANTE.SelectedIndex = -1;
+            Cbo_Id_Entrevista.Text = "";
+            CBO_DPI_SOLICITANTE.Text = "";
             DTP_FECHA_ENTREVISTA.Value = DateTime.Today;
+            DGV_PREGUNTAS_ENTREVISTA.Rows.Clear();
             ChB_Estado.Checked = false;
             ChB_Rechazado.Checked = false;
         }
@@ -172,6 +193,46 @@ namespace Capa_Vista_CheckList_Entrevista
         private void BTN_LIMPIAR_ENCABEZADO_Click(object sender, EventArgs e)
         {
             LimpiarControles();
+            fun_cargar_combos();
+        }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            //encabezado
+            int iID_Solicitante = 0;
+            int.TryParse(CBO_DPI_SOLICITANTE.SelectedValue?.ToString(), out iID_Solicitante);
+
+            DateTime tFechaEntrevista = DTP_FECHA_ENTREVISTA.Value;
+
+            int iCantidad_Preguntas = 0;
+            int.TryParse(Lbl_Cant_Pregunta.Text?.ToString(), out iCantidad_Preguntas);
+
+            bool bEstado_Checklist = false;
+            if (ChB_Estado.Checked == true)
+            {
+                bEstado_Checklist = true;
+            }
+
+            bool bExito;
+            string sMensaje = "";
+            bExito = ctrl.fun_InsertarEncabezado(
+                        iID_Solicitante,
+                        tFechaEntrevista,
+                        iCantidad_Preguntas,
+                        bEstado_Checklist
+                    );
+            if (bExito==true)
+            {
+                sMensaje = "Datos Insertados correctamente.";
+                MessageBox.Show(sMensaje,"COMPLETADO", MessageBoxButtons.OK,
+                 MessageBoxIcon.Information);
+            }
+            else
+            {
+                sMensaje = ctrl.sMensaje;
+                MessageBox.Show(sMensaje, "ERROR", MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            }
         }
     }
 }

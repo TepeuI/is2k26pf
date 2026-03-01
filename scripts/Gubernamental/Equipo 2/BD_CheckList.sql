@@ -21,18 +21,26 @@ CREATE TABLE tbl_solicitante (
 -- ============================================
 
 CREATE TABLE tbl_checklist_entrevista (
-    pk_checklist_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    pk_checklist_id INT AUTO_INCREMENT,
     
     fk_solicitante_id INT NOT NULL,
     
-    Cmp_Fecha_Entrevista DATE,
-    Cmp_Cantidad_Preguntas INT,
+    Cmp_Fecha_Entrevista DATE NOT NULL,
     
-    Cmp_Estado_Entrevista ENUM('Pendiente','Completado'),
+    Cmp_Cantidad_Preguntas INT NOT NULL DEFAULT 0,
     
-    CONSTRAINT fk_checklist_solicitante
-    FOREIGN KEY (fk_solicitante_id)
-    REFERENCES tbl_solicitante(pk_solicitante_id)
+    Cmp_Estado_Entrevista TINYINT(1) NOT NULL DEFAULT 0,
+    
+    CONSTRAINT pk_tbl_checklist_entrevista
+        PRIMARY KEY (pk_checklist_id),
+
+    CONSTRAINT fk_tbl_checklist_solicitante
+        FOREIGN KEY (fk_solicitante_id)
+        REFERENCES tbl_solicitante(pk_solicitante_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+
 );
 
 -- ============================================
