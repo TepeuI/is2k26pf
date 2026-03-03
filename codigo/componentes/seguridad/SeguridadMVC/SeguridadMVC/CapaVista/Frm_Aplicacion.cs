@@ -209,7 +209,8 @@ namespace Capa_Vista_Seguridad
                 Cbo_id_modulo.Enabled = false; // ← MÓDULO NO EDITABLE EN MODIFICACIÓN
                 Btn_guardar.Enabled = false;
                 Btn_modificar.Enabled = _canModificar;
-                Cbo_id_reporte.Enabled = false;
+                Cbo_id_reporte.Enabled = _canModificar;
+
             }
             else
             {
@@ -221,6 +222,7 @@ namespace Capa_Vista_Seguridad
 
         private void Btn_modificar_Click(object sender, EventArgs e)
         {
+          
             // Validar que el ID sea válido
             if (!int.TryParse(Txt_id_aplicacion.Text, out int id))
             {
