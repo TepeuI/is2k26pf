@@ -116,7 +116,7 @@ namespace Capa_Controlador_Navegador
                 }
                 else
                 {
-                    var cbo = new ComboBox { Name = "Cbo_" + campo, Width = anchoCombo, DropDownStyle = ComboBoxStyle.DropDownList };
+                    var cbo = new ComboBox { Name = "Cbo_" + campo, Width = anchoCombo, DropDownStyle = ComboBoxStyle.DropDown };
                     try
                     {
                         List<string> items = sentencias.ObtenerValoresColumna(sNombreTabla, campo);

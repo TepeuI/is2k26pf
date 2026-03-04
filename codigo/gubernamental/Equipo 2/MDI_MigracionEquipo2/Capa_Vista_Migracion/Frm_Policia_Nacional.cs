@@ -8,16 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace Capa_Vista_CheckList_Entrevista
+namespace Capa_Vista_Migracion
 {
-    public partial class Frm_Mantenimiento_Preguntas : Form
+    public partial class Frm_Policia_Nacional : Form
     {
-        public Frm_Mantenimiento_Preguntas()
+        public Frm_Policia_Nacional()
         {
             InitializeComponent();
-
-            // parametros para navegador
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config =
             new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
             {
@@ -27,31 +24,31 @@ namespace Capa_Vista_CheckList_Entrevista
                 PosY = 300,
                 ColorFondo = Color.AliceBlue,
                 TipoScrollBars = ScrollBars.Both,
-                Nombre = "dgv_preguntas_alertas"
+                Nombre = "dgv_policia_nacional"
+            };
+
+            string[] columnas = {
+                "tbl_policia_nacional",
+                "pk_policia_id",
+                "Cmp_dpi",
+                "Cmp_tiene_orden_captura",
+                "Cmp_tiene_arraigo",
+                "Cmp_motivo_alerta",
+                "Cmp_fecha_emision"
+            };
+
+            string[] sEtiquetas = {
+                "Código Policia",
+                "DPI",
+                "Tiene Orden de Captura",
+                "Tiene Orden de Arraigo",
+                "Motivo de la Alerta",
+                "Fecha de Emisión"
             };
 
 
-            string[] columnas = {
-
-                "tbl_preguntas",
-                "pk_pregunta_id",
-                "Cmp_Enunciado_Pregunta",
-                "Cmp_Nivel"
-
-};
-
-
-            string[] sEtiquetas = {
-
-                "Código Pregunta",
-                "Enunciado de la Pregunta",
-                "Nivel de Alerta"
-
-};
-
-
-            int id_aplicacion = 100;
-            int id_Modulo = 1;
+            int id_aplicacion = 186;
+            int id_Modulo = 100;
             navegador1.IPkId_Aplicacion = id_aplicacion;
             navegador1.IPkId_Modulo = id_Modulo;
             navegador1.configurarDataGridView(config);
@@ -59,6 +56,11 @@ namespace Capa_Vista_CheckList_Entrevista
             navegador1.SAlias = columnas;
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
+        }   
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

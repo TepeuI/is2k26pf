@@ -8,16 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace Capa_Vista_CheckList_Entrevista
+namespace Capa_Vista_Migracion
 {
-    public partial class Frm_Mantenimiento_Preguntas : Form
+    public partial class Frm_RENAP : Form
     {
-        public Frm_Mantenimiento_Preguntas()
+        public Frm_RENAP()
         {
             InitializeComponent();
-
-            // parametros para navegador
             Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config =
             new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
             {
@@ -27,31 +24,36 @@ namespace Capa_Vista_CheckList_Entrevista
                 PosY = 300,
                 ColorFondo = Color.AliceBlue,
                 TipoScrollBars = ScrollBars.Both,
-                Nombre = "dgv_preguntas_alertas"
+                Nombre = "dgv_renap"
             };
 
-
             string[] columnas = {
-
-                "tbl_preguntas",
-                "pk_pregunta_id",
-                "Cmp_Enunciado_Pregunta",
-                "Cmp_Nivel"
-
-};
-
+                "tbl_renap",
+                "pk_renap_id",
+                "Cmp_dpi",
+                "Cmp_nombre",
+                "Cmp_apellido",
+                "Cmp_sexo",
+                "Cmp_departamento",
+                "Cmp_estado_Civil",
+                "Cmp_fecha_nacimiento",
+                "Cmp_estado_vital"
+            };
 
             string[] sEtiquetas = {
+                "Código RENAP",
+                "DPI",
+                "Nombre",
+                "Apellido",
+                "Sexo",
+                "Departamento",
+                "Estado Civil",
+                "Fecha de Nacimiento",
+                "Estado Vital"
+            };
 
-                "Código Pregunta",
-                "Enunciado de la Pregunta",
-                "Nivel de Alerta"
-
-};
-
-
-            int id_aplicacion = 100;
-            int id_Modulo = 1;
+            int id_aplicacion = 185;
+            int id_Modulo = 100;
             navegador1.IPkId_Aplicacion = id_aplicacion;
             navegador1.IPkId_Modulo = id_Modulo;
             navegador1.configurarDataGridView(config);
