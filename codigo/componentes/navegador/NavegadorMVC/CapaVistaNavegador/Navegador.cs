@@ -12,6 +12,7 @@ using Capa_Controlador_Navegador;
 using Capa_Vista_Reporteador;
 using Capa_Modelo_Seguridad;
 using System.Reflection;
+using Capa_Vista_Componente_Consultas;
 
 namespace Capa_Vista_Navegador
 {
@@ -400,7 +401,16 @@ namespace Capa_Vista_Navegador
 
         private void Btn_consultar_Click(object sender, EventArgs e)
         {
-            // Llamar al componente consultas inteligentes
+            //Richard Anthony de León Milian 0901-22-10245
+            /***EJEMPLO***/
+            string[] sArr = { "tbl_empleado" };
+            using (var f = new Frm_Consulta_Simple(sArr))//Se recibe una variable que contiene la tabla externa
+            {
+                this.Hide();
+                f.ShowDialog(this);
+                this.Show();
+            }
+
         }
 
         // ======================= Pedro Ibañez =======================

@@ -15,7 +15,7 @@ namespace Capa_Vista_Componente_Consultas
 {
     public partial class Frm_Consulta_Compleja : Form
     {
-        private const string sDsn = "Consultas";
+        private const string sDsn = "bd_migracion";
         public const string sDB = "consultas";
 
         private Controlador oControlador;

@@ -30,7 +30,7 @@ namespace PruebaEjecucionNavegador
                 PosY = 300,
                 ColorFondo = Color.AliceBlue,
                 TipoScrollBars = ScrollBars.Both,
-                Nombre = "dgv_empleados"
+                Nombre = "tbl_empleados"
             };
 
             string[] columnas = {
@@ -48,7 +48,7 @@ namespace PruebaEjecucionNavegador
 
 
 
-            int id_aplicacion = 100;
+            int id_aplicacion = 101;
             navegador1.IPkId_Aplicacion = id_aplicacion;
             navegador1.configurarDataGridView(config);
             navegador1.SNombreTabla = columnas[0];

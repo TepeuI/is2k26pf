@@ -1,4 +1,0 @@
-(opcional)
-Dsn: Consultas
-Nombre de Base de datos en xampp: consultas
-Esto para no editar la conexión en el código 
