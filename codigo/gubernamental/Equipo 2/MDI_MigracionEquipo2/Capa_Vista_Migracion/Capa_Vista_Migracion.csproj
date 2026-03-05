@@ -57,6 +57,9 @@
     <Reference Include="Capa_Vista_Reporteador">
       <HintPath>..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Seguridad">
+      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaVista\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_ValidarCliente">
       <HintPath>..\..\Proceso5-ValidarDatosCliente\ValidarCliente_MVC\Capa_Vista_ValidarCliente\bin\Debug\Capa_Vista_ValidarCliente.dll</HintPath>
     </Reference>
