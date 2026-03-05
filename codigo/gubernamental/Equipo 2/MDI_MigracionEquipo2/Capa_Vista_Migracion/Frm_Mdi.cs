@@ -12,6 +12,7 @@ using CapaVista_Citas;
 using Capa_Vista_Datos_Cliente;
 using CapaVistaAlertas;
 using Capa_Vista_Reporteador;
+using Capa_Vista_ValidarCliente;
 
 namespace Capa_Vista_Migracion
 {
@@ -59,7 +60,7 @@ namespace Capa_Vista_Migracion
 
         private void alertasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Alertas alertas = new Frm_Alertas();
+            Frm_Alertas_Maestro alertas = new Frm_Alertas_Maestro();
             alertas.ShowDialog();
         }
 
@@ -71,14 +72,20 @@ namespace Capa_Vista_Migracion
 
         private void policiaNacionalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Policia_Nacional policia = new Frm_Policia_Nacional();
-            policia.ShowDialog();
+          Frm_Policia_Nacional policia = new Frm_Policia_Nacional();
+          policia.ShowDialog();
         }
 
         private void reporteadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Reportes reporte = new Frm_Reportes();
             reporte.ShowDialog();
+        }
+
+        private void checkListAlertasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Alertas alertas = new Frm_Alertas();
+            alertas.ShowDialog();
         }
     }
 }

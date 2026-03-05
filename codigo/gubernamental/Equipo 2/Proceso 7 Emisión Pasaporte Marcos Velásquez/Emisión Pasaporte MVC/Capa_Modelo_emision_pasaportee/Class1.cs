@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capa_Modelo_emision_pasaportee
+namespace Capa_Modelo_emision_pasaporte
 {
     public class Class1
     {

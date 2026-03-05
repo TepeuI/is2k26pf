@@ -92,6 +92,10 @@ namespace Capa_Vista_Navegador
             
             Btn_ingresar.Enabled = false;
             Btn_guardar.Enabled = true;
+            Btn_modificar.Enabled = false;
+            Btn_eliminar.Enabled = false;
+            Btn_imprimir.Enabled = false;
+            Btn_consultar.Enabled = false;
             Btn_cancelar.Enabled = true;
             mostrarDatos();
             ctrl.ActivarTodosComboBoxes(this);
@@ -280,6 +284,7 @@ namespace Capa_Vista_Navegador
             ctrl.LimpiarCombos(this, SAlias);
             ctrl.DesactivarTodosComboBoxes(this);
             iContadorModificar = 0;
+
 
         }
 

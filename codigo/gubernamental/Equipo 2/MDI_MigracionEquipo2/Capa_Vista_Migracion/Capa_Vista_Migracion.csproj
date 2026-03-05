@@ -37,6 +37,10 @@
     <Reference Include="CapaVista_Citas">
       <HintPath>..\..\Proceso 3 Citas Brandon Hernandez\CitasMVC\CapaVista\bin\Debug\CapaVista_Citas.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Controlador_Seguridad">
       <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
@@ -45,6 +49,16 @@
     </Reference>
     <Reference Include="Capa_Vista_Datos_Cliente">
       <HintPath>..\..\proceso2-ingreso-datos-cliente\Datos_Cliente\Capa_Vista_Datos_Cliente\bin\Debug\Capa_Vista_Datos_Cliente.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Reporteador">
+      <HintPath>..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_ValidarCliente">
+      <HintPath>..\..\Proceso5-ValidarDatosCliente\ValidarCliente_MVC\Capa_Vista_ValidarCliente\bin\Debug\Capa_Vista_ValidarCliente.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,6 +84,18 @@
     <Compile Include="Frm_Mdi.Designer.cs">
       <DependentUpon>Frm_Mdi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Policia_Nacional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Policia_Nacional.Designer.cs">
+      <DependentUpon>Frm_Policia_Nacional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_RENAP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_RENAP.Designer.cs">
+      <DependentUpon>Frm_RENAP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -83,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Mdi.resx">
       <DependentUpon>Frm_Mdi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Policia_Nacional.resx">
+      <DependentUpon>Frm_Policia_Nacional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_RENAP.resx">
+      <DependentUpon>Frm_RENAP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

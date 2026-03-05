@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Capa_Controlador_emision_pasaporte")]
+[assembly: AssemblyTitle("Capa_Controlador_Emision")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Capa_Controlador_emision_pasaporte")]
+[assembly: AssemblyProduct("Capa_Controlador_Emision")]
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("e49d0772-6488-46f5-8f4a-de0633d6c9a2")]
+[assembly: Guid("a429ed58-7ca6-43f6-ac47-7f850ae69e5c")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

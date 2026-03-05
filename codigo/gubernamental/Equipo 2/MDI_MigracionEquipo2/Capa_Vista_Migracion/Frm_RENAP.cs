@@ -52,8 +52,8 @@ namespace Capa_Vista_Migracion
                 "Estado Vital"
             };
 
-            int id_aplicacion = 185;
-            int id_Modulo = 100;
+            int id_aplicacion = 5024;
+            int id_Modulo = 1;
             navegador1.IPkId_Aplicacion = id_aplicacion;
             navegador1.IPkId_Modulo = id_Modulo;
             navegador1.configurarDataGridView(config);
