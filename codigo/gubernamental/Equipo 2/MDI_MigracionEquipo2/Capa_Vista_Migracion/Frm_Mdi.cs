@@ -13,6 +13,7 @@ using Capa_Vista_Datos_Cliente;
 using CapaVistaAlertas;
 using Capa_Vista_Reporteador;
 using Capa_Vista_ValidarCliente;
+using Capa_Vista_Datos_Adicionales;
 
 namespace Capa_Vista_Migracion
 {
@@ -86,6 +87,12 @@ namespace Capa_Vista_Migracion
         {
             Frm_Alertas alertas = new Frm_Alertas();
             alertas.ShowDialog();
+        }
+
+        private void datosAdicionalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Datos_Adicionales frm_datosA = new Frm_Datos_Adicionales();
+            frm_datosA.ShowDialog();
         }
     }
 }

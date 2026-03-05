@@ -42,13 +42,14 @@ namespace Capa_Vista_Migracion
             this.policiaNacionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.citasAdministrativasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkListAlertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.citasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkListAlertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosAdicionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,7 @@ namespace Capa_Vista_Migracion
             this.Pnl_Superior.Controls.Add(this.label1);
             this.Pnl_Superior.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl_Superior.Location = new System.Drawing.Point(0, 0);
-            this.Pnl_Superior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Pnl_Superior.Margin = new System.Windows.Forms.Padding(2);
             this.Pnl_Superior.Name = "Pnl_Superior";
             this.Pnl_Superior.Size = new System.Drawing.Size(1216, 52);
             this.Pnl_Superior.TabIndex = 98;
@@ -178,6 +179,13 @@ namespace Capa_Vista_Migracion
             this.citasAdministrativasToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.citasAdministrativasToolStripMenuItem.Text = "Citas Administrativas";
             // 
+            // checkListAlertasToolStripMenuItem
+            // 
+            this.checkListAlertasToolStripMenuItem.Name = "checkListAlertasToolStripMenuItem";
+            this.checkListAlertasToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.checkListAlertasToolStripMenuItem.Text = "CheckList Alertas";
+            this.checkListAlertasToolStripMenuItem.Click += new System.EventHandler(this.checkListAlertasToolStripMenuItem_Click);
+            // 
             // checkListToolStripMenuItem
             // 
             this.checkListToolStripMenuItem.Name = "checkListToolStripMenuItem";
@@ -194,6 +202,8 @@ namespace Capa_Vista_Migracion
             // 
             // datosClientesToolStripMenuItem
             // 
+            this.datosClientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.datosAdicionalesToolStripMenuItem});
             this.datosClientesToolStripMenuItem.Name = "datosClientesToolStripMenuItem";
             this.datosClientesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.datosClientesToolStripMenuItem.Text = "Datos Clientes";
@@ -222,12 +232,12 @@ namespace Capa_Vista_Migracion
             this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(67, 21);
             this.asignacionesToolStripMenuItem.Text = "Ayudas";
             // 
-            // checkListAlertasToolStripMenuItem
+            // datosAdicionalesToolStripMenuItem
             // 
-            this.checkListAlertasToolStripMenuItem.Name = "checkListAlertasToolStripMenuItem";
-            this.checkListAlertasToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.checkListAlertasToolStripMenuItem.Text = "CheckList Alertas";
-            this.checkListAlertasToolStripMenuItem.Click += new System.EventHandler(this.checkListAlertasToolStripMenuItem_Click);
+            this.datosAdicionalesToolStripMenuItem.Name = "datosAdicionalesToolStripMenuItem";
+            this.datosAdicionalesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.datosAdicionalesToolStripMenuItem.Text = "Datos Adicionales";
+            this.datosAdicionalesToolStripMenuItem.Click += new System.EventHandler(this.datosAdicionalesToolStripMenuItem_Click);
             // 
             // Frm_Mdi
             // 
@@ -236,7 +246,7 @@ namespace Capa_Vista_Migracion
             this.ClientSize = new System.Drawing.Size(1216, 531);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Pnl_Superior);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_Mdi";
             this.Text = "Migracion";
             this.Pnl_Superior.ResumeLayout(false);
@@ -270,5 +280,6 @@ namespace Capa_Vista_Migracion
         private System.Windows.Forms.ToolStripMenuItem policiaNacionalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkListAlertasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosAdicionalesToolStripMenuItem;
     }
 }

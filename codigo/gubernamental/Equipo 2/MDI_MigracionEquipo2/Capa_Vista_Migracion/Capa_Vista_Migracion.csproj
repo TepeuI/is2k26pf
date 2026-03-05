@@ -47,6 +47,9 @@
     <Reference Include="Capa_Vista_CheckList_Entrevista">
       <HintPath>..\..\Proceso 6 CheckList Entrevista Pedro Ibañez\CheckList_Entrevista\Capa_Vista_CheckList_Entrevista\bin\Debug\Capa_Vista_CheckList_Entrevista.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Datos_Adicionales">
+      <HintPath>..\..\Proceso 2 Ingreso Datos Adicionales\Datos_Adicionales\Capa_Vista_Datos_Adicionales\bin\Debug\Capa_Vista_Datos_Adicionales.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Datos_Cliente">
       <HintPath>..\..\proceso2-ingreso-datos-cliente\Datos_Cliente\Capa_Vista_Datos_Cliente\bin\Debug\Capa_Vista_Datos_Cliente.dll</HintPath>
     </Reference>
