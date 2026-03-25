@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Capa_Modelo_Componente_Consultas
 {
-    class Conexion
+    class Cls_Conexion
     {
         public OdbcConnection conexion()
         {
             //creacion de la conexion via ODBC
-            OdbcConnection con = new OdbcConnection("Dsn=Bd_Hoteleria");
+            OdbcConnection con = new OdbcConnection("Dsn=bd_hoteleria");
             try
             {
                 con.Open();

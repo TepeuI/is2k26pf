@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Capa_Controlador_Navegador;
 using Capa_Vista_Reporteador;
 using Capa_Modelo_Seguridad;
+using Capa_Vista_Componente_Consultas;
 using System.Reflection;
 
 namespace Capa_Vista_Navegador
@@ -405,7 +406,20 @@ namespace Capa_Vista_Navegador
 
         private void Btn_consultar_Click(object sender, EventArgs e)
         {
-            // Llamar al componente consultas inteligentes
+            if (string.IsNullOrWhiteSpace(SNombreTabla))
+            {
+                MessageBox.Show("No se ha definido el nombre de la tabla.");
+                return;
+            }
+
+            string[] sArr = { SNombreTabla };
+
+            using (var f = new Frm_Consulta_Simple(sArr))
+            {
+                this.Hide();
+                f.ShowDialog(this);
+                this.Show();
+            }
         }
 
         // ======================= Pedro Ibañez =======================
