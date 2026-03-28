@@ -35,11 +35,12 @@ namespace Capa_Vista_Logista
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catálogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuentaPorCobrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cuentaPorCobrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineaDeProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +51,9 @@ namespace Capa_Vista_Logista
             this.Pnl_Superior.Controls.Add(this.label1);
             this.Pnl_Superior.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl_Superior.Location = new System.Drawing.Point(0, 0);
-            this.Pnl_Superior.Margin = new System.Windows.Forms.Padding(2);
+            this.Pnl_Superior.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Pnl_Superior.Name = "Pnl_Superior";
-            this.Pnl_Superior.Size = new System.Drawing.Size(829, 52);
+            this.Pnl_Superior.Size = new System.Drawing.Size(1105, 64);
             this.Pnl_Superior.TabIndex = 99;
             // 
             // label1
@@ -60,9 +61,10 @@ namespace Capa_Vista_Logista
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(21, 11);
+            this.label1.Location = new System.Drawing.Point(28, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 25);
+            this.label1.Size = new System.Drawing.Size(122, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Logística";
             // 
@@ -78,11 +80,11 @@ namespace Capa_Vista_Logista
             this.procesosToolStripMenuItem,
             this.herramientasToolStripMenuItem,
             this.asignacionesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 54);
-            this.menuStrip1.MaximumSize = new System.Drawing.Size(0, 409);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 66);
+            this.menuStrip1.MaximumSize = new System.Drawing.Size(0, 503);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 802, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1289, 25);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 1069, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1652, 28);
             this.menuStrip1.TabIndex = 101;
             this.menuStrip1.Text = "MenuStrip";
             // 
@@ -92,30 +94,38 @@ namespace Capa_Vista_Logista
             this.cerrarSesiónToolStripMenuItem});
             this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.archivoToolStripMenuItem.Text = "Inicio";
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.cerrarSesiónToolStripMenuItem.Text = "Salir";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
             // catálogosToolStripMenuItem
             // 
             this.catálogosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cuentaPorCobrarToolStripMenuItem});
+            this.cuentaPorCobrarToolStripMenuItem,
+            this.lineaDeProductoToolStripMenuItem});
             this.catálogosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(83, 21);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.catálogosToolStripMenuItem.Text = "Catálogos";
+            // 
+            // cuentaPorCobrarToolStripMenuItem
+            // 
+            this.cuentaPorCobrarToolStripMenuItem.Name = "cuentaPorCobrarToolStripMenuItem";
+            this.cuentaPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
+            this.cuentaPorCobrarToolStripMenuItem.Text = "Cuenta por cobrar ";
+            this.cuentaPorCobrarToolStripMenuItem.Click += new System.EventHandler(this.cuentaPorCobrarToolStripMenuItem_Click);
             // 
             // procesosToolStripMenuItem
             // 
             this.procesosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
-            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
+            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.procesosToolStripMenuItem.Text = "Procesos";
             // 
             // herramientasToolStripMenuItem
@@ -124,36 +134,37 @@ namespace Capa_Vista_Logista
             this.reporteadorToolStripMenuItem});
             this.herramientasToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(78, 21);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
             this.herramientasToolStripMenuItem.Text = "Reportes";
             // 
             // reporteadorToolStripMenuItem
             // 
             this.reporteadorToolStripMenuItem.Name = "reporteadorToolStripMenuItem";
-            this.reporteadorToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.reporteadorToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.reporteadorToolStripMenuItem.Text = "Reporteador";
             // 
             // asignacionesToolStripMenuItem
             // 
             this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.asignacionesToolStripMenuItem.Name = "asignacionesToolStripMenuItem";
-            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(67, 21);
+            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.asignacionesToolStripMenuItem.Text = "Ayudas";
             // 
-            // cuentaPorCobrarToolStripMenuItem
+            // lineaDeProductoToolStripMenuItem
             // 
-            this.cuentaPorCobrarToolStripMenuItem.Name = "cuentaPorCobrarToolStripMenuItem";
-            this.cuentaPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.cuentaPorCobrarToolStripMenuItem.Text = "Cuenta por cobrar ";
-            this.cuentaPorCobrarToolStripMenuItem.Click += new System.EventHandler(this.cuentaPorCobrarToolStripMenuItem_Click);
+            this.lineaDeProductoToolStripMenuItem.Name = "lineaDeProductoToolStripMenuItem";
+            this.lineaDeProductoToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
+            this.lineaDeProductoToolStripMenuItem.Text = "Linea de Producto";
+            this.lineaDeProductoToolStripMenuItem.Click += new System.EventHandler(this.lineaDeProductoToolStripMenuItem_Click);
             // 
             // Frm_MDI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 450);
+            this.ClientSize = new System.Drawing.Size(1105, 554);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Pnl_Superior);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Frm_MDI";
             this.Text = "Frm_MDI";
             this.Pnl_Superior.ResumeLayout(false);
@@ -178,5 +189,6 @@ namespace Capa_Vista_Logista
         private System.Windows.Forms.ToolStripMenuItem reporteadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asignacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentaPorCobrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineaDeProductoToolStripMenuItem;
     }
 }

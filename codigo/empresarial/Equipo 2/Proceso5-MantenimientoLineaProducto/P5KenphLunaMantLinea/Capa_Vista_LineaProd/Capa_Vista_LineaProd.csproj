@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20B743B3-A65B-4341-96C0-697A9B279CD8}</ProjectGuid>
+    <ProjectGuid>{8F9DC6D9-EE0B-4458-8933-1656CCDF133C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Vista_Logista</RootNamespace>
-    <AssemblyName>Capa_Vista_Logista</AssemblyName>
+    <RootNamespace>Capa_Vista_LineaProd</RootNamespace>
+    <AssemblyName>Capa_Vista_LineaProd</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,15 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Controlador_Seguridad">
-      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    <Reference Include="Capa_Controlador_Navegador">
+      <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_LineaProd">
-      <HintPath>..\..\Proceso5-MantenimientoLineaProducto\P5KenphLunaMantLinea\Capa_Vista_LineaProd\bin\Debug\Capa_Vista_LineaProd.dll</HintPath>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Mov_Inv">
-      <HintPath>..\..\Proceso 5 Transacciones de Inventario Pedro Ibañez\P5MovInvPedroIbañez\Capa_Vista_Mov_Inv\bin\Debug\Capa_Vista_Mov_Inv.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -52,27 +52,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm_LOGIN.cs">
+    <Compile Include="Frm_Mantenimiento_LineaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_LOGIN.Designer.cs">
-      <DependentUpon>Frm_LOGIN.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_MDI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_MDI.Designer.cs">
-      <DependentUpon>Frm_MDI.cs</DependentUpon>
+    <Compile Include="Frm_Mantenimiento_LineaProducto.Designer.cs">
+      <DependentUpon>Frm_Mantenimiento_LineaProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rpt_LineaProducto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_LineaProducto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Frm_LOGIN.resx">
-      <DependentUpon>Frm_LOGIN.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Mantenimiento_LineaProducto.resx">
+      <DependentUpon>Frm_Mantenimiento_LineaProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_MDI.resx">
-      <DependentUpon>Frm_MDI.cs</DependentUpon>
+    <EmbeddedResource Include="Rpt_LineaProducto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_LineaProducto.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
