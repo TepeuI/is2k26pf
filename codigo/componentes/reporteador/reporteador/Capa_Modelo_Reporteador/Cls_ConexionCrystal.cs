@@ -14,7 +14,7 @@ namespace Capa_Modelo_Reporteador
             // Retorna un objeto ConnectionInfo configurado
             return new ConnectionInfo
             {
-                ServerName = "bd_migracion", // DSN
+                ServerName = "bd_SIG", // DSN
                 IntegratedSecurity = true
             };
         }
