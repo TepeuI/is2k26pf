@@ -13,6 +13,8 @@ using Capa_Vista_Ventas;
 using Mantenimiento_Proveedores;
 using Capa_Vista_Marca;
 using Capa_Vista_Empresa_Transporte;
+using Capa_Vista_Reporteador;
+using Capa_Vista_Seguridad;
 
 namespace Capa_Vista_Logista
 {
@@ -76,6 +78,18 @@ namespace Capa_Vista_Logista
         {
             Frm_Empresa_Transporte transporte = new Frm_Empresa_Transporte();
             transporte.ShowDialog();
+        }
+
+        private void reporteadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Reportes Reporteador = new Frm_Reportes();
+            Reporteador.ShowDialog();
+        }
+
+        private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Seguridad MDI_seguridad = new Frm_Seguridad();
+            MDI_seguridad.ShowDialog();
         }
     }
 }
