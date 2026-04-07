@@ -17,6 +17,7 @@ using Capa_Vista_Reporteador;
 using Capa_Vista_Seguridad;
 using Capa_Vista_Bodegaa;
 using Capa_Vista_Mov_Inv;
+using Mantenimiento_cuentas_por_pagar;
 
 namespace Capa_Vista_Logista
 {
@@ -104,6 +105,12 @@ namespace Capa_Vista_Logista
         {
             Frm_mantenimiento_tipo_mov_inv Movimiento = new Frm_mantenimiento_tipo_mov_inv();
             Movimiento.ShowDialog();
+        }
+
+        private void cuentasPorPagarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Mantenimiento_cuentas_por_pagar CXP = new Frm_Mantenimiento_cuentas_por_pagar();
+            CXP.ShowDialog();
         }
     }
 }
