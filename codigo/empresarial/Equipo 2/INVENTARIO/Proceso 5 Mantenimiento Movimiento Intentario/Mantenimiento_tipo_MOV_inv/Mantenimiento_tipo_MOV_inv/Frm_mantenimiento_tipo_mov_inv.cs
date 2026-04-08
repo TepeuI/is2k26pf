@@ -27,22 +27,20 @@ namespace Mantenimiento_tipo_MOV_inv
                     PosY = 300,
                     ColorFondo = Color.AliceBlue,
                     TipoScrollBars = ScrollBars.Both,
-                    Nombre = "dgv_tipo_operacion"
+                    Nombre = "dgv_tipo_mov_inv"
                 };
 
             string[] columnas = {
-                "tbl_tipo_operacion_cxc",
-                "pk_tipo_operacion_cxc_id",
-                "cmp_operacion",
-                "cmp_efecto",
-                "cmp_estado_tipo_operacion_cxc"
+                "tbl_tipo_movimiento_inventario",
+                "pk_tipo_movimiento_id",
+                "efecto",
+                "estado"
             };
 
             string[] sEtiquetas = {
-                "Código Tipo Operacion",
-                "Descripcion Operacion",
-                "Efecto Operacion",
-                "Estado Operacion"
+                "ID tipo Movimiento",
+                "Efecto",
+                "Estado"
             };
 
             int id_aplicacion = 707;

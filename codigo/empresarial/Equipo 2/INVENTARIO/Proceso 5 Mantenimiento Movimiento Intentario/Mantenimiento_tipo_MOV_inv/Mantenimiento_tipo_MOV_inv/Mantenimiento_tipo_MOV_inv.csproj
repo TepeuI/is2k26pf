@@ -59,20 +59,10 @@
       <DependentUpon>Frm_mantenimiento_tipo_mov_inv.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="rpt_mantenimiento_mov_inv.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rpt_mantenimiento_mov_inv.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_mantenimiento_tipo_mov_inv.resx">
       <DependentUpon>Frm_mantenimiento_tipo_mov_inv.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rpt_mantenimiento_mov_inv.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rpt_mantenimiento_mov_inv.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

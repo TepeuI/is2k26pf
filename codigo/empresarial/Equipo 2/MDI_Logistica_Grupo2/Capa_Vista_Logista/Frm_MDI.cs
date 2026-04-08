@@ -48,7 +48,7 @@ namespace Capa_Vista_Logista
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Vendedores vendedores = new Frm_Vendedores();
-             vendedores.ShowDialog();
+            vendedores.ShowDialog();
         }
 
         private void Frm_MDI_Load(object sender, EventArgs e)
