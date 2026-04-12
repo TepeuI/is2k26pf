@@ -32,6 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Capa_Controlador_Emp_Transp">
+      <HintPath>..\Capa_Controlador_Emp_Transp\bin\Debug\Capa_Controlador_Emp_Transp.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Controlador_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
@@ -62,7 +65,36 @@
     <Compile Include="Frm_Empresa_Transporte.Designer.cs">
       <DependentUpon>Frm_Empresa_Transporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Entrega_Compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Entrega_Compra.Designer.cs">
+      <DependentUpon>Frm_Entrega_Compra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Entrega_Produccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Entrega_Produccion.Designer.cs">
+      <DependentUpon>Frm_Entrega_Produccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Entrega_Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Entrega_Venta.Designer.cs">
+      <DependentUpon>Frm_Entrega_Venta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Tipo_Transporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Tipo_Transporte.Designer.cs">
+      <DependentUpon>Frm_Tipo_Transporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Reporte_Empresas_Transporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +105,22 @@
   <ItemGroup>
     <EmbeddedResource Include="Frm_Empresa_Transporte.resx">
       <DependentUpon>Frm_Empresa_Transporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Entrega_Compra.resx">
+      <DependentUpon>Frm_Entrega_Compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Entrega_Produccion.resx">
+      <DependentUpon>Frm_Entrega_Produccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Entrega_Venta.resx">
+      <DependentUpon>Frm_Entrega_Venta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Tipo_Transporte.resx">
+      <DependentUpon>Frm_Tipo_Transporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte_Empresas_Transporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

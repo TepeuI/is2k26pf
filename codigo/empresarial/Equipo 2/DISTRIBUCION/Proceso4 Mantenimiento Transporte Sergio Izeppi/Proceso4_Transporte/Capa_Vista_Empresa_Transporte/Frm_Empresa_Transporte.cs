@@ -38,7 +38,6 @@ namespace Capa_Vista_Empresa_Transporte
  };
 
             string[] sEtiquetas = {
-    "ID",
      "ID Empresa",
      "Nombre",
      "Telefono",

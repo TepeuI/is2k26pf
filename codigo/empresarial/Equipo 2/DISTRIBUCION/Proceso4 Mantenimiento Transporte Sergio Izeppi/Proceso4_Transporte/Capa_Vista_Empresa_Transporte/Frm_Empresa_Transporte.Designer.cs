@@ -29,14 +29,18 @@ namespace Capa_Vista_Empresa_Transporte
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Empresa_Transporte));
             this.navegador1 = new Capa_Vista_Navegador.Navegador();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navegador1
             // 
             this.navegador1.IPkId_Aplicacion = 0;
             this.navegador1.IPkId_Modulo = 0;
-            this.navegador1.Location = new System.Drawing.Point(-1, -7);
+            this.navegador1.Location = new System.Drawing.Point(-4, 73);
             this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
             this.navegador1.SAlias = null;
@@ -45,14 +49,39 @@ namespace Capa_Vista_Empresa_Transporte
             this.navegador1.SNombreTabla = null;
             this.navegador1.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(-4, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1616, 64);
+            this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(17, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(674, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "MANTENIMIENTO EMPRESAS DE TRANSPORTE";
+            // 
             // Frm_Empresa_Transporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1607, 645);
+            this.ClientSize = new System.Drawing.Size(1607, 728);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.navegador1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Empresa_Transporte";
-            this.Text = "Frm_Empresa_Transporte";
+            this.Text = "Mantenimiento Empresa de Transporte";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -60,5 +89,7 @@ namespace Capa_Vista_Empresa_Transporte
         #endregion
 
         private Capa_Vista_Navegador.Navegador navegador1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }
