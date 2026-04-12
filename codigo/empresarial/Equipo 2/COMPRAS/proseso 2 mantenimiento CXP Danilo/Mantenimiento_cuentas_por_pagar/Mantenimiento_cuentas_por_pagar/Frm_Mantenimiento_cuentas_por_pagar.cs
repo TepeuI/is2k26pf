@@ -31,25 +31,21 @@ namespace Mantenimiento_cuentas_por_pagar
                 };
 
             string[] columnas = {
-                "tbl_cuentas_por_pagar",
-                "pk_id_cuenta_por_pagar",
-                "fk_id_factura",
-                "cmp_fecha_deuda",
-                "cmp_fecha_vencimiento",
-                "cmp_monto_total",
-                "cmp_estado"
+                "tbl_tipo_operacion_cxp",
+                "id_tipo_operacion",
+                "operacion",
+                "efecto",
+                "estado_tipo_transaccion"
             };
 
             string[] sEtiquetas = {
-                "Código Cuenta por Pagar",
-                "Id Factura",
-                "Fecha Deuda",
-                "Fecha Vencimiento",
-                "Monto Total",
+                "Código Tipo Operación",
+                "Operación",
+                "Efecto",
                 "Estado"
             };
 
-            int id_aplicacion = 704;
+            int id_aplicacion = 708;
             int id_Modulo = 44;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;
