@@ -61,6 +61,9 @@
     <Reference Include="Capa_Vista_Marca">
       <HintPath>..\..\PRODUCCION\Proceso 5 Mantenimiento-Marca-PabloQuiroa\Capa_Vista_Marca\bin\Debug\Capa_Vista_Marca.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_MOVINV">
+      <HintPath>..\..\INVENTARIO\Proto_Dash_MOVINV\Proto_Dash_MOVINV\Capa_Vista_MOVINV\bin\Debug\Capa_Vista_MOVINV.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Mov_Inv">
       <HintPath>..\..\INVENTARIO\Proceso 5 Transacciones de Inventario Pedro Ibañez\P5MovInvPedroIbañez\Capa_Vista_Mov_Inv\bin\Debug\Capa_Vista_Mov_Inv.dll</HintPath>
     </Reference>

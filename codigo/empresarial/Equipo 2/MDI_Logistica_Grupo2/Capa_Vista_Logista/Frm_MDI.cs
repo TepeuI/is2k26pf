@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mantenimiento_tipo_MOV_inv;
+using Capa_Vista_MOVINV;
 using Capa_Vista_LineaProd;
 using Capa_Vista_Ventas;
 using Mantenimiento_Proveedores;
@@ -230,6 +231,12 @@ namespace Capa_Vista_Logista
         {
             Frm_Compras_CXP compras = new Frm_Compras_CXP();
             compras.ShowDialog();
+        }
+
+        private void dashboardInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Dashboard_INV Dashboard = new Frm_Dashboard_INV();
+            Dashboard.ShowDialog();
         }
     }
 }
