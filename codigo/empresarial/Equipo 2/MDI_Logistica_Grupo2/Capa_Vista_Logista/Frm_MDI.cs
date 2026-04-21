@@ -120,22 +120,22 @@ namespace Capa_Vista_Logista
             Dictionary<int, ToolStripMenuItem> mapaProcesos = new Dictionary<int, ToolStripMenuItem>
             {
                 {728, movimientoDeInventariosToolStripMenuItem},
-                 {710, ventasToolStripMenuItem},
-                //{712, ordenDeProduccionToolStripMenuItem},
-                // {713, facturasToolStripMenuItem},
-                // {714, comprasToolStripMenuItem},
-                // {715, cuentasPorPagarToolStripMenuItem1},
-                // {716, detalleOrdenDeProduccionToolStripMenuItem},
-                 {711, cuentasPorCobrarToolStripMenuItem},
-                // {719, comprobanteCompraToolStripMenuItem},
-                // {720, comprobanteVentaToolStripMenuItem},
-                // {721, comprobanteProduccionToolStripMenuItem},
-                // {722, entregaDeProducciónToolStripMenuItem},
-                // {723, toolStripMenuItem3}, // Entrega de Venta
-                // {724, toolStripMenuItem4}, // Entrega de Compra
-                // {725, transportesToolStripMenuItem},
+                {710, ventasToolStripMenuItem},
+                {712, ordenDeProduccionToolStripMenuItem},
+                {729, facturasToolStripMenuItem},
+                {714, comprasToolStripMenuItem},
+                {715, cuentasPorPagarToolStripMenuItem1},
+                {716, detalleOrdenDeProduccionToolStripMenuItem},
+                {711, cuentasPorCobrarToolStripMenuItem},
+                {717, comprobanteCompraToolStripMenuItem},
+                {718, comprobanteVentaToolStripMenuItem},
+                {719, comprobanteProduccionToolStripMenuItem},
+                {720, entregaDeProducciónToolStripMenuItem},
+                {721, toolStripMenuItem3}, // Entrega de Venta
+                {722, toolStripMenuItem4}, // Entrega de Compra
+                {723, transportesToolStripMenuItem},
                 {726, inventarioToolStripMenuItem},
-                // {727, sucursalesToolStripMenuItem},
+                {727, sucursalesToolStripMenuItem},
                 {713, devoluconToolStripMenuItem}
             };
 
