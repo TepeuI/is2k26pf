@@ -26,24 +26,10 @@ namespace Capa_Vista_Ventas
             
         }
 
-        private void Btn_Pagar_Click(object sender, EventArgs e)
+        private void Btn_detalle_venta_Click(object sender, EventArgs e)
         {
-            /*if (_idVenta == 0)
-            {
-                MessageBox.Show("Primero guarde la venta.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }*/
-
-            using (var frmPagos = new Frm_Pagos(
-                tipo: Cls_TipoOperacion.Pago,
-                idCuentaPorCobrar: _idVenta,
-                monto: _montoTotal,
-                motivo: string.Empty
-            ))
-            {
-                frmPagos.ShowDialog();
-            }
+            Frm_Detalle_Ventas frm = new Frm_Detalle_Ventas();
+            frm.ShowDialog();
         }
     }
 }

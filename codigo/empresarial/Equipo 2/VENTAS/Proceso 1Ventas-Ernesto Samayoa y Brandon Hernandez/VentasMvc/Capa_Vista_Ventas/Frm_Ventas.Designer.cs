@@ -29,7 +29,6 @@ namespace Capa_Vista_Ventas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Ventas));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -49,19 +48,6 @@ namespace Capa_Vista_Ventas
             this.Lbl_Fecha_Venta = new System.Windows.Forms.Label();
             this.Lbl_Id_Cliente = new System.Windows.Forms.Label();
             this.Lbl_IDVenta = new System.Windows.Forms.Label();
-            this.GB_Detalle_Ventas = new System.Windows.Forms.GroupBox();
-            this.Nud_Cant_Prod = new System.Windows.Forms.NumericUpDown();
-            this.Lbl_Cantidad = new System.Windows.Forms.Label();
-            this.Cbo_Id_Inventario = new System.Windows.Forms.ComboBox();
-            this.Lbl_Inventario = new System.Windows.Forms.Label();
-            this.DGV_DETALLE_VENTA = new System.Windows.Forms.DataGridView();
-            this.Clm_Id_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clm_Id_Inventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clm_Nombre_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clm_precio_u = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clm_cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clm_Precio_sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clm_Costo_Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Btn_Remover_Detalle = new System.Windows.Forms.Button();
             this.Btn_Guardar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Limpiar_Ventas = new System.Windows.Forms.Button();
@@ -72,13 +58,10 @@ namespace Capa_Vista_Ventas
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
-            this.Btn_Pagar = new System.Windows.Forms.Button();
+            this.Btn_detalle_venta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.GB_Ventas.SuspendLayout();
-            this.GB_Detalle_Ventas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Nud_Cant_Prod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE_VENTA)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -286,148 +269,6 @@ namespace Capa_Vista_Ventas
             this.Lbl_IDVenta.TabIndex = 0;
             this.Lbl_IDVenta.Text = "Id Venta:";
             // 
-            // GB_Detalle_Ventas
-            // 
-            this.GB_Detalle_Ventas.Controls.Add(this.Nud_Cant_Prod);
-            this.GB_Detalle_Ventas.Controls.Add(this.Lbl_Cantidad);
-            this.GB_Detalle_Ventas.Controls.Add(this.Cbo_Id_Inventario);
-            this.GB_Detalle_Ventas.Controls.Add(this.Lbl_Inventario);
-            this.GB_Detalle_Ventas.Controls.Add(this.DGV_DETALLE_VENTA);
-            this.GB_Detalle_Ventas.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_Detalle_Ventas.Location = new System.Drawing.Point(13, 453);
-            this.GB_Detalle_Ventas.Margin = new System.Windows.Forms.Padding(4);
-            this.GB_Detalle_Ventas.Name = "GB_Detalle_Ventas";
-            this.GB_Detalle_Ventas.Padding = new System.Windows.Forms.Padding(4);
-            this.GB_Detalle_Ventas.Size = new System.Drawing.Size(1107, 395);
-            this.GB_Detalle_Ventas.TabIndex = 44;
-            this.GB_Detalle_Ventas.TabStop = false;
-            this.GB_Detalle_Ventas.Text = "DETALLE";
-            // 
-            // Nud_Cant_Prod
-            // 
-            this.Nud_Cant_Prod.Location = new System.Drawing.Point(641, 42);
-            this.Nud_Cant_Prod.Margin = new System.Windows.Forms.Padding(4);
-            this.Nud_Cant_Prod.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.Nud_Cant_Prod.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Nud_Cant_Prod.Name = "Nud_Cant_Prod";
-            this.Nud_Cant_Prod.Size = new System.Drawing.Size(95, 31);
-            this.Nud_Cant_Prod.TabIndex = 17;
-            this.Nud_Cant_Prod.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // Lbl_Cantidad
-            // 
-            this.Lbl_Cantidad.AutoSize = true;
-            this.Lbl_Cantidad.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Cantidad.Location = new System.Drawing.Point(441, 48);
-            this.Lbl_Cantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_Cantidad.Name = "Lbl_Cantidad";
-            this.Lbl_Cantidad.Size = new System.Drawing.Size(160, 20);
-            this.Lbl_Cantidad.TabIndex = 15;
-            this.Lbl_Cantidad.Text = "Cantidad Producto:";
-            // 
-            // Cbo_Id_Inventario
-            // 
-            this.Cbo_Id_Inventario.FormattingEnabled = true;
-            this.Cbo_Id_Inventario.Location = new System.Drawing.Point(137, 41);
-            this.Cbo_Id_Inventario.Margin = new System.Windows.Forms.Padding(4);
-            this.Cbo_Id_Inventario.Name = "Cbo_Id_Inventario";
-            this.Cbo_Id_Inventario.Size = new System.Drawing.Size(215, 30);
-            this.Cbo_Id_Inventario.TabIndex = 14;
-            // 
-            // Lbl_Inventario
-            // 
-            this.Lbl_Inventario.AutoSize = true;
-            this.Lbl_Inventario.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Inventario.Location = new System.Drawing.Point(13, 48);
-            this.Lbl_Inventario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_Inventario.Name = "Lbl_Inventario";
-            this.Lbl_Inventario.Size = new System.Drawing.Size(113, 20);
-            this.Lbl_Inventario.TabIndex = 13;
-            this.Lbl_Inventario.Text = "Id Inventario:";
-            // 
-            // DGV_DETALLE_VENTA
-            // 
-            this.DGV_DETALLE_VENTA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_DETALLE_VENTA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Clm_Id_venta,
-            this.Clm_Id_Inventario,
-            this.Clm_Nombre_producto,
-            this.Clm_precio_u,
-            this.Clm_cantidad,
-            this.Clm_Precio_sub,
-            this.Clm_Costo_Subtotal});
-            this.DGV_DETALLE_VENTA.Location = new System.Drawing.Point(17, 112);
-            this.DGV_DETALLE_VENTA.Margin = new System.Windows.Forms.Padding(4);
-            this.DGV_DETALLE_VENTA.Name = "DGV_DETALLE_VENTA";
-            this.DGV_DETALLE_VENTA.RowHeadersWidth = 51;
-            this.DGV_DETALLE_VENTA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_DETALLE_VENTA.Size = new System.Drawing.Size(1067, 254);
-            this.DGV_DETALLE_VENTA.TabIndex = 10;
-            // 
-            // Clm_Id_venta
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clm_Id_venta.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Clm_Id_venta.HeaderText = "Id";
-            this.Clm_Id_venta.MinimumWidth = 6;
-            this.Clm_Id_venta.Name = "Clm_Id_venta";
-            this.Clm_Id_venta.Width = 125;
-            // 
-            // Clm_Id_Inventario
-            // 
-            this.Clm_Id_Inventario.HeaderText = "Id Inventario";
-            this.Clm_Id_Inventario.MinimumWidth = 6;
-            this.Clm_Id_Inventario.Name = "Clm_Id_Inventario";
-            this.Clm_Id_Inventario.Width = 125;
-            // 
-            // Clm_Nombre_producto
-            // 
-            this.Clm_Nombre_producto.HeaderText = "Producto";
-            this.Clm_Nombre_producto.MinimumWidth = 6;
-            this.Clm_Nombre_producto.Name = "Clm_Nombre_producto";
-            this.Clm_Nombre_producto.Width = 125;
-            // 
-            // Clm_precio_u
-            // 
-            this.Clm_precio_u.HeaderText = "Precio Unitario";
-            this.Clm_precio_u.MinimumWidth = 6;
-            this.Clm_precio_u.Name = "Clm_precio_u";
-            this.Clm_precio_u.Width = 125;
-            // 
-            // Clm_cantidad
-            // 
-            this.Clm_cantidad.HeaderText = "Cantidad";
-            this.Clm_cantidad.MinimumWidth = 6;
-            this.Clm_cantidad.Name = "Clm_cantidad";
-            this.Clm_cantidad.Width = 125;
-            // 
-            // Clm_Precio_sub
-            // 
-            this.Clm_Precio_sub.HeaderText = "Precio Subtotal";
-            this.Clm_Precio_sub.MinimumWidth = 6;
-            this.Clm_Precio_sub.Name = "Clm_Precio_sub";
-            this.Clm_Precio_sub.Width = 125;
-            // 
-            // Clm_Costo_Subtotal
-            // 
-            this.Clm_Costo_Subtotal.HeaderText = "Costo Subtotal";
-            this.Clm_Costo_Subtotal.MinimumWidth = 6;
-            this.Clm_Costo_Subtotal.Name = "Clm_Costo_Subtotal";
-            this.Clm_Costo_Subtotal.Width = 125;
-            // 
             // Btn_Remover_Detalle
             // 
             this.Btn_Remover_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -560,27 +401,27 @@ namespace Capa_Vista_Ventas
             this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
             // 
-            // Btn_Pagar
+            // Btn_detalle_venta
             // 
-            this.Btn_Pagar.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Btn_Pagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Pagar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Btn_Pagar.Location = new System.Drawing.Point(458, 855);
-            this.Btn_Pagar.Name = "Btn_Pagar";
-            this.Btn_Pagar.Size = new System.Drawing.Size(322, 82);
-            this.Btn_Pagar.TabIndex = 165;
-            this.Btn_Pagar.Text = "Pagar";
-            this.Btn_Pagar.UseVisualStyleBackColor = false;
-            this.Btn_Pagar.Click += new System.EventHandler(this.Btn_Pagar_Click);
+            this.Btn_detalle_venta.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Btn_detalle_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_detalle_venta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Btn_detalle_venta.Location = new System.Drawing.Point(13, 450);
+            this.Btn_detalle_venta.Name = "Btn_detalle_venta";
+            this.Btn_detalle_venta.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Btn_detalle_venta.Size = new System.Drawing.Size(171, 50);
+            this.Btn_detalle_venta.TabIndex = 165;
+            this.Btn_detalle_venta.Text = "Detalle Venta";
+            this.Btn_detalle_venta.UseVisualStyleBackColor = false;
+            this.Btn_detalle_venta.Click += new System.EventHandler(this.Btn_detalle_venta_Click);
             // 
             // Frm_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1276, 939);
-            this.Controls.Add(this.Btn_Pagar);
-            this.Controls.Add(this.GB_Detalle_Ventas);
+            this.ClientSize = new System.Drawing.Size(1216, 561);
+            this.Controls.Add(this.Btn_detalle_venta);
             this.Controls.Add(this.GB_Ventas);
             this.Controls.Add(this.Btn_Remover_Detalle);
             this.Controls.Add(this.Btn_Guardar_Ventas);
@@ -602,10 +443,6 @@ namespace Capa_Vista_Ventas
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.GB_Ventas.ResumeLayout(false);
             this.GB_Ventas.PerformLayout();
-            this.GB_Detalle_Ventas.ResumeLayout(false);
-            this.GB_Detalle_Ventas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Nud_Cant_Prod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE_VENTA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -639,20 +476,7 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.Label Lbl_Estado;
         private System.Windows.Forms.TextBox Txt_Saldo_total;
         private System.Windows.Forms.Label lbl_Saldo_Total;
-        private System.Windows.Forms.GroupBox GB_Detalle_Ventas;
-        private System.Windows.Forms.NumericUpDown Nud_Cant_Prod;
-        private System.Windows.Forms.Label Lbl_Cantidad;
-        private System.Windows.Forms.ComboBox Cbo_Id_Inventario;
-        private System.Windows.Forms.Label Lbl_Inventario;
-        private System.Windows.Forms.DataGridView DGV_DETALLE_VENTA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_Id_venta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_Id_Inventario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_Nombre_producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_precio_u;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_Precio_sub;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Clm_Costo_Subtotal;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button Btn_Pagar;
+        private System.Windows.Forms.Button Btn_detalle_venta;
     }
 }
