@@ -281,6 +281,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Salir.Text = "SALIR";
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir.UseVisualStyleBackColor = false;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
             // Btn_Reporte_Ventas
             // 

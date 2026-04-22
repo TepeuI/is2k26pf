@@ -48,14 +48,14 @@ namespace Capa_Vista_Logista
         public Frm_MDI()
         {
             InitializeComponent();
-         
+
             this.WindowState = FormWindowState.Maximized;
             InicializarMenuItems();
             fun_inicializar_botones_por_defecto();
 
             this.Load += Frm_MDI_Load;
             this.IsMdiContainer = true;
-    
+
         }
 
         private void Frm_MDI_Load(object sender, EventArgs e)
@@ -131,8 +131,8 @@ namespace Capa_Vista_Logista
                 {718, comprobanteVentaToolStripMenuItem},
                 {719, comprobanteProduccionToolStripMenuItem},
                 {720, entregaDeProducciónToolStripMenuItem},
-                {721, toolStripMenuItem3}, // Entrega de Venta
-                {722, toolStripMenuItem4}, // Entrega de Compra
+                {721, toolStripMenuItem3},
+                {722, toolStripMenuItem4},
                 {723, transportesToolStripMenuItem},
                 {726, inventarioToolStripMenuItem},
                 {727, sucursalesToolStripMenuItem},
@@ -187,15 +187,6 @@ namespace Capa_Vista_Logista
             menuItems[MenuOpciones.Procesos].Enabled = mapaProcesos.Values.Any(m => m.Enabled);
         }
 
-        private void CerrarFormulariosHijos()
-        {
-            foreach (Form childForm in this.MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
-
-
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -206,7 +197,6 @@ namespace Capa_Vista_Logista
 
         private void cuentaPorCobrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Mantenimiento_Tipo_Op_CXC CXC = new Frm_Mantenimiento_Tipo_Op_CXC();
             CXC.MdiParent = this;
             CXC.Show();
@@ -214,7 +204,6 @@ namespace Capa_Vista_Logista
 
         private void lineaDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Mantenimiento_LineaProducto LineaProducto = new Frm_Mantenimiento_LineaProducto();
             LineaProducto.MdiParent = this;
             LineaProducto.Show();
@@ -222,7 +211,6 @@ namespace Capa_Vista_Logista
 
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Vendedores vendedores = new Frm_Vendedores();
             vendedores.MdiParent = this;
             vendedores.Show();
@@ -230,7 +218,6 @@ namespace Capa_Vista_Logista
 
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_proveedores proveedores = new Frm_proveedores();
             proveedores.MdiParent = this;
             proveedores.Show();
@@ -238,7 +225,6 @@ namespace Capa_Vista_Logista
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Clientes Clientes = new Frm_Clientes();
             Clientes.MdiParent = this;
             Clientes.Show();
@@ -246,7 +232,6 @@ namespace Capa_Vista_Logista
 
         private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Marca Marca = new Frm_Marca();
             Marca.MdiParent = this;
             Marca.Show();
@@ -254,7 +239,6 @@ namespace Capa_Vista_Logista
 
         private void empresaTransporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Empresa_Transporte transporte = new Frm_Empresa_Transporte();
             transporte.MdiParent = this;
             transporte.Show();
@@ -262,17 +246,13 @@ namespace Capa_Vista_Logista
 
         private void reporteadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Reportes Reporteador = new Frm_Reportes();
             Reporteador.MdiParent = this;
             Reporteador.Show();
         }
 
-
-
         private void bodegaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Bodega bodega = new Frm_Bodega();
             bodega.MdiParent = this;
             bodega.Show();
@@ -280,7 +260,6 @@ namespace Capa_Vista_Logista
 
         private void movimientoOperacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_mantenimiento_tipo_mov_inv Movimiento = new Frm_mantenimiento_tipo_mov_inv();
             Movimiento.MdiParent = this;
             Movimiento.Show();
@@ -288,7 +267,6 @@ namespace Capa_Vista_Logista
 
         private void cuentasPorPagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Mantenimiento_cuentas_por_pagar CXP = new Frm_Mantenimiento_cuentas_por_pagar();
             CXP.MdiParent = this;
             CXP.Show();
@@ -296,7 +274,6 @@ namespace Capa_Vista_Logista
 
         private void pagosVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Pagos pagos = new Frm_Pagos();
             pagos.MdiParent = this;
             pagos.Show();
@@ -304,7 +281,6 @@ namespace Capa_Vista_Logista
 
         private void movimientoDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Encabezado_Transaccion Trans = new Frm_Encabezado_Transaccion();
             Trans.MdiParent = this;
             Trans.Show();
@@ -312,7 +288,6 @@ namespace Capa_Vista_Logista
 
         private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Inventario_Mantenimiento Inv = new Frm_Inventario_Mantenimiento();
             Inv.MdiParent = this;
             Inv.Show();
@@ -320,7 +295,6 @@ namespace Capa_Vista_Logista
 
         private void ordenDeProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_OrdenProduccion_Encabezado Orden = new Frm_OrdenProduccion_Encabezado();
             Orden.MdiParent = this;
             Orden.Show();
@@ -328,7 +302,6 @@ namespace Capa_Vista_Logista
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Ventas ventas = new Frm_Ventas();
             ventas.MdiParent = this;
             ventas.Show();
@@ -336,7 +309,6 @@ namespace Capa_Vista_Logista
 
         private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Sucursales sucursales = new Frm_Sucursales();
             sucursales.MdiParent = this;
             sucursales.Show();
@@ -344,7 +316,6 @@ namespace Capa_Vista_Logista
 
         private void facturasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_factura factura = new Frm_factura();
             factura.MdiParent = this;
             factura.Show();
@@ -352,7 +323,6 @@ namespace Capa_Vista_Logista
 
         private void detalleOrdenDeProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Orden_Produccion_Detalle OrdenProd = new Frm_Orden_Produccion_Detalle();
             OrdenProd.MdiParent = this;
             OrdenProd.Show();
@@ -360,7 +330,6 @@ namespace Capa_Vista_Logista
 
         private void cuentasPorCobrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Cuentaporcobrar CXC = new Frm_Cuentaporcobrar();
             CXC.MdiParent = this;
             CXC.Show();
@@ -368,7 +337,6 @@ namespace Capa_Vista_Logista
 
         private void devoluconToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Devolucion devolucion = new Frm_Devolucion();
             devolucion.MdiParent = this;
             devolucion.Show();
@@ -376,7 +344,6 @@ namespace Capa_Vista_Logista
 
         private void comprobanteCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Comprobante_Compra com_compra = new Frm_Comprobante_Compra();
             com_compra.MdiParent = this;
             com_compra.Show();
@@ -384,7 +351,6 @@ namespace Capa_Vista_Logista
 
         private void comprobanteVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Comprobante_Venta com_venta = new Frm_Comprobante_Venta();
             com_venta.MdiParent = this;
             com_venta.Show();
@@ -392,7 +358,6 @@ namespace Capa_Vista_Logista
 
         private void comprobanteProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Comprobante_Produccion com_prod = new Frm_Comprobante_Produccion();
             com_prod.MdiParent = this;
             com_prod.Show();
@@ -400,7 +365,6 @@ namespace Capa_Vista_Logista
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Entrega_Compra entrega_Compra = new Frm_Entrega_Compra();
             entrega_Compra.MdiParent = this;
             entrega_Compra.Show();
@@ -408,7 +372,6 @@ namespace Capa_Vista_Logista
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Entrega_Venta entrega_Venta = new Frm_Entrega_Venta();
             entrega_Venta.MdiParent = this;
             entrega_Venta.Show();
@@ -416,7 +379,6 @@ namespace Capa_Vista_Logista
 
         private void entregaDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Entrega_Produccion entrega_Produccion = new Frm_Entrega_Produccion();
             entrega_Produccion.MdiParent = this;
             entrega_Produccion.Show();
@@ -424,7 +386,6 @@ namespace Capa_Vista_Logista
 
         private void transportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Tipo_Transporte tipo_Transporte = new Frm_Tipo_Transporte();
             tipo_Transporte.MdiParent = this;
             tipo_Transporte.Show();
@@ -432,7 +393,6 @@ namespace Capa_Vista_Logista
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Compras_CXP compras = new Frm_Compras_CXP();
             compras.MdiParent = this;
             compras.Show();
@@ -440,7 +400,6 @@ namespace Capa_Vista_Logista
 
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_Bitacora bitacora = new Frm_Bitacora();
             bitacora.MdiParent = this;
             bitacora.Show();
@@ -448,7 +407,6 @@ namespace Capa_Vista_Logista
 
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
             Frm_cambiar_contrasena cambiar_Contrasena = new Frm_cambiar_contrasena(Capa_Controlador_Seguridad.Cls_Usuario_Conectado.iIdUsuario);
             cambiar_Contrasena.MdiParent = this;
             cambiar_Contrasena.Show();

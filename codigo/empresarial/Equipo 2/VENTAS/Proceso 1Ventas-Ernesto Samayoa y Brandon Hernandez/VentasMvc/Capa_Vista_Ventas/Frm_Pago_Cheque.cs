@@ -22,5 +22,10 @@ namespace Capa_Vista_Ventas
             deMontoPago = monto;
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

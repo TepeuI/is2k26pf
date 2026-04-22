@@ -21,5 +21,10 @@ namespace Capa_Vista_Ventas
         {
 
         }
+
+        private void Btn_Salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

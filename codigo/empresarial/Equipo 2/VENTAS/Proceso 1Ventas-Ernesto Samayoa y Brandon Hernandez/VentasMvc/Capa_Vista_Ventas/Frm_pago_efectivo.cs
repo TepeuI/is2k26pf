@@ -20,5 +20,10 @@ namespace Capa_Vista_Ventas
             gIdPago = idPagoPrincipal;
             gMontoPago = monto;
         }
+
+        private void Btn_Salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

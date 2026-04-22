@@ -43,11 +43,13 @@ namespace Capa_Vista_Ventas
             this.Lbl_Nombre_Titular = new System.Windows.Forms.Label();
             this.Gbo_Pago_Con_Tarjeta = new System.Windows.Forms.GroupBox();
             this.Lbl_Pago_Con_Tarjeta = new System.Windows.Forms.Label();
-            this.Btn_Limpiar = new System.Windows.Forms.Button();
-            this.Btn_Guardar = new System.Windows.Forms.Button();
-            this.Btn_Nuevo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.Btn_Salir = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
+            this.Btn_Guardar_Ventas = new System.Windows.Forms.Button();
+            this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
             this.Gbo_Cmpos.SuspendLayout();
             this.Gbo_Pago_Con_Tarjeta.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -65,9 +67,9 @@ namespace Capa_Vista_Ventas
             this.Gbo_Cmpos.Controls.Add(this.Lbl_Fecha);
             this.Gbo_Cmpos.Controls.Add(this.Lbl_MetodoPago);
             this.Gbo_Cmpos.Controls.Add(this.Lbl_Nombre_Titular);
-            this.Gbo_Cmpos.Location = new System.Drawing.Point(12, 203);
+            this.Gbo_Cmpos.Location = new System.Drawing.Point(12, 346);
             this.Gbo_Cmpos.Name = "Gbo_Cmpos";
-            this.Gbo_Cmpos.Size = new System.Drawing.Size(1144, 341);
+            this.Gbo_Cmpos.Size = new System.Drawing.Size(1119, 221);
             this.Gbo_Cmpos.TabIndex = 127;
             this.Gbo_Cmpos.TabStop = false;
             // 
@@ -159,7 +161,7 @@ namespace Capa_Vista_Ventas
             // Gbo_Pago_Con_Tarjeta
             // 
             this.Gbo_Pago_Con_Tarjeta.Controls.Add(this.Lbl_Pago_Con_Tarjeta);
-            this.Gbo_Pago_Con_Tarjeta.Location = new System.Drawing.Point(12, 89);
+            this.Gbo_Pago_Con_Tarjeta.Location = new System.Drawing.Point(12, 236);
             this.Gbo_Pago_Con_Tarjeta.Name = "Gbo_Pago_Con_Tarjeta";
             this.Gbo_Pago_Con_Tarjeta.Size = new System.Drawing.Size(699, 104);
             this.Gbo_Pago_Con_Tarjeta.TabIndex = 122;
@@ -174,52 +176,6 @@ namespace Capa_Vista_Ventas
             this.Lbl_Pago_Con_Tarjeta.Size = new System.Drawing.Size(253, 35);
             this.Lbl_Pago_Con_Tarjeta.TabIndex = 112;
             this.Lbl_Pago_Con_Tarjeta.Text = "Pagos con tarjeta";
-            // 
-            // Btn_Limpiar
-            // 
-            this.Btn_Limpiar.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_Limpiar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.Btn_Limpiar.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.Btn_Limpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.Btn_Limpiar.Image = global::Capa_Vista_Ventas.Properties.Resources.icono_imprimir;
-            this.Btn_Limpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_Limpiar.Location = new System.Drawing.Point(1065, 110);
-            this.Btn_Limpiar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Limpiar.Name = "Btn_Limpiar";
-            this.Btn_Limpiar.Size = new System.Drawing.Size(55, 54);
-            this.Btn_Limpiar.TabIndex = 126;
-            this.Btn_Limpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Limpiar.UseVisualStyleBackColor = false;
-            // 
-            // Btn_Guardar
-            // 
-            this.Btn_Guardar.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_Guardar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.Btn_Guardar.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.Btn_Guardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.Btn_Guardar.Image = global::Capa_Vista_Ventas.Properties.Resources.icono_guardar;
-            this.Btn_Guardar.Location = new System.Drawing.Point(985, 110);
-            this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Guardar.Name = "Btn_Guardar";
-            this.Btn_Guardar.Size = new System.Drawing.Size(55, 54);
-            this.Btn_Guardar.TabIndex = 124;
-            this.Btn_Guardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Guardar.UseVisualStyleBackColor = false;
-            // 
-            // Btn_Nuevo
-            // 
-            this.Btn_Nuevo.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_Nuevo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.Btn_Nuevo.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.Btn_Nuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.Btn_Nuevo.Image = global::Capa_Vista_Ventas.Properties.Resources.icono_agregar;
-            this.Btn_Nuevo.Location = new System.Drawing.Point(907, 110);
-            this.Btn_Nuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Nuevo.Name = "Btn_Nuevo";
-            this.Btn_Nuevo.Size = new System.Drawing.Size(55, 54);
-            this.Btn_Nuevo.TabIndex = 123;
-            this.Btn_Nuevo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Nuevo.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -240,16 +196,86 @@ namespace Capa_Vista_Ventas
             this.label1.TabIndex = 0;
             this.label1.Text = "710 - Pagos ";
             // 
+            // Btn_Salir
+            // 
+            this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
+            this.Btn_Salir.Location = new System.Drawing.Point(807, 105);
+            this.Btn_Salir.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Salir.Name = "Btn_Salir";
+            this.Btn_Salir.Size = new System.Drawing.Size(111, 98);
+            this.Btn_Salir.TabIndex = 146;
+            this.Btn_Salir.Text = "SALIR";
+            this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Salir.UseVisualStyleBackColor = false;
+            this.Btn_Salir.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(620, 105);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(111, 98);
+            this.button3.TabIndex = 145;
+            this.button3.Text = "AYUDA";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Cancelar_Ventas
+            // 
+            this.Btn_Cancelar_Ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Cancelar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar_Ventas.Image")));
+            this.Btn_Cancelar_Ventas.Location = new System.Drawing.Point(441, 105);
+            this.Btn_Cancelar_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Cancelar_Ventas.Name = "Btn_Cancelar_Ventas";
+            this.Btn_Cancelar_Ventas.Size = new System.Drawing.Size(111, 98);
+            this.Btn_Cancelar_Ventas.TabIndex = 143;
+            this.Btn_Cancelar_Ventas.Text = "CANCELAR";
+            this.Btn_Cancelar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Cancelar_Ventas.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Guardar_Ventas
+            // 
+            this.Btn_Guardar_Ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Btn_Guardar_Ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Guardar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar_Ventas.Image")));
+            this.Btn_Guardar_Ventas.Location = new System.Drawing.Point(236, 105);
+            this.Btn_Guardar_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Guardar_Ventas.Name = "Btn_Guardar_Ventas";
+            this.Btn_Guardar_Ventas.Size = new System.Drawing.Size(111, 98);
+            this.Btn_Guardar_Ventas.TabIndex = 144;
+            this.Btn_Guardar_Ventas.Text = "GUARDAR";
+            this.Btn_Guardar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Guardar_Ventas.UseVisualStyleBackColor = false;
+            // 
+            // Btn_Agregar_Ventas
+            // 
+            this.Btn_Agregar_Ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Agregar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Agregar_Ventas.Image")));
+            this.Btn_Agregar_Ventas.Location = new System.Drawing.Point(32, 105);
+            this.Btn_Agregar_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Agregar_Ventas.Name = "Btn_Agregar_Ventas";
+            this.Btn_Agregar_Ventas.Size = new System.Drawing.Size(111, 98);
+            this.Btn_Agregar_Ventas.TabIndex = 142;
+            this.Btn_Agregar_Ventas.Text = "INGRESAR";
+            this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
+            // 
             // Frm_Pago_Tarjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 556);
+            this.ClientSize = new System.Drawing.Size(1177, 579);
+            this.Controls.Add(this.Btn_Salir);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.Btn_Cancelar_Ventas);
+            this.Controls.Add(this.Btn_Guardar_Ventas);
+            this.Controls.Add(this.Btn_Agregar_Ventas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Gbo_Cmpos);
-            this.Controls.Add(this.Btn_Limpiar);
-            this.Controls.Add(this.Btn_Guardar);
-            this.Controls.Add(this.Btn_Nuevo);
             this.Controls.Add(this.Gbo_Pago_Con_Tarjeta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Pago_Tarjeta";
@@ -277,12 +303,14 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.Label Lbl_Fecha;
         private System.Windows.Forms.Label Lbl_MetodoPago;
         private System.Windows.Forms.Label Lbl_Nombre_Titular;
-        private System.Windows.Forms.Button Btn_Limpiar;
-        private System.Windows.Forms.Button Btn_Guardar;
-        private System.Windows.Forms.Button Btn_Nuevo;
         private System.Windows.Forms.GroupBox Gbo_Pago_Con_Tarjeta;
         private System.Windows.Forms.Label Lbl_Pago_Con_Tarjeta;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Btn_Salir;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Btn_Cancelar_Ventas;
+        private System.Windows.Forms.Button Btn_Guardar_Ventas;
+        private System.Windows.Forms.Button Btn_Agregar_Ventas;
     }
 }

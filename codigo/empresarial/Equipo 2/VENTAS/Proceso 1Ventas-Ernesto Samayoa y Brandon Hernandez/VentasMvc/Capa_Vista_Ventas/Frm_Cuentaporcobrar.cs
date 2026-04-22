@@ -23,5 +23,10 @@ namespace Capa_Vista_Ventas
  
             detalle.ShowDialog();
         }
+
+        private void Btn_Salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
