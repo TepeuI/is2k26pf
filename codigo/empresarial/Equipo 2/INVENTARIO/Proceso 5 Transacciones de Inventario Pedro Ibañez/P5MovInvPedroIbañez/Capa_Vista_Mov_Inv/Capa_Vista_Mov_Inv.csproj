@@ -38,6 +38,10 @@
     <Reference Include="Capa_Controlador_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Modelo_Mov_Inv, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Capa_Modelo_Mov_Inv\bin\Debug\Capa_Modelo_Mov_Inv.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
@@ -59,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_Detalle_transaccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Detalle_transaccion.Designer.cs">
+      <DependentUpon>Frm_Detalle_transaccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Encabezado_Transaccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +101,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_Detalle_transaccion.resx">
+      <DependentUpon>Frm_Detalle_transaccion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Encabezado_Transaccion.resx">
       <DependentUpon>Frm_Encabezado_Transaccion.cs</DependentUpon>
     </EmbeddedResource>

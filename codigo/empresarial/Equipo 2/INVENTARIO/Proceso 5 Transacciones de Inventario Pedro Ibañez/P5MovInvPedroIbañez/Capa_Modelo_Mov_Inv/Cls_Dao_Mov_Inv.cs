@@ -131,7 +131,7 @@ namespace Capa_Modelo_Mov_Inv
 
 
         public bool fun_InsertarMovimientoCompleto(int idTipoMov, DateTime fechaMov, string descripcion,
-                                            List<(int idInventario, float cantidad)> detalle)
+                                             List<Cls_Constructores> detalle)
         {
             bool resultado = false;
 
@@ -176,8 +176,8 @@ namespace Capa_Modelo_Mov_Inv
                             using (OdbcCommand oCmdDet = new OdbcCommand(sQueryDetalle, oConn, transaccion))
                             {
                                 oCmdDet.Parameters.AddWithValue("?", idMovimientoGenerado);
-                                oCmdDet.Parameters.AddWithValue("?", item.idInventario);
-                                oCmdDet.Parameters.AddWithValue("?", item.cantidad);
+                                oCmdDet.Parameters.AddWithValue("?", item.CodigoProducto);
+                                oCmdDet.Parameters.AddWithValue("?", item.Cantidad);
                                 oCmdDet.ExecuteNonQuery();
                             }
                         }

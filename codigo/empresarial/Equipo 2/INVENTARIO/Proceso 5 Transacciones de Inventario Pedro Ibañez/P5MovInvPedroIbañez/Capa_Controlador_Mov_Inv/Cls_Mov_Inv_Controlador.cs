@@ -38,7 +38,7 @@ namespace Capa_Controlador_Mov_Inv
         }
 
         public bool fun_GuardarMovimiento(int idBodega, int idTipoMovimiento, DateTime fechaMovimiento,
-                                   string descripcion, List<(int idInventario, float cantidad)> detalle)
+                                           string descripcion, List<Cls_Constructores> detalle)
         {
             try
             {
