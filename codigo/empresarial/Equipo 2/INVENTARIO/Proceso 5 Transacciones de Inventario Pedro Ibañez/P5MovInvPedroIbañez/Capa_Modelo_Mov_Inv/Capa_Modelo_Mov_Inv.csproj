@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Cls_Conexion_MYSQL.cs" />
     <Compile Include="Cls_Constructores.cs" />
+    <Compile Include="Cls_Dao_Inv.cs" />
     <Compile Include="Cls_Dao_Mov_Inv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
