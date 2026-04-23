@@ -73,6 +73,16 @@ namespace Capa_Vista_OrdenProduccion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_agregar1 {
+            get {
+                object obj = ResourceManager.GetObject("icono_agregar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_buscar {
             get {
                 object obj = ResourceManager.GetObject("icono_buscar", resourceCulture);
@@ -83,9 +93,29 @@ namespace Capa_Vista_OrdenProduccion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_cancelar {
+            get {
+                object obj = ResourceManager.GetObject("icono_cancelar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_eliminar {
             get {
                 object obj = ResourceManager.GetObject("icono_eliminar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_guardar {
+            get {
+                object obj = ResourceManager.GetObject("icono_guardar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +143,16 @@ namespace Capa_Vista_OrdenProduccion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_modificar1 {
+            get {
+                object obj = ResourceManager.GetObject("icono_modificar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_refrescar {
             get {
                 object obj = ResourceManager.GetObject("icono_refrescar", resourceCulture);
@@ -123,9 +163,29 @@ namespace Capa_Vista_OrdenProduccion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_refrescar1 {
+            get {
+                object obj = ResourceManager.GetObject("icono_refrescar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_salir {
             get {
                 object obj = ResourceManager.GetObject("icono_salir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_salir1 {
+            get {
+                object obj = ResourceManager.GetObject("icono_salir1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
