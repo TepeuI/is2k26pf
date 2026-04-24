@@ -24,6 +24,7 @@ using Capa_Vista_OrdenDetalle;
 using Capa_Vista_Comprobantes;
 using Capa_Vista_Compras;
 using Capa_Controlador_Seguridad;
+using Capa_Vista_MOVINV;
 using System.Drawing.Imaging;
 
 namespace Capa_Vista_Logista
@@ -136,7 +137,8 @@ namespace Capa_Vista_Logista
                 {723, transportesToolStripMenuItem},
                 {726, inventarioToolStripMenuItem},
                 {727, sucursalesToolStripMenuItem},
-                {713, devoluconToolStripMenuItem}
+                {713, devoluconToolStripMenuItem}   
+                //{730, consultaDeInventariosToolStripMenuItem_Click},
             };
 
             foreach (var sub in mapaCatalogos.Values) sub.Enabled = false;
@@ -418,6 +420,13 @@ namespace Capa_Vista_Logista
             asig_clientes.MdiParent = this;
             asig_clientes.Show();
 
+        }
+
+        private void consultaDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_consulta_INV Consulta_inv = new Frm_consulta_INV();
+            Consulta_inv.MdiParent = this;
+            Consulta_inv.Show();
         }
     }
 }
