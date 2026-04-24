@@ -302,7 +302,7 @@ namespace Capa_Vista_Logista
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Ventas ventas = new Frm_Ventas();
+            Frm_Ventas_Generales ventas = new Frm_Ventas_Generales();
             ventas.MdiParent = this;
             ventas.Show();
         }
