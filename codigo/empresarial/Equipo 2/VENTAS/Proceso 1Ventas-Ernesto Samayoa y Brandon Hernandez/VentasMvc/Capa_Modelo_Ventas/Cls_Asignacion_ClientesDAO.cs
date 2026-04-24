@@ -40,6 +40,22 @@ namespace Capa_Modelo_Ventas
                 CONCAT(Pk_Id_Cliente, ' - ', Cmp_Nombre, ' ', Cmp_Apellido) AS NombreCompleto
             FROM tbl_clientes";
 
+        private static readonly string SQL_DELETE =
+            "DELETE FROM tbl_asignacion_clientes WHERE Fk_Id_Vendedor = ? AND Fk_Id_Cliente = ?";
+
+        public int EliminarAsignacion(int idVendedor, int idCliente)
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_DELETE, conn))
+                {
+                    cmd.Parameters.AddWithValue("?", idVendedor);
+                    cmd.Parameters.AddWithValue("?", idCliente);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public int InsertarAsignacion(int idVendedor, int idCliente)
         {
             using (OdbcConnection conn = conexion.conexion())

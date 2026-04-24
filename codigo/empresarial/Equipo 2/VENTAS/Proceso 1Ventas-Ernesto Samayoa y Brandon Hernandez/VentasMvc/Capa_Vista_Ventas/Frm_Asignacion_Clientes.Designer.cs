@@ -259,6 +259,7 @@ namespace Capa_Vista_Ventas
             this.Cbo_Id_Vendedor.Name = "Cbo_Id_Vendedor";
             this.Cbo_Id_Vendedor.Size = new System.Drawing.Size(267, 30);
             this.Cbo_Id_Vendedor.TabIndex = 8;
+            this.Cbo_Id_Vendedor.SelectedIndexChanged += new System.EventHandler(this.Cbo_Id_Vendedor_SelectedIndexChanged);
             // 
             // Lbl_IDVenta
             // 
@@ -274,12 +275,12 @@ namespace Capa_Vista_Ventas
             // Dgv_Asignacion_clientes
             // 
             this.Dgv_Asignacion_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Asignacion_clientes.Location = new System.Drawing.Point(115, 375);
+            this.Dgv_Asignacion_clientes.Location = new System.Drawing.Point(246, 377);
             this.Dgv_Asignacion_clientes.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Asignacion_clientes.Name = "Dgv_Asignacion_clientes";
             this.Dgv_Asignacion_clientes.RowHeadersWidth = 51;
             this.Dgv_Asignacion_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dgv_Asignacion_clientes.Size = new System.Drawing.Size(810, 254);
+            this.Dgv_Asignacion_clientes.Size = new System.Drawing.Size(580, 239);
             this.Dgv_Asignacion_clientes.TabIndex = 54;
             // 
             // Frm_Asignacion_Clientes

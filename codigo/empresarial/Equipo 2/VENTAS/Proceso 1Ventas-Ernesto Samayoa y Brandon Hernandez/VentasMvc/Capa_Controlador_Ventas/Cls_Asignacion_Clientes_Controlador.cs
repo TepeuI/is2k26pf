@@ -10,7 +10,7 @@ namespace Capa_Controlador_Ventas
     {
         private Cls_Asignacion_ClientesDAO dao = new Cls_Asignacion_ClientesDAO();
 
-        // ✅ VALIDACIÓN
+        //VALIDACIÓN
         public (bool success, string message) ValidarAsignacion(int idVendedor, int idCliente)
         {
             if (idVendedor <= 0)
@@ -22,7 +22,7 @@ namespace Capa_Controlador_Ventas
             return (true, "Validación exitosa");
         }
 
-        // ✅ GUARDAR
+        //GUARDAR
         public (bool success, string message) GuardarAsignacion(int idVendedor, int idCliente)
         {
             var validacion = ValidarAsignacion(idVendedor, idCliente);
@@ -38,23 +38,43 @@ namespace Capa_Controlador_Ventas
                 resultado ? "Asignación guardada correctamente."
                           : "Error al guardar la asignación.");
         }
+        // ELIMINAR
+        public (bool success, string message) EliminarAsignacion(int idVendedor, int idCliente)
+        {
+            int filas = dao.EliminarAsignacion(idVendedor, idCliente);
 
-        // ✅ COMBOBOX VENDEDORES
+            if (filas > 0)
+                return (true, "Asignación eliminada correctamente.");
+            else
+                return (false, "No se pudo eliminar la asignación.");
+        }
+
+        //COMBOBOX VENDEDORES
         public DataTable ObtenerVendedores()
         {
             return dao.ObtenerVendedores();
         }
 
-        // ✅ COMBOBOX CLIENTES
+        //COMBOBOX CLIENTES
         public DataTable ObtenerClientes()
         {
             return dao.ObtenerClientes();
         }
 
-        // ✅ GRID (CON NOMBRES)
+        // GRID (CON NOMBRES)
         public DataTable ObtenerAsignacionesConNombres()
         {
             return dao.ObtenerAsignacionesConNombres();
+        }
+        // LISTA DE CLIENTES DE UN VENDEDOR
+        public DataTable ObtenerClientesPorVendedor(int idVendedor)
+        {
+            DataTable dt = dao.ObtenerAsignacionesConNombres();
+            DataView dv = dt.DefaultView;
+
+            dv.RowFilter = $"Pk_Id_Vendedor = {idVendedor}";
+
+            return dv.ToTable();
         }
     }
 }
