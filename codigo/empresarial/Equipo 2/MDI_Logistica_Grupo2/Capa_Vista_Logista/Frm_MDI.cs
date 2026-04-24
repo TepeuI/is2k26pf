@@ -281,9 +281,9 @@ namespace Capa_Vista_Logista
 
         private void movimientoDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Encabezado_Transaccion Trans = new Frm_Encabezado_Transaccion();
-            Trans.MdiParent = this;
-            Trans.Show();
+            Frm_Movimientos_Inventario InvMov = new Frm_Movimientos_Inventario();
+            InvMov.MdiParent = this;
+            InvMov.Show();
         }
 
         private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)

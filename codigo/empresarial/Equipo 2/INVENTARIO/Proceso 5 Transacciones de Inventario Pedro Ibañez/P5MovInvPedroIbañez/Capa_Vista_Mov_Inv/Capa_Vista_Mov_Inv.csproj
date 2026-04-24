@@ -63,12 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm_Detalle_transaccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Detalle_transaccion.Designer.cs">
-      <DependentUpon>Frm_Detalle_transaccion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_Encabezado_Transaccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +81,12 @@
     <Compile Include="Frm_Mantenimiento_Tipo_Op_CXC.Designer.cs">
       <DependentUpon>Frm_Mantenimiento_Tipo_Op_CXC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Movimientos_Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Movimientos_Inventario.Designer.cs">
+      <DependentUpon>Frm_Movimientos_Inventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -101,9 +101,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Frm_Detalle_transaccion.resx">
-      <DependentUpon>Frm_Detalle_transaccion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Encabezado_Transaccion.resx">
       <DependentUpon>Frm_Encabezado_Transaccion.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Mantenimiento_Tipo_Op_CXC.resx">
       <DependentUpon>Frm_Mantenimiento_Tipo_Op_CXC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Movimientos_Inventario.resx">
+      <DependentUpon>Frm_Movimientos_Inventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
