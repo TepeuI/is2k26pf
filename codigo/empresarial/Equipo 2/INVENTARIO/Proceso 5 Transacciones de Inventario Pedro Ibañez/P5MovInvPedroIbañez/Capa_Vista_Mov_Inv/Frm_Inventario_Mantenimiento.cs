@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Mov_Inv;
+using Capa_Modelo_Mov_Inv;
 
 namespace Capa_Vista_Mov_Inv
 {

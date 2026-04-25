@@ -24,7 +24,7 @@ using Capa_Vista_OrdenDetalle;
 using Capa_Vista_Comprobantes;
 using Capa_Vista_Compras;
 using Capa_Controlador_Seguridad;
-using Capa_Vista_MOVINV;
+//using Capa_Vista_MOVINV;
 using System.Drawing.Imaging;
 
 namespace Capa_Vista_Logista
@@ -124,7 +124,7 @@ namespace Capa_Vista_Logista
                 {710, ventasToolStripMenuItem},
                 {712, ordenDeProduccionToolStripMenuItem},
                 {729, facturasToolStripMenuItem},
-                {714, comprasToolStripMenuItem},
+                //{714, comprasToolStripMenuItem},
                 {715, cuentasPorPagarToolStripMenuItem1},
                 {716, detalleOrdenDeProduccionToolStripMenuItem},
                 {711, cuentasPorCobrarToolStripMenuItem},
@@ -424,9 +424,9 @@ namespace Capa_Vista_Logista
 
         private void consultaDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_consulta_INV Consulta_inv = new Frm_consulta_INV();
+            /*Frm_consulta_INV Consulta_inv = new Frm_consulta_INV();
             Consulta_inv.MdiParent = this;
-            Consulta_inv.Show();
+            Consulta_inv.Show();*/
         }
     }
 }

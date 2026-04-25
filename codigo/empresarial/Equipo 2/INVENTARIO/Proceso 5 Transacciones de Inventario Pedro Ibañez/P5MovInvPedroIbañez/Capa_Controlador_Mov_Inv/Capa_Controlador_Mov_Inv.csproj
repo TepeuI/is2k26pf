@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Modelo_Mov_Inv">
+    <Reference Include="Capa_Modelo_Mov_Inv, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Capa_Modelo_Mov_Inv\bin\Debug\Capa_Modelo_Mov_Inv.dll</HintPath>
     </Reference>
     <Reference Include="System" />

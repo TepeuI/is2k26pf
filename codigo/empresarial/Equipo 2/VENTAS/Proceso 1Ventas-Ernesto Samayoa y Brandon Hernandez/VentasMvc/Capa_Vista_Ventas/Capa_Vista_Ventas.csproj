@@ -150,6 +150,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reporte_Asig_Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_Asig_Clientes.Designer.cs">
+      <DependentUpon>Reporte_Asig_Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt_Asignaciones_Clientes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Asignaciones_Clientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Rpt_Clientes.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,6 +227,13 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Asig_Clientes.resx">
+      <DependentUpon>Reporte_Asig_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Asignaciones_Clientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Asignaciones_Clientes.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt_Clientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

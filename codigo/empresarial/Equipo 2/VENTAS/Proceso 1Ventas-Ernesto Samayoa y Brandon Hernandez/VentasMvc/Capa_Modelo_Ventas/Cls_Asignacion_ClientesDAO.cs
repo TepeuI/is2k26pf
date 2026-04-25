@@ -26,7 +26,8 @@ namespace Capa_Modelo_Ventas
                 CONCAT(c.Pk_Id_Cliente, ' - ', c.Cmp_Nombre, ' ', c.Cmp_Apellido) AS Cliente
             FROM tbl_asignacion_clientes a
             INNER JOIN tbl_vendedor v ON a.Fk_Id_Vendedor = v.Pk_Id_Vendedor
-            INNER JOIN tbl_clientes c ON a.Fk_Id_Cliente = c.Pk_Id_Cliente";
+            INNER JOIN tbl_clientes c ON a.Fk_Id_Cliente = c.Pk_Id_Cliente
+            ORDER BY v.Pk_Id_Vendedor ASC";
 
         private static readonly string SQL_VENDEDORES = @"
             SELECT 
