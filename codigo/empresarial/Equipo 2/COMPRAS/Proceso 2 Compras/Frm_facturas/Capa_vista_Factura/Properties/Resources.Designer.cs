@@ -83,9 +83,29 @@ namespace Capa_vista_Factura.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cancel_icon_icons_com_73703 {
+            get {
+                object obj = ResourceManager.GetObject("Cancel_icon-icons.com_73703", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clear_all_icon_180807 {
             get {
                 object obj = ResourceManager.GetObject("clear_all_icon_180807", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap compose_edit_modify_icon_177770 {
+            get {
+                object obj = ResourceManager.GetObject("compose_edit_modify_icon_177770", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +126,16 @@ namespace Capa_vista_Factura.Properties {
         internal static System.Drawing.Bitmap print_black_printer_tool_symbol_icon_icons_com_54467 {
             get {
                 object obj = ResourceManager.GetObject("print-black-printer-tool-symbol_icon-icons.com_54467", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh_page_arrow_button_icon_icons_com_53909 {
+            get {
+                object obj = ResourceManager.GetObject("refresh-page-arrow-button_icon-icons.com_53909", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

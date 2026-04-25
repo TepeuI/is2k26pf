@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Capa_vista_Factura
 {
-    public partial class Frm_factura : Form
+    public partial class Frm_detalle_compra : Form
     {
-        public Frm_factura()
+        public Frm_detalle_compra()
         {
             InitializeComponent();
         }
 
-        private void Btn_salir_Click(object sender, EventArgs e)
+        private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
