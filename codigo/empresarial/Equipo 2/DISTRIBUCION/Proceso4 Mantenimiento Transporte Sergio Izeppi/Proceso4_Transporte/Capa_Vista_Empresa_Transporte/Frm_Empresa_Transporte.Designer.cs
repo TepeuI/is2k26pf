@@ -62,13 +62,13 @@ namespace Capa_Vista_Empresa_Transporte
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(17, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(674, 35);
+            this.label1.Size = new System.Drawing.Size(824, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "MANTENIMIENTO EMPRESAS DE TRANSPORTE";
+            this.label1.Text = "706 - MANTENIMIENTO EMPRESAS DE TRANSPORTE";
             // 
             // Frm_Empresa_Transporte
             // 
