@@ -12,8 +12,10 @@ namespace Capa_Vista_LineaProd
 {
     public partial class Frm_Mantenimiento_LineaProducto : Form
     {
+        
         public Frm_Mantenimiento_LineaProducto()
         {
+            InitializeComponent();
             //Mantenimiento Kenph Luna 9959-22-6326 
             //27/03/2026
             // Configuración del DataGridView

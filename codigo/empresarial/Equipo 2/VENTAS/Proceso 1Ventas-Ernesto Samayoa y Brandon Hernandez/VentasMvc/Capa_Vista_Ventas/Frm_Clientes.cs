@@ -35,6 +35,7 @@ namespace Capa_Vista_Ventas
                     "Cmp_Correo",
                     "Cmp_Saldo_Total",
                     "Cmp_Direccion",
+                    "Cmp_Tipo",
                     "Cmp_Estado"
                 };
 
@@ -47,6 +48,7 @@ namespace Capa_Vista_Ventas
                     "Correo",
                     "Saldo Total",
                     "Dirección",
+                    "Tipo",
                     "Estado"
                 };
             int id_aplicacion = 702;

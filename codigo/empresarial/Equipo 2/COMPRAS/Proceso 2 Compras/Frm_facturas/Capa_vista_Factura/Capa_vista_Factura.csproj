@@ -44,6 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Frm_detalle_compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_detalle_compra.Designer.cs">
+      <DependentUpon>Frm_detalle_compra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_factura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_detalle_compra.resx">
+      <DependentUpon>Frm_detalle_compra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_factura.resx">
       <DependentUpon>Frm_factura.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +95,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sign-emergency-code-sos_61_icon-icons.com_57216.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compose_edit_modify_icon_177770.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_icon-icons.com_73703.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-page-arrow-button_icon-icons.com_53909.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

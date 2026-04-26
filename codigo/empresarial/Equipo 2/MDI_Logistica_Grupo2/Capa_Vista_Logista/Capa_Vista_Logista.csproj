@@ -49,7 +49,7 @@
       <HintPath>..\..\DISTRIBUCION\Proceso4 Mantenimiento Transporte Sergio Izeppi\Proceso4_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
     </Reference>
     <Reference Include="Capa_vista_Factura">
-      <HintPath>..\..\COMPRAS\Proceso 2 Facturas\Frm_facturas\Capa_vista_Factura\bin\Debug\Capa_vista_Factura.dll</HintPath>
+      <HintPath>..\..\COMPRAS\Proceso 2 Compras\Frm_facturas\Capa_vista_Factura\bin\Debug\Capa_vista_Factura.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_LineaProd, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

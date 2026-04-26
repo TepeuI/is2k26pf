@@ -282,6 +282,7 @@ namespace Capa_Vista_Ventas
             this.Dgv_Asignacion_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Asignacion_clientes.Size = new System.Drawing.Size(580, 239);
             this.Dgv_Asignacion_clientes.TabIndex = 54;
+            this.Dgv_Asignacion_clientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Asignacion_clientes_CellContentClick);
             // 
             // Frm_Asignacion_Clientes
             // 
