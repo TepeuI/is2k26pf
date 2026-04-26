@@ -22,7 +22,6 @@ using Capa_Vista_OrdenProduccion;
 using Capa_vista_Factura;
 using Capa_Vista_OrdenDetalle;
 using Capa_Vista_Comprobantes;
-using Capa_Vista_Compras;
 using Capa_Controlador_Seguridad;
 //using Capa_Vista_MOVINV;
 using System.Drawing.Imaging;

@@ -23,11 +23,7 @@ namespace Capa_Vista_Compras
             this.Load -= Frm_Compras_CXP_Load;
             this.Load += Frm_Compras_CXP_Load;
 
-            this.Btn_guardar.Click -= Btn_guardar_Click;
-            this.Btn_guardar.Click += Btn_guardar_Click;
-
-            this.Btn_nuevo.Click -= Btn_nuevo_Click;
-            this.Btn_nuevo.Click += Btn_nuevo_Click;
+          
 
             this.Txt_total.TextChanged -= Txt_total_TextChanged;
             this.Txt_total.TextChanged += Txt_total_TextChanged;
@@ -186,6 +182,11 @@ namespace Capa_Vista_Compras
             Txt_estado.Text = "pendiente";
             Cbo_proveedor.SelectedIndex = -1;
             Dtp_fecha.Value = DateTime.Now;
+        }
+
+        private void Lbl_compras_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

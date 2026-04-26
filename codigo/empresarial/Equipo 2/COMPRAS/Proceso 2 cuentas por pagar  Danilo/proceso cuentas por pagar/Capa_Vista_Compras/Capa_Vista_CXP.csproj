@@ -58,14 +58,74 @@
       <DependentUpon>Frm_Compras_CXP.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_Compras_CXP.resx">
       <DependentUpon>Frm_Compras_CXP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_insert_new_plus_button_icon_142943.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\android-search_icon-icons.com_50501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_direction_left_undo_previous_backward_back_icon_250686.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_77947.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_icon-icons.com_73703.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_all_icon_180807.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compose_edit_modify_icon_177770.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_remove_trash_icon_177304.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_play_backward_arrow_next_previous_back_icon_250674.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_question_16768.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_forward_player_multimedia_video_play_button_icon_250680 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_forward_player_multimedia_video_play_button_icon_250680.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_right_play_arrow_arrows_fast_forward_icon_250672.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print-black-printer-tool-symbol_icon-icons.com_54467.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-page-arrow-button_icon-icons.com_53909.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\savetheapplication_guardar_2958.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-emergency-code-sos_61_icon-icons.com_57216.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
