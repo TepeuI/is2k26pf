@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Capa_vista_Factura.Properties {
+namespace Capa_Vista_Compras.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace Capa_vista_Factura.Properties {
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
     // con la opción /str o recompile su proyecto de VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace Capa_vista_Factura.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Capa_vista_Factura.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Capa_Vista_Compras.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -83,6 +83,26 @@ namespace Capa_vista_Factura.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_direction_left_undo_previous_backward_back_icon_250686 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_direction_left_undo_previous_backward_back_icon_250686", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancel_77947 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_77947", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cancel_icon_icons_com_73703 {
             get {
                 object obj = ResourceManager.GetObject("Cancel_icon-icons.com_73703", resourceCulture);
@@ -113,9 +133,59 @@ namespace Capa_vista_Factura.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_remove_trash_icon_177304 {
+            get {
+                object obj = ResourceManager.GetObject("delete_remove_trash_icon_177304", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap direction_play_backward_arrow_next_previous_back_icon_250674 {
+            get {
+                object obj = ResourceManager.GetObject("direction_play_backward_arrow_next_previous_back_icon_250674", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_question_16768 {
             get {
                 object obj = ResourceManager.GetObject("help_question_16768", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_forward_player_multimedia_video_play_button_icon_250680 {
+            get {
+                object obj = ResourceManager.GetObject("next_forward_player_multimedia_video_play_button_icon_250680", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_forward_player_multimedia_video_play_button_icon_250680__1_ {
+            get {
+                object obj = ResourceManager.GetObject("next_forward_player_multimedia_video_play_button_icon_250680 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_right_play_arrow_arrows_fast_forward_icon_250672 {
+            get {
+                object obj = ResourceManager.GetObject("next_right_play_arrow_arrows_fast_forward_icon_250672", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

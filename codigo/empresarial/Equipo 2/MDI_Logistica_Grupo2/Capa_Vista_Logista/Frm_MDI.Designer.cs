@@ -85,7 +85,7 @@
             this.Pnl_Superior.Controls.Add(this.label1);
             this.Pnl_Superior.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl_Superior.Location = new System.Drawing.Point(0, 0);
-            this.Pnl_Superior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Pnl_Superior.Margin = new System.Windows.Forms.Padding(2);
             this.Pnl_Superior.Name = "Pnl_Superior";
             this.Pnl_Superior.Size = new System.Drawing.Size(1028, 59);
             this.Pnl_Superior.TabIndex = 99;
@@ -310,18 +310,12 @@
             this.facturasToolStripMenuItem.Text = "Compras";
             this.facturasToolStripMenuItem.Click += new System.EventHandler(this.facturasToolStripMenuItem_Click_1);
             // 
-            // comprasToolStripMenuItem
-            // 
-            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
-            this.comprasToolStripMenuItem.Text = "Orden de Compra";
-            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
-            // 
             // cuentasPorPagarToolStripMenuItem1
             // 
             this.cuentasPorPagarToolStripMenuItem1.Name = "cuentasPorPagarToolStripMenuItem1";
             this.cuentasPorPagarToolStripMenuItem1.Size = new System.Drawing.Size(270, 26);
             this.cuentasPorPagarToolStripMenuItem1.Text = "Cuentas por Pagar";
+            this.cuentasPorPagarToolStripMenuItem1.Click += new System.EventHandler(this.cuentasPorPagarToolStripMenuItem1_Click);
             // 
             // detalleOrdenDeProduccionToolStripMenuItem
             // 
@@ -443,20 +437,20 @@
             this.cambiarContraseñaToolStripMenuItem});
             this.seguridadToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
-            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(83, 21);
+            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(82, 21);
             this.seguridadToolStripMenuItem.Text = "Seguridad";
             // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
             // cambiarContraseñaToolStripMenuItem
             // 
             this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
-            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
             this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
             // 

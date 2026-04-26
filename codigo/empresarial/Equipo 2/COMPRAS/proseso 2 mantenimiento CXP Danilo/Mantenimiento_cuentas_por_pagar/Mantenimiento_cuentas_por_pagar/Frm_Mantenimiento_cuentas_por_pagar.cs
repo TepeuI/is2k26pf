@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Capa_Controlador_Navegador;
 using Capa_Vista_Navegador;
 
@@ -31,21 +31,25 @@ namespace Mantenimiento_cuentas_por_pagar
                 };
 
             string[] columnas = {
-                "tbl_tipo_operacion_cxp",
-                "id_tipo_operacion",
-                "operacion",
-                "efecto",
-                "estado_tipo_transaccion"
+                "tbl_cuentas_por_pagar",
+                "pk_id_cuenta_por_pagar",
+                "fk_id_compra",
+                "cmp_fecha_deuda",
+                "cmp_fecha_vencimiento",
+                "cmp_monto_total",
+                "cmp_estado"
             };
 
             string[] sEtiquetas = {
-                "Código Tipo Operación",
-                "Operación",
-                "Efecto",
+                "Código Cuenta por Pagar",
+                "Compra",
+                "Fecha Deuda",
+                "Fecha Vencimiento",
+                "Monto Total",
                 "Estado"
             };
 
-            int id_aplicacion = 708;
+            int id_aplicacion = 715;
             int id_Modulo = 44;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

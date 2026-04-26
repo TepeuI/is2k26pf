@@ -118,17 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Cancel_icon-icons.com_73703" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cancel_icon-icons.com_73703.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="compose_edit_modify_icon_177770" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compose_edit_modify_icon_177770.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="help_question_16768" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help_question_16768.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clear_all_icon_180807" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clear_all_icon_180807.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh-page-arrow-button_icon-icons.com_53909" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh-page-arrow-button_icon-icons.com_53909.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="savetheapplication_guardar_2958" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\savetheapplication_guardar_2958.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,19 +130,22 @@
   <data name="print-black-printer-tool-symbol_icon-icons.com_54467" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\print-black-printer-tool-symbol_icon-icons.com_54467.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cancel_icon-icons.com_73703" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel_icon-icons.com_73703.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sign-emergency-code-sos_61_icon-icons.com_57216" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sign-emergency-code-sos_61_icon-icons.com_57216.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add_insert_new_plus_button_icon_142943" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_insert_new_plus_button_icon_142943.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="compose_edit_modify_icon_177770" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\compose_edit_modify_icon_177770.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="clear_all_icon_180807" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clear_all_icon_180807.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="android-search_icon-icons.com_50501" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\android-search_icon-icons.com_50501.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete_remove_trash_icon_177304" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_remove_trash_icon_177304.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="refresh-page-arrow-button_icon-icons.com_53909" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh-page-arrow-button_icon-icons.com_53909.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
