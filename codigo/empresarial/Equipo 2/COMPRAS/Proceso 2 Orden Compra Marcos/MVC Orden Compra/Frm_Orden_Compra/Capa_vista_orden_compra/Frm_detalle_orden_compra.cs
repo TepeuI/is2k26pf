@@ -8,20 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa_vista_Factura
+namespace Capa_vista_orden_compra
 {
-    public partial class Frm_detalle_compra : Form
+    public partial class Frm_detalle_orden_compra : Form
     {
-        public Frm_detalle_compra()
+        public Frm_detalle_orden_compra()
         {
             InitializeComponent();
 
             Txt_estado.ReadOnly = true;
 
-            Cmb_tipo.Items.Add("");
-            Cmb_tipo.Items.Add("Contado");
-            Cmb_tipo.Items.Add("Credito");
-            Cmb_tipo.SelectedIndex = 0;
+            Cmb_tipoPago.Items.Add("");
+            Cmb_tipoPago.Items.Add("Contado");
+            Cmb_tipoPago.Items.Add("Credito");
+            Cmb_tipoPago.SelectedIndex = 0;
+
+        }
+
+        private void Gpo_Encabezado_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)
@@ -29,47 +35,20 @@ namespace Capa_vista_Factura
             this.Close();
         }
 
-        private void Cmb_tipo_SelectedIndexChanged(object sender, EventArgs e)
+        private void Txt_Proveedor_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void Dtp_fechaCompra_ValueChanged(object sender, EventArgs e)
+        private void Txt_estado_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void Btn_Agregar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(Txt_producto.Text) || string.IsNullOrEmpty(Txt_Cantidad.Text))
-            {
-                MessageBox.Show("Por favor, complete los campos necesarios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
-            string producto = Txt_producto.Text;
-            string cantidad = Txt_Cantidad.Text;
-            string precio = Txt_PrecioUnitario.Text;
             
-
-
-
-            Dgv_DetalleProductos.Rows.Add(producto, cantidad, precio);
-
-        }
-
-        private void Btn_limpiar_Click(object sender, EventArgs e)
-        {
-
-            Txt_producto.Clear();
-            Txt_Cantidad.Clear();
-            Txt_PrecioUnitario.Clear();
-            Txt_producto.Focus();
         }
 
         private void Btn_remover_Click(object sender, EventArgs e)
         {
+
+
 
 
             if (Dgv_DetalleProductos.SelectedRows.Count > 0)
@@ -97,5 +76,47 @@ namespace Capa_vista_Factura
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void Btn_Agregar_Click(object sender, EventArgs e)
+        {
+
+
+            if (string.IsNullOrEmpty(Txt_producto.Text) || string.IsNullOrEmpty(Txt_Cantidad.Text))
+            {
+                MessageBox.Show("Por favor, complete los campos necesarios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            string producto = Txt_producto.Text;
+            string cantidad = Txt_Cantidad.Text;
+            string precio = Txt_PrecioUnitario.Text;
+           
+
+
+
+            Dgv_DetalleProductos.Rows.Add(producto, cantidad, precio);
+
+
+
+        }
+
+        private void Btn_limpiar_Click(object sender, EventArgs e)
+        {
+
+
+            Txt_producto.Clear();
+            Txt_Cantidad.Clear();
+            Txt_PrecioUnitario.Clear();
+            Txt_producto.Focus();
+        }
     }
+
+
+
+
+
+
+
 }
+    

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Capa_vista_Factura.Properties {
+namespace Capa_vista_orden_compra.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Capa_vista_Factura.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Capa_vista_Factura.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Capa_vista_orden_compra.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -86,16 +86,6 @@ namespace Capa_vista_Factura.Properties {
         internal static System.Drawing.Bitmap Cancel_icon_icons_com_73703 {
             get {
                 object obj = ResourceManager.GetObject("Cancel_icon-icons.com_73703", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap clear_all_icon_180807 {
-            get {
-                object obj = ResourceManager.GetObject("clear_all_icon_180807", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
