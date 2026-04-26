@@ -25,6 +25,8 @@ using Capa_Vista_Comprobantes;
 using Capa_Vista_Compras;
 using Capa_Controlador_Seguridad;
 //using Capa_Vista_MOVINV;
+using Capa_vista_orden_compra;
+//using Capa_Vista_MOVINV;
 using System.Drawing.Imaging;
 
 namespace Capa_Vista_Logista
@@ -395,9 +397,9 @@ namespace Capa_Vista_Logista
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Compras_CXP compras = new Frm_Compras_CXP();
+            Frm_ordencompra compras = new Frm_ordencompra();
             compras.MdiParent = this;
-            compras.Show();
+            compras.Show();   
         }
 
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
