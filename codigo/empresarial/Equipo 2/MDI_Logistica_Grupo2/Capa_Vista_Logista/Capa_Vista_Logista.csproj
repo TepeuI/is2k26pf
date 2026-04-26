@@ -73,6 +73,9 @@
     <Reference Include="Capa_Vista_OrdenProduccion">
       <HintPath>..\..\PRODUCCION\Orden_Produccion\Capa_Vista_OrdenProduccion\bin\Debug\Capa_Vista_OrdenProduccion.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_vista_orden_compra">
+      <HintPath>..\..\COMPRAS\Proceso 2 Orden Compra Marcos\MVC Orden Compra\Frm_Orden_Compra\Capa_vista_orden_compra\bin\Debug\Capa_vista_orden_compra.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Reporteador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
