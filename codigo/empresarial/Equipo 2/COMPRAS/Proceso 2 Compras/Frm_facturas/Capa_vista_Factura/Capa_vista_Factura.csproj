@@ -105,8 +105,5 @@
   <ItemGroup>
     <None Include="Resources\refresh-page-arrow-button_icon-icons.com_53909.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete_remove_trash_icon_177304.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

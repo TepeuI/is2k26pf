@@ -28,6 +28,7 @@ using Capa_Controlador_Seguridad;
 using Capa_vista_orden_compra;
 //using Capa_Vista_MOVINV;
 using System.Drawing.Imaging;
+using Capa_Vista_CXP;
 
 namespace Capa_Vista_Logista
 {
@@ -429,6 +430,13 @@ namespace Capa_Vista_Logista
             /*Frm_consulta_INV Consulta_inv = new Frm_consulta_INV();
             Consulta_inv.MdiParent = this;
             Consulta_inv.Show();*/
+        }
+
+        private void cuentasPorPagarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_Compras_CXP cuentas_XP = new Frm_Compras_CXP();
+            cuentas_XP.MdiParent = this;
+            cuentas_XP.Show();
         }
     }
 }
