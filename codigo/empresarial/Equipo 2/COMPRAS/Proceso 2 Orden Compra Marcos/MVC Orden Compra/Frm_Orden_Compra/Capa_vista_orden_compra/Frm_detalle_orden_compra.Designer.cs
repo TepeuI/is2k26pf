@@ -62,13 +62,16 @@ namespace Capa_vista_orden_compra
             this.Lbl_DetalleProductos = new System.Windows.Forms.Label();
             this.Btn_Agregar = new System.Windows.Forms.Button();
             this.Dgv_DetalleProductos = new System.Windows.Forms.DataGridView();
-            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Btn_limpiar = new System.Windows.Forms.Button();
             this.Btn_remover = new System.Windows.Forms.Button();
             this.Lbl_Total = new System.Windows.Forms.Label();
             this.Txt_total = new System.Windows.Forms.TextBox();
+            this.Cmb_unidad = new System.Windows.Forms.ComboBox();
+            this.Lbl_unidad = new System.Windows.Forms.Label();
+            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleProductos)).BeginInit();
@@ -355,6 +358,8 @@ namespace Capa_vista_orden_compra
             // 
             // Gpo_Detalle
             // 
+            this.Gpo_Detalle.Controls.Add(this.Lbl_unidad);
+            this.Gpo_Detalle.Controls.Add(this.Cmb_unidad);
             this.Gpo_Detalle.Controls.Add(this.Txt_producto);
             this.Gpo_Detalle.Controls.Add(this.Txt_Cantidad);
             this.Gpo_Detalle.Controls.Add(this.Lbl_Tipo);
@@ -366,7 +371,7 @@ namespace Capa_vista_orden_compra
             this.Gpo_Detalle.Margin = new System.Windows.Forms.Padding(2);
             this.Gpo_Detalle.Name = "Gpo_Detalle";
             this.Gpo_Detalle.Padding = new System.Windows.Forms.Padding(2);
-            this.Gpo_Detalle.Size = new System.Drawing.Size(773, 93);
+            this.Gpo_Detalle.Size = new System.Drawing.Size(797, 93);
             this.Gpo_Detalle.TabIndex = 52;
             this.Gpo_Detalle.TabStop = false;
             this.Gpo_Detalle.Text = "Detalle de Orden";
@@ -377,13 +382,13 @@ namespace Capa_vista_orden_compra
             this.Txt_producto.Location = new System.Drawing.Point(18, 54);
             this.Txt_producto.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_producto.Name = "Txt_producto";
-            this.Txt_producto.Size = new System.Drawing.Size(400, 23);
+            this.Txt_producto.Size = new System.Drawing.Size(336, 23);
             this.Txt_producto.TabIndex = 34;
             // 
             // Txt_Cantidad
             // 
             this.Txt_Cantidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Cantidad.Location = new System.Drawing.Point(437, 54);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(392, 56);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(98, 23);
@@ -393,7 +398,7 @@ namespace Capa_vista_orden_compra
             // 
             this.Lbl_Tipo.AutoSize = true;
             this.Lbl_Tipo.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Tipo.Location = new System.Drawing.Point(458, 25);
+            this.Lbl_Tipo.Location = new System.Drawing.Point(409, 25);
             this.Lbl_Tipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_Tipo.Name = "Lbl_Tipo";
             this.Lbl_Tipo.Size = new System.Drawing.Size(67, 17);
@@ -404,7 +409,7 @@ namespace Capa_vista_orden_compra
             // 
             this.Lbl_CodigoCta.AutoSize = true;
             this.Lbl_CodigoCta.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_CodigoCta.Location = new System.Drawing.Point(180, 25);
+            this.Lbl_CodigoCta.Location = new System.Drawing.Point(129, 25);
             this.Lbl_CodigoCta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_CodigoCta.Name = "Lbl_CodigoCta";
             this.Lbl_CodigoCta.Size = new System.Drawing.Size(70, 17);
@@ -415,7 +420,7 @@ namespace Capa_vista_orden_compra
             // 
             this.Lbl_Valor.AutoSize = true;
             this.Lbl_Valor.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Valor.Location = new System.Drawing.Point(570, 25);
+            this.Lbl_Valor.Location = new System.Drawing.Point(653, 25);
             this.Lbl_Valor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_Valor.Name = "Lbl_Valor";
             this.Lbl_Valor.Size = new System.Drawing.Size(103, 17);
@@ -425,7 +430,7 @@ namespace Capa_vista_orden_compra
             // Txt_PrecioUnitario
             // 
             this.Txt_PrecioUnitario.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_PrecioUnitario.Location = new System.Drawing.Point(546, 54);
+            this.Txt_PrecioUnitario.Location = new System.Drawing.Point(640, 54);
             this.Txt_PrecioUnitario.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_PrecioUnitario.Name = "Txt_PrecioUnitario";
             this.Txt_PrecioUnitario.Size = new System.Drawing.Size(129, 23);
@@ -465,6 +470,7 @@ namespace Capa_vista_orden_compra
             this.Dgv_DetalleProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnProducto,
             this.ColumnCantidad,
+            this.ColumnUnidad,
             this.ColumnPrecioUnitario});
             this.Dgv_DetalleProductos.Location = new System.Drawing.Point(16, 423);
             this.Dgv_DetalleProductos.Margin = new System.Windows.Forms.Padding(2);
@@ -473,21 +479,6 @@ namespace Capa_vista_orden_compra
             this.Dgv_DetalleProductos.RowTemplate.Height = 24;
             this.Dgv_DetalleProductos.Size = new System.Drawing.Size(674, 171);
             this.Dgv_DetalleProductos.TabIndex = 53;
-            // 
-            // ColumnProducto
-            // 
-            this.ColumnProducto.HeaderText = "Producto";
-            this.ColumnProducto.Name = "ColumnProducto";
-            // 
-            // ColumnCantidad
-            // 
-            this.ColumnCantidad.HeaderText = "Cantidad";
-            this.ColumnCantidad.Name = "ColumnCantidad";
-            // 
-            // ColumnPrecioUnitario
-            // 
-            this.ColumnPrecioUnitario.HeaderText = "Precio Unitario";
-            this.ColumnPrecioUnitario.Name = "ColumnPrecioUnitario";
             // 
             // Btn_limpiar
             // 
@@ -542,6 +533,46 @@ namespace Capa_vista_orden_compra
             this.Txt_total.Name = "Txt_total";
             this.Txt_total.Size = new System.Drawing.Size(131, 23);
             this.Txt_total.TabIndex = 47;
+            // 
+            // Cmb_unidad
+            // 
+            this.Cmb_unidad.FormattingEnabled = true;
+            this.Cmb_unidad.Location = new System.Drawing.Point(509, 54);
+            this.Cmb_unidad.Margin = new System.Windows.Forms.Padding(2);
+            this.Cmb_unidad.Name = "Cmb_unidad";
+            this.Cmb_unidad.Size = new System.Drawing.Size(116, 25);
+            this.Cmb_unidad.TabIndex = 47;
+            // 
+            // Lbl_unidad
+            // 
+            this.Lbl_unidad.AutoSize = true;
+            this.Lbl_unidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_unidad.Location = new System.Drawing.Point(518, 25);
+            this.Lbl_unidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_unidad.Name = "Lbl_unidad";
+            this.Lbl_unidad.Size = new System.Drawing.Size(107, 17);
+            this.Lbl_unidad.TabIndex = 48;
+            this.Lbl_unidad.Text = "Unidad Medida";
+            // 
+            // ColumnProducto
+            // 
+            this.ColumnProducto.HeaderText = "Producto";
+            this.ColumnProducto.Name = "ColumnProducto";
+            // 
+            // ColumnCantidad
+            // 
+            this.ColumnCantidad.HeaderText = "Cantidad";
+            this.ColumnCantidad.Name = "ColumnCantidad";
+            // 
+            // ColumnUnidad
+            // 
+            this.ColumnUnidad.HeaderText = "Unidad de Medida";
+            this.ColumnUnidad.Name = "ColumnUnidad";
+            // 
+            // ColumnPrecioUnitario
+            // 
+            this.ColumnPrecioUnitario.HeaderText = "Precio Unitario";
+            this.ColumnPrecioUnitario.Name = "ColumnPrecioUnitario";
             // 
             // Frm_detalle_orden_compra
             // 
@@ -611,12 +642,15 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.Button Btn_Agregar;
         private System.Windows.Forms.DataGridView Dgv_DetalleProductos;
         private System.Windows.Forms.DateTimePicker Dtp_fecha_entrega;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
         private System.Windows.Forms.Button Btn_limpiar;
         private System.Windows.Forms.Button Btn_remover;
         private System.Windows.Forms.Label Lbl_Total;
         private System.Windows.Forms.TextBox Txt_total;
+        private System.Windows.Forms.Label Lbl_unidad;
+        private System.Windows.Forms.ComboBox Cmb_unidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
     }
 }

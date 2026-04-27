@@ -23,6 +23,13 @@ namespace Capa_vista_orden_compra
             Cmb_tipoPago.Items.Add("Credito");
             Cmb_tipoPago.SelectedIndex = 0;
 
+            Cmb_unidad.Items.Add("Lote");
+            Cmb_unidad.Items.Add("Pieza");
+            Cmb_unidad.Items.Add("Docena");
+            Cmb_unidad.Items.Add("Libra");
+            Cmb_unidad.Items.Add("Galón");
+            Cmb_unidad.SelectedIndex = 0;
+
         }
 
         private void Gpo_Encabezado_Enter(object sender, EventArgs e)
@@ -90,12 +97,13 @@ namespace Capa_vista_orden_compra
 
             string producto = Txt_producto.Text;
             string cantidad = Txt_Cantidad.Text;
+            string Unidad  = Cmb_unidad.Text;
             string precio = Txt_PrecioUnitario.Text;
            
 
 
 
-            Dgv_DetalleProductos.Rows.Add(producto, cantidad, precio);
+            Dgv_DetalleProductos.Rows.Add(producto, cantidad,Unidad, precio);
 
 
 
