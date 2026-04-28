@@ -49,7 +49,68 @@ namespace Capa_Modelo_CXP
             }
         }
 
-        public DataTable Fun_BuscarCuentasPorFactura(string numeroFactura)
+        public DataTable Fun_ObtenerProveedores()
+        {
+            string sql = @"
+                SELECT 
+                    pk_id_proveedor AS IdProveedor,
+                    cmp_Nombre_Proveedor AS Proveedor
+                FROM tbl_proveedores
+                ORDER BY cmp_Nombre_Proveedor";
+
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                conexion.desconexion(conn);
+                return dt;
+            }
+        }
+
+        public DataTable Fun_ObtenerIdsComprasPendientes()
+        {
+            string sql = @"
+                SELECT 
+                    c.pk_id_compra AS IdCompra
+                FROM tbl_cuentas_por_pagar cxp
+                INNER JOIN tbl_compra c 
+                    ON cxp.fk_id_compra = c.pk_id_compra
+                WHERE cxp.cmp_estado IN ('pendiente', 'parcial')
+                ORDER BY c.pk_id_compra DESC";
+
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                conexion.desconexion(conn);
+                return dt;
+            }
+        }
+
+        public DataTable Fun_ObtenerNumerosFacturasPendientes()
+        {
+            string sql = @"
+                SELECT 
+                    c.cmp_numero_factura AS NumeroFactura
+                FROM tbl_cuentas_por_pagar cxp
+                INNER JOIN tbl_compra c 
+                    ON cxp.fk_id_compra = c.pk_id_compra
+                WHERE cxp.cmp_estado IN ('pendiente', 'parcial')
+                ORDER BY c.cmp_numero_factura";
+
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                conexion.desconexion(conn);
+                return dt;
+            }
+        }
+
+        public DataTable Fun_BuscarCuentasFiltradas(string idCompra, string numeroFactura, string proveedor, DateTime? fecha)
         {
             string sql = @"
                 SELECT 
@@ -69,8 +130,21 @@ namespace Capa_Modelo_CXP
                     ON c.fk_id_proveedor = p.pk_id_proveedor
                 LEFT JOIN tbl_cuentas_por_pagar_detalle det 
                     ON det.fk_id_cuenta_por_pagar = cxp.pk_id_cuenta_por_pagar
-                WHERE cxp.cmp_estado IN ('pendiente', 'parcial')
-                  AND c.cmp_numero_factura LIKE ?
+                WHERE cxp.cmp_estado IN ('pendiente', 'parcial')";
+
+            if (!string.IsNullOrWhiteSpace(idCompra))
+                sql += " AND c.pk_id_compra = ?";
+
+            if (!string.IsNullOrWhiteSpace(numeroFactura))
+                sql += " AND c.cmp_numero_factura = ?";
+
+            if (!string.IsNullOrWhiteSpace(proveedor))
+                sql += " AND p.cmp_Nombre_Proveedor LIKE ?";
+
+            if (fecha.HasValue)
+                sql += " AND DATE(c.cmp_fecha) = ?";
+
+            sql += @"
                 GROUP BY 
                     c.pk_id_compra,
                     c.cmp_numero_factura,
@@ -84,11 +158,23 @@ namespace Capa_Modelo_CXP
             using (OdbcConnection conn = conexion.conexion())
             {
                 OdbcCommand cmd = new OdbcCommand(sql, conn);
-                cmd.Parameters.Add("numeroFactura", OdbcType.VarChar).Value = "%" + numeroFactura + "%";
+
+                if (!string.IsNullOrWhiteSpace(idCompra))
+                    cmd.Parameters.Add("idCompra", OdbcType.Int).Value = Convert.ToInt32(idCompra);
+
+                if (!string.IsNullOrWhiteSpace(numeroFactura))
+                    cmd.Parameters.Add("numeroFactura", OdbcType.VarChar).Value = numeroFactura;
+
+                if (!string.IsNullOrWhiteSpace(proveedor))
+                    cmd.Parameters.Add("proveedor", OdbcType.VarChar).Value = "%" + proveedor.Trim() + "%";
+
+                if (fecha.HasValue)
+                    cmd.Parameters.Add("fecha", OdbcType.Date).Value = fecha.Value.Date;
 
                 OdbcDataAdapter da = new OdbcDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
                 conexion.desconexion(conn);
                 return dt;
             }

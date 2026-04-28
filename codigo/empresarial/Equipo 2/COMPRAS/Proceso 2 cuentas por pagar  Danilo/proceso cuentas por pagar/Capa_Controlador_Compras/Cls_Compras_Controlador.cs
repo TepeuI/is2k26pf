@@ -2,6 +2,9 @@
 using System.Data;
 using Capa_Modelo_CXP;
 
+
+//  se tiene que ver los controladores
+
 namespace Capa_Controlador_CXP
 {
     public class Cls_Compras_Controlador
@@ -13,12 +16,24 @@ namespace Capa_Controlador_CXP
             return snc.Fun_ObtenerCuentasPendientes();
         }
 
-        public DataTable BuscarCuentasPorFactura(string numeroFactura)
+        public DataTable ObtenerProveedores()
         {
-            if (string.IsNullOrWhiteSpace(numeroFactura))
-                return snc.Fun_ObtenerCuentasPendientes();
+            return snc.Fun_ObtenerProveedores();
+        }
 
-            return snc.Fun_BuscarCuentasPorFactura(numeroFactura.Trim());
+        public DataTable ObtenerIdsComprasPendientes()
+        {
+            return snc.Fun_ObtenerIdsComprasPendientes();
+        }
+
+        public DataTable ObtenerNumerosFacturasPendientes()
+        {
+            return snc.Fun_ObtenerNumerosFacturasPendientes();
+        }
+
+        public DataTable BuscarCuentasFiltradas(string idCompra, string numeroFactura, string proveedor, DateTime? fecha)
+        {
+            return snc.Fun_BuscarCuentasFiltradas(idCompra, numeroFactura, proveedor, fecha);
         }
 
         public decimal CalcularSaldo(decimal saldoActual, decimal pago)
