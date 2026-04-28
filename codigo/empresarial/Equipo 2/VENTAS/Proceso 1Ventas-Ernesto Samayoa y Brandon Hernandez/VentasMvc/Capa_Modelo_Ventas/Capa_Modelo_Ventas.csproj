@@ -44,6 +44,8 @@
     <Compile Include="Cls_Asignacion_Clientes.cs" />
     <Compile Include="Cls_Asignacion_ClientesDAO.cs" />
     <Compile Include="Cls_ConexionBD.cs" />
+    <Compile Include="Cls_Ventas.cs" />
+    <Compile Include="Cls_VentasDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,29 +8,127 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Capa_Controlador_Ventas;
+
 namespace Capa_Vista_Ventas
 {
     public partial class Frm_Detalle_Ventas : Form
     {
+        // para recargar automaticamente el grid de Ventas generales
+        public event Action VentaGuardada;
         private int _idVenta = 0;
         private int _idCliente = 0;
         private decimal _montoTotal = 0;
+
+
+        DataTable dtDetalle = new DataTable();
+        float totalGeneral = 0;
+
+
+        Cls_Ventas_Controlador controlador = new Cls_Ventas_Controlador();
         public Frm_Detalle_Ventas()
         {
             InitializeComponent();
 
         }
 
-        private void Frm_Ventas_Load(object sender, EventArgs e)
+        private void Frm_Detalle_Ventas_Load(object sender, EventArgs e)
         {
+
+            fun_CargarClientes();
+            fun_CargarSucursales();
+            fun_CargarInventario();
+            fun_CargarBodegas();
+            //nuevo
+            fun_InicializarDetalle();
+            fun_CargarIdVenta();
+            Cbo_Id_Cliente.SelectedIndexChanged += Cbo_Id_Cliente_SelectedIndexChanged;
 
         }
 
-        private void Btn_detalle_venta_Click(object sender, EventArgs e)
+        private void fun_CargarClientes()
         {
-            Frm_Ventas_Generales frm = new Frm_Ventas_Generales();
-            frm.ShowDialog();
+            try
+            {
+                Cbo_Id_Cliente.DataSource = controlador.ObtenerClientes();
+                Cbo_Id_Cliente.DisplayMember = "NombreCompleto";
+                Cbo_Id_Cliente.ValueMember = "Pk_Id_Cliente";
+                Cbo_Id_Cliente.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar clientes: " + ex.Message);
+            }
         }
+        private void fun_CargarSucursales()
+        {
+            try
+            {
+                Cbo_Id_Sucursal.DataSource = controlador.ObtenerSucursales();
+                Cbo_Id_Sucursal.DisplayMember = "NombreSucursal";
+                Cbo_Id_Sucursal.ValueMember = "Pk_Id_Sucursal";
+                Cbo_Id_Sucursal.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar sucursales: " + ex.Message);
+            }
+        }
+
+        private void fun_CargarInventario()
+        {
+            try
+            {
+                Cbo_Id_Inventario.DataSource = controlador.ObtenerInventario();
+                Cbo_Id_Inventario.DisplayMember = "Producto";
+                Cbo_Id_Inventario.ValueMember = "pk_inventario_id";
+                Cbo_Id_Inventario.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar inventario: " + ex.Message);
+            }
+        }
+
+        private void fun_CargarBodegas()
+        {
+            try
+            {
+                Cbo_Id_Bodega.DataSource = controlador.ObtenerBodegas();
+                Cbo_Id_Bodega.DisplayMember = "NombreBodega";
+                Cbo_Id_Bodega.ValueMember = "Pk_Id_Bodega";
+                Cbo_Id_Bodega.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar bodegas: " + ex.Message);
+            }
+        }
+        private void fun_InicializarDetalle()
+        {
+            dtDetalle.Columns.Clear();
+
+            dtDetalle.Columns.Add("IdProducto", typeof(int));
+            dtDetalle.Columns.Add("Producto", typeof(string));
+            dtDetalle.Columns.Add("Descripcion", typeof(string));
+            dtDetalle.Columns.Add("Precio", typeof(float));
+            dtDetalle.Columns.Add("Cantidad", typeof(int));
+            dtDetalle.Columns.Add("Subtotal", typeof(float));
+
+            Dgv_Detalle_Venta.DataSource = dtDetalle;
+        }
+
+
+        private void fun_CargarIdVenta()
+        {
+            int id = controlador.ObtenerSiguienteIdVenta();
+
+            Cbo_Id_Venta.Items.Clear();
+            Cbo_Id_Venta.Items.Add(id);
+            Cbo_Id_Venta.SelectedIndex = 0;
+            Cbo_Id_Venta.Enabled = false; //Bloqueado
+        }
+
 
         private void Btn_Pagar_Click(object sender, EventArgs e)
         {
@@ -54,9 +152,218 @@ namespace Capa_Vista_Ventas
             }
         }
 
-        private void Btn_Agregar_Ventas_Click(object sender, EventArgs e)
+        private void Btn_Ingresar_Ventas_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Dgv_Detalle_Venta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Btn_Modificar_Ventas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Guardar_Ventas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // VALIDAR ENCABEZADO
+                if (Cbo_Id_Cliente.SelectedIndex == -1 ||
+                    Cbo_Id_Sucursal.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debe completar el encabezado de la venta.");
+                    return;
+                }
+
+                // VALIDAR DETALLE
+                if (dtDetalle.Rows.Count == 0)
+                {
+                    MessageBox.Show("Debe agregar productos a la venta.");
+                    return;
+                }
+
+                float fSaldo_total = 0;
+
+                foreach (DataRow row in dtDetalle.Rows)
+                {
+                    fSaldo_total += Convert.ToSingle(row["Subtotal"]);
+                }
+
+                int iFk_Id_Sucursal = Convert.ToInt32(Cbo_Id_Sucursal.SelectedValue);
+                int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
+                DateTime dCmp_Fecha_Venta = Dtp_Fecha_Venta.Value;
+
+                bool resultado = controlador.GuardarVenta(
+                    dCmp_Fecha_Venta,
+                    iFk_Id_Cliente,
+                    iFk_Id_Sucursal,
+                    fSaldo_total,
+                    dtDetalle
+                );
+
+                if (resultado)
+                {
+                    MessageBox.Show("Venta guardada correctamente.");
+
+                    // 🔥 LIMPIAR CORRECTAMENTE
+                    dtDetalle.Clear();
+                    Txt_Saldo_Total.Text = "0.00";
+
+                    Cbo_Id_Cliente.SelectedIndex = -1;
+                    Cbo_Id_Sucursal.SelectedIndex = -1;
+                    Cbo_Id_Inventario.SelectedIndex = -1;
+                    Cbo_Id_Bodega.SelectedIndex = -1;
+                    Nud_Cant_Prod.Value = 1;
+
+                    fun_CargarIdVenta();
+
+                    // 🔥 EVENTO PARA ACTUALIZAR OTRO FORM
+                    VentaGuardada?.Invoke();
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar la venta.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void Btn_Cancelar_Ventas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_buscar_Ventas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cbo_Id_Inventario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*if (Cbo_Id_Inventario.SelectedIndex != -1)
+            {
+                DataRowView row = (DataRowView)Cbo_Id_Inventario.SelectedItem;
+
+                int idBodega = Convert.ToInt32(row["fk_bodega_id"]);
+                Cbo_Id_Bodega.SelectedValue = idBodega;
+            }*/
+        }
+
+        private void Btn_Agregar_Detalle_Ventas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //VALIDAR ENCABEZADO (UNA SOLA CONDICIÓN)
+                if (string.IsNullOrWhiteSpace(Cbo_Id_Venta.Text) ||
+                    Cbo_Id_Cliente.SelectedIndex == -1 ||
+                    Cbo_Id_Sucursal.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debe completar el encabezado de la venta.");
+                    return;
+                }
+
+                if (Cbo_Id_Inventario.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Seleccione un Producto");
+                    return;
+                }
+
+                if (Cbo_Id_Bodega.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Seleccione unna Bodega.");
+                    return;
+                }
+
+                if (Nud_Cant_Prod.Value <= 0)
+                {
+                    MessageBox.Show("Ingrese una cantidad válida");
+                    return;
+                }
+
+                DataRowView row = (DataRowView)Cbo_Id_Inventario.SelectedItem;
+
+                int iIdProducto = Convert.ToInt32(row["pk_inventario_id"]);
+                string sProducto = row["nombre_prod"].ToString();
+                string sDescripcion = row["descripcion"].ToString();
+                float fPrecio = Convert.ToSingle(row["precio_unitario"]);
+
+                int cantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
+
+                //cálculo desde el controlador
+                double dSubtotal = controlador.CalcularSubtotal(fPrecio, cantidad);
+
+                dtDetalle.Rows.Add(iIdProducto, sProducto, sDescripcion, fPrecio, cantidad, dSubtotal);
+
+                //total desde controlador
+                totalGeneral = controlador.CalcularTotal(dtDetalle);
+                Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
+
+                //limpiar
+                Cbo_Id_Inventario.SelectedIndex = -1;
+                Cbo_Id_Bodega.SelectedIndex = -1;
+                Nud_Cant_Prod.Value = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void Cbo_Id_Cliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Cbo_Id_Cliente.SelectedIndex == -1)
+                    return;
+
+                // EVITAR DataRowView
+                if (Cbo_Id_Cliente.SelectedValue == null ||
+                    Cbo_Id_Cliente.SelectedValue is DataRowView)
+                    return;
+
+                int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
+
+                var resultado = controlador.ValidarClienteVendedor(iFk_Id_Cliente);
+
+                if (resultado.tieneVendedor)
+                {
+                    MessageBox.Show("Cliente atendido por el vendedor: " + resultado.Cmp_NombreVendedor);
+
+                    Cbo_Id_Sucursal.Enabled = true;
+                    Cbo_Id_Inventario.Enabled = true;
+                    Cbo_Id_Bodega.Enabled = true;
+                    Nud_Cant_Prod.Enabled = true;
+                    Btn_Agregar_Detalle_Ventas.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Este cliente no tiene un vendedor asignado.");
+
+                    Cbo_Id_Sucursal.Enabled = false;
+                    Cbo_Id_Inventario.Enabled = false;
+                    Cbo_Id_Bodega.Enabled = false;
+                    Nud_Cant_Prod.Enabled = false;
+                    Btn_Agregar_Detalle_Ventas.Enabled = false;
+
+                    Cbo_Id_Cliente.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }
