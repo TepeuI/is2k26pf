@@ -30,6 +30,7 @@ using Capa_vista_orden_compra;
 using System.Drawing.Imaging;
 using Capa_Vista_CXP;
 
+
 namespace Capa_Vista_Logista
 {
     public partial class Frm_MDI : Form
@@ -437,6 +438,14 @@ namespace Capa_Vista_Logista
             Frm_Compras_CXP cuentas_XP = new Frm_Compras_CXP();
             cuentas_XP.MdiParent = this;
             cuentas_XP.Show();
+        }
+
+        private void ordenDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Frm_ordencompra ordencompra = new Frm_ordencompra();
+            ordencompra.MdiParent = this;
+            ordencompra.Show();
         }
     }
 }

@@ -113,6 +113,16 @@ namespace Capa_vista_Factura.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_remove_trash_icon_177304 {
+            get {
+                object obj = ResourceManager.GetObject("delete_remove_trash_icon_177304", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_question_16768 {
             get {
                 object obj = ResourceManager.GetObject("help_question_16768", resourceCulture);
