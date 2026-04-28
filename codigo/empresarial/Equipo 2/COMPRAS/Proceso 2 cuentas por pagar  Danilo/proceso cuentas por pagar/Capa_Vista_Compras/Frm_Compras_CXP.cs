@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using Capa_Controlador_CXP;
@@ -31,30 +33,63 @@ namespace Capa_Vista_CXP
         private void Frm_Compras_CXP_Load(object sender, EventArgs e)
         {
             PrepararFormulario();
+            CargarIdsCompras();
+            CargarNumerosFacturas();
+            CargarProveedores();
             CargarCuentasPendientes();
         }
 
         private void PrepararFormulario()
         {
-            Txt_id.ReadOnly = true;
-            Txt_numero.ReadOnly = false;
+            Cbo_id_compra.Enabled = true;
+            Cbo_numero_factura.Enabled = true;
+            Cbo_proveedor.Enabled = true;
+
             Txt_orden.ReadOnly = true;
             Txt_total.ReadOnly = true;
             Txt_saldo.ReadOnly = true;
             Txt_estado.ReadOnly = true;
+            Txt_documento.ReadOnly = true;
 
-            Cbo_proveedor.Enabled = false;
-            Dtp_fecha.Enabled = false;
+            Dtp_fecha.Enabled = true;
+            Dtp_fecha.ShowCheckBox = true;
+            Dtp_fecha.Checked = false;
 
+            Btn_grabar.Enabled = false;
             Btn_editar.Enabled = false;
 
             LimpiarCampos();
+        }
+
+        private void CargarIdsCompras()
+        {
+            Cbo_id_compra.DataSource = cm.ObtenerIdsComprasPendientes();
+            Cbo_id_compra.DisplayMember = "IdCompra";
+            Cbo_id_compra.ValueMember = "IdCompra";
+            Cbo_id_compra.SelectedIndex = -1;
+        }
+
+        private void CargarNumerosFacturas()
+        {
+            Cbo_numero_factura.DataSource = cm.ObtenerNumerosFacturasPendientes();
+            Cbo_numero_factura.DisplayMember = "NumeroFactura";
+            Cbo_numero_factura.ValueMember = "NumeroFactura";
+            Cbo_numero_factura.SelectedIndex = -1;
+        }
+
+        private void CargarProveedores()
+        {
+            Cbo_proveedor.DataSource = cm.ObtenerProveedores();
+            Cbo_proveedor.DisplayMember = "Proveedor";
+            Cbo_proveedor.ValueMember = "IdProveedor";
+            Cbo_proveedor.SelectedIndex = -1;
         }
 
         private void CargarCuentasPendientes()
         {
             Dgv_compras.DataSource = cm.ObtenerCuentasPendientes();
             ConfigurarGrid();
+            PintarFilasPorEstado();
         }
 
         private void ConfigurarGrid()
@@ -77,6 +112,21 @@ namespace Capa_Vista_CXP
                 Dgv_compras.Columns["TotalPagado"].HeaderText = "Pagado";
                 Dgv_compras.Columns["SaldoPendiente"].HeaderText = "Saldo";
                 Dgv_compras.Columns["Estado"].HeaderText = "Estado";
+            }
+        }
+
+        private void PintarFilasPorEstado()
+        {
+            foreach (DataGridViewRow row in Dgv_compras.Rows)
+            {
+                string estado = row.Cells["Estado"].Value?.ToString()?.ToLower();
+
+                if (estado == "pendiente")
+                    row.DefaultCellStyle.BackColor = Color.LightSalmon;
+                else if (estado == "parcial")
+                    row.DefaultCellStyle.BackColor = Color.Khaki;
+                else if (estado == "pagado")
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
             }
         }
 
@@ -117,8 +167,45 @@ namespace Capa_Vista_CXP
 
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
-            Dgv_compras.DataSource = cm.BuscarCuentasPorFactura(Txt_numero.Text);
+            string idCompra = "";
+
+            if (Cbo_id_compra.SelectedIndex != -1)
+                idCompra = Cbo_id_compra.SelectedValue.ToString();
+
+            string numeroFactura = "";
+
+            if (Cbo_numero_factura.SelectedIndex != -1)
+                numeroFactura = Cbo_numero_factura.SelectedValue.ToString();
+
+            string proveedor = "";
+
+            if (Cbo_proveedor.SelectedIndex != -1)
+                proveedor = Cbo_proveedor.Text.Trim();
+
+            DateTime? fecha = null;
+
+            if (Dtp_fecha.Checked)
+                fecha = Dtp_fecha.Value.Date;
+
+            if (string.IsNullOrWhiteSpace(idCompra) &&
+                string.IsNullOrWhiteSpace(numeroFactura) &&
+                string.IsNullOrWhiteSpace(proveedor) &&
+                !fecha.HasValue)
+            {
+                MessageBox.Show("Ingrese al menos un filtro: Id Compra, No. Factura, Proveedor o Fecha.");
+                return;
+            }
+
+            DataTable resultado = cm.BuscarCuentasFiltradas(idCompra, numeroFactura, proveedor, fecha);
+
+            if (resultado.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron resultados.");
+            }
+
+            Dgv_compras.DataSource = resultado;
             ConfigurarGrid();
+            PintarFilasPorEstado();
         }
 
         private void Btn_grabar_Click(object sender, EventArgs e)
@@ -133,8 +220,20 @@ namespace Capa_Vista_CXP
 
         private void RegistrarPago()
         {
+            if (Cbo_id_compra.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una cuenta.");
+                return;
+            }
+
+            if (ConvertirDecimal(Txt_saldo.Text) <= 0)
+            {
+                MessageBox.Show("Esta cuenta ya está pagada.");
+                return;
+            }
+
             string mensaje = cm.RegistrarPago(
-                Txt_id.Text,
+                Cbo_id_compra.SelectedValue.ToString(),
                 Txt_saldo.Text,
                 Txt_adelanto.Text,
                 Txt_documento.Text
@@ -144,6 +243,9 @@ namespace Capa_Vista_CXP
 
             if (mensaje == "Pago registrado correctamente.")
             {
+                CargarIdsCompras();
+                CargarNumerosFacturas();
+                CargarProveedores();
                 CargarCuentasPendientes();
                 LimpiarCampos();
             }
@@ -156,6 +258,9 @@ namespace Capa_Vista_CXP
 
         private void Btn_refrescar_Click(object sender, EventArgs e)
         {
+            CargarIdsCompras();
+            CargarNumerosFacturas();
+            CargarProveedores();
             CargarCuentasPendientes();
             LimpiarCampos();
         }
@@ -192,13 +297,15 @@ namespace Capa_Vista_CXP
             {
                 DataGridViewRow fila = Dgv_compras.Rows[e.RowIndex];
 
-                Txt_id.Text = fila.Cells["IdCompra"].Value?.ToString() ?? "";
-                Txt_numero.Text = fila.Cells["NumeroFactura"].Value?.ToString() ?? "";
+                Cbo_id_compra.SelectedValue = Convert.ToInt32(fila.Cells["IdCompra"].Value);
+                Cbo_numero_factura.SelectedValue = fila.Cells["NumeroFactura"].Value?.ToString() ?? "";
                 Cbo_proveedor.Text = fila.Cells["Proveedor"].Value?.ToString() ?? "";
+
                 Txt_orden.Text = fila.Cells["IdOrdenCompra"].Value?.ToString() ?? "";
                 Txt_total.Text = fila.Cells["TotalCompra"].Value?.ToString() ?? "0";
                 Txt_saldo.Text = fila.Cells["SaldoPendiente"].Value?.ToString() ?? "0";
                 Txt_estado.Text = fila.Cells["Estado"].Value?.ToString() ?? "pendiente";
+                Txt_documento.Text = fila.Cells["NumeroFactura"].Value?.ToString() ?? "";
 
                 if (fila.Cells["FechaFactura"].Value != null)
                 {
@@ -211,7 +318,7 @@ namespace Capa_Vista_CXP
                 }
 
                 Txt_adelanto.Text = "0";
-                Txt_documento.Clear();
+              
             }
             catch (Exception ex)
             {
@@ -221,16 +328,24 @@ namespace Capa_Vista_CXP
 
         private void LimpiarCampos()
         {
-            Txt_id.Clear();
-            Txt_numero.Clear();
+            Cbo_id_compra.SelectedIndex = -1;
+            Cbo_id_compra.Text = "";
+
+            Cbo_numero_factura.SelectedIndex = -1;
+            Cbo_numero_factura.Text = "";
+
+            Cbo_proveedor.SelectedIndex = -1;
+            Cbo_proveedor.Text = "";
+
             Txt_orden.Clear();
             Txt_total.Text = "0";
             Txt_adelanto.Text = "0";
             Txt_saldo.Text = "0";
             Txt_estado.Text = "pendiente";
             Txt_documento.Clear();
-            Cbo_proveedor.Text = "";
+
             Dtp_fecha.Value = DateTime.Now;
+            Dtp_fecha.Checked = false;
         }
     }
 }
