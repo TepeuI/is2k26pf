@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capa_Modelo_Ventas
 {
-    class Cls_Asignacion_Clientes
+    public class Cls_Asignacion_Clientes
     {
         public int FkIdVendedor { get; set; }
         public int FkIdCliente { get; set; }
