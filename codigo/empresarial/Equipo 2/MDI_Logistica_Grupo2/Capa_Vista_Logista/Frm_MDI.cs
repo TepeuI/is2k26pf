@@ -447,5 +447,12 @@ namespace Capa_Vista_Logista
             ordencompra.MdiParent = this;
             ordencompra.Show();
         }
+
+        private void unidadDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Mantenimiento_Unidad Unidad = new Frm_Mantenimiento_Unidad();
+            Unidad.MdiParent = this;
+            Unidad.Show();
+        }
     }
 }

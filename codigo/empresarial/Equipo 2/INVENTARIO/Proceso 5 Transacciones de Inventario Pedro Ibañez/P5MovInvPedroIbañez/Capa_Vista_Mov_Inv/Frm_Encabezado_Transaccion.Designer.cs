@@ -51,6 +51,8 @@ namespace Capa_Vista_Mov_Inv
             this.label1 = new System.Windows.Forms.Label();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.GB_Detalle = new System.Windows.Forms.GroupBox();
+            this.Cbo_IDBodega = new System.Windows.Forms.ComboBox();
+            this.Lbl_IDBodega = new System.Windows.Forms.Label();
             this.NUD_Cant_mov = new System.Windows.Forms.NumericUpDown();
             this.Lbl_Cantidad = new System.Windows.Forms.Label();
             this.Cbo_ID_Inventario = new System.Windows.Forms.ComboBox();
@@ -59,8 +61,6 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Remover_Detalle = new System.Windows.Forms.Button();
             this.Btn_Agregar_Detalle = new System.Windows.Forms.Button();
             this.DGV_DETALLE_MOVIMIENTO = new System.Windows.Forms.DataGridView();
-            this.Cbo_IDBodega = new System.Windows.Forms.ComboBox();
-            this.Lbl_IDBodega = new System.Windows.Forms.Label();
             this.Clm_ID_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Clm_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -191,7 +191,7 @@ namespace Capa_Vista_Mov_Inv
             this.txt_descripcion.Location = new System.Drawing.Point(24, 152);
             this.txt_descripcion.MinimumSize = new System.Drawing.Size(4, 80);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(645, 80);
+            this.txt_descripcion.Size = new System.Drawing.Size(645, 26);
             this.txt_descripcion.TabIndex = 9;
             // 
             // Cbo_Id_Movimiento
@@ -309,6 +309,24 @@ namespace Capa_Vista_Mov_Inv
             this.GB_Detalle.TabStop = false;
             this.GB_Detalle.Text = "DETALLE";
             // 
+            // Cbo_IDBodega
+            // 
+            this.Cbo_IDBodega.FormattingEnabled = true;
+            this.Cbo_IDBodega.Location = new System.Drawing.Point(372, 28);
+            this.Cbo_IDBodega.Name = "Cbo_IDBodega";
+            this.Cbo_IDBodega.Size = new System.Drawing.Size(162, 27);
+            this.Cbo_IDBodega.TabIndex = 19;
+            // 
+            // Lbl_IDBodega
+            // 
+            this.Lbl_IDBodega.AutoSize = true;
+            this.Lbl_IDBodega.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_IDBodega.Location = new System.Drawing.Point(303, 35);
+            this.Lbl_IDBodega.Name = "Lbl_IDBodega";
+            this.Lbl_IDBodega.Size = new System.Drawing.Size(73, 16);
+            this.Lbl_IDBodega.TabIndex = 18;
+            this.Lbl_IDBodega.Text = "ID Bodega:";
+            // 
             // NUD_Cant_mov
             // 
             this.NUD_Cant_mov.Location = new System.Drawing.Point(698, 31);
@@ -411,24 +429,6 @@ namespace Capa_Vista_Mov_Inv
             this.DGV_DETALLE_MOVIMIENTO.Size = new System.Drawing.Size(789, 254);
             this.DGV_DETALLE_MOVIMIENTO.TabIndex = 10;
             // 
-            // Cbo_IDBodega
-            // 
-            this.Cbo_IDBodega.FormattingEnabled = true;
-            this.Cbo_IDBodega.Location = new System.Drawing.Point(372, 28);
-            this.Cbo_IDBodega.Name = "Cbo_IDBodega";
-            this.Cbo_IDBodega.Size = new System.Drawing.Size(162, 27);
-            this.Cbo_IDBodega.TabIndex = 19;
-            // 
-            // Lbl_IDBodega
-            // 
-            this.Lbl_IDBodega.AutoSize = true;
-            this.Lbl_IDBodega.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_IDBodega.Location = new System.Drawing.Point(303, 35);
-            this.Lbl_IDBodega.Name = "Lbl_IDBodega";
-            this.Lbl_IDBodega.Size = new System.Drawing.Size(73, 16);
-            this.Lbl_IDBodega.TabIndex = 18;
-            this.Lbl_IDBodega.Text = "ID Bodega:";
-            // 
             // Clm_ID_Producto
             // 
             this.Clm_ID_Producto.HeaderText = "ID Producto";
@@ -477,6 +477,7 @@ namespace Capa_Vista_Mov_Inv
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.Btn_Agregar_Movimiento);
             this.Controls.Add(this.GB_ENCABEZADO);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Encabezado_Transaccion";
             this.Text = "Movimiento de Inventario";
             this.GB_ENCABEZADO.ResumeLayout(false);
