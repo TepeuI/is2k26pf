@@ -60,14 +60,14 @@ namespace Capa_Modelo_Ventas
 
 
         private static readonly string SQL_INSERT_VENTA = @"
-        INSERT INTO tbl_ventas (Cmp_Fecha_Venta, Fk_Id_Cliente, Fk_Id_Sucursal, Cmp_Estado_Venta, Cmp_Saldo_Total)
-        VALUES (?, ?, ?, ?, ?)";
+        INSERT INTO tbl_ventas (Cmp_Fecha_Venta, Fk_Id_Cliente, Fk_Id_Sucursal, Cmp_Estado_Venta, Cmp_Tipo_Operacion, Cmp_Saldo_Total)
+        VALUES (?, ?, ?, ?, ?, ?)";
 
         private static readonly string SQL_INSERT_DETALLE = @"
         INSERT INTO tbl_detalle_ventas (Fk_Id_Ventas, Fk_Id_Inventario, Cmp_Cantidad_Producto, Cmp_Precio_Subtotal, Cmp_Costo_Subtotal)
         VALUES (?, ?, ?, ?, ?)";
 
-        //VALIDAR LA ASIGNACION DEL VENDEDRO A CLIENTE
+        //VALIDAR LA ASIGNACION DEL VENDEDOR A CLIENTE
         private static readonly string SQL_VALIDAR_CLIENTE_VENDEDOR = @"
         SELECT 
         v.Pk_Id_Vendedor,
@@ -76,8 +76,7 @@ namespace Capa_Modelo_Ventas
         INNER JOIN tbl_vendedor v ON a.Fk_Id_Vendedor = v.Pk_Id_Vendedor
         WHERE a.Fk_Id_Cliente = ?";
 
-
-
+        //Primer Formulario Ventas Generales
         //GRID PARA VENTAS GENERALES
         private static readonly string SQL_VENTAS_LISTADO = @"
         SELECT 
@@ -210,7 +209,7 @@ namespace Capa_Modelo_Ventas
         }
 
 
-        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, float fCmp_Saldo_Total, DataTable detalle)
+        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, DataTable detalle)
         {
             using (OdbcConnection conn = conexion.conexion())
             {
@@ -220,25 +219,26 @@ namespace Capa_Modelo_Ventas
                 {
                     int iPk_Id_Ventas = 0;
 
-                    // 🔴 INSERTAR ENCABEZADO
+                    // INSERTAR ENCABEZADO
                     using (OdbcCommand cmdVenta = new OdbcCommand(SQL_INSERT_VENTA, conn, trans))
                     {
                         cmdVenta.Parameters.AddWithValue("?", dCmp_Fecha_Venta);
                         cmdVenta.Parameters.AddWithValue("?", iFk_Id_Cliente);
                         cmdVenta.Parameters.AddWithValue("?", iFk_Id_Sucursal);
-                        cmdVenta.Parameters.AddWithValue("?", "Pendiente");
+                        cmdVenta.Parameters.AddWithValue("?", sCmp_Estado_Venta);
+                        cmdVenta.Parameters.AddWithValue("?", sCmp_Tipo_Operacion);
                         cmdVenta.Parameters.AddWithValue("?", fCmp_Saldo_Total);
 
                         cmdVenta.ExecuteNonQuery();
                     }
 
-                    // 🔴 OBTENER ID GENERADO
+                    // OBTENER ID GENERADO
                     using (OdbcCommand cmdId = new OdbcCommand("SELECT LAST_INSERT_ID()", conn, trans))
                     {
                         iPk_Id_Ventas = Convert.ToInt32(cmdId.ExecuteScalar());
                     }
 
-                    // 🔴 INSERTAR DETALLE
+                    // INSERTAR DETALLE
                     foreach (DataRow row in detalle.Rows)
                     {
                         using (OdbcCommand cmdDetalle = new OdbcCommand(SQL_INSERT_DETALLE, conn, trans))

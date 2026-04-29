@@ -37,10 +37,10 @@ namespace Capa_Vista_Ventas
         {
             Frm_Detalle_Ventas detalle_Ventas = new Frm_Detalle_Ventas();
 
-            // 🔥 ESCUCHAR CUANDO SE GUARDA
+            //ESCUCHAR CUANDO SE GUARDA
             detalle_Ventas.VentaGuardada += () =>
             {
-                fun_CargarVentas(); // 🔥 recarga automática del grid
+                fun_CargarVentas(); //Recarga automática del grid
             };
 
             detalle_Ventas.ShowDialog();
