@@ -27,11 +27,25 @@ namespace Capa_Controlador_Ventas
         {
             return dao.ObtenerBodegas();
         }
-        //OBTENER INVENTARIOS PARA GRID (COMBOBOX)
+        //OBTENER INVENTARIOS PARA GRID
         public DataTable ObtenerInventarioGrid()
         {
             return dao.ObtenerInventarioGrid();
         }
+
+        //OBTENER ESTADOVENTA PARA COMBOBOX
+        public DataTable ObtenerEstadoVenta()
+        {
+            return dao.ObtenerEstadoVenta();
+        }
+
+        //OBTENER Tipo operacion PARA COMBOBOX
+        public DataTable ObtenerTipoOperacion()
+        {
+            return dao.ObtenerTipoOperacion();
+        }
+
+
 
         //ID venta
         public int ObtenerSiguienteIdVenta()

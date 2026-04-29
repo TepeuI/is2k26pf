@@ -30,6 +30,7 @@ namespace Capa_Vista_Ventas
             Dgv_Ventas_Generales.Columns["Fecha"].HeaderText = "Fecha";
             Dgv_Ventas_Generales.Columns["Cliente"].HeaderText = "Cliente";
             Dgv_Ventas_Generales.Columns["TipoCliente"].HeaderText = "Tipo Cliente";
+            Dgv_Ventas_Generales.Columns["TipoOperacion"].HeaderText = "Tipo Operacion";
             Dgv_Ventas_Generales.Columns["Total"].HeaderText = "Total";
         }
 

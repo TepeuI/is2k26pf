@@ -41,6 +41,10 @@ namespace Capa_Vista_Ventas
             fun_CargarBodegas();
             //nuevo
             fun_InicializarDetalle();
+            //nuevo para estado venta
+            fun_CargarEstadoVenta();
+            //nuevo para tipo operacion
+            fun_CargarTipoOperacion();
             fun_CargarIdVenta();
             Cbo_Id_Cliente.SelectedIndexChanged += Cbo_Id_Cliente_SelectedIndexChanged;
 
@@ -132,8 +136,37 @@ namespace Capa_Vista_Ventas
             Cbo_Id_Venta.Enabled = false; //Bloqueado
         }
 
+        //NUEVO ESTADO VENTA
+        private void fun_CargarEstadoVenta()
+        {
+            try
+            {
+                Cbo_Estado.DataSource = controlador.ObtenerEstadoVenta();
+                Cbo_Estado.DisplayMember = "EstadoVenta";
+                Cbo_Estado.ValueMember = "EstadoVenta";
+                Cbo_Estado.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar estado: " + ex.Message);
+            }
+        }
+        //NUEVO Tipo de operacion
+        private void fun_CargarTipoOperacion()
+        {
+            try
+            {
+                Cbo_Tipo_Operacion.DataSource = controlador.ObtenerTipoOperacion();
+                Cbo_Tipo_Operacion.DisplayMember = "TipoOperacion";
+                Cbo_Tipo_Operacion.ValueMember = "TipoOperacion";
+                Cbo_Tipo_Operacion.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar tipo operación: " + ex.Message);
+            }
+        }
 
-     
 
         private void Btn_Ingresar_Ventas_Click(object sender, EventArgs e)
         {
@@ -183,8 +216,9 @@ namespace Capa_Vista_Ventas
                 int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
                 DateTime dCmp_Fecha_Venta = Dtp_Fecha_Venta.Value;
 
-                string sCmp_Estado_Venta = Cbo_Estado.Text.Trim();
-                string sCmp_Tipo_Operacion = Cbo_Tipo_Operacion.Text.Trim();
+                string sCmp_Estado_Venta = Cbo_Estado.SelectedValue?.ToString();
+    
+                string sCmp_Tipo_Operacion = Cbo_Tipo_Operacion.SelectedValue?.ToString();
                 DateTime dCmp_Fecha_Vencimiento = Dtp_Fecha_Venta.Value.AddDays(30);
 
                 bool resultado = controlador.GuardarVenta(
@@ -214,7 +248,7 @@ namespace Capa_Vista_Ventas
                     Nud_Cant_Prod.Value = 1;
 
                     fun_CargarIdVenta();
-                    // 🔥 EVENTO PARA ACTUALIZAR OTRO FORM
+                    //EVENTO PARA ACTUALIZAR OTRO FORM
                     VentaGuardada?.Invoke();
                 }
                 else
@@ -412,6 +446,41 @@ namespace Capa_Vista_Ventas
         private void Btn_Salir_Dventas_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Btn_Remover_Detalle_Ventas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_Detalle_Venta.CurrentRow == null || Dgv_Detalle_Venta.CurrentRow.IsNewRow)
+                {
+                    MessageBox.Show("Seleccione una fila para eliminar.");
+                    return;
+                }
+
+                DialogResult resultado = MessageBox.Show(
+                    "¿Está seguro de eliminar este producto?",
+                    "Confirmación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int index = Dgv_Detalle_Venta.CurrentRow.Index;
+
+                    //Eliminar del DataTable (NO del grid directo)
+                    dtDetalle.Rows.RemoveAt(index);
+
+                    //Recalcular total
+                    totalGeneral = controlador.CalcularTotal(dtDetalle);
+                    Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar: " + ex.Message);
+            }
         }
     }
 }

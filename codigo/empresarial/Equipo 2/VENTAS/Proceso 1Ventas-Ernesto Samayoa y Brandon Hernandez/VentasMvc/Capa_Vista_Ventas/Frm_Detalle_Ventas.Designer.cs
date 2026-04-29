@@ -33,6 +33,7 @@ namespace Capa_Vista_Ventas
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.GB_Ventas = new System.Windows.Forms.GroupBox();
+            this.Cbo_Estado = new System.Windows.Forms.ComboBox();
             this.Cbo_Tipo_Operacion = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Lbl_Estado = new System.Windows.Forms.Label();
@@ -72,7 +73,6 @@ namespace Capa_Vista_Ventas
             this.Btn_sig = new System.Windows.Forms.Button();
             this.Btn_fin = new System.Windows.Forms.Button();
             this.Btn_Salir_Dventas = new System.Windows.Forms.Button();
-            this.Cbo_Estado = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.GB_Ventas.SuspendLayout();
             this.GB_Detalle_Ventas.SuspendLayout();
@@ -124,6 +124,16 @@ namespace Capa_Vista_Ventas
             this.GB_Ventas.TabIndex = 43;
             this.GB_Ventas.TabStop = false;
             this.GB_Ventas.Text = "Encabezado de Venta";
+            // 
+            // Cbo_Estado
+            // 
+            this.Cbo_Estado.FormattingEnabled = true;
+            this.Cbo_Estado.Location = new System.Drawing.Point(616, 92);
+            this.Cbo_Estado.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_Estado.MaxLength = 13;
+            this.Cbo_Estado.Name = "Cbo_Estado";
+            this.Cbo_Estado.Size = new System.Drawing.Size(163, 28);
+            this.Cbo_Estado.TabIndex = 18;
             // 
             // Cbo_Tipo_Operacion
             // 
@@ -440,6 +450,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Remover_Detalle_Ventas.Text = "Remover";
             this.Btn_Remover_Detalle_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Remover_Detalle_Ventas.UseVisualStyleBackColor = true;
+            this.Btn_Remover_Detalle_Ventas.Click += new System.EventHandler(this.Btn_Remover_Detalle_Ventas_Click);
             // 
             // Btn_Agregar_Detalle_Ventas
             // 
@@ -620,16 +631,6 @@ namespace Capa_Vista_Ventas
             this.Btn_Salir_Dventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir_Dventas.UseVisualStyleBackColor = true;
             this.Btn_Salir_Dventas.Click += new System.EventHandler(this.Btn_Salir_Dventas_Click);
-            // 
-            // Cbo_Estado
-            // 
-            this.Cbo_Estado.FormattingEnabled = true;
-            this.Cbo_Estado.Location = new System.Drawing.Point(616, 92);
-            this.Cbo_Estado.Margin = new System.Windows.Forms.Padding(4);
-            this.Cbo_Estado.MaxLength = 13;
-            this.Cbo_Estado.Name = "Cbo_Estado";
-            this.Cbo_Estado.Size = new System.Drawing.Size(163, 28);
-            this.Cbo_Estado.TabIndex = 18;
             // 
             // Frm_Detalle_Ventas
             // 
