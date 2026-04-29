@@ -336,7 +336,7 @@ namespace Capa_Vista_Logista
 
         private void cuentasPorCobrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Cuentaporcobrar CXC = new Frm_Cuentaporcobrar();
+            Frm_CXC_NAV CXC = new Frm_CXC_NAV();
             CXC.MdiParent = this;
             CXC.Show();
         }

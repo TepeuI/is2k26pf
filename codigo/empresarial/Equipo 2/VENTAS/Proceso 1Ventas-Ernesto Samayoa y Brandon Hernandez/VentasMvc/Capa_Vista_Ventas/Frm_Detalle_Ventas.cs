@@ -133,27 +133,7 @@ namespace Capa_Vista_Ventas
         }
 
 
-        private void Btn_Pagar_Click(object sender, EventArgs e)
-        {
-            {
-                /*if (_idVenta == 0)
-                {
-                    MessageBox.Show("Primero guarde la venta.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }*/
-
-                using (var frmPagos = new Frm_Pagos(
-                    tipo: Cls_TipoOperacion.Pago,
-                    idCuentaPorCobrar: _idVenta,
-                    monto: _montoTotal,
-                    motivo: string.Empty
-                ))
-                {
-                    frmPagos.ShowDialog();
-                }
-            }
-        }
+     
 
         private void Btn_Ingresar_Ventas_Click(object sender, EventArgs e)
         {
@@ -205,6 +185,7 @@ namespace Capa_Vista_Ventas
 
                 string sCmp_Estado_Venta = Cbo_Estado.Text.Trim();
                 string sCmp_Tipo_Operacion = Cbo_Tipo_Operacion.Text.Trim();
+                DateTime dCmp_Fecha_Vencimiento = Dtp_Fecha_Venta.Value.AddDays(30);
 
                 bool resultado = controlador.GuardarVenta(
                     dCmp_Fecha_Venta,
@@ -213,12 +194,13 @@ namespace Capa_Vista_Ventas
                     sCmp_Estado_Venta,
                     sCmp_Tipo_Operacion,
                     fSaldo_total,
-                    dtDetalle
+                    dtDetalle,
+                    dCmp_Fecha_Vencimiento
                 );
 
                 if (resultado)
                 {
-                    MessageBox.Show("Venta guardada correctamente.");
+                    MessageBox.Show("Venta guardada correctamente.\n Se ha registrado una cuenta por cobrar");
                     //LIMPIAR CORRECTAMENTE
                     dtDetalle.Clear();
                     Txt_Saldo_Total.Text = "0.00";
@@ -246,7 +228,8 @@ namespace Capa_Vista_Ventas
             }
         }
 
-            private void Btn_Cancelar_Ventas_Click(object sender, EventArgs e)
+
+        private void Btn_Cancelar_Ventas_Click(object sender, EventArgs e)
         {
 
         }
@@ -342,10 +325,33 @@ namespace Capa_Vista_Ventas
                 Cbo_Id_Inventario.SelectedIndex = -1;
                 Cbo_Id_Bodega.SelectedIndex = -1;
                 Nud_Cant_Prod.Value = 1;
+                //Agregar total a pagos
+                _montoTotal = Convert.ToDecimal(totalGeneral);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void Btn_Pagar_Click(object sender, EventArgs e)
+        {
+            {
+                /*if (_idVenta == 0)
+                {
+                    MessageBox.Show("Primero guarde la venta.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }*/
+
+                using (var frmPagos = new Frm_Pagos(
+                    tipo: Cls_TipoOperacion.Pago,
+                    idCuentaPorCobrar: _idVenta,
+                    monto: _montoTotal,
+                    motivo: string.Empty
+                ))
+                {
+                    frmPagos.ShowDialog();
+                }
             }
         }
 
