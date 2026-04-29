@@ -44,6 +44,17 @@ namespace Capa_Modelo_Ventas
         FROM tbl_bodega
         WHERE Cmp_Estado_Bodega = 'Activo'";
 
+
+
+        //NUEVO DE COMBOBOX DE ESTADO
+        private static readonly string SQL_ESTADOVENTA=
+        "SHOW COLUMNS FROM tbl_ventas LIKE 'Cmp_Estado_Venta'";
+
+        //Nuevo agregado para Tipo operacion
+        private static readonly string SQL_TIPO_OPERACION =
+        "SHOW COLUMNS FROM tbl_ventas LIKE 'Cmp_Tipo_Operacion'";
+
+
         //ID AUTOINCREMENTABLE
         private static readonly string SQL_SIGUIENTE_ID = @"
         SELECT IFNULL(MAX(Pk_Id_Ventas), 0) + 1 AS SiguienteID FROM tbl_ventas";
@@ -87,6 +98,7 @@ namespace Capa_Modelo_Ventas
         v.Cmp_Fecha_Venta AS Fecha,
         CONCAT(c.Cmp_Nombre, ' ', c.Cmp_Apellido) AS Cliente,
         c.Cmp_Tipo AS TipoCliente,
+        v.Cmp_Tipo_Operacion AS TipoOperacion,
         v.Cmp_Saldo_Total AS Total
         FROM tbl_ventas v
         INNER JOIN tbl_clientes c ON v.Fk_Id_Cliente = c.Pk_Id_Cliente
@@ -162,6 +174,78 @@ namespace Capa_Modelo_Ventas
                 }
             }
         }
+
+        //Nuevo agregado para Estado venta
+        public DataTable ObtenerEstadoVenta()
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_ESTADOVENTA, conn))
+                {
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("EstadoVenta");
+
+                        if (reader.Read())
+                        {
+                            string enumValues = reader["Type"].ToString();
+                            // enum('Activo','Inactivo')
+
+                            enumValues = enumValues.Replace("enum(", "").Replace(")", "").Replace("'", "");
+
+                            string[] valores = enumValues.Split(',');
+
+                            foreach (string val in valores)
+                            {
+                                dt.Rows.Add(val);
+                            }
+                        }
+
+                        conexion.desconexion(conn);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        //Nuevo agregado para tipo operacion
+        public DataTable ObtenerTipoOperacion()
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_TIPO_OPERACION, conn))
+                {
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("TipoOperacion");
+
+                        if (reader.Read())
+                        {
+                            string enumValues = reader["Type"].ToString();
+                            // enum('Venta','Cotizacion','Pedido')
+
+                            enumValues = enumValues
+                                .Replace("enum(", "")
+                                .Replace(")", "")
+                                .Replace("'", "");
+
+                            string[] valores = enumValues.Split(',');
+
+                            foreach (string val in valores)
+                            {
+                                dt.Rows.Add(val);
+                            }
+                        }
+
+                        conexion.desconexion(conn);
+                        return dt;
+                    }
+                }
+            }
+        }
+
 
         public int ObtenerSiguienteIdVenta()
         {
