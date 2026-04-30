@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Comprobantes">
+      <HintPath>..\Capa_Controlador_Comprobantes\bin\Debug\Capa_Controlador_Comprobantes.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -49,29 +52,11 @@
     <Compile Include="Frm_Comprobante_Compra.Designer.cs">
       <DependentUpon>Frm_Comprobante_Compra.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Comprobante_Produccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Comprobante_Produccion.Designer.cs">
-      <DependentUpon>Frm_Comprobante_Produccion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_Comprobante_Venta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Comprobante_Venta.Designer.cs">
-      <DependentUpon>Frm_Comprobante_Venta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_Comprobante_Compra.resx">
       <DependentUpon>Frm_Comprobante_Compra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Comprobante_Produccion.resx">
-      <DependentUpon>Frm_Comprobante_Produccion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Comprobante_Venta.resx">
-      <DependentUpon>Frm_Comprobante_Venta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
