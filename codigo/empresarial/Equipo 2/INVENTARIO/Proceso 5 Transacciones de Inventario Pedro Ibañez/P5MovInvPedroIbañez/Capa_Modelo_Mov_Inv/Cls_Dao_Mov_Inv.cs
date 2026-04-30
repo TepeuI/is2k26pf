@@ -378,5 +378,67 @@ namespace Capa_Modelo_Mov_Inv
 
             return resultado;
         }
+        //==================================================================
+        //APARTAR STOCK
+        public bool fun_ApartarStockDao(List<(int idInventario, int idBodega, float stockNuevo,
+                                      float CantidadApartada, int EstadoExistencia, int idUnidad)> listaStock)
+        {
+            string sQueryUpdate = @"UPDATE tbl_existencias 
+                            SET stock = ?,
+                                fk_id_unidad_medida = ?
+                            WHERE fk_inventario_id = ? 
+                              AND fk_bodega_id = ?";
+
+            string sQueryInsert = @"INSERT INTO tbl_existencias 
+                                (fk_inventario_id, fk_bodega_id, stock, estado_existencia, fk_id_unidad_medida) 
+                            VALUES (?, ?, ?, ?, ?)";
+            try
+            {
+                using (OdbcConnection oConn = conexion.oConexion())
+                {
+                    oConn.Open();
+                    OdbcTransaction transaccion = oConn.BeginTransaction();
+                    try
+                    {
+                      
+                        foreach (var item in listaStock)
+                        {
+                            // UPDATE del registro existente
+                            using (OdbcCommand oCmdUpdate = new OdbcCommand(sQueryUpdate, oConn, transaccion))
+                            {
+                                oCmdUpdate.Parameters.AddWithValue("?", item.stockNuevo);
+                                oCmdUpdate.Parameters.AddWithValue("?", item.idUnidad);
+                                oCmdUpdate.Parameters.AddWithValue("?", item.idInventario);
+                                oCmdUpdate.Parameters.AddWithValue("?", item.idBodega);
+                                oCmdUpdate.ExecuteNonQuery();
+                            }
+
+                            // INSERT con la cantidad apartada
+                            using (OdbcCommand oCmdInsert = new OdbcCommand(sQueryInsert, oConn, transaccion))
+                            {
+                                oCmdInsert.Parameters.AddWithValue("?", item.idInventario);
+                                oCmdInsert.Parameters.AddWithValue("?", item.idBodega);
+                                oCmdInsert.Parameters.AddWithValue("?", item.CantidadApartada);
+                                oCmdInsert.Parameters.AddWithValue("?", item.EstadoExistencia);
+                                oCmdInsert.Parameters.AddWithValue("?", item.idUnidad);
+                                oCmdInsert.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaccion.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaccion.Rollback();
+                        throw new Exception("Error al ejecutar Apartado Stock: " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error de conexión: " + ex.Message);
+            }
+        }
     }
 }

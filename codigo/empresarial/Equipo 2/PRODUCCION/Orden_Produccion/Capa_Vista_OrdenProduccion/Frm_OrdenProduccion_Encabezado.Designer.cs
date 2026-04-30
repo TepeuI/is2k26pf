@@ -29,23 +29,29 @@ namespace Capa_Vista_OrdenProduccion
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_OrdenProduccion_Encabezado));
             this.Pnl_Botones = new System.Windows.Forms.Panel();
-            this.Lbl_TituloEstado = new System.Windows.Forms.Label();
             this.Lbl_Estado = new System.Windows.Forms.Label();
-            this.Dgv_EncabezadoOrdenP = new System.Windows.Forms.DataGridView();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
+            this.Lbl_TituloEstado = new System.Windows.Forms.Label();
             this.Btn_Borrar = new System.Windows.Forms.Button();
             this.Btn_Filtrar = new System.Windows.Forms.Button();
             this.Btn_Imprimir = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
             this.Btn_Refrescar = new System.Windows.Forms.Button();
+            this.Dgv_EncabezadoOrdenP = new System.Windows.Forms.DataGridView();
+            this.Pnl_Titulo = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Btn_ActualizarEstado = new System.Windows.Forms.Button();
             this.Pnl_Botones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EncabezadoOrdenP)).BeginInit();
+            this.Pnl_Titulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // Pnl_Botones
             // 
+            this.Pnl_Botones.Controls.Add(this.Btn_ActualizarEstado);
             this.Pnl_Botones.Controls.Add(this.Lbl_Estado);
             this.Pnl_Botones.Controls.Add(this.Btn_Ingresar);
             this.Pnl_Botones.Controls.Add(this.Btn_Editar);
@@ -55,21 +61,11 @@ namespace Capa_Vista_OrdenProduccion
             this.Pnl_Botones.Controls.Add(this.Btn_Imprimir);
             this.Pnl_Botones.Controls.Add(this.Btn_Salir);
             this.Pnl_Botones.Controls.Add(this.Btn_Refrescar);
-            this.Pnl_Botones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Pnl_Botones.Location = new System.Drawing.Point(0, 0);
+            this.Pnl_Botones.Location = new System.Drawing.Point(0, 70);
             this.Pnl_Botones.Name = "Pnl_Botones";
-            this.Pnl_Botones.Size = new System.Drawing.Size(1260, 147);
+            this.Pnl_Botones.Size = new System.Drawing.Size(1366, 143);
             this.Pnl_Botones.TabIndex = 16;
-            // 
-            // Lbl_TituloEstado
-            // 
-            this.Lbl_TituloEstado.AutoSize = true;
-            this.Lbl_TituloEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_TituloEstado.Location = new System.Drawing.Point(928, 33);
-            this.Lbl_TituloEstado.Name = "Lbl_TituloEstado";
-            this.Lbl_TituloEstado.Size = new System.Drawing.Size(142, 24);
-            this.Lbl_TituloEstado.TabIndex = 9;
-            this.Lbl_TituloEstado.Text = "Estado de API";
+            this.Pnl_Botones.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl_Botones_Paint);
             // 
             // Lbl_Estado
             // 
@@ -80,19 +76,6 @@ namespace Capa_Vista_OrdenProduccion
             this.Lbl_Estado.Size = new System.Drawing.Size(68, 24);
             this.Lbl_Estado.TabIndex = 10;
             this.Lbl_Estado.Text = "Estado";
-            // 
-            // Dgv_EncabezadoOrdenP
-            // 
-            this.Dgv_EncabezadoOrdenP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Dgv_EncabezadoOrdenP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_EncabezadoOrdenP.Location = new System.Drawing.Point(-90, 165);
-            this.Dgv_EncabezadoOrdenP.Name = "Dgv_EncabezadoOrdenP";
-            this.Dgv_EncabezadoOrdenP.RowHeadersWidth = 51;
-            this.Dgv_EncabezadoOrdenP.RowTemplate.Height = 24;
-            this.Dgv_EncabezadoOrdenP.Size = new System.Drawing.Size(1484, 535);
-            this.Dgv_EncabezadoOrdenP.TabIndex = 17;
             // 
             // Btn_Ingresar
             // 
@@ -107,6 +90,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Ingresar.Text = "Ingresar";
             this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ingresar.UseVisualStyleBackColor = true;
+            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
             // Btn_Editar
             // 
@@ -122,6 +106,16 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Editar.UseVisualStyleBackColor = true;
             // 
+            // Lbl_TituloEstado
+            // 
+            this.Lbl_TituloEstado.AutoSize = true;
+            this.Lbl_TituloEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_TituloEstado.Location = new System.Drawing.Point(928, 33);
+            this.Lbl_TituloEstado.Name = "Lbl_TituloEstado";
+            this.Lbl_TituloEstado.Size = new System.Drawing.Size(142, 24);
+            this.Lbl_TituloEstado.TabIndex = 9;
+            this.Lbl_TituloEstado.Text = "Estado de API";
+            // 
             // Btn_Borrar
             // 
             this.Btn_Borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -135,6 +129,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Borrar.Text = "Borrar";
             this.Btn_Borrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Borrar.UseVisualStyleBackColor = true;
+            this.Btn_Borrar.Click += new System.EventHandler(this.Btn_Borrar_Click);
             // 
             // Btn_Filtrar
             // 
@@ -178,6 +173,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Salir.Text = "Salir";
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir.UseVisualStyleBackColor = true;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
             // Btn_Refrescar
             // 
@@ -193,18 +189,65 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Refrescar.UseVisualStyleBackColor = true;
             // 
+            // Dgv_EncabezadoOrdenP
+            // 
+            this.Dgv_EncabezadoOrdenP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_EncabezadoOrdenP.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Dgv_EncabezadoOrdenP.Location = new System.Drawing.Point(0, 219);
+            this.Dgv_EncabezadoOrdenP.Name = "Dgv_EncabezadoOrdenP";
+            this.Dgv_EncabezadoOrdenP.RowHeadersWidth = 51;
+            this.Dgv_EncabezadoOrdenP.RowTemplate.Height = 24;
+            this.Dgv_EncabezadoOrdenP.Size = new System.Drawing.Size(1366, 480);
+            this.Dgv_EncabezadoOrdenP.TabIndex = 17;
+            this.Dgv_EncabezadoOrdenP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEncabezados_CellDoubleClick);
+            // 
+            // Pnl_Titulo
+            // 
+            this.Pnl_Titulo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Pnl_Titulo.Controls.Add(this.label1);
+            this.Pnl_Titulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Pnl_Titulo.Location = new System.Drawing.Point(0, 0);
+            this.Pnl_Titulo.Name = "Pnl_Titulo";
+            this.Pnl_Titulo.Size = new System.Drawing.Size(1366, 64);
+            this.Pnl_Titulo.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Rockwell Condensed", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(532, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "730 - Ordenes de Producción - Encabezado";
+            // 
+            // Btn_ActualizarEstado
+            // 
+            this.Btn_ActualizarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ActualizarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ActualizarEstado.Location = new System.Drawing.Point(1178, 48);
+            this.Btn_ActualizarEstado.Name = "Btn_ActualizarEstado";
+            this.Btn_ActualizarEstado.Size = new System.Drawing.Size(124, 62);
+            this.Btn_ActualizarEstado.TabIndex = 11;
+            this.Btn_ActualizarEstado.Text = "Actualizar Estado";
+            this.Btn_ActualizarEstado.UseVisualStyleBackColor = true;
+            // 
             // Frm_OrdenProduccion_Encabezado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 699);
-            this.Controls.Add(this.Dgv_EncabezadoOrdenP);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1366, 699);
+            this.Controls.Add(this.Pnl_Titulo);
             this.Controls.Add(this.Pnl_Botones);
+            this.Controls.Add(this.Dgv_EncabezadoOrdenP);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_OrdenProduccion_Encabezado";
-            this.Text = "Frm_OrdenProduccion_Encabezado";
+            this.Text = "730 - Ordenes de Producción";
+            this.Load += new System.EventHandler(this.Frm_Ordenes_Encabezados_Load);
             this.Pnl_Botones.ResumeLayout(false);
             this.Pnl_Botones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EncabezadoOrdenP)).EndInit();
+            this.Pnl_Titulo.ResumeLayout(false);
+            this.Pnl_Titulo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,5 +265,8 @@ namespace Capa_Vista_OrdenProduccion
         private System.Windows.Forms.Label Lbl_Estado;
         private System.Windows.Forms.Label Lbl_TituloEstado;
         private System.Windows.Forms.DataGridView Dgv_EncabezadoOrdenP;
+        private System.Windows.Forms.Panel Pnl_Titulo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Btn_ActualizarEstado;
     }
 }
