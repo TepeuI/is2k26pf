@@ -171,8 +171,9 @@ namespace Capa_Controlador_Mov_Inv
             try
             {
                 // Construir lista nueva con el stock calculado
-                List<(int idInventario, int idBodega, float stockNuevo, int EstadoExis, int idUnidad)> listaStock =
-                    new List<(int, int, float, int, int)>();
+                List<(int idInventario, int idBodega, float stockNuevo,
+                                      float CantidadApartada, int EstadoExistencia, int idUnidad) > listaStock =
+                    new List<(int, int, float ,float, int, int)>();
 
                 foreach (var item in detalle)
                 {
@@ -180,22 +181,37 @@ namespace Capa_Controlador_Mov_Inv
                     float stockActual = Dao.fun_ObtenerStockActual(item.idInventario, item.idBodega);
 
                     // Calcular nuevo stock según tipo de movimiento
-                    float stockNuevo = fun_CalcularStock(stockActual, item.cantidad, idTipoMovimiento);
+                    float stockNuevo = fun_CalcularApartado(stockActual, item.cantidad, idTipoMovimiento);
 
-                    // Calcular EstadoExis internamente 
-                    int EstadoExis = fun_CalcularEstadoExistencia(stockNuevo);
+                    // 3 es apartado
+                    int EstadoExis = 3; 
 
-                    listaStock.Add((item.idInventario, item.idBodega, stockNuevo, EstadoExis, item.idUnidad));
+                    listaStock.Add((item.idInventario, item.idBodega, stockNuevo,item.cantidad, EstadoExis, item.idUnidad));
                 }
 
                 // Enviar lista calculada al DAO para actualizar
-                bool resultado = Dao.fun_ActualizarStock(listaStock);
+                bool resultado = Dao.fun_ApartarStockDao(listaStock);
                 return resultado;
             }
             catch (Exception ex)
             {
                 return false;
                 throw new Exception("Error en al actualizar existencias " + ex.Message);
+            }
+
+        }
+        private float fun_CalcularApartado(float stockActual, float cantidad, int idTipoMovimiento)
+        {
+            // Ajusta los IDs según tu tabla de tipos de movimiento
+            try
+            {
+                // Resta stock por la cantidad
+                return stockActual - cantidad;
+
+            }
+            catch
+            {
+                throw new Exception($"Error al calcular apartado {idTipoMovimiento}");
             }
         }
     }
