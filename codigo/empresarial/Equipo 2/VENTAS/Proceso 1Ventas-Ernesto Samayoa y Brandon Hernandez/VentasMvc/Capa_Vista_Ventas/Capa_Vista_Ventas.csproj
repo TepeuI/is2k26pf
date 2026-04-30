@@ -35,11 +35,17 @@
     <Reference Include="Capa_Controlador_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_NavegadorTrs">
+      <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_NavegadorTrs.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Controlador_Ventas">
       <HintPath>..\Capa_Controlador_Ventas\bin\Debug\Capa_Controlador_Ventas.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_NavegadorTrs">
+      <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_NavegadorTrs.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -83,6 +89,12 @@
     </Compile>
     <Compile Include="Frm_CXC_Detalle.Designer.cs">
       <DependentUpon>Frm_CXC_Detalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_CXC_NAV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_CXC_NAV.Designer.cs">
+      <DependentUpon>Frm_CXC_NAV.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Ventas_Generales.cs">
       <SubType>Form</SubType>
@@ -193,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_CXC_Detalle.resx">
       <DependentUpon>Frm_CXC_Detalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_CXC_NAV.resx">
+      <DependentUpon>Frm_CXC_NAV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Ventas_Generales.resx">
       <DependentUpon>Frm_Ventas_Generales.cs</DependentUpon>

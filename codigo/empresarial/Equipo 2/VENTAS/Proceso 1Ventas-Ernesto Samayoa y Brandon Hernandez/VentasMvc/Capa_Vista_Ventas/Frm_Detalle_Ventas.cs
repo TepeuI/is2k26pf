@@ -41,6 +41,10 @@ namespace Capa_Vista_Ventas
             fun_CargarBodegas();
             //nuevo
             fun_InicializarDetalle();
+            //nuevo para estado venta
+            fun_CargarEstadoVenta();
+            //nuevo para tipo operacion
+            fun_CargarTipoOperacion();
             fun_CargarIdVenta();
             Cbo_Id_Cliente.SelectedIndexChanged += Cbo_Id_Cliente_SelectedIndexChanged;
 
@@ -113,6 +117,9 @@ namespace Capa_Vista_Ventas
             dtDetalle.Columns.Add("Descripcion", typeof(string));
             dtDetalle.Columns.Add("Precio", typeof(float));
             dtDetalle.Columns.Add("Cantidad", typeof(int));
+            dtDetalle.Columns.Add("Descuento", typeof(float));
+            //NUEVAS COLUMNAS
+            dtDetalle.Columns.Add("TipoCliente", typeof(string));
             dtDetalle.Columns.Add("Subtotal", typeof(float));
 
             Dgv_Detalle_Venta.DataSource = dtDetalle;
@@ -129,28 +136,37 @@ namespace Capa_Vista_Ventas
             Cbo_Id_Venta.Enabled = false; //Bloqueado
         }
 
-
-        private void Btn_Pagar_Click(object sender, EventArgs e)
+        //NUEVO ESTADO VENTA
+        private void fun_CargarEstadoVenta()
         {
+            try
             {
-                /*if (_idVenta == 0)
-                {
-                    MessageBox.Show("Primero guarde la venta.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }*/
-
-                using (var frmPagos = new Frm_Pagos(
-                    tipo: Cls_TipoOperacion.Pago,
-                    idCuentaPorCobrar: _idVenta,
-                    monto: _montoTotal,
-                    motivo: string.Empty
-                ))
-                {
-                    frmPagos.ShowDialog();
-                }
+                Cbo_Estado.DataSource = controlador.ObtenerEstadoVenta();
+                Cbo_Estado.DisplayMember = "EstadoVenta";
+                Cbo_Estado.ValueMember = "EstadoVenta";
+                Cbo_Estado.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar estado: " + ex.Message);
             }
         }
+        //NUEVO Tipo de operacion
+        private void fun_CargarTipoOperacion()
+        {
+            try
+            {
+                Cbo_Tipo_Operacion.DataSource = controlador.ObtenerTipoOperacion();
+                Cbo_Tipo_Operacion.DisplayMember = "TipoOperacion";
+                Cbo_Tipo_Operacion.ValueMember = "TipoOperacion";
+                Cbo_Tipo_Operacion.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar tipo operación: " + ex.Message);
+            }
+        }
+
 
         private void Btn_Ingresar_Ventas_Click(object sender, EventArgs e)
         {
@@ -168,12 +184,15 @@ namespace Capa_Vista_Ventas
         }
 
         private void Btn_Guardar_Ventas_Click(object sender, EventArgs e)
+         //DEFINITIVA
         {
             try
             {
                 // VALIDAR ENCABEZADO
                 if (Cbo_Id_Cliente.SelectedIndex == -1 ||
-                    Cbo_Id_Sucursal.SelectedIndex == -1)
+                    Cbo_Id_Sucursal.SelectedIndex == -1 ||
+                    string.IsNullOrWhiteSpace(Cbo_Estado.Text) ||
+                    string.IsNullOrWhiteSpace(Cbo_Tipo_Operacion.Text))
                 {
                     MessageBox.Show("Debe completar el encabezado de la venta.");
                     return;
@@ -197,31 +216,39 @@ namespace Capa_Vista_Ventas
                 int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
                 DateTime dCmp_Fecha_Venta = Dtp_Fecha_Venta.Value;
 
+                string sCmp_Estado_Venta = Cbo_Estado.SelectedValue?.ToString();
+    
+                string sCmp_Tipo_Operacion = Cbo_Tipo_Operacion.SelectedValue?.ToString();
+                DateTime dCmp_Fecha_Vencimiento = Dtp_Fecha_Venta.Value.AddDays(30);
+
                 bool resultado = controlador.GuardarVenta(
                     dCmp_Fecha_Venta,
                     iFk_Id_Cliente,
                     iFk_Id_Sucursal,
+                    sCmp_Estado_Venta,
+                    sCmp_Tipo_Operacion,
                     fSaldo_total,
-                    dtDetalle
+                    dtDetalle,
+                    dCmp_Fecha_Vencimiento
                 );
 
                 if (resultado)
                 {
-                    MessageBox.Show("Venta guardada correctamente.");
-
-                    // 🔥 LIMPIAR CORRECTAMENTE
+                    MessageBox.Show("Venta guardada correctamente.\n Se ha registrado una cuenta por cobrar");
+                    //LIMPIAR CORRECTAMENTE
                     dtDetalle.Clear();
                     Txt_Saldo_Total.Text = "0.00";
 
                     Cbo_Id_Cliente.SelectedIndex = -1;
                     Cbo_Id_Sucursal.SelectedIndex = -1;
+                    Cbo_Estado.SelectedIndex = -1;
+                    Cbo_Tipo_Operacion.SelectedIndex = -1;
                     Cbo_Id_Inventario.SelectedIndex = -1;
                     Cbo_Id_Bodega.SelectedIndex = -1;
                     Nud_Cant_Prod.Value = 1;
 
                     fun_CargarIdVenta();
-
-                    // 🔥 EVENTO PARA ACTUALIZAR OTRO FORM
+                    //EVENTO PARA ACTUALIZAR OTRO FORM
                     VentaGuardada?.Invoke();
                 }
                 else
@@ -234,6 +261,7 @@ namespace Capa_Vista_Ventas
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void Btn_Cancelar_Ventas_Click(object sender, EventArgs e)
         {
@@ -268,7 +296,9 @@ namespace Capa_Vista_Ventas
                 //VALIDAR ENCABEZADO (UNA SOLA CONDICIÓN)
                 if (string.IsNullOrWhiteSpace(Cbo_Id_Venta.Text) ||
                     Cbo_Id_Cliente.SelectedIndex == -1 ||
-                    Cbo_Id_Sucursal.SelectedIndex == -1)
+                    Cbo_Id_Sucursal.SelectedIndex == -1 ||
+                    string.IsNullOrWhiteSpace(Cbo_Estado.Text) ||
+                    string.IsNullOrWhiteSpace(Cbo_Tipo_Operacion.Text))
                 {
                     MessageBox.Show("Debe completar el encabezado de la venta.");
                     return;
@@ -282,7 +312,7 @@ namespace Capa_Vista_Ventas
 
                 if (Cbo_Id_Bodega.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Seleccione unna Bodega.");
+                    MessageBox.Show("Debe seleccionar una Bodega.");
                     return;
                 }
 
@@ -298,26 +328,64 @@ namespace Capa_Vista_Ventas
                 string sProducto = row["nombre_prod"].ToString();
                 string sDescripcion = row["descripcion"].ToString();
                 float fPrecio = Convert.ToSingle(row["precio_unitario"]);
+                int iCantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
 
-                int cantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
-
+                //Desde controlador
+                var info = controlador.ObtenerTipoYDescuento(iCantidad);
                 //cálculo desde el controlador
-                double dSubtotal = controlador.CalcularSubtotal(fPrecio, cantidad);
+                float fSubtotal = controlador.CalcularSubtotalConDescuento(fPrecio, iCantidad);
 
-                dtDetalle.Rows.Add(iIdProducto, sProducto, sDescripcion, fPrecio, cantidad, dSubtotal);
+                //COLUMNAS
+                dtDetalle.Rows.Add(
+                    iIdProducto,
+                    sProducto,
+                    sDescripcion,
+                    fPrecio,
+                    iCantidad,
+                    info.descuento,      // nueva columna
+                    info.tipoCliente,    // nueva columna
+                    fSubtotal            // subtotal
+                );
 
                 //total desde controlador
                 totalGeneral = controlador.CalcularTotal(dtDetalle);
                 Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
 
-                //limpiar
+                //Ordenar por ID PRODUCTO
+                dtDetalle.DefaultView.Sort = "IdProducto ASC";
+                Dgv_Detalle_Venta.DataSource = dtDetalle.DefaultView;
+
+                // limpiar
                 Cbo_Id_Inventario.SelectedIndex = -1;
                 Cbo_Id_Bodega.SelectedIndex = -1;
                 Nud_Cant_Prod.Value = 1;
+                //Agregar total a pagos
+                _montoTotal = Convert.ToDecimal(totalGeneral);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void Btn_Pagar_Click(object sender, EventArgs e)
+        {
+            {
+                /*if (_idVenta == 0)
+                {
+                    MessageBox.Show("Primero guarde la venta.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }*/
+
+                using (var frmPagos = new Frm_Pagos(
+                    tipo: Cls_TipoOperacion.Pago,
+                    idCuentaPorCobrar: _idVenta,
+                    monto: _montoTotal,
+                    motivo: string.Empty
+                ))
+                {
+                    frmPagos.ShowDialog();
+                }
             }
         }
 
@@ -342,6 +410,8 @@ namespace Capa_Vista_Ventas
                     MessageBox.Show("Cliente atendido por el vendedor: " + resultado.Cmp_NombreVendedor);
 
                     Cbo_Id_Sucursal.Enabled = true;
+                    Cbo_Estado.Enabled = true;
+                    Cbo_Tipo_Operacion.Enabled = true;
                     Cbo_Id_Inventario.Enabled = true;
                     Cbo_Id_Bodega.Enabled = true;
                     Nud_Cant_Prod.Enabled = true;
@@ -352,6 +422,8 @@ namespace Capa_Vista_Ventas
                     MessageBox.Show("Este cliente no tiene un vendedor asignado.");
 
                     Cbo_Id_Sucursal.Enabled = false;
+                    Cbo_Estado.Enabled = false;
+                    Cbo_Tipo_Operacion.Enabled = false;
                     Cbo_Id_Inventario.Enabled = false;
                     Cbo_Id_Bodega.Enabled = false;
                     Nud_Cant_Prod.Enabled = false;
@@ -363,6 +435,51 @@ namespace Capa_Vista_Ventas
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Salir_Dventas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Remover_Detalle_Ventas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_Detalle_Venta.CurrentRow == null || Dgv_Detalle_Venta.CurrentRow.IsNewRow)
+                {
+                    MessageBox.Show("Seleccione una fila para eliminar.");
+                    return;
+                }
+
+                DialogResult resultado = MessageBox.Show(
+                    "¿Está seguro de eliminar este producto?",
+                    "Confirmación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int index = Dgv_Detalle_Venta.CurrentRow.Index;
+
+                    //Eliminar del DataTable (NO del grid directo)
+                    dtDetalle.Rows.RemoveAt(index);
+
+                    //Recalcular total
+                    totalGeneral = controlador.CalcularTotal(dtDetalle);
+                    Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar: " + ex.Message);
             }
         }
     }

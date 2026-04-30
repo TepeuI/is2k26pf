@@ -182,6 +182,7 @@ namespace Capa_Vista_Mov_Inv
             this.Controls.Add(this.Btn_Imprimir);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Refrescar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Movimientos_Inventario";
             this.Text = "Frm_Movimientos_Inventario";
             this.panel1.ResumeLayout(false);

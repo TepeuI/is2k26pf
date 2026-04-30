@@ -336,7 +336,7 @@ namespace Capa_Vista_Logista
 
         private void cuentasPorCobrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Cuentaporcobrar CXC = new Frm_Cuentaporcobrar();
+            Frm_CXC_NAV CXC = new Frm_CXC_NAV();
             CXC.MdiParent = this;
             CXC.Show();
         }
@@ -446,6 +446,13 @@ namespace Capa_Vista_Logista
             Frm_ordencompra ordencompra = new Frm_ordencompra();
             ordencompra.MdiParent = this;
             ordencompra.Show();
+        }
+
+        private void unidadDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Mantenimiento_Unidad Unidad = new Frm_Mantenimiento_Unidad();
+            Unidad.MdiParent = this;
+            Unidad.Show();
         }
     }
 }
