@@ -115,12 +115,12 @@ namespace Capa_Controlador_Ventas
             return fSaldototal;
         }
 
-        public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucusal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fSaldototal, DataTable detalle, DateTime dCmp_Fecha_Vencimiento)
+        public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucusal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fSaldototal, DataTable detalle, DateTime dCmp_Fecha_Vencimiento, bool bGenerarCuentaCobra)
         {
             if (detalle.Rows.Count == 0)
                 return false;
 
-            return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucusal,  sCmp_Estado_Venta, sCmp_Tipo_Operacion, fSaldototal, detalle, dCmp_Fecha_Vencimiento);
+            return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucusal,  sCmp_Estado_Venta, sCmp_Tipo_Operacion, fSaldototal, detalle, dCmp_Fecha_Vencimiento,bGenerarCuentaCobra);
         }
     }
 }

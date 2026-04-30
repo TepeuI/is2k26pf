@@ -219,6 +219,7 @@ namespace Capa_Vista_Ventas
                 string sCmp_Estado_Venta = Cbo_Estado.SelectedValue?.ToString();
     
                 string sCmp_Tipo_Operacion = Cbo_Tipo_Operacion.SelectedValue?.ToString();
+                bool bEsVenta = sCmp_Tipo_Operacion == "Venta";
                 DateTime dCmp_Fecha_Vencimiento = Dtp_Fecha_Venta.Value.AddDays(30);
 
                 bool resultado = controlador.GuardarVenta(
@@ -229,12 +230,14 @@ namespace Capa_Vista_Ventas
                     sCmp_Tipo_Operacion,
                     fSaldo_total,
                     dtDetalle,
-                    dCmp_Fecha_Vencimiento
-                );
+                    dCmp_Fecha_Vencimiento,
+                    bEsVenta
+
+                ) ;
 
                 if (resultado)
                 {
-                    MessageBox.Show("Venta guardada correctamente.\n Se ha registrado una cuenta por cobrar");
+                    MessageBox.Show("Venta guardada correctamente.");
                     //LIMPIAR CORRECTAMENTE
                     dtDetalle.Clear();
                     Txt_Saldo_Total.Text = "0.00";
@@ -250,6 +253,10 @@ namespace Capa_Vista_Ventas
                     fun_CargarIdVenta();
                     //EVENTO PARA ACTUALIZAR OTRO FORM
                     VentaGuardada?.Invoke();
+                    if (bEsVenta)
+                    {
+                        MessageBox.Show("Se ha registrado una cuenta por cobrar");
+                    }
                 }
                 else
                 {
