@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_Comprobantes
 {
-    partial class Frm_Comprobante_Compra
+    partial class Frm_Comprobante_Produccion
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,16 @@ namespace Capa_Vista_Comprobantes
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Comprobante_Compra));
-            this.dgv_comprobante_compra = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Comprobante_Produccion));
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.GB_Ventas = new System.Windows.Forms.GroupBox();
-            this.txt_observaciones = new System.Windows.Forms.TextBox();
-            this.txt_nombre_receptor = new System.Windows.Forms.TextBox();
-            this.cmb_estado = new System.Windows.Forms.ComboBox();
-            this.dtp_fecha_hora_entrega = new System.Windows.Forms.DateTimePicker();
-            this.cmb_id_cliente = new System.Windows.Forms.ComboBox();
-            this.cmb_id_comprobante = new System.Windows.Forms.ComboBox();
-            this.cmb_id_entrega_compra = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Dtp_Fecha_Venta = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cbo_Id_Venta = new System.Windows.Forms.ComboBox();
+            this.Cbo_Id_Cliente = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,28 +56,28 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Agregar_Movimiento = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_comprobante_compra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GB_Ventas.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgv_comprobante_compra
+            // dataGridView1
             // 
-            this.dgv_comprobante_compra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_comprobante_compra.Location = new System.Drawing.Point(26, 364);
-            this.dgv_comprobante_compra.Name = "dgv_comprobante_compra";
-            this.dgv_comprobante_compra.Size = new System.Drawing.Size(845, 109);
-            this.dgv_comprobante_compra.TabIndex = 60;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(26, 383);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(845, 109);
+            this.dataGridView1.TabIndex = 71;
             // 
             // GB_Ventas
             // 
-            this.GB_Ventas.Controls.Add(this.txt_observaciones);
-            this.GB_Ventas.Controls.Add(this.txt_nombre_receptor);
-            this.GB_Ventas.Controls.Add(this.cmb_estado);
-            this.GB_Ventas.Controls.Add(this.dtp_fecha_hora_entrega);
-            this.GB_Ventas.Controls.Add(this.cmb_id_cliente);
-            this.GB_Ventas.Controls.Add(this.cmb_id_comprobante);
-            this.GB_Ventas.Controls.Add(this.cmb_id_entrega_compra);
+            this.GB_Ventas.Controls.Add(this.textBox2);
+            this.GB_Ventas.Controls.Add(this.textBox1);
+            this.GB_Ventas.Controls.Add(this.comboBox2);
+            this.GB_Ventas.Controls.Add(this.Dtp_Fecha_Venta);
+            this.GB_Ventas.Controls.Add(this.comboBox1);
+            this.GB_Ventas.Controls.Add(this.Cbo_Id_Venta);
+            this.GB_Ventas.Controls.Add(this.Cbo_Id_Cliente);
             this.GB_Ventas.Controls.Add(this.label3);
             this.GB_Ventas.Controls.Add(this.label8);
             this.GB_Ventas.Controls.Add(this.label2);
@@ -86,70 +86,70 @@ namespace Capa_Vista_Comprobantes
             this.GB_Ventas.Controls.Add(this.label6);
             this.GB_Ventas.Controls.Add(this.label5);
             this.GB_Ventas.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_Ventas.Location = new System.Drawing.Point(21, 175);
+            this.GB_Ventas.Location = new System.Drawing.Point(21, 174);
             this.GB_Ventas.Name = "GB_Ventas";
-            this.GB_Ventas.Size = new System.Drawing.Size(890, 183);
-            this.GB_Ventas.TabIndex = 59;
+            this.GB_Ventas.Size = new System.Drawing.Size(883, 183);
+            this.GB_Ventas.TabIndex = 70;
             this.GB_Ventas.TabStop = false;
-            this.GB_Ventas.Text = "Comprobante Compra";
+            this.GB_Ventas.Text = "Comprobante Produccion";
             // 
-            // txt_observaciones
+            // textBox2
             // 
-            this.txt_observaciones.Location = new System.Drawing.Point(675, 79);
-            this.txt_observaciones.Name = "txt_observaciones";
-            this.txt_observaciones.Size = new System.Drawing.Size(193, 26);
-            this.txt_observaciones.TabIndex = 54;
+            this.textBox2.Location = new System.Drawing.Point(675, 79);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(193, 26);
+            this.textBox2.TabIndex = 54;
             // 
-            // txt_nombre_receptor
+            // textBox1
             // 
-            this.txt_nombre_receptor.Location = new System.Drawing.Point(477, 19);
-            this.txt_nombre_receptor.Name = "txt_nombre_receptor";
-            this.txt_nombre_receptor.Size = new System.Drawing.Size(139, 26);
-            this.txt_nombre_receptor.TabIndex = 53;
+            this.textBox1.Location = new System.Drawing.Point(477, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(139, 26);
+            this.textBox1.TabIndex = 53;
             // 
-            // cmb_estado
+            // comboBox2
             // 
-            this.cmb_estado.FormattingEnabled = true;
-            this.cmb_estado.Location = new System.Drawing.Point(420, 122);
-            this.cmb_estado.MaxLength = 13;
-            this.cmb_estado.Name = "cmb_estado";
-            this.cmb_estado.Size = new System.Drawing.Size(123, 27);
-            this.cmb_estado.TabIndex = 52;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(420, 122);
+            this.comboBox2.MaxLength = 13;
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(123, 27);
+            this.comboBox2.TabIndex = 52;
             // 
-            // dtp_fecha_hora_entrega
+            // Dtp_Fecha_Venta
             // 
-            this.dtp_fecha_hora_entrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_fecha_hora_entrega.Location = new System.Drawing.Point(488, 73);
-            this.dtp_fecha_hora_entrega.MaxDate = new System.DateTime(2035, 12, 31, 0, 0, 0, 0);
-            this.dtp_fecha_hora_entrega.MinDate = new System.DateTime(1912, 1, 1, 0, 0, 0, 0);
-            this.dtp_fecha_hora_entrega.Name = "dtp_fecha_hora_entrega";
-            this.dtp_fecha_hora_entrega.Size = new System.Drawing.Size(128, 26);
-            this.dtp_fecha_hora_entrega.TabIndex = 51;
+            this.Dtp_Fecha_Venta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Dtp_Fecha_Venta.Location = new System.Drawing.Point(488, 73);
+            this.Dtp_Fecha_Venta.MaxDate = new System.DateTime(2035, 12, 31, 0, 0, 0, 0);
+            this.Dtp_Fecha_Venta.MinDate = new System.DateTime(1912, 1, 1, 0, 0, 0, 0);
+            this.Dtp_Fecha_Venta.Name = "Dtp_Fecha_Venta";
+            this.Dtp_Fecha_Venta.Size = new System.Drawing.Size(128, 26);
+            this.Dtp_Fecha_Venta.TabIndex = 51;
             // 
-            // cmb_id_cliente
+            // comboBox1
             // 
-            this.cmb_id_cliente.FormattingEnabled = true;
-            this.cmb_id_cliente.Location = new System.Drawing.Point(88, 122);
-            this.cmb_id_cliente.Name = "cmb_id_cliente";
-            this.cmb_id_cliente.Size = new System.Drawing.Size(122, 27);
-            this.cmb_id_cliente.TabIndex = 50;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(88, 122);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(122, 27);
+            this.comboBox1.TabIndex = 50;
             // 
-            // cmb_id_comprobante
+            // Cbo_Id_Venta
             // 
-            this.cmb_id_comprobante.FormattingEnabled = true;
-            this.cmb_id_comprobante.Location = new System.Drawing.Point(126, 26);
-            this.cmb_id_comprobante.Name = "cmb_id_comprobante";
-            this.cmb_id_comprobante.Size = new System.Drawing.Size(122, 27);
-            this.cmb_id_comprobante.TabIndex = 49;
+            this.Cbo_Id_Venta.FormattingEnabled = true;
+            this.Cbo_Id_Venta.Location = new System.Drawing.Point(126, 26);
+            this.Cbo_Id_Venta.Name = "Cbo_Id_Venta";
+            this.Cbo_Id_Venta.Size = new System.Drawing.Size(122, 27);
+            this.Cbo_Id_Venta.TabIndex = 49;
             // 
-            // cmb_id_entrega_compra
+            // Cbo_Id_Cliente
             // 
-            this.cmb_id_entrega_compra.FormattingEnabled = true;
-            this.cmb_id_entrega_compra.Location = new System.Drawing.Point(141, 72);
-            this.cmb_id_entrega_compra.MaxLength = 13;
-            this.cmb_id_entrega_compra.Name = "cmb_id_entrega_compra";
-            this.cmb_id_entrega_compra.Size = new System.Drawing.Size(176, 27);
-            this.cmb_id_entrega_compra.TabIndex = 48;
+            this.Cbo_Id_Cliente.FormattingEnabled = true;
+            this.Cbo_Id_Cliente.Location = new System.Drawing.Point(161, 72);
+            this.Cbo_Id_Cliente.MaxLength = 13;
+            this.Cbo_Id_Cliente.Name = "Cbo_Id_Cliente";
+            this.Cbo_Id_Cliente.Size = new System.Drawing.Size(176, 27);
+            this.Cbo_Id_Cliente.TabIndex = 48;
             // 
             // label3
             // 
@@ -157,9 +157,9 @@ namespace Capa_Vista_Comprobantes
             this.label3.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(17, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 14);
+            this.label3.Size = new System.Drawing.Size(136, 14);
             this.label3.TabIndex = 42;
-            this.label3.Text = "Id Entrega Compra:";
+            this.label3.Text = "Id Entrega Producción:";
             // 
             // label8
             // 
@@ -224,10 +224,10 @@ namespace Capa_Vista_Comprobantes
             // btn_buscar
             // 
             this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
-            this.btn_buscar.Location = new System.Drawing.Point(391, 89);
+            this.btn_buscar.Location = new System.Drawing.Point(391, 88);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(86, 80);
-            this.btn_buscar.TabIndex = 58;
+            this.btn_buscar.TabIndex = 69;
             this.btn_buscar.Text = "BUSCAR";
             this.btn_buscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_buscar.UseVisualStyleBackColor = true;
@@ -236,10 +236,10 @@ namespace Capa_Vista_Comprobantes
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 1);
+            this.panel1.Location = new System.Drawing.Point(12, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(859, 80);
-            this.panel1.TabIndex = 57;
+            this.panel1.TabIndex = 68;
             // 
             // label1
             // 
@@ -247,17 +247,17 @@ namespace Capa_Vista_Comprobantes
             this.label1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(9, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(300, 27);
+            this.label1.Size = new System.Drawing.Size(337, 27);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Comprobante de Compra";
+            this.label1.Text = "Comprobante de Produccion";
             // 
             // BTN_LIMPIAR_COMPROBANTE
             // 
             this.BTN_LIMPIAR_COMPROBANTE.Image = ((System.Drawing.Image)(resources.GetObject("BTN_LIMPIAR_COMPROBANTE.Image")));
-            this.BTN_LIMPIAR_COMPROBANTE.Location = new System.Drawing.Point(483, 89);
+            this.BTN_LIMPIAR_COMPROBANTE.Location = new System.Drawing.Point(483, 88);
             this.BTN_LIMPIAR_COMPROBANTE.Name = "BTN_LIMPIAR_COMPROBANTE";
             this.BTN_LIMPIAR_COMPROBANTE.Size = new System.Drawing.Size(86, 80);
-            this.BTN_LIMPIAR_COMPROBANTE.TabIndex = 56;
+            this.BTN_LIMPIAR_COMPROBANTE.TabIndex = 67;
             this.BTN_LIMPIAR_COMPROBANTE.Text = "LIMPIAR COMPROBANTE";
             this.BTN_LIMPIAR_COMPROBANTE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BTN_LIMPIAR_COMPROBANTE.UseVisualStyleBackColor = true;
@@ -266,10 +266,10 @@ namespace Capa_Vista_Comprobantes
             // 
             this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(756, 89);
+            this.Btn_Salir.Location = new System.Drawing.Point(756, 88);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(86, 80);
-            this.Btn_Salir.TabIndex = 55;
+            this.Btn_Salir.TabIndex = 66;
             this.Btn_Salir.Text = "SALIR";
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir.UseVisualStyleBackColor = false;
@@ -277,10 +277,10 @@ namespace Capa_Vista_Comprobantes
             // Btn_Modificar
             // 
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(299, 89);
+            this.Btn_Modificar.Location = new System.Drawing.Point(299, 88);
             this.Btn_Modificar.Name = "Btn_Modificar";
             this.Btn_Modificar.Size = new System.Drawing.Size(86, 80);
-            this.Btn_Modificar.TabIndex = 54;
+            this.Btn_Modificar.TabIndex = 65;
             this.Btn_Modificar.Text = "MODIFICAR";
             this.Btn_Modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Modificar.UseVisualStyleBackColor = true;
@@ -288,10 +288,10 @@ namespace Capa_Vista_Comprobantes
             // Btn_Reporte
             // 
             this.Btn_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte.Image")));
-            this.Btn_Reporte.Location = new System.Drawing.Point(572, 89);
+            this.Btn_Reporte.Location = new System.Drawing.Point(572, 88);
             this.Btn_Reporte.Name = "Btn_Reporte";
             this.Btn_Reporte.Size = new System.Drawing.Size(86, 80);
-            this.Btn_Reporte.TabIndex = 53;
+            this.Btn_Reporte.TabIndex = 64;
             this.Btn_Reporte.Text = "REPORTE";
             this.Btn_Reporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Reporte.UseVisualStyleBackColor = true;
@@ -299,10 +299,10 @@ namespace Capa_Vista_Comprobantes
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(664, 89);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(664, 88);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(86, 80);
-            this.Btn_Ayuda.TabIndex = 52;
+            this.Btn_Ayuda.TabIndex = 63;
             this.Btn_Ayuda.Text = "AYUDA";
             this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ayuda.UseVisualStyleBackColor = true;
@@ -310,10 +310,10 @@ namespace Capa_Vista_Comprobantes
             // Btn_Cancelar
             // 
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(207, 89);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(207, 88);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(86, 80);
-            this.Btn_Cancelar.TabIndex = 51;
+            this.Btn_Cancelar.TabIndex = 62;
             this.Btn_Cancelar.Text = "CANCELAR";
             this.Btn_Cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
@@ -321,20 +321,20 @@ namespace Capa_Vista_Comprobantes
             // Btn_Agregar_Movimiento
             // 
             this.Btn_Agregar_Movimiento.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Agregar_Movimiento.Image")));
-            this.Btn_Agregar_Movimiento.Location = new System.Drawing.Point(21, 89);
+            this.Btn_Agregar_Movimiento.Location = new System.Drawing.Point(21, 88);
             this.Btn_Agregar_Movimiento.Name = "Btn_Agregar_Movimiento";
             this.Btn_Agregar_Movimiento.Size = new System.Drawing.Size(132, 80);
-            this.Btn_Agregar_Movimiento.TabIndex = 50;
+            this.Btn_Agregar_Movimiento.TabIndex = 61;
             this.Btn_Agregar_Movimiento.Text = "CREAR COMPROBANTE";
             this.Btn_Agregar_Movimiento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Agregar_Movimiento.UseVisualStyleBackColor = true;
             // 
-            // Frm_Comprobante_Compra
+            // Frm_Comprobante_Produccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 450);
-            this.Controls.Add(this.dgv_comprobante_compra);
+            this.ClientSize = new System.Drawing.Size(916, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.GB_Ventas);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.panel1);
@@ -345,9 +345,9 @@ namespace Capa_Vista_Comprobantes
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Agregar_Movimiento);
-            this.Name = "Frm_Comprobante_Compra";
-            this.Text = "Frm_Comprobante_Compra";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_comprobante_compra)).EndInit();
+            this.Name = "Frm_Comprobante_Produccion";
+            this.Text = "Frm_Comprobante_Produccion";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.GB_Ventas.ResumeLayout(false);
             this.GB_Ventas.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -358,15 +358,15 @@ namespace Capa_Vista_Comprobantes
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgv_comprobante_compra;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox GB_Ventas;
-        private System.Windows.Forms.TextBox txt_observaciones;
-        private System.Windows.Forms.TextBox txt_nombre_receptor;
-        private System.Windows.Forms.ComboBox cmb_estado;
-        private System.Windows.Forms.DateTimePicker dtp_fecha_hora_entrega;
-        private System.Windows.Forms.ComboBox cmb_id_cliente;
-        private System.Windows.Forms.ComboBox cmb_id_comprobante;
-        private System.Windows.Forms.ComboBox cmb_id_entrega_compra;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker Dtp_Fecha_Venta;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Cbo_Id_Venta;
+        private System.Windows.Forms.ComboBox Cbo_Id_Cliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;

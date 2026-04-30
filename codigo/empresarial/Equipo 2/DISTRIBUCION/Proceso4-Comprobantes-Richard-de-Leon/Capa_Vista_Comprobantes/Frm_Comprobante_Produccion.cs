@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Comprobantes
 {
-    public partial class Frm_Comprobante_Compra : Form
+    public partial class Frm_Comprobante_Produccion : Form
     {
-        public Frm_Comprobante_Compra()
+        public Frm_Comprobante_Produccion()
         {
             InitializeComponent();
         }
