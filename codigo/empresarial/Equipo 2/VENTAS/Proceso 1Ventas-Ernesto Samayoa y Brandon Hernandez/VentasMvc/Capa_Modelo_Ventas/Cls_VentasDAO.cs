@@ -26,7 +26,7 @@ namespace Capa_Modelo_Ventas
 
         private static readonly string SQL_INVENTARIO = @"
         SELECT
-        i.pk_inventario_id,
+        i.pk_inventario_id,              
         i.nombre_prod,
         i.descripcion,
         i.precio_unitario,
@@ -296,13 +296,13 @@ namespace Capa_Modelo_Ventas
         }
 
 
-        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, DataTable detalle,DateTime dCmp_Fecha_Vencimiento)
+        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, DataTable detalle,DateTime dCmp_Fecha_Vencimiento,bool bGenerarCuentaCobrar)
         {
-            using (OdbcConnection conn = conexion.conexion())
-            {
+            using (OdbcConnection conn = conexion.conexion()){
                 OdbcTransaction trans = conn.BeginTransaction();
 
                 try
+            
                 {
                     int iPk_Id_Ventas = 0;
                       int idVenta = 0;
@@ -340,21 +340,24 @@ namespace Capa_Modelo_Ventas
                             cmdDetalle.ExecuteNonQuery();
                         }
                     }
-                    int idCuentaPorCobrar = 0;
-                    using (OdbcCommand cmdCuenta = new OdbcCommand(SQL_INSERT_CUENTA_COBRAR, conn, trans))
+                    if (bGenerarCuentaCobrar)
                     {
-                        cmdCuenta.Parameters.AddWithValue("?", iPk_Id_Ventas);
-                        cmdCuenta.Parameters.AddWithValue("?", iFk_Id_Cliente);
-                        cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Venta);
-                        cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Vencimiento);
-                        cmdCuenta.Parameters.AddWithValue("?", fCmp_Saldo_Total);
-                        cmdCuenta.Parameters.AddWithValue("?", "Activo");
-                        cmdCuenta.ExecuteNonQuery();
-                    }
-                    // Obtener ID de la cuenta por cobrar recién insertada
-                    using (OdbcCommand cmdIdCxC = new OdbcCommand("SELECT LAST_INSERT_ID()", conn, trans))
-                    {
-                        idCuentaPorCobrar = Convert.ToInt32(cmdIdCxC.ExecuteScalar());
+                        int idCuentaPorCobrar = 0;
+                        using (OdbcCommand cmdCuenta = new OdbcCommand(SQL_INSERT_CUENTA_COBRAR, conn, trans))
+                        {
+                            cmdCuenta.Parameters.AddWithValue("?", iPk_Id_Ventas);
+                            cmdCuenta.Parameters.AddWithValue("?", iFk_Id_Cliente);
+                            cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Venta);
+                            cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Vencimiento);
+                            cmdCuenta.Parameters.AddWithValue("?", fCmp_Saldo_Total);
+                            cmdCuenta.Parameters.AddWithValue("?", "Activo");
+                            cmdCuenta.ExecuteNonQuery();
+                        }
+                        // Obtener ID de la cuenta por cobrar recién insertada
+                        using (OdbcCommand cmdIdCxC = new OdbcCommand("SELECT LAST_INSERT_ID()", conn, trans))
+                        {
+                            idCuentaPorCobrar = Convert.ToInt32(cmdIdCxC.ExecuteScalar());
+                        }
                     }
                 
 
