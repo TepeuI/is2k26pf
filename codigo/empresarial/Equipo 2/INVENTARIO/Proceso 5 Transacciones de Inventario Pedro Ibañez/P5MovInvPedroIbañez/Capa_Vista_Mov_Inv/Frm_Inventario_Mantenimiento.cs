@@ -58,5 +58,9 @@ namespace Capa_Vista_Mov_Inv
             Cbo_EstadoProducto.SelectedIndex = -1;
         }
 
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
