@@ -109,7 +109,7 @@ namespace Capa_Vista_Mov_Inv
             // 
             // Btn_Salir
             // 
-            this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
             this.Btn_Salir.Location = new System.Drawing.Point(844, 106);
             this.Btn_Salir.Name = "Btn_Salir";
@@ -165,7 +165,7 @@ namespace Capa_Vista_Mov_Inv
             // 
             // btn_Guardar
             // 
-            this.btn_Guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_Guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Guardar.Image")));
             this.btn_Guardar.Location = new System.Drawing.Point(204, 106);
             this.btn_Guardar.Name = "btn_Guardar";
@@ -174,6 +174,7 @@ namespace Capa_Vista_Mov_Inv
             this.btn_Guardar.Text = "GUARDAR";
             this.btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Guardar.UseVisualStyleBackColor = false;
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
             // 
             // Btn_Agregar_Inventario
             // 

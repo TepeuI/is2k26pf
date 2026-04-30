@@ -37,6 +37,7 @@ namespace Capa_Vista_Mov_Inv
             txt_descripcion.Enabled = false;
             Cbo_ID_Inventario.Enabled = false;
             NUD_Cant_mov.Enabled = false;
+            cbo_unidad_medida.Enabled = false;
         }
 
         private void EstadoInicialBotones()
@@ -62,6 +63,7 @@ namespace Capa_Vista_Mov_Inv
             txt_descripcion.Enabled = true;
             Cbo_ID_Inventario.Enabled = true;
             NUD_Cant_mov.Enabled = true;
+            cbo_unidad_medida.Enabled = true;
         }
 
         private void EstadoBotonesUso()
@@ -92,7 +94,7 @@ namespace Capa_Vista_Mov_Inv
             Cbo_IDBodega.SelectedIndex = -1;
             Cbo_ID_Inventario.SelectedIndex = -1;
             NUD_Cant_mov.Value = 1;
-            
+            cbo_unidad_medida.SelectedIndex = -1;
         }
 
         //Cargar ComBoBoxes
@@ -122,6 +124,12 @@ namespace Capa_Vista_Mov_Inv
             Cbo_ID_Inventario.DisplayMember = "INVENTARIO";
             Cbo_ID_Inventario.ValueMember = "pk_inventario_id";
             Cbo_ID_Inventario.SelectedIndex = -1;
+
+            DataTable dtestado = ctrl.fun_UnidadMedida();
+            cbo_unidad_medida.DataSource = dtestado;
+            cbo_unidad_medida.DisplayMember = "UNIDAD";
+            cbo_unidad_medida.ValueMember = "ID_Unidad";
+            cbo_unidad_medida.SelectedIndex = -1;
         }
 
 
@@ -174,45 +182,54 @@ namespace Capa_Vista_Mov_Inv
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-
-            verificar_controles();
-
-            int idTipoMovimiento = Convert.ToInt32(CBO_ID_Tipo_Movimiento.SelectedValue);
-            DateTime fechaMovimiento = DTP_FECHA_Movimiento.Value;
-            string descripcion = txt_descripcion.Text.Trim();
-
-            // Capturar detalle del DGV en una lista
-            List<(int idInventario, int idBodega, float cantidad)> detalle = new List<(int, int, float)>();
-            foreach (DataGridViewRow fila in DGV_DETALLE_MOVIMIENTO.Rows)
+            try
             {
-                // Ignora la fila vacía del DGV (la que tiene *)
-                if (fila.IsNewRow) continue;
+                verificar_controles();
 
-                // También verifica que las celdas no sean null
-                if (fila.Cells[0].Value == null || fila.Cells[2].Value == null || fila.Cells[4].Value == null) continue;
+                int idTipoMovimiento = Convert.ToInt32(CBO_ID_Tipo_Movimiento.SelectedValue);
+                DateTime fechaMovimiento = DTP_FECHA_Movimiento.Value;
+                string descripcion = txt_descripcion.Text.Trim();
 
-                int idInventario = Convert.ToInt32(fila.Cells[0].Value);   // Celda 0 = ID Producto
-                int idBodega = Convert.ToInt32(fila.Cells[2].Value);   // Celda 2 = ID Bodega
-                float cantidad = Convert.ToSingle(fila.Cells[4].Value);     // Celda 4 = Cantidad
-                detalle.Add((idInventario, idBodega, cantidad));
+                // Capturar detalle del DGV en una lista
+                List<(int idInventario,  int idBodega, float cantidad, int idUnidad)> detalle = new List<(int, int, float, int)>();
+                foreach (DataGridViewRow fila in DGV_DETALLE_MOVIMIENTO.Rows)
+                {
+                    // Ignora la fila vacía del DGV (la que tiene *)
+                    if (fila.IsNewRow) continue;
+
+                    // También verifica que las celdas no sean null
+                    if (fila.Cells[0].Value == null || fila.Cells[2].Value == null || fila.Cells[4].Value == null || fila.Cells[6].Value == null) continue;
+
+                    int idInventario = Convert.ToInt32(fila.Cells[0].Value);   // Celda 0 = ID Producto
+                    int idUnidad = Convert.ToInt32(fila.Cells[2].Value);
+                    int idBodega = Convert.ToInt32(fila.Cells[4].Value);   // Celda 4 = ID Bodega
+                    float cantidad = Convert.ToSingle(fila.Cells[6].Value);     // Celda 6 = Cantidad
+                    detalle.Add((idInventario, idBodega, cantidad, idUnidad));
+                }
+
+                bool resultado = ctrl.fun_GuardarMovimiento(idTipoMovimiento, fechaMovimiento, descripcion, detalle);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Movimiento guardado correctamente", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarControlesEncabezado();
+                    LimpiarControlesDetalle();
+                    DGV_DETALLE_MOVIMIENTO.Rows.Clear();
+                }
             }
-
-            bool resultado = ctrl.fun_GuardarMovimiento( idTipoMovimiento, fechaMovimiento, descripcion, detalle);
-
-            if (resultado)
+            catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Movimiento guardado correctamente", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarControlesEncabezado();
-                LimpiarControlesDetalle();
-                DGV_DETALLE_MOVIMIENTO.Rows.Clear();
+                // Errores de validación o stock insuficiente desde cualquier capa
+                MessageBox.Show(ex.Message, "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar el movimiento", "Error",
+                // Errores de BD o conexión desde DAO o Controlador
+                MessageBox.Show(ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void Btn_Agregar_Detalle_Click(object sender, EventArgs e)
@@ -249,8 +266,12 @@ namespace Capa_Vista_Mov_Inv
             // Capturar cantidad
             int cantidad = (int)NUD_Cant_mov.Value;
 
+            //capturar unidad
+            int idUnidad = Convert.ToInt32(cbo_unidad_medida.SelectedValue);
+            DataRowView filaunidad = (DataRowView)cbo_unidad_medida.SelectedItem;
+            string nombreunidad = filaunidad["UNIDAD"].ToString();
             // Agregar fila al DataGridView
-            DGV_DETALLE_MOVIMIENTO.Rows.Add(idProducto, nombreProducto, idBodega, nombreBodega, cantidad);
+            DGV_DETALLE_MOVIMIENTO.Rows.Add(idProducto, nombreProducto, idUnidad,nombreunidad, idBodega, nombreBodega, cantidad);
 
             LimpiarControlesDetalle();
         }

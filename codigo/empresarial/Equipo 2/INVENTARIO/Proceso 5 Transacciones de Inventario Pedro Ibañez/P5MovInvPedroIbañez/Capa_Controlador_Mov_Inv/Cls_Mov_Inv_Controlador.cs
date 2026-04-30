@@ -30,6 +30,12 @@ namespace Capa_Controlador_Mov_Inv
             return dtIdInv;
         }
 
+        public DataTable fun_UnidadMedida()
+        {
+            DataTable dtIdUn = Dao.fun_ObtenerUnidadMedida();
+            return dtIdUn;
+        }
+
         public DataTable fun_CargarIdBodega()
         {
             DataTable dtIdbod = Dao.fun_ObtenerBodega();
@@ -68,14 +74,25 @@ namespace Capa_Controlador_Mov_Inv
             
         }
 
+        private int fun_CalcularEstadoExistencia(float stockNuevo)
+        {
+            if (stockNuevo > 0) {
+                return 1; // Con existencia
+            }
+            else{
+                return 2; // Sin existencia
+            }
+        }
+
+
         public bool fun_Actualizar_Existencias(int idTipoMovimiento,
-                                                List<(int idInventario,int idBodega, float cantidad)> detalle)
+                                                List<(int idInventario,int idBodega, float cantidad, int idUnidad)> detalle)
         {
             try
             {
                 // Construir lista nueva con el stock calculado
-                List<(int idInventario, int idBodega, float stockNuevo)> listaStock =
-                    new List<(int, int, float)>();
+                List<(int idInventario, int idBodega, float stockNuevo, int EstadoExis, int idUnidad)> listaStock =
+                    new List<(int, int, float, int, int)>();
 
                 foreach (var item in detalle)
                 {
@@ -85,7 +102,10 @@ namespace Capa_Controlador_Mov_Inv
                     // Calcular nuevo stock según tipo de movimiento
                     float stockNuevo = fun_CalcularStock(stockActual, item.cantidad, idTipoMovimiento);
 
-                    listaStock.Add((item.idInventario, item.idBodega, stockNuevo));
+                    // Calcular EstadoExis internamente 
+                    int EstadoExis = fun_CalcularEstadoExistencia(stockNuevo);
+
+                    listaStock.Add((item.idInventario, item.idBodega, stockNuevo, EstadoExis, item.idUnidad));
                 }
 
                 // Enviar lista calculada al DAO para actualizar
@@ -94,13 +114,36 @@ namespace Capa_Controlador_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al actualizar existencias: " + ex.Message);
                 return false;
+                throw new Exception("Error en al actualizar existencias " + ex.Message);
             }
         }
 
         public bool fun_GuardarMovimiento( int idTipoMovimiento, DateTime fechaMovimiento,
-                                    string descripcion, List<(int idInventario,int idBodega, float cantidad)> detalle)
+                                    string descripcion, List<(int idInventario,int idBodega, float cantidad,int idUnidad)> detalle)
+        {
+            try
+            {
+                //Guardar el movimiento
+                bool resultadoMovimiento = Dao.fun_InsertarMovimientoCompleto(idTipoMovimiento, fechaMovimiento,
+                                                                               descripcion, detalle);
+                if (!resultadoMovimiento) return false; //Si falla el movimiento, retornar false
+
+                // Actualizar existencias
+                bool resultadoExistencias = fun_Actualizar_Existencias(idTipoMovimiento, detalle);
+                if (!resultadoExistencias) return false; // Si falla el stock, retornar false
+
+                return true; //Todo salió bien
+            }
+            catch (Exception ex)
+            {     
+                return false;
+                throw new Exception("Error al guardar movimiento " + ex.Message);
+            }
+        }
+
+        public bool fun_ApartarStock(int idTipoMovimiento, DateTime fechaMovimiento,
+                            string descripcion, List<(int idInventario, int idBodega, float cantidad, int idUnidad)> detalle)
         {
             try
             {
@@ -117,8 +160,42 @@ namespace Capa_Controlador_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error en controlador: " + ex.Message);
                 return false;
+                throw new Exception("Error al guardar movimiento " + ex.Message);
+            }
+        }
+
+        public bool fun_CreacionApartadoExistencias(int idTipoMovimiento,
+                                                List<(int idInventario, int idBodega, float cantidad, int idUnidad)> detalle)
+        {
+            try
+            {
+                // Construir lista nueva con el stock calculado
+                List<(int idInventario, int idBodega, float stockNuevo, int EstadoExis, int idUnidad)> listaStock =
+                    new List<(int, int, float, int, int)>();
+
+                foreach (var item in detalle)
+                {
+                    // Obtener stock actual desde la BD
+                    float stockActual = Dao.fun_ObtenerStockActual(item.idInventario, item.idBodega);
+
+                    // Calcular nuevo stock según tipo de movimiento
+                    float stockNuevo = fun_CalcularStock(stockActual, item.cantidad, idTipoMovimiento);
+
+                    // Calcular EstadoExis internamente 
+                    int EstadoExis = fun_CalcularEstadoExistencia(stockNuevo);
+
+                    listaStock.Add((item.idInventario, item.idBodega, stockNuevo, EstadoExis, item.idUnidad));
+                }
+
+                // Enviar lista calculada al DAO para actualizar
+                bool resultado = Dao.fun_ActualizarStock(listaStock);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw new Exception("Error en al actualizar existencias " + ex.Message);
             }
         }
     }

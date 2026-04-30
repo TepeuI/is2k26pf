@@ -31,7 +31,7 @@ namespace Capa_Modelo_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener los movimientos: " + ex.Message);
+                throw new Exception("Error en al obtener tipo de movimiento existencias" + ex.Message);
             }
 
             return dtResultado;
@@ -89,7 +89,7 @@ namespace Capa_Modelo_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener Tipo Movimiento: " + ex.Message);
+                throw new Exception("Error en al obtener tipo de movimiento " + ex.Message);
             }
             return sResultado;
         }
@@ -123,7 +123,7 @@ namespace Capa_Modelo_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener stock actual: " + ex.Message);
+                throw new Exception("Error al obtener stock actual " + ex.Message);
             }
             return stock;
         }
@@ -152,7 +152,36 @@ namespace Capa_Modelo_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener los Tipo Movimiento: " + ex.Message);
+                throw new Exception("Error en al obtener tipo de movimiento " + ex.Message);
+            }
+
+            return dtResultado;
+        }
+        //================================================
+        // Obtener UnidadMedida
+        public DataTable fun_ObtenerUnidadMedida()
+        {
+            DataTable dtResultado = new DataTable();
+            string sQuery = @"SELECT 
+                    ID_Unidad,
+                    CONCAT(ID_Unidad, ' - ', Nombre_Unidad ,' - ', Abreviacion_Medida) AS UNIDAD
+                    FROM tbl_unidad_de_medida; ";
+
+            try
+            {
+                using (OdbcConnection oConn = conexion.oConexion())
+                {
+                    oConn.Open();
+                    using (OdbcCommand oCmd = new OdbcCommand(sQuery, oConn))
+                    using (OdbcDataAdapter oDa = new OdbcDataAdapter(oCmd))
+                    {
+                        oDa.Fill(dtResultado);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en al obtener id unidad " + ex.Message);
             }
 
             return dtResultado;
@@ -181,7 +210,7 @@ namespace Capa_Modelo_Mov_Inv
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener las bodegas: " + ex.Message);
+                throw new Exception("Error al obtener bodegas " + ex.Message);
             }
 
             return dtResultado;
@@ -189,7 +218,7 @@ namespace Capa_Modelo_Mov_Inv
 
 
         public bool fun_InsertarMovimientoCompleto(int idTipoMov, DateTime fechaMov, string descripcion,
-                                            List<(int idInventario,int idBodega, float cantidad)> detalle)
+                                            List<(int idInventario, int idBodega, float cantidad, int idUnidad )> detalle)
         {
             bool resultado = false;
 
@@ -249,21 +278,21 @@ namespace Capa_Modelo_Mov_Inv
                     {
                         //  Si algo falló, revertir TODO incluyendo el encabezado
                         transaccion.Rollback();
-                        Console.WriteLine("Rollback ejecutado. Error: " + ex.Message);
                         resultado = false;
+                        throw new Exception("Error en insertar movimiento inventario " + ex.Message);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error de conexión: " + ex.Message);
+                throw new Exception("Error de conexión " + ex.Message);
             }
 
             return resultado;
         }
         //========================================================
         //Actualizar stock
-        public bool fun_ActualizarStock(List<(int idInventario, int idBodega, float stockNuevo)> listaStock)
+        public bool fun_ActualizarStock(List<(int idInventario, int idBodega,float stockNuevo, int EstadoExistencia,int idUnidad)> listaStock)
         {
             bool resultado = false;
 
@@ -273,13 +302,16 @@ namespace Capa_Modelo_Mov_Inv
                                   AND fk_bodega_id = ?";
 
             string sQueryUpdate = @"UPDATE tbl_existencias 
-                            SET stock = ? 
-                            WHERE fk_inventario_id = ? 
-                              AND fk_bodega_id = ?";
+                        SET stock = ?,
+                            estado_existencia = ?,
+                            fk_id_unidad_medida = ?
+                        WHERE fk_inventario_id = ? 
+                          AND fk_bodega_id = ?";
+
 
             string sQueryInsert = @"INSERT INTO tbl_existencias 
-                                (fk_inventario_id, fk_bodega_id, stock) 
-                            VALUES (?, ?, ?)";
+                                (fk_inventario_id, fk_bodega_id, stock, estado_existencia, fk_id_unidad_medida) 
+                            VALUES (?, ?, ?, ?, ?)";
             try
             {
                 using (OdbcConnection oConn = conexion.oConexion())
@@ -306,9 +338,11 @@ namespace Capa_Modelo_Mov_Inv
                                 // UPDATE
                                 using (OdbcCommand oCmdUpdate = new OdbcCommand(sQueryUpdate, oConn, transaccion))
                                 {
-                                    oCmdUpdate.Parameters.AddWithValue("?", item.stockNuevo);
-                                    oCmdUpdate.Parameters.AddWithValue("?", item.idInventario);
-                                    oCmdUpdate.Parameters.AddWithValue("?", item.idBodega);
+                                    oCmdUpdate.Parameters.AddWithValue("?", item.stockNuevo);        
+                                    oCmdUpdate.Parameters.AddWithValue("?", item.EstadoExistencia); 
+                                    oCmdUpdate.Parameters.AddWithValue("?", item.idUnidad);          
+                                    oCmdUpdate.Parameters.AddWithValue("?", item.idInventario);      
+                                    oCmdUpdate.Parameters.AddWithValue("?", item.idBodega);          
                                     oCmdUpdate.ExecuteNonQuery();
                                 }
                             }
@@ -320,6 +354,8 @@ namespace Capa_Modelo_Mov_Inv
                                     oCmdInsert.Parameters.AddWithValue("?", item.idInventario);
                                     oCmdInsert.Parameters.AddWithValue("?", item.idBodega);
                                     oCmdInsert.Parameters.AddWithValue("?", item.stockNuevo);
+                                    oCmdInsert.Parameters.AddWithValue("?", item.EstadoExistencia);
+                                    oCmdInsert.Parameters.AddWithValue("?", item.idUnidad);
                                     oCmdInsert.ExecuteNonQuery();
                                 }
                             }
@@ -331,13 +367,13 @@ namespace Capa_Modelo_Mov_Inv
                     catch (Exception ex)
                     {
                         transaccion.Rollback(); // Algo falló, revertir todo
-                        Console.WriteLine("Error al actualizar stock: " + ex.Message);
+                        throw new Exception("Error en al sentencias al actualizar existencias " + ex.Message);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error de conexión: " + ex.Message);
+                throw new Exception("Error en la conexión " + ex.Message);
             }
 
             return resultado;
