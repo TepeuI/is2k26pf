@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Capa_controlador_Facturas;
 namespace Capa_vista_Factura
 {
     public partial class Frm_factura : Form
     {
+
+        Cls_controlador cont = new Cls_controlador();
+
+        private void Frm_factura_Load(object sender, EventArgs e)
+        {
+            actualizardatagridview();
+            this.Load += Frm_factura_Load;
+
+        }
+
         public Frm_factura()
         {
             InitializeComponent();
+           
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -72,5 +83,63 @@ namespace Capa_vista_Factura
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+        public void actualizardatagridview()
+        {
+            try
+            {
+                // El controlador retorna el DataTable con el JOIN de las dos tablas
+                DataTable dt = cont.llenarTblDetalle();
+               // MessageBox.Show("Filas: " + dt.Rows.Count);
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la tabla: " + ex.Message);
+            }
+        }
+
+        private void Btn_Refrescar_Click(object sender, EventArgs e)
+        {
+            actualizardatagridview();
+        }
+
+
+
+
+
+        public void llenarDataGridView()
+        {
+            try
+            {
+                // 1. Obtenemos el DataTable desde el controlador
+                // Recuerda que el controlador ya trae la unión (JOIN) de las tablas
+                DataTable dt = cont.llenarTblDetalle();
+
+                // 2. Validamos si trae datos
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = dt;
+                    MessageBox.Show("Filas encontradas: " + dt.Rows.Count);
+                }
+                else
+                {
+                    // Opcional: Limpiar el grid si no hay registros
+                    dataGridView1.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
     }
 }
