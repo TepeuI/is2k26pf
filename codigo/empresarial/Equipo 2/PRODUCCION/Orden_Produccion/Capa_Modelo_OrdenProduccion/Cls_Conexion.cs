@@ -7,9 +7,9 @@ using System.Data.Odbc;
 
 namespace Capa_Modelo_OrdenProduccion
 {
-    class Cls_Conexion
+    internal class Cls_Conexion
     {
-        private static readonly string sDsn = "DSN=Bd_Logistica;";
+        private static readonly string sDsn = "DSN=Bd_SIG;";
 
         //abre la conexion
         public OdbcConnection AbrirConexion()

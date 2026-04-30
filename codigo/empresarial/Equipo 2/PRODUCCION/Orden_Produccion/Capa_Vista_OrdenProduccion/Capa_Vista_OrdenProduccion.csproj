@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_OrdenProduccion">
+      <HintPath>..\Capa_Controlador_OrdenProduccion\bin\Debug\Capa_Controlador_OrdenProduccion.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_OrdenProduccion_Detalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_OrdenProduccion_Detalle.Designer.cs">
+      <DependentUpon>Frm_OrdenProduccion_Detalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_OrdenProduccion_Encabezado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +66,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_OrdenProduccion_Detalle.resx">
+      <DependentUpon>Frm_OrdenProduccion_Detalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_OrdenProduccion_Encabezado.resx">
       <DependentUpon>Frm_OrdenProduccion_Encabezado.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +97,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_agregar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_modificar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_refrescar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_salir1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
