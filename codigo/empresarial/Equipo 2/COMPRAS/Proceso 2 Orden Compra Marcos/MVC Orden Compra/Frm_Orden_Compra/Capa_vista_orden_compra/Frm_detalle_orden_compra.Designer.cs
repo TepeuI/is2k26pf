@@ -53,6 +53,8 @@ namespace Capa_vista_orden_compra
             this.Lbl_numeroOrden = new System.Windows.Forms.Label();
             this.Lbl_Proveedor = new System.Windows.Forms.Label();
             this.Gpo_Detalle = new System.Windows.Forms.GroupBox();
+            this.Lbl_unidad = new System.Windows.Forms.Label();
+            this.Cmb_unidad = new System.Windows.Forms.ComboBox();
             this.Txt_producto = new System.Windows.Forms.TextBox();
             this.Txt_Cantidad = new System.Windows.Forms.TextBox();
             this.Lbl_Tipo = new System.Windows.Forms.Label();
@@ -66,11 +68,11 @@ namespace Capa_vista_orden_compra
             this.Btn_remover = new System.Windows.Forms.Button();
             this.Lbl_Total = new System.Windows.Forms.Label();
             this.Txt_total = new System.Windows.Forms.TextBox();
-            this.Cmb_unidad = new System.Windows.Forms.ComboBox();
-            this.Lbl_unidad = new System.Windows.Forms.Label();
+            this.Txt_diascredito = new System.Windows.Forms.TextBox();
+            this.Lbl_discredito = new System.Windows.Forms.Label();
             this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
@@ -107,6 +109,7 @@ namespace Capa_vista_orden_compra
             this.Btn_Refrescar.Text = "Refrescar";
             this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Refrescar.UseVisualStyleBackColor = true;
+            this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
             // Btn_Cancelar
             // 
@@ -137,6 +140,7 @@ namespace Capa_vista_orden_compra
             this.Btn_Grabar.Text = "Grabar";
             this.Btn_Grabar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Grabar.UseVisualStyleBackColor = true;
+            this.Btn_Grabar.Click += new System.EventHandler(this.Btn_Grabar_Click);
             // 
             // Btn_Editar
             // 
@@ -170,6 +174,8 @@ namespace Capa_vista_orden_compra
             // 
             // Gpo_Encabezado
             // 
+            this.Gpo_Encabezado.Controls.Add(this.Lbl_discredito);
+            this.Gpo_Encabezado.Controls.Add(this.Txt_diascredito);
             this.Gpo_Encabezado.Controls.Add(this.Dtp_fecha_entrega);
             this.Gpo_Encabezado.Controls.Add(this.Dtp_FechaVencimiento);
             this.Gpo_Encabezado.Controls.Add(this.Cmb_tipoPago);
@@ -234,7 +240,7 @@ namespace Capa_vista_orden_compra
             // 
             this.Lbl_estado.AutoSize = true;
             this.Lbl_estado.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_estado.Location = new System.Drawing.Point(294, 127);
+            this.Lbl_estado.Location = new System.Drawing.Point(518, 126);
             this.Lbl_estado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_estado.Name = "Lbl_estado";
             this.Lbl_estado.Size = new System.Drawing.Size(51, 17);
@@ -244,7 +250,7 @@ namespace Capa_vista_orden_compra
             // Txt_estado
             // 
             this.Txt_estado.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_estado.Location = new System.Drawing.Point(392, 127);
+            this.Txt_estado.Location = new System.Drawing.Point(646, 127);
             this.Txt_estado.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_estado.Name = "Txt_estado";
             this.Txt_estado.Size = new System.Drawing.Size(116, 23);
@@ -371,10 +377,30 @@ namespace Capa_vista_orden_compra
             this.Gpo_Detalle.Margin = new System.Windows.Forms.Padding(2);
             this.Gpo_Detalle.Name = "Gpo_Detalle";
             this.Gpo_Detalle.Padding = new System.Windows.Forms.Padding(2);
-            this.Gpo_Detalle.Size = new System.Drawing.Size(797, 93);
+            this.Gpo_Detalle.Size = new System.Drawing.Size(827, 93);
             this.Gpo_Detalle.TabIndex = 52;
             this.Gpo_Detalle.TabStop = false;
             this.Gpo_Detalle.Text = "Detalle de Orden";
+            // 
+            // Lbl_unidad
+            // 
+            this.Lbl_unidad.AutoSize = true;
+            this.Lbl_unidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_unidad.Location = new System.Drawing.Point(401, 25);
+            this.Lbl_unidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_unidad.Name = "Lbl_unidad";
+            this.Lbl_unidad.Size = new System.Drawing.Size(107, 17);
+            this.Lbl_unidad.TabIndex = 48;
+            this.Lbl_unidad.Text = "Unidad Medida";
+            // 
+            // Cmb_unidad
+            // 
+            this.Cmb_unidad.FormattingEnabled = true;
+            this.Cmb_unidad.Location = new System.Drawing.Point(392, 52);
+            this.Cmb_unidad.Margin = new System.Windows.Forms.Padding(2);
+            this.Cmb_unidad.Name = "Cmb_unidad";
+            this.Cmb_unidad.Size = new System.Drawing.Size(116, 25);
+            this.Cmb_unidad.TabIndex = 47;
             // 
             // Txt_producto
             // 
@@ -388,7 +414,7 @@ namespace Capa_vista_orden_compra
             // Txt_Cantidad
             // 
             this.Txt_Cantidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Cantidad.Location = new System.Drawing.Point(392, 56);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(522, 54);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(98, 23);
@@ -398,7 +424,7 @@ namespace Capa_vista_orden_compra
             // 
             this.Lbl_Tipo.AutoSize = true;
             this.Lbl_Tipo.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Tipo.Location = new System.Drawing.Point(409, 25);
+            this.Lbl_Tipo.Location = new System.Drawing.Point(541, 25);
             this.Lbl_Tipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_Tipo.Name = "Lbl_Tipo";
             this.Lbl_Tipo.Size = new System.Drawing.Size(67, 17);
@@ -469,8 +495,8 @@ namespace Capa_vista_orden_compra
             this.Dgv_DetalleProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_DetalleProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnProducto,
-            this.ColumnCantidad,
             this.ColumnUnidad,
+            this.ColumnCantidad,
             this.ColumnPrecioUnitario});
             this.Dgv_DetalleProductos.Location = new System.Drawing.Point(16, 423);
             this.Dgv_DetalleProductos.Margin = new System.Windows.Forms.Padding(2);
@@ -534,40 +560,40 @@ namespace Capa_vista_orden_compra
             this.Txt_total.Size = new System.Drawing.Size(131, 23);
             this.Txt_total.TabIndex = 47;
             // 
-            // Cmb_unidad
+            // Txt_diascredito
             // 
-            this.Cmb_unidad.FormattingEnabled = true;
-            this.Cmb_unidad.Location = new System.Drawing.Point(509, 54);
-            this.Cmb_unidad.Margin = new System.Windows.Forms.Padding(2);
-            this.Cmb_unidad.Name = "Cmb_unidad";
-            this.Cmb_unidad.Size = new System.Drawing.Size(116, 25);
-            this.Cmb_unidad.TabIndex = 47;
+            this.Txt_diascredito.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_diascredito.Location = new System.Drawing.Point(392, 123);
+            this.Txt_diascredito.Margin = new System.Windows.Forms.Padding(2);
+            this.Txt_diascredito.Name = "Txt_diascredito";
+            this.Txt_diascredito.Size = new System.Drawing.Size(116, 23);
+            this.Txt_diascredito.TabIndex = 47;
             // 
-            // Lbl_unidad
+            // Lbl_discredito
             // 
-            this.Lbl_unidad.AutoSize = true;
-            this.Lbl_unidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_unidad.Location = new System.Drawing.Point(518, 25);
-            this.Lbl_unidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lbl_unidad.Name = "Lbl_unidad";
-            this.Lbl_unidad.Size = new System.Drawing.Size(107, 17);
-            this.Lbl_unidad.TabIndex = 48;
-            this.Lbl_unidad.Text = "Unidad Medida";
+            this.Lbl_discredito.AutoSize = true;
+            this.Lbl_discredito.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_discredito.Location = new System.Drawing.Point(294, 127);
+            this.Lbl_discredito.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_discredito.Name = "Lbl_discredito";
+            this.Lbl_discredito.Size = new System.Drawing.Size(89, 17);
+            this.Lbl_discredito.TabIndex = 48;
+            this.Lbl_discredito.Text = "Dias Credito";
             // 
             // ColumnProducto
             // 
             this.ColumnProducto.HeaderText = "Producto";
             this.ColumnProducto.Name = "ColumnProducto";
             // 
-            // ColumnCantidad
-            // 
-            this.ColumnCantidad.HeaderText = "Cantidad";
-            this.ColumnCantidad.Name = "ColumnCantidad";
-            // 
             // ColumnUnidad
             // 
             this.ColumnUnidad.HeaderText = "Unidad de Medida";
             this.ColumnUnidad.Name = "ColumnUnidad";
+            // 
+            // ColumnCantidad
+            // 
+            this.ColumnCantidad.HeaderText = "Cantidad";
+            this.ColumnCantidad.Name = "ColumnCantidad";
             // 
             // ColumnPrecioUnitario
             // 
@@ -648,9 +674,11 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.TextBox Txt_total;
         private System.Windows.Forms.Label Lbl_unidad;
         private System.Windows.Forms.ComboBox Cmb_unidad;
+        private System.Windows.Forms.TextBox Txt_diascredito;
+        private System.Windows.Forms.Label Lbl_discredito;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
     }
 }
