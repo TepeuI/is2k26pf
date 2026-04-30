@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_vista_orden_compra;
+using Capa_Vista_Compras;
 namespace Ejecucion_orden_compra
 {
     static class Program
@@ -16,7 +17,7 @@ namespace Ejecucion_orden_compra
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_ordencompra());
+            Application.Run(new Frm_inicio_devoluciones_d());
         }
     }
 }
