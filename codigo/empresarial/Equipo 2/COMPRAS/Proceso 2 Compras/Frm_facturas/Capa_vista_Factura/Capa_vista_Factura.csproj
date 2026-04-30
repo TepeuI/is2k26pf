@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_controlador_Facturas">
+      <HintPath>..\Capa_controlador_Facturas\bin\Debug\Capa_controlador_Facturas.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -50,6 +53,12 @@
     <Compile Include="Frm_detalle_compra.Designer.cs">
       <DependentUpon>Frm_detalle_compra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Devolicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Devolicion.Designer.cs">
+      <DependentUpon>Frm_Devolicion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_factura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Frm_detalle_compra.resx">
       <DependentUpon>Frm_detalle_compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Devolicion.resx">
+      <DependentUpon>Frm_Devolicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_factura.resx">
       <DependentUpon>Frm_factura.cs</DependentUpon>
