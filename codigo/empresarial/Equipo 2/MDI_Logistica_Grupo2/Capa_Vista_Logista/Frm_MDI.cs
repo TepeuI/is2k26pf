@@ -454,5 +454,13 @@ namespace Capa_Vista_Logista
             Unidad.MdiParent = this;
             Unidad.Show();
         }
+
+        private void devolucionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_inicio_devoluciones_d devolu = new Frm_inicio_devoluciones_d();
+            devolu.MdiParent = this;
+            devolu.Show();
+
+        }
     }
 }
