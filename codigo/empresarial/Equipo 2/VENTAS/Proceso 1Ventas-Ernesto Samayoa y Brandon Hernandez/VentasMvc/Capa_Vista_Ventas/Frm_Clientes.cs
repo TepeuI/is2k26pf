@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Controlador_NavegadorTrs;
 
 namespace Capa_Vista_Ventas
 {
@@ -15,7 +16,8 @@ namespace Capa_Vista_Ventas
         public Frm_Clientes()
         {
             InitializeComponent();
-            Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView config = new Capa_Controlador_Navegador.Cls_ConfiguracionDataGridView
+            //navegadorTrs1.Load += (s, e) => navegadorTrs1.BotonesEstadoCRUD(true, true, true, true, true);
+            Capa_Controlador_NavegadorTrs.Cls_ConfiguracionDataGridView config = new Capa_Controlador_NavegadorTrs.Cls_ConfiguracionDataGridView
             {
                 Ancho = 1100,
                 Alto = 200,
@@ -25,42 +27,68 @@ namespace Capa_Vista_Ventas
                 TipoScrollBars = ScrollBars.Both,
                 Nombre = "dgv_empleados"
             };
+
             string[] columnas = {
-                    "Tbl_Clientes",
-                    "Pk_Id_Cliente",
-                    "Cmp_CuioNit",
-                    "Cmp_Nombre",
-                    "Cmp_Apellido",
-                    "Cmp_Telefono",
-                    "Cmp_Correo",
-                    "Cmp_Saldo_Total",
-                    "Cmp_Direccion",
-                    "Cmp_Tipo",
-                    "Cmp_Estado"
-                };
+                        "Tbl_Clientes",
+                        "Pk_Id_Cliente",
+                        "Cmp_CuioNit",
+                        "Cmp_Nombre",
+                        "Cmp_Apellido",
+                        "Cmp_Telefono",
+                        "Cmp_Correo",
+                        "Cmp_Saldo_Total",
+                        "Cmp_Direccion",
+                        "Fk_Id_Tipo_Cliente",
+                        "Cmp_Estado"
+
+                     };
 
             string[] sEtiquetas = {
-                    "Código Cliente",
-                    "CUI/NIT",
-                    "Nombre",
-                    "Apellido",
-                    "Telefono",
-                    "Correo",
-                    "Saldo Total",
-                    "Dirección",
-                    "Tipo",
-                    "Estado"
-                };
-            int id_aplicacion = 702;
-            int id_Modulo = 44;
-            navegador1.IPkId_Aplicacion = id_aplicacion;
-            navegador1.IPkId_Modulo = id_Modulo;
-            navegador1.configurarDataGridView(config);
-            navegador1.SNombreTabla = columnas[0];
-            navegador1.SAlias = columnas;
-            navegador1.SEtiquetas = sEtiquetas;
-            navegador1.mostrarDatos();
+                        "ID",
+                        "Cui/Nit",
+                        "Nombre Cliente",
+                        "Apellido Cliente",
+                        "Teléfono",
+                        "Correo",
+                        "Saldo Total",
+                        "Dirección",
+                        "ID Tipo Cliente",
+                        "Estado"
+                     };
 
+            // ─── CONFIGURACIÓN FK ────────────────────────────────────────────────
+            List<Cls_ConfiguracionFK> fks = new List<Cls_ConfiguracionFK>
+                {
+                    new Cls_ConfiguracionFK
+                    {
+                        CampoFK         = "Fk_Id_Cliente",
+                        TablaReferencia = "Tbl_Clientes",
+                        CampoPK         = "Pk_Id_Cliente",
+                        CampoMostrar    = "Cmp_Tipo",
+
+                        CamposEditables = new List<Cls_CampoEditable>
+                        {
+                             new Cls_CampoEditable { NombreCampo = "Cmp_Nombre",  Etiqueta = "Nombre", SoloLectura = true  },
+                            new Cls_CampoEditable { NombreCampo = "Cmp_Apellido",  Etiqueta = "Apellidos", SoloLectura = true  },
+
+
+                        }
+                    },
+
+
+                };
+
+            int id_aplicacion = 702;
+            int id_modulo = 44;
+
+            navegadorTrs1.IPkId_Aplicacion = id_aplicacion;
+            navegadorTrs1.IPkId_Modulo = id_modulo;
+            navegadorTrs1.configurarDataGridView(config);
+            navegadorTrs1.SNombreTabla = columnas[0];
+            navegadorTrs1.SAlias = columnas;
+            navegadorTrs1.SEtiquetas = sEtiquetas;
+            navegadorTrs1.SConfiguracionFK = fks;
+            navegadorTrs1.mostrarDatos();
         }
     }
 }

@@ -462,5 +462,12 @@ namespace Capa_Vista_Logista
             devolu.Show();
 
         }
+
+        private void tipoDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Tipo_Clientes TipoClientes = new Frm_Tipo_Clientes();
+            TipoClientes.MdiParent = this;
+            TipoClientes.Show();
+        }
     }
 }
