@@ -115,6 +115,9 @@ namespace Capa_Vista_Ventas
             dtDetalle.Columns.Add("IdProducto", typeof(int));
             dtDetalle.Columns.Add("Producto", typeof(string));
             dtDetalle.Columns.Add("Descripcion", typeof(string));
+
+            dtDetalle.Columns.Add("Bodega", typeof(string));
+
             dtDetalle.Columns.Add("Precio", typeof(float));
             dtDetalle.Columns.Add("Cantidad", typeof(int));
             dtDetalle.Columns.Add("Descuento", typeof(float));
@@ -222,6 +225,11 @@ namespace Capa_Vista_Ventas
                 bool bEsVenta = sCmp_Tipo_Operacion == "Venta";
                 DateTime dCmp_Fecha_Vencimiento = Dtp_Fecha_Venta.Value.AddDays(30);
 
+                //nuevo agregado
+                bool bEsPedido = sCmp_Tipo_Operacion == "Pedido";
+                bool bEsCotizacion = sCmp_Tipo_Operacion == "Cotizacion";
+
+                // GUARDAR
                 bool resultado = controlador.GuardarVenta(
                     dCmp_Fecha_Venta,
                     iFk_Id_Cliente,
@@ -232,13 +240,13 @@ namespace Capa_Vista_Ventas
                     dtDetalle,
                     dCmp_Fecha_Vencimiento,
                     bEsVenta
-
-                ) ;
+                );
 
                 if (resultado)
                 {
-                    MessageBox.Show("Venta guardada correctamente.");
-                    //LIMPIAR CORRECTAMENTE
+                    MessageBox.Show("Registro guardado correctamente.");
+
+                    // LIMPIAR
                     dtDetalle.Clear();
                     Txt_Saldo_Total.Text = "0.00";
 
@@ -251,16 +259,27 @@ namespace Capa_Vista_Ventas
                     Nud_Cant_Prod.Value = 1;
 
                     fun_CargarIdVenta();
-                    //EVENTO PARA ACTUALIZAR OTRO FORM
+
+                    // EVENTO
                     VentaGuardada?.Invoke();
+
+                    // 🔥 MENSAJES SEGÚN TIPO
                     if (bEsVenta)
                     {
-                        MessageBox.Show("Se ha registrado una cuenta por cobrar");
+                        MessageBox.Show("Se ha registrado una cuenta por cobrar.");
+                    }
+                    else if (sCmp_Tipo_Operacion == "Pedido")
+                    {
+                        MessageBox.Show("Pedido registrado correctamente.");
+                    }
+                    else if (sCmp_Tipo_Operacion == "Cotizacion")
+                    {
+                        MessageBox.Show("Cotización generada correctamente.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar la venta.");
+                    MessageBox.Show("Error al guardar el registro.");
                 }
             }
             catch (Exception ex)
@@ -300,7 +319,7 @@ namespace Capa_Vista_Ventas
         {
             try
             {
-                //VALIDAR ENCABEZADO (UNA SOLA CONDICIÓN)
+                // VALIDAR ENCABEZADO
                 if (string.IsNullOrWhiteSpace(Cbo_Id_Venta.Text) ||
                     Cbo_Id_Cliente.SelectedIndex == -1 ||
                     Cbo_Id_Sucursal.SelectedIndex == -1 ||
@@ -329,6 +348,10 @@ namespace Capa_Vista_Ventas
                     return;
                 }
 
+                //OBTENER CLIENTE
+                int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
+
+                // DATOS DEL PRODUCTO
                 DataRowView row = (DataRowView)Cbo_Id_Inventario.SelectedItem;
 
                 int iIdProducto = Convert.ToInt32(row["pk_inventario_id"]);
@@ -337,36 +360,42 @@ namespace Capa_Vista_Ventas
                 float fPrecio = Convert.ToSingle(row["precio_unitario"]);
                 int iCantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
 
-                //Desde controlador
-                var info = controlador.ObtenerTipoYDescuento(iCantidad);
-                //cálculo desde el controlador
-                float fSubtotal = controlador.CalcularSubtotalConDescuento(fPrecio, iCantidad);
+                DataRowView rowBodega = (DataRowView)Cbo_Id_Bodega.SelectedItem;
+                string sBodega = rowBodega["NombreBodega"].ToString();
 
-                //COLUMNAS
+                //DESCUENTO DESDE BD
+                var info = controlador.ObtenerDescuentoCliente(iFk_Id_Cliente, iCantidad);
+
+                //SUBTOTAL
+                float subtotal = controlador.CalcularSubtotal(fPrecio, iCantidad, info.fDescuento);
+
+                //AGREGAR AL GRID
                 dtDetalle.Rows.Add(
                     iIdProducto,
                     sProducto,
                     sDescripcion,
+                    sBodega,
                     fPrecio,
                     iCantidad,
-                    info.descuento,      // nueva columna
-                    info.tipoCliente,    // nueva columna
-                    fSubtotal            // subtotal
+                    info.fDescuento,
+                    info.sTipoCliente,
+                    subtotal
                 );
 
-                //total desde controlador
+                //TOTAL
                 totalGeneral = controlador.CalcularTotal(dtDetalle);
                 Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
 
-                //Ordenar por ID PRODUCTO
+                //ORDENAR
                 dtDetalle.DefaultView.Sort = "IdProducto ASC";
                 Dgv_Detalle_Venta.DataSource = dtDetalle.DefaultView;
 
-                // limpiar
+                //LIMPIAR
                 Cbo_Id_Inventario.SelectedIndex = -1;
                 Cbo_Id_Bodega.SelectedIndex = -1;
                 Nud_Cant_Prod.Value = 1;
-                //Agregar total a pagos
+
+                // PARA PAGOS
                 _montoTotal = Convert.ToDecimal(totalGeneral);
             }
             catch (Exception ex)
@@ -487,6 +516,39 @@ namespace Capa_Vista_Ventas
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar: " + ex.Message);
+            }
+        }
+
+        private void Btn_Limpiar_Detalle_Ventas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Limpiar DataTable (esto limpia el DataGrid automáticamente)
+                dtDetalle.Clear();
+
+                // Resetear total
+                totalGeneral = 0;
+                Txt_Saldo_Total.Text = "0.00";
+
+                // Limpiar combos
+                Cbo_Id_Cliente.SelectedIndex = -1;
+                Cbo_Id_Sucursal.SelectedIndex = -1;
+                Cbo_Estado.SelectedIndex = -1;
+                Cbo_Tipo_Operacion.SelectedIndex = -1;
+                Cbo_Id_Inventario.SelectedIndex = -1;
+                Cbo_Id_Bodega.SelectedIndex = -1;
+
+                // Reset cantidad
+                Nud_Cant_Prod.Value = 1;
+
+                // Nuevo ID de venta
+                fun_CargarIdVenta();
+
+                MessageBox.Show("Formulario limpiado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al limpiar: " + ex.Message);
             }
         }
     }

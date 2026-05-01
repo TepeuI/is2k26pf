@@ -75,24 +75,16 @@ namespace Capa_Controlador_Ventas
 
 
         //NUEVO METODO PARA APLICAR DESCUENTO POR TIPO DE CLIENTE
-        public (string tipoCliente, float descuento) ObtenerTipoYDescuento(int iCantidad)
+        public (string sTipoCliente, float fDescuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, int iCantidad)
         {
-            if (iCantidad >= 1 && iCantidad <= 11)
-                return ("Publico", 0f);
-
-            if (iCantidad >= 12 && iCantidad <= 47)
-                return ("Mayorista", 0.15f);
-
-            return ("Distribuidor", 0.25f);
+            return dao.ObtenerDescuentoCliente(iFk_Id_Cliente, iCantidad);
         }
 
         //CALCULAR SUBTOTAL CON DESCUENTO APLICADO
-        public float CalcularSubtotalConDescuento(float fPrecio, int iCantidad)
+        public float CalcularSubtotal(float fPrecio, int iCantidad, float fDescuento)
         {
-            var resultado = ObtenerTipoYDescuento(iCantidad);
-
             float subtotal = fPrecio * iCantidad;
-            float descuentoAplicado = subtotal * resultado.descuento;
+            float descuentoAplicado = subtotal * fDescuento;
 
             return subtotal - descuentoAplicado;
         }

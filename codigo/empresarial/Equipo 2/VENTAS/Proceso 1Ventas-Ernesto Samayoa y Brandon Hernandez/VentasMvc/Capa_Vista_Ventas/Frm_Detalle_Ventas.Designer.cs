@@ -206,7 +206,7 @@ namespace Capa_Vista_Ventas
             this.Dtp_Fecha_Venta.Name = "Dtp_Fecha_Venta";
             this.Dtp_Fecha_Venta.Size = new System.Drawing.Size(376, 27);
             this.Dtp_Fecha_Venta.TabIndex = 6;
-            this.Dtp_Fecha_Venta.Value = new System.DateTime(2026, 4, 28, 0, 0, 0, 0);
+            this.Dtp_Fecha_Venta.Value = new System.DateTime(2026, 4, 30, 23, 38, 2, 0);
             // 
             // Cbo_Id_Cliente
             // 
@@ -437,6 +437,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Limpiar_Detalle_Ventas.Text = "Limpiar";
             this.Btn_Limpiar_Detalle_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Limpiar_Detalle_Ventas.UseVisualStyleBackColor = true;
+            this.Btn_Limpiar_Detalle_Ventas.Click += new System.EventHandler(this.Btn_Limpiar_Detalle_Ventas_Click);
             // 
             // Btn_Remover_Detalle_Ventas
             // 

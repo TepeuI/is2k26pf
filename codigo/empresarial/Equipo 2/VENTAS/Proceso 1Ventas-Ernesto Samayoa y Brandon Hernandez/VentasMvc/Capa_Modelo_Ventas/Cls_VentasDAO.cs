@@ -89,22 +89,33 @@ namespace Capa_Modelo_Ventas
         FROM tbl_asignacion_clientes a
         INNER JOIN tbl_vendedor v ON a.Fk_Id_Vendedor = v.Pk_Id_Vendedor
         WHERE a.Fk_Id_Cliente = ?";
-
+        
+        //AGREGANDO DESCUENTO POR TIPO CLIENTE
+        private static readonly string SQL_DESCUENTO = @"
+        SELECT 
+        tc.Cmp_Tipo,
+        pd.Cmp_Descuento
+        FROM tbl_clientes c
+        INNER JOIN tbl_tipo_cliente tc 
+        ON c.Fk_Id_Tipo_Cliente = tc.Pk_Id_Tipo_Cliente
+        INNER JOIN tbl_politicas_descuento pd 
+        ON tc.Pk_Id_Tipo_Cliente = pd.Fk_Id_Tipo_Cliente
+        WHERE c.Pk_Id_Cliente = ?
+        AND ? BETWEEN pd.Cmp_Cantidad_Min AND pd.Cmp_Cantidad_Max";
         //Primer Formulario Ventas Generales
-        //GRID PARA VENTAS GENERALES
+        //GRID PARA VENTAS GENERALES //corregir tipoclientes
         private static readonly string SQL_VENTAS_LISTADO = @"
         SELECT 
         v.Pk_Id_Ventas AS IdVenta,
         v.Cmp_Fecha_Venta AS Fecha,
         CONCAT(c.Cmp_Nombre, ' ', c.Cmp_Apellido) AS Cliente,
-        c.Cmp_Tipo AS TipoCliente,
+        tc.Cmp_Tipo AS TipoCliente,
         v.Cmp_Tipo_Operacion AS TipoOperacion,
         v.Cmp_Saldo_Total AS Total
         FROM tbl_ventas v
         INNER JOIN tbl_clientes c ON v.Fk_Id_Cliente = c.Pk_Id_Cliente
+        INNER JOIN tbl_tipo_cliente tc ON c.Fk_Id_Tipo_Cliente = tc.Pk_Id_Tipo_Cliente
         ORDER BY v.Pk_Id_Ventas ASC";
-
-
 
 
         public DataTable ObtenerClientes()
@@ -295,6 +306,33 @@ namespace Capa_Modelo_Ventas
             }
         }
 
+        //OBTENER LOS DESCUENTOS DE LOS CLIENTES 
+        public (string tipo, float descuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, int iCantidad)
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_DESCUENTO, conn))
+                {
+                    cmd.Parameters.AddWithValue("?", iFk_Id_Cliente);
+                    cmd.Parameters.AddWithValue("?", iCantidad);
+
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string sTipo = reader["Cmp_Tipo"].ToString();
+                            float fDescuento = Convert.ToSingle(reader["Cmp_Descuento"]);
+
+                            return (sTipo, fDescuento);
+                        }
+                    }
+                }
+
+                conexion.desconexion(conn);
+            }
+
+            return ("Publico", 0); // fallback
+        }
 
         public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, DataTable detalle,DateTime dCmp_Fecha_Vencimiento,bool bGenerarCuentaCobrar)
         {

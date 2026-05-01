@@ -78,6 +78,12 @@
     <Compile Include="Frm_Clientes.Designer.cs">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Tipo_Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Tipo_Clientes.Designer.cs">
+      <DependentUpon>Frm_Tipo_Clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Cuentaporcobrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,12 @@
       <DependentUpon>Rpt_Sucursales.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Rpt_Tipo_Clientes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Tipo_Clientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Rpt_Vendedores.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -199,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Clientes.resx">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Tipo_Clientes.resx">
+      <DependentUpon>Frm_Tipo_Clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Cuentaporcobrar.resx">
       <DependentUpon>Frm_Cuentaporcobrar.cs</DependentUpon>
@@ -257,6 +272,10 @@
     <EmbeddedResource Include="Rpt_Sucursales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_Sucursales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Tipo_Clientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Tipo_Clientes.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt_Vendedores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
