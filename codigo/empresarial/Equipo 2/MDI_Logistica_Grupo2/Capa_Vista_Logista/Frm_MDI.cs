@@ -454,5 +454,7 @@ namespace Capa_Vista_Logista
             Unidad.MdiParent = this;
             Unidad.Show();
         }
+
+
     }
 }
