@@ -15,8 +15,10 @@ namespace Capa_Modelo_Ventas
         public string Cmp_Estado_Venta { get; set; }
         public string Cmp_Tipo_Operacion { get; set; }
         public float Cmp_Saldo_Total { get; set; }
+        public DateTime Cmp_Fecha_Vencimiento { get; set; }
+        public DateTime Cmp_Fecha_Entrega { get; set; }
         public Cls_Ventas() { }
-        public Cls_Ventas(int iPk_Id_Ventas, DateTime dCmp_Fecha_Venta, /*int iFk_Id_Cliente,*/ int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total )
+        public Cls_Ventas(int iPk_Id_Ventas, DateTime dCmp_Fecha_Venta, /*int iFk_Id_Cliente,*/ int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,  DateTime fCmp_Fecha_Vencimiento, DateTime fCmp_Fecha_Entrega)
         {
             Pk_Id_Ventas = iPk_Id_Ventas;
             Cmp_Fecha_Venta = dCmp_Fecha_Venta;
@@ -25,6 +27,8 @@ namespace Capa_Modelo_Ventas
             Cmp_Estado_Venta = sCmp_Estado_Venta;
             Cmp_Tipo_Operacion = sCmp_Tipo_Operacion;
             Cmp_Saldo_Total = fCmp_Saldo_Total;
+            Cmp_Fecha_Vencimiento = fCmp_Fecha_Vencimiento;
+            Cmp_Fecha_Entrega = fCmp_Fecha_Entrega;
         }
     }
     public class Cls_Detalle_Ventas
