@@ -187,9 +187,9 @@ namespace Capa_Vista_Mov_Inv
             this.GB_ENCABEZADO.Controls.Add(this.Lbl_ID_TipoMovimiento);
             this.GB_ENCABEZADO.Controls.Add(this.Lbl_IDMovInv);
             this.GB_ENCABEZADO.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_ENCABEZADO.Location = new System.Drawing.Point(278, 203);
+            this.GB_ENCABEZADO.Location = new System.Drawing.Point(230, 193);
             this.GB_ENCABEZADO.Name = "GB_ENCABEZADO";
-            this.GB_ENCABEZADO.Size = new System.Drawing.Size(693, 234);
+            this.GB_ENCABEZADO.Size = new System.Drawing.Size(866, 234);
             this.GB_ENCABEZADO.TabIndex = 19;
             this.GB_ENCABEZADO.TabStop = false;
             this.GB_ENCABEZADO.Text = "ENCABEZADO";
@@ -214,7 +214,7 @@ namespace Capa_Vista_Mov_Inv
             // 
             this.DTP_FECHA_Movimiento.Location = new System.Drawing.Point(472, 30);
             this.DTP_FECHA_Movimiento.Name = "DTP_FECHA_Movimiento";
-            this.DTP_FECHA_Movimiento.Size = new System.Drawing.Size(200, 26);
+            this.DTP_FECHA_Movimiento.Size = new System.Drawing.Size(279, 26);
             this.DTP_FECHA_Movimiento.TabIndex = 6;
             // 
             // CBO_ID_Tipo_Movimiento

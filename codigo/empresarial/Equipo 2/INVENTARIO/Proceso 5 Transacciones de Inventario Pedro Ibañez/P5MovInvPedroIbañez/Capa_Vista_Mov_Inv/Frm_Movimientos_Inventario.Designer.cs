@@ -139,6 +139,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Refrescar.Text = "Refrescar";
             this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Refrescar.UseVisualStyleBackColor = true;
+            this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
             // panel1
             // 
@@ -146,7 +147,7 @@ namespace Capa_Vista_Mov_Inv
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(993, 71);
+            this.panel1.Size = new System.Drawing.Size(1448, 71);
             this.panel1.TabIndex = 31;
             // 
             // label1

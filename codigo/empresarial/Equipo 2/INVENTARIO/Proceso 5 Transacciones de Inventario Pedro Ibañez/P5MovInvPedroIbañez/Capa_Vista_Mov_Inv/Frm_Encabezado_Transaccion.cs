@@ -24,6 +24,42 @@ namespace Capa_Vista_Mov_Inv
 
         Cls_Mov_Inv_Controlador ctrl = new Cls_Mov_Inv_Controlador();
 
+        private Cls_Constructor_Encabezado _encabezado;
+
+        // Constructor que recibe los datos
+        public Frm_Encabezado_Transaccion(Cls_Constructor_Encabezado Encab)
+        {
+            InitializeComponent();
+            _encabezado = Encab;
+            fun_cargar_combos();
+            EstadoInicialControles();
+            EstadoInicialBotones();
+        }
+
+        private void Frm_Encabezado_Transaccion_Load(object sender, EventArgs e)
+        {
+            fun_LlenarControles();
+        }
+
+        private void fun_LlenarControles()
+        {
+            try
+            {
+                // Llenar cada control con los datos recibidos
+                Cbo_Id_Movimiento.Text = _encabezado.ID.ToString();
+                DTP_FECHA_Movimiento.Value = _encabezado.Fecha;
+                txt_descripcion.Text = _encabezado.Descripcion;
+
+                // Seleccionar el tipo de movimiento en el CBO
+                CBO_ID_Tipo_Movimiento.SelectedValue = _encabezado.IdTipoMovimiento;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al llenar controles: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
