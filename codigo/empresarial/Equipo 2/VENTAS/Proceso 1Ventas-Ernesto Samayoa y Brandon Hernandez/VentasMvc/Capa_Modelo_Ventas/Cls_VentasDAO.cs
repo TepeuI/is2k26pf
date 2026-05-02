@@ -334,18 +334,27 @@ namespace Capa_Modelo_Ventas
             return ("Publico", 0); // fallback
         }
 
-        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, DataTable detalle,DateTime dCmp_Fecha_Vencimiento,bool bGenerarCuentaCobrar)
+        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
+    string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,
+    DataTable detalle, DateTime dFecha_Especial, DateTime dCmp_Fecha_Vencimiento, bool bEsVenta)
         {
-            using (OdbcConnection conn = conexion.conexion()){
+            using (OdbcConnection conn = conexion.conexion())
+            {
                 OdbcTransaction trans = conn.BeginTransaction();
 
                 try
-            
                 {
                     int iPk_Id_Ventas = 0;
-                      int idVenta = 0;
 
-                    // INSERTAR ENCABEZADO
+                    // PREPARAR FECHAS SEGÚN TIPO
+                    DateTime? dFecha_Entrega = null;
+
+                    if (sCmp_Tipo_Operacion == "Cotizacion" || sCmp_Tipo_Operacion == "Pedido")
+                    {
+                        dFecha_Entrega = dFecha_Especial;
+                    }
+
+                    // INSERTAR ENCABEZADO CON FECHAS
                     using (OdbcCommand cmdVenta = new OdbcCommand(SQL_INSERT_VENTA, conn, trans))
                     {
                         cmdVenta.Parameters.AddWithValue("?", dCmp_Fecha_Venta);
@@ -364,6 +373,31 @@ namespace Capa_Modelo_Ventas
                         iPk_Id_Ventas = Convert.ToInt32(cmdId.ExecuteScalar());
                     }
 
+                    if (dFecha_Especial != DateTime.MinValue)
+                    {
+                        string campoFecha = "";
+
+                        if (sCmp_Tipo_Operacion == "Cotizacion")
+                        {
+                            campoFecha = "Cmp_Fecha_Vencimiento";
+                        }
+                        else if (sCmp_Tipo_Operacion == "Pedido")
+                        {
+                            campoFecha = "Cmp_Fecha_Entrega";
+                        }
+
+                        if (!string.IsNullOrEmpty(campoFecha))
+                        {
+                            using (OdbcCommand cmdUpdateFecha = new OdbcCommand(
+                                "UPDATE tbl_ventas SET " + campoFecha + " = ? WHERE Pk_Id_Ventas = ?", conn, trans))
+                            {
+                                cmdUpdateFecha.Parameters.AddWithValue("?", dFecha_Especial);
+                                cmdUpdateFecha.Parameters.AddWithValue("?", iPk_Id_Ventas);
+                                cmdUpdateFecha.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
                     // INSERTAR DETALLE
                     foreach (DataRow row in detalle.Rows)
                     {
@@ -373,36 +407,38 @@ namespace Capa_Modelo_Ventas
                             cmdDetalle.Parameters.AddWithValue("?", row["IdProducto"]);
                             cmdDetalle.Parameters.AddWithValue("?", row["Cantidad"]);
                             cmdDetalle.Parameters.AddWithValue("?", row["Subtotal"]);
-                            cmdDetalle.Parameters.AddWithValue("?", 0); // costo (puedes mejorar luego)
+                            cmdDetalle.Parameters.AddWithValue("?", 0);
 
                             cmdDetalle.ExecuteNonQuery();
                         }
                     }
-                    if (bGenerarCuentaCobrar)
+
+                    // CREAR CUENTA POR COBRAR SOLO SI ES VENTA
+                    if (bEsVenta)
                     {
-                        int idCuentaPorCobrar = 0;
+                        // SUMAR SALDO AL CLIENTE
+                        using (OdbcCommand cmdUpdateCliente = new OdbcCommand(
+                            "UPDATE tbl_clientes SET Cmp_Saldo_Total = Cmp_Saldo_Total + ? WHERE Pk_Id_Cliente = ?", conn, trans))
+                        {
+                            cmdUpdateCliente.Parameters.AddWithValue("?", fCmp_Saldo_Total);
+                            cmdUpdateCliente.Parameters.AddWithValue("?", iFk_Id_Cliente);
+                            cmdUpdateCliente.ExecuteNonQuery();
+                        }
                         using (OdbcCommand cmdCuenta = new OdbcCommand(SQL_INSERT_CUENTA_COBRAR, conn, trans))
                         {
                             cmdCuenta.Parameters.AddWithValue("?", iPk_Id_Ventas);
                             cmdCuenta.Parameters.AddWithValue("?", iFk_Id_Cliente);
                             cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Venta);
-                            cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Vencimiento);
+                            cmdCuenta.Parameters.AddWithValue("?", dCmp_Fecha_Vencimiento);  // ← Aquí va la de vencimiento
                             cmdCuenta.Parameters.AddWithValue("?", fCmp_Saldo_Total);
                             cmdCuenta.Parameters.AddWithValue("?", "Activo");
                             cmdCuenta.ExecuteNonQuery();
                         }
-                        // Obtener ID de la cuenta por cobrar recién insertada
-                        using (OdbcCommand cmdIdCxC = new OdbcCommand("SELECT LAST_INSERT_ID()", conn, trans))
-                        {
-                            idCuentaPorCobrar = Convert.ToInt32(cmdIdCxC.ExecuteScalar());
-                        }
                     }
-                
 
                     trans.Commit();
                     return true;
                 }
-                //verificar errores bd
                 catch (Exception ex)
                 {
                     trans.Rollback();
@@ -414,7 +450,6 @@ namespace Capa_Modelo_Ventas
                 }
             }
         }
-
-
     }
-}
+        }
+
