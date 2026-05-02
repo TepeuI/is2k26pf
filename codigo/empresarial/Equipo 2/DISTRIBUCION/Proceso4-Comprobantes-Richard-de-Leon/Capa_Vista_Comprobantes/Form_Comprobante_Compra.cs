@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using Capa_Controlador;
+using System.Drawing;
 
 namespace Capa_Vista_Comprobantes
 {
@@ -34,6 +35,8 @@ namespace Capa_Vista_Comprobantes
             fun_LimpiarCampos();
 
             fun_BloquearFormularioInicial();
+            //Esilos
+            AplicarEstiloDGV();
 
             // IMPORTANTE: este debe ir al final
             fun_EstadoBotonesInicio();
@@ -362,7 +365,7 @@ namespace Capa_Vista_Comprobantes
             Dvg_Comprobante_Compra.ReadOnly = true;
             Dvg_Comprobante_Compra.AllowUserToAddRows = false;
 
-            // 🔥 NOMBRES VISUALES
+            // NOMBRES VISUALES
             Dvg_Comprobante_Compra.Columns["Pk_ID_Comprobante_Compra"].HeaderText = "ID Comprobante";
             Dvg_Comprobante_Compra.Columns["Fk_ID_Entrega_Compra"].HeaderText = "ID Entrega";
             Dvg_Comprobante_Compra.Columns["Fk_ID_Cliente"].HeaderText = "ID Cliente";
@@ -370,6 +373,7 @@ namespace Capa_Vista_Comprobantes
             Dvg_Comprobante_Compra.Columns["Cmp_Fecha_Hora_Entrega"].HeaderText = "Fecha de Entrega";
             Dvg_Comprobante_Compra.Columns["Cmp_Observaciones"].HeaderText = "Observaciones";
             Dvg_Comprobante_Compra.Columns["Cmp_Estado"].HeaderText = "Estado";
+            Dvg_Comprobante_Compra.Columns["Fk_ID_Cliente"].Visible = false;
         }
 
         private void Dvg_Comprobante_Compra_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -410,6 +414,13 @@ namespace Capa_Vista_Comprobantes
             Btn_Modificar.Enabled = true;
             Btn_Limpiar_Comprobante.Enabled = true;
             Btn_Eliminar.Enabled = true;
+
+            //Fuente
+            Dgv_Detalle_Entrega.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            Dgv_Detalle_Entrega.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Rockwell", 9, FontStyle.Bold);
+
+            Dgv_Detalle_Entrega.EnableHeadersVisualStyles = false;
         }
 
         private void Btn_Ver_Detalle_Click(object sender, EventArgs e)
@@ -430,6 +441,8 @@ namespace Capa_Vista_Comprobantes
                 Dgv_Detalle_Entrega.AllowUserToAddRows = false;
 
                 Configurar_Dgv_Detalle_Entrega();
+
+                AplicarEstiloDGV();
             }
             catch (Exception Ex)
             {
@@ -508,5 +521,24 @@ namespace Capa_Vista_Comprobantes
             Dtp_Fecha_Hora_Entrega.Value = DateTime.Now;
             Cbo_Estado.SelectedIndex = -1;
         }
+
+        private void Frm_Comprobante_Compra_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Salir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void AplicarEstiloDGV()
+        {
+            Dvg_Comprobante_Compra.DefaultCellStyle.Font = new Font("Rockwell", 9);
+            Dvg_Comprobante_Compra.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Rockwell", 9, FontStyle.Bold);
+
+            Dvg_Comprobante_Compra.EnableHeadersVisualStyles = false;
+        }
+
     }
 }

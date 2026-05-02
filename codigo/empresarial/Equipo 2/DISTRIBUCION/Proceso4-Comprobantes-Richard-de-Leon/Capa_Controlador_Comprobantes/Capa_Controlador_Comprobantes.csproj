@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cls_Controlador_Sentencias_Produccion.cs" />
+    <Compile Include="Cls_Controlador_Sentencias_Venta.cs" />
     <Compile Include="Cls_Controlador_Sentencias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

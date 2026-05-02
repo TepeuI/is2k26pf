@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm_Comprobante_Compra.cs">
+    <Compile Include="Form_Comprobante_Compra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Comprobante_Compra.Designer.cs">
-      <DependentUpon>Frm_Comprobante_Compra.cs</DependentUpon>
+    <Compile Include="Form_Comprobante_Compra.Designer.cs">
+      <DependentUpon>Form_Comprobante_Compra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Comprobante_Produccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Comprobante_Produccion.Designer.cs">
+      <DependentUpon>Form_Comprobante_Produccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Comprobante_Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Comprobante_Venta.Designer.cs">
+      <DependentUpon>Form_Comprobante_Venta.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -60,8 +72,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Frm_Comprobante_Compra.resx">
-      <DependentUpon>Frm_Comprobante_Compra.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Comprobante_Compra.resx">
+      <DependentUpon>Form_Comprobante_Compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Comprobante_Produccion.resx">
+      <DependentUpon>Form_Comprobante_Produccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Comprobante_Venta.resx">
+      <DependentUpon>Form_Comprobante_Venta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

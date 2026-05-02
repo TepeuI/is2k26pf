@@ -4,12 +4,12 @@ using System.Data.Odbc;
 
 namespace Capa_Modelo
 {
-    public class Cls_Sentencias_Comprobante_Compra
+    public class Cls_Sentencias_Comprobante_Produccion
     {
         Cls_Conexion conexion = new Cls_Conexion();
 
-        public bool InsertarComprobanteCompra(
-            int fkIdEntregaCompra,
+        public bool InsertarComprobanteProduccion(
+            int fkIdEntregaProduccion,
             int fkIdCliente,
             string nombreReceptor,
             DateTime fechaHoraEntrega,
@@ -18,9 +18,9 @@ namespace Capa_Modelo
         {
             try
             {
-                string sql = @"INSERT INTO tbl_comprobante_compra
+                string sql = @"INSERT INTO tbl_comprobante_produccion
                 (
-                    Fk_ID_Entrega_Compra,
+                    Fk_ID_Entrega_Produccion,
                     Fk_ID_Cliente,
                     Cmp_Nombre_Receptor,
                     Cmp_Fecha_Hora_Entrega,
@@ -31,7 +31,7 @@ namespace Capa_Modelo
 
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.fun_AbrirConexion());
 
-                cmd.Parameters.AddWithValue("?", fkIdEntregaCompra);
+                cmd.Parameters.AddWithValue("?", fkIdEntregaProduccion);
                 cmd.Parameters.AddWithValue("?", fkIdCliente);
                 cmd.Parameters.AddWithValue("?", nombreReceptor);
                 cmd.Parameters.AddWithValue("?", fechaHoraEntrega);
@@ -50,9 +50,9 @@ namespace Capa_Modelo
             }
         }
 
-        public bool ActualizarComprobanteCompra(
-            int pkIdComprobanteCompra,
-            int fkIdEntregaCompra,
+        public bool ActualizarComprobanteProduccion(
+            int pkIdComprobanteProduccion,
+            int fkIdEntregaProduccion,
             int fkIdCliente,
             string nombreReceptor,
             DateTime fechaHoraEntrega,
@@ -61,24 +61,24 @@ namespace Capa_Modelo
         {
             try
             {
-                string sql = @"UPDATE tbl_comprobante_compra SET
-                    Fk_ID_Entrega_Compra = ?,
+                string sql = @"UPDATE tbl_comprobante_produccion SET
+                    Fk_ID_Entrega_Produccion = ?,
                     Fk_ID_Cliente = ?,
                     Cmp_Nombre_Receptor = ?,
                     Cmp_Fecha_Hora_Entrega = ?,
                     Cmp_Observaciones = ?,
                     Cmp_Estado = ?
-                WHERE Pk_ID_Comprobante_Compra = ?";
+                WHERE Pk_ID_Comprobante_Produccion = ?";
 
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.fun_AbrirConexion());
 
-                cmd.Parameters.AddWithValue("?", fkIdEntregaCompra);
+                cmd.Parameters.AddWithValue("?", fkIdEntregaProduccion);
                 cmd.Parameters.AddWithValue("?", fkIdCliente);
                 cmd.Parameters.AddWithValue("?", nombreReceptor);
                 cmd.Parameters.AddWithValue("?", fechaHoraEntrega);
                 cmd.Parameters.AddWithValue("?", observaciones);
                 cmd.Parameters.AddWithValue("?", estado);
-                cmd.Parameters.AddWithValue("?", pkIdComprobanteCompra);
+                cmd.Parameters.AddWithValue("?", pkIdComprobanteProduccion);
 
                 cmd.ExecuteNonQuery();
                 conexion.fun_CerrarConexion();
@@ -92,15 +92,15 @@ namespace Capa_Modelo
             }
         }
 
-        public bool EliminarComprobanteCompra(int pkIdComprobanteCompra)
+        public bool EliminarComprobanteProduccion(int pkIdComprobanteProduccion)
         {
             try
             {
-                string sql = @"DELETE FROM tbl_comprobante_compra 
-                               WHERE Pk_ID_Comprobante_Compra = ?";
+                string sql = @"DELETE FROM tbl_comprobante_produccion 
+                               WHERE Pk_ID_Comprobante_Produccion = ?";
 
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.fun_AbrirConexion());
-                cmd.Parameters.AddWithValue("?", pkIdComprobanteCompra);
+                cmd.Parameters.AddWithValue("?", pkIdComprobanteProduccion);
 
                 cmd.ExecuteNonQuery();
                 conexion.fun_CerrarConexion();
@@ -114,26 +114,26 @@ namespace Capa_Modelo
             }
         }
 
-        public DataTable MostrarComprobantesCompra()
+        public DataTable MostrarComprobantesProduccion()
         {
             DataTable tabla = new DataTable();
 
             try
             {
                 string sql = @"
-                        SELECT 
-                            cc.Pk_ID_Comprobante_Compra,
-                            cc.Fk_ID_Entrega_Compra,
-                            cc.Fk_ID_Cliente,
-                            c.Cmp_Nombre AS Cliente,
-                            cc.Cmp_Nombre_Receptor,
-                            cc.Cmp_Fecha_Hora_Entrega,
-                            cc.Cmp_Observaciones,
-                            cc.Cmp_Estado
-                        FROM tbl_comprobante_compra cc
-                        INNER JOIN tbl_clientes c
-                            ON cc.Fk_ID_Cliente = c.Pk_Id_Cliente;
-                        ";
+                            SELECT 
+                                cp.Pk_ID_Comprobante_Produccion,
+                                cp.Fk_ID_Entrega_Produccion,
+                                cp.Fk_ID_Cliente,                
+                                c.Cmp_Nombre AS Cliente,         
+                                cp.Cmp_Nombre_Receptor,
+                                cp.Cmp_Fecha_Hora_Entrega,
+                                cp.Cmp_Observaciones,
+                                cp.Cmp_Estado
+                            FROM tbl_comprobante_produccion cp
+                            INNER JOIN tbl_clientes c 
+                                ON cp.Fk_ID_Cliente = c.Pk_Id_Cliente;
+                                   ";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
                 da.Fill(tabla);
@@ -149,25 +149,25 @@ namespace Capa_Modelo
             return tabla;
         }
 
-        public DataTable BuscarComprobanteCompra(int pkIdComprobanteCompra)
+        public DataTable BuscarComprobanteProduccion(int pkIdComprobanteProduccion)
         {
             DataTable tabla = new DataTable();
 
             try
             {
                 string sql = @"SELECT 
-                    Pk_ID_Comprobante_Compra,
-                    Fk_ID_Entrega_Compra,
+                    Pk_ID_Comprobante_Produccion,
+                    Fk_ID_Entrega_Produccion,
                     Fk_ID_Cliente,
                     Cmp_Nombre_Receptor,
                     Cmp_Fecha_Hora_Entrega,
                     Cmp_Observaciones,
                     Cmp_Estado
-                FROM tbl_comprobante_compra
-                WHERE Pk_ID_Comprobante_Compra = ?";
+                FROM tbl_comprobante_produccion
+                WHERE Pk_ID_Comprobante_Produccion = ?";
 
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.fun_AbrirConexion());
-                cmd.Parameters.AddWithValue("?", pkIdComprobanteCompra);
+                cmd.Parameters.AddWithValue("?", pkIdComprobanteProduccion);
 
                 OdbcDataAdapter da = new OdbcDataAdapter(cmd);
                 da.Fill(tabla);
@@ -183,14 +183,14 @@ namespace Capa_Modelo
             return tabla;
         }
 
-        public DataTable fun_ObtenerIdComprobanteCompra()
+        public DataTable fun_ObtenerIdComprobanteProduccion()
         {
             DataTable tabla = new DataTable();
 
             try
             {
-                string sql = @"SELECT Pk_ID_Comprobante_Compra 
-                               FROM tbl_comprobante_compra";
+                string sql = @"SELECT Pk_ID_Comprobante_Produccion 
+                               FROM tbl_comprobante_produccion";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
                 da.Fill(tabla);
@@ -206,14 +206,14 @@ namespace Capa_Modelo
             return tabla;
         }
 
-        public DataTable fun_ObtenerIdEntregaCompra()
+        public DataTable fun_ObtenerIdEntregaProduccion()
         {
             DataTable tabla = new DataTable();
 
             try
             {
-                string sql = @"SELECT Pk_ID_Entrega_Compra 
-                               FROM tbl_entrega_compra";
+                string sql = @"SELECT Pk_ID_Entrega_Produccion 
+                               FROM tbl_entrega_produccion";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
                 da.Fill(tabla);
@@ -236,7 +236,7 @@ namespace Capa_Modelo
             try
             {
                 string sql = @"SELECT Pk_Id_Cliente 
-                       FROM tbl_clientes";
+                               FROM tbl_clientes";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
                 da.Fill(tabla);
@@ -252,7 +252,7 @@ namespace Capa_Modelo
             return tabla;
         }
 
-        public DataTable Fun_Obtener_Detalle_Entrega_Compra(int I_Id_Entrega_Compra)
+        public DataTable Fun_Obtener_Detalle_Entrega_Produccion(int I_Id_Entrega_Produccion)
         {
             DataTable Dt_Datos = new DataTable();
             OdbcConnection Cn = conexion.fun_AbrirConexion();
@@ -260,26 +260,20 @@ namespace Capa_Modelo
             try
             {
                 string S_Query = @"
-                    SELECT 
-                        Pk_ID_Entrega_Compra,
-                        Fk_Id_OrdenCompra,
-                        Fk_Id_Transporte,
-                        Cmp_Direccion,
-                        Cmp_Fecha,
-                        Cmp_Estado_Entrega
-                    FROM tbl_entrega_compra
-                    WHERE Pk_ID_Entrega_Compra = ?;
-                ";
+            SELECT *
+            FROM tbl_entrega_produccion
+            WHERE Pk_ID_Entrega_Produccion = ?;
+        ";
 
                 OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
-                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Compra);
+                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Produccion);
 
                 OdbcDataAdapter Da = new OdbcDataAdapter(Cmd);
                 Da.Fill(Dt_Datos);
             }
             catch (Exception Ex)
             {
-                throw new Exception("Error al obtener detalle de entrega compra: " + Ex.Message);
+                throw new Exception("Error al obtener detalle de entrega producción: " + Ex.Message);
             }
             finally
             {
@@ -287,32 +281,6 @@ namespace Capa_Modelo
             }
 
             return Dt_Datos;
-        }
-
-        public bool Fun_Eliminar_Comprobante_Compra(int I_Id_Comprobante_Compra)
-        {
-            OdbcConnection Cn = conexion.fun_AbrirConexion();
-
-            try
-            {
-                string S_Query = @"
-            DELETE FROM tbl_comprobante_compra
-            WHERE Pk_ID_Comprobante_Compra = ?;
-        ";
-
-                OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
-                Cmd.Parameters.AddWithValue("?", I_Id_Comprobante_Compra);
-
-                return Cmd.ExecuteNonQuery() > 0;
-            }
-            catch (Exception Ex)
-            {
-                throw new Exception("Error al eliminar comprobante de compra: " + Ex.Message);
-            }
-            finally
-            {
-                conexion.fun_CerrarConexion();
-            }
         }
     }
 }

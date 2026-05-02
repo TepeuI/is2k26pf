@@ -357,14 +357,14 @@ namespace Capa_Vista_Logista
 
         private void comprobanteVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Comprobante_Venta com_venta = new Frm_Comprobante_Venta();
+            Form_Comprobante_Venta com_venta = new Form_Comprobante_Venta();
             com_venta.MdiParent = this;
             com_venta.Show();
         }
 
         private void comprobanteProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Comprobante_Produccion com_prod = new Frm_Comprobante_Produccion();
+            Form_Comprobante_Produccion com_prod = new Form_Comprobante_Produccion();
             com_prod.MdiParent = this;
             com_prod.Show();
         }
