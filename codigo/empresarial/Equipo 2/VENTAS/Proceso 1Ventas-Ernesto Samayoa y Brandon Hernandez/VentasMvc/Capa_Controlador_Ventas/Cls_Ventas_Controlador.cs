@@ -75,16 +75,24 @@ namespace Capa_Controlador_Ventas
 
 
         //NUEVO METODO PARA APLICAR DESCUENTO POR TIPO DE CLIENTE
-        public (string sTipoCliente, float fDescuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, int iCantidad)
+        public (string tipoCliente, float descuento) ObtenerTipoYDescuento(int iCantidad)
         {
-            return dao.ObtenerDescuentoCliente(iFk_Id_Cliente, iCantidad);
+            if (iCantidad >= 1 && iCantidad <= 11)
+                return ("Publico", 0f);
+
+            if (iCantidad >= 12 && iCantidad <= 47)
+                return ("Mayorista", 0.15f);
+
+            return ("Distribuidor", 0.25f);
         }
 
         //CALCULAR SUBTOTAL CON DESCUENTO APLICADO
-        public float CalcularSubtotal(float fPrecio, int iCantidad, float fDescuento)
+        public float CalcularSubtotalConDescuento(float fPrecio, int iCantidad)
         {
+            var resultado = ObtenerTipoYDescuento(iCantidad);
+
             float subtotal = fPrecio * iCantidad;
-            float descuentoAplicado = subtotal * fDescuento;
+            float descuentoAplicado = subtotal * resultado.descuento;
 
             return subtotal - descuentoAplicado;
         }
@@ -112,15 +120,20 @@ namespace Capa_Controlador_Ventas
             return dao.ObtenerBodegasPorProducto(pk_inventario_id);
         }
 
+<<<<<<< HEAD
+        public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucusal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fSaldototal, DataTable detalle, DateTime dCmp_Fecha_Vencimiento)
+=======
 
         //GUARDAR VENTA-COTIZACION-PEDIDO
         public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
      string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,
      DataTable detalle, DateTime dFecha_Especial, DateTime dCmp_Fecha_Vencimiento, bool bEsVenta)
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
         {
-            return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucursal,
-                sCmp_Estado_Venta, sCmp_Tipo_Operacion, fCmp_Saldo_Total, detalle,
-                dFecha_Especial, dCmp_Fecha_Vencimiento, bEsVenta);
+            if (detalle.Rows.Count == 0)
+                return false;
+
+            return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucusal,  sCmp_Estado_Venta, sCmp_Tipo_Operacion, fSaldototal, detalle, dCmp_Fecha_Vencimiento);
         }
     }
 }

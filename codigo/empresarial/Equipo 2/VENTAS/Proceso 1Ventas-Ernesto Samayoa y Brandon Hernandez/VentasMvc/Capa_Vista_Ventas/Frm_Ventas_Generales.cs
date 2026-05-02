@@ -14,17 +14,18 @@ namespace Capa_Vista_Ventas
     public partial class Frm_Ventas_Generales : Form
     {
         Cls_Ventas_Controlador controlador = new Cls_Ventas_Controlador();
-
         public Frm_Ventas_Generales()
         {
             InitializeComponent();
+<<<<<<< HEAD
+=======
             this.StartPosition = FormStartPosition.CenterScreen;
 
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
         }
         private void Frm_Ventas_Generales_Load(object sender, EventArgs e)
         {
             fun_CargarVentas();
-            
         }
 
         private void fun_CargarVentas()
@@ -53,7 +54,7 @@ namespace Capa_Vista_Ventas
                 fun_CargarVentas(); //Recarga automática del grid
             };
 
-            detalle_Ventas.Show();
+            detalle_Ventas.ShowDialog();
         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)

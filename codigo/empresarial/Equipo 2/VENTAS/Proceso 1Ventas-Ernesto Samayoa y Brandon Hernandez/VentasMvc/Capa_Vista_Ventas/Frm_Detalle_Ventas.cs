@@ -47,10 +47,14 @@ namespace Capa_Vista_Ventas
             //nuevo para tipo operacion
             fun_CargarTipoOperacion();
             fun_CargarIdVenta();
+<<<<<<< HEAD
+            Cbo_Id_Cliente.SelectedIndexChanged += Cbo_Id_Cliente_SelectedIndexChanged;
+=======
             //Cbo_Id_Cliente.SelectedIndexChanged += Cbo_Id_Cliente_SelectedIndexChanged;
             Lbl_Fecha_Cotizacion_pedido.Visible = false;
             Dtp_fecha_cotizacion_pedido.Visible = false;
             Btn_Pagar.Enabled = false;
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
 
         }
 
@@ -119,10 +123,13 @@ namespace Capa_Vista_Ventas
             dtDetalle.Columns.Add("IdProducto", typeof(int));
             dtDetalle.Columns.Add("Producto", typeof(string));
             dtDetalle.Columns.Add("Descripcion", typeof(string));
+<<<<<<< HEAD
+=======
 
             dtDetalle.Columns.Add("IdBodega", typeof(int));
             dtDetalle.Columns.Add("Bodega", typeof(string));
 
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
             dtDetalle.Columns.Add("Precio", typeof(float));
             dtDetalle.Columns.Add("Cantidad", typeof(int));
             dtDetalle.Columns.Add("Descuento", typeof(float));
@@ -280,6 +287,7 @@ namespace Capa_Vista_Ventas
         }
 
         private void Btn_Guardar_Ventas_Click(object sender, EventArgs e)
+         //DEFINITIVA
         {
             try
             {
@@ -301,6 +309,7 @@ namespace Capa_Vista_Ventas
                 }
 
                 float fSaldo_total = 0;
+
                 foreach (DataRow row in dtDetalle.Rows)
                 {
                     fSaldo_total += Convert.ToSingle(row["Subtotal"]);
@@ -309,17 +318,12 @@ namespace Capa_Vista_Ventas
                 int iFk_Id_Sucursal = Convert.ToInt32(Cbo_Id_Sucursal.SelectedValue);
                 int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
                 DateTime dCmp_Fecha_Venta = Dtp_Fecha_Venta.Value;
+
                 string sCmp_Estado_Venta = Cbo_Estado.SelectedValue?.ToString();
+    
                 string sCmp_Tipo_Operacion = Cbo_Tipo_Operacion.SelectedValue?.ToString();
-                bool bEsVenta = sCmp_Tipo_Operacion == "Venta";
+                DateTime dCmp_Fecha_Vencimiento = Dtp_Fecha_Venta.Value.AddDays(30);
 
-                // FECHA ESPECIAL (entrega o cotización)
-                DateTime dFecha_Especial = Dtp_fecha_cotizacion_pedido.Value;
-
-                // FECHA VENCIMIENTO PARA CUENTA (30 días después)
-                DateTime dCmp_Fecha_Vencimiento = dCmp_Fecha_Venta.AddDays(30);
-
-                // GUARDAR
                 bool resultado = controlador.GuardarVenta(
                     dCmp_Fecha_Venta,
                     iFk_Id_Cliente,
@@ -328,18 +332,16 @@ namespace Capa_Vista_Ventas
                     sCmp_Tipo_Operacion,
                     fSaldo_total,
                     dtDetalle,
-                    dFecha_Especial,         // ← Para tbl_ventas (entrega/cotización)
-                    dCmp_Fecha_Vencimiento,  // ← Para cuenta por cobrar
-                    bEsVenta
+                    dCmp_Fecha_Vencimiento
                 );
 
                 if (resultado)
                 {
-                    MessageBox.Show("Registro guardado correctamente.");
-
-                    // LIMPIAR
+                    MessageBox.Show("Venta guardada correctamente.\n Se ha registrado una cuenta por cobrar");
+                    //LIMPIAR CORRECTAMENTE
                     dtDetalle.Clear();
                     Txt_Saldo_Total.Text = "0.00";
+
                     Cbo_Id_Cliente.SelectedIndex = -1;
                     Cbo_Id_Sucursal.SelectedIndex = -1;
                     Cbo_Estado.SelectedIndex = -1;
@@ -349,24 +351,12 @@ namespace Capa_Vista_Ventas
                     Nud_Cant_Prod.Value = 1;
 
                     fun_CargarIdVenta();
+                    //EVENTO PARA ACTUALIZAR OTRO FORM
                     VentaGuardada?.Invoke();
-
-                    if (bEsVenta)
-                    {
-                        MessageBox.Show("Se ha registrado una cuenta por cobrar.");
-                    }
-                    else if (sCmp_Tipo_Operacion == "Pedido")
-                    {
-                        MessageBox.Show("Pedido registrado correctamente.");
-                    }
-                    else if (sCmp_Tipo_Operacion == "Cotizacion")
-                    {
-                        MessageBox.Show("Cotización generada correctamente.");
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar el registro.");
+                    MessageBox.Show("Error al guardar la venta.");
                 }
             }
             catch (Exception ex)
@@ -448,7 +438,7 @@ namespace Capa_Vista_Ventas
         {
             try
             {
-                // VALIDAR ENCABEZADO
+                //VALIDAR ENCABEZADO (UNA SOLA CONDICIÓN)
                 if (string.IsNullOrWhiteSpace(Cbo_Id_Venta.Text) ||
                     Cbo_Id_Cliente.SelectedIndex == -1 ||
                     Cbo_Id_Sucursal.SelectedIndex == -1 ||
@@ -477,16 +467,29 @@ namespace Capa_Vista_Ventas
                     return;
                 }
 
+<<<<<<< HEAD
+                DataRowView row = (DataRowView)Cbo_Id_Inventario.SelectedItem;
+
+=======
                 //OBTENER CLIENTE
                 int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
 
                 // PRODUCTO
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
                 int iIdProducto = Convert.ToInt32(row["pk_inventario_id"]);
                 string sProducto = row["nombre_prod"].ToString();
                 string sDescripcion = row["descripcion"].ToString();
                 float fPrecio = Convert.ToSingle(row["precio_unitario"]);
                 int iCantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
 
+<<<<<<< HEAD
+                //Desde controlador
+                var info = controlador.ObtenerTipoYDescuento(iCantidad);
+                //cálculo desde el controlador
+                float fSubtotal = controlador.CalcularSubtotalConDescuento(fPrecio, iCantidad);
+
+                //COLUMNAS
+=======
                 // BODEGA
                 int iIdBodega = Convert.ToInt32(rowBodega["Pk_Id_Bodega"]);
                 string sBodega = rowBodega["Cmp_Nombre_Bodega"].ToString();
@@ -498,19 +501,38 @@ namespace Capa_Vista_Ventas
                 float subtotal = controlador.CalcularSubtotal(fPrecio, iCantidad, info.fDescuento);
 
                 // GRID
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
                 dtDetalle.Rows.Add(
                     iIdProducto,
                     sProducto,
                     sDescripcion,
+<<<<<<< HEAD
+=======
                     iIdBodega,
                     sBodega,
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
                     fPrecio,
                     iCantidad,
-                    info.fDescuento,
-                    info.sTipoCliente,
-                    subtotal
+                    info.descuento,      // nueva columna
+                    info.tipoCliente,    // nueva columna
+                    fSubtotal            // subtotal
                 );
 
+<<<<<<< HEAD
+                //total desde controlador
+                totalGeneral = controlador.CalcularTotal(dtDetalle);
+                Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
+
+                //Ordenar por ID PRODUCTO
+                dtDetalle.DefaultView.Sort = "IdProducto ASC";
+                Dgv_Detalle_Venta.DataSource = dtDetalle.DefaultView;
+
+                // limpiar
+                Cbo_Id_Inventario.SelectedIndex = -1;
+                Cbo_Id_Bodega.SelectedIndex = -1;
+                Nud_Cant_Prod.Value = 1;
+                //Agregar total a pagos
+=======
                 // TOTAL
                 totalGeneral = controlador.CalcularTotal(dtDetalle);
                 Txt_Saldo_Total.Text = "Q " + totalGeneral.ToString("0.00");
@@ -524,6 +546,7 @@ namespace Capa_Vista_Ventas
                 Cbo_Id_Bodega.SelectedIndex = -1;
                 Nud_Cant_Prod.Value = 1;
 
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
                 _montoTotal = Convert.ToDecimal(totalGeneral);
             }
             catch (Exception ex)
@@ -652,75 +675,6 @@ namespace Capa_Vista_Ventas
                 MessageBox.Show("Error al eliminar: " + ex.Message);
             }
         }
-
-        private void Btn_Limpiar_Detalle_Ventas_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Limpiar DataTable (esto limpia el DataGrid automáticamente)
-                dtDetalle.Clear();
-
-                // Resetear total
-                totalGeneral = 0;
-                Txt_Saldo_Total.Text = "0.00";
-
-                // Limpiar combos
-                Cbo_Id_Cliente.SelectedIndex = -1;
-                Cbo_Id_Sucursal.SelectedIndex = -1;
-                Cbo_Estado.SelectedIndex = -1;
-                Cbo_Tipo_Operacion.SelectedIndex = -1;
-                Cbo_Id_Inventario.SelectedIndex = -1;
-                Cbo_Id_Bodega.SelectedIndex = -1;
-
-                // Reset cantidad
-                Nud_Cant_Prod.Value = 1;
-
-                // Nuevo ID de venta
-                fun_CargarIdVenta();
-
-                MessageBox.Show("Formulario limpiado correctamente.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al limpiar: " + ex.Message);
-            }
-        }
-
-        private void Cbo_Tipo_Operacion_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (Cbo_Tipo_Operacion.SelectedIndex == -1)
-            {
-                Lbl_Fecha_Cotizacion_pedido.Visible = false;
-                Dtp_fecha_cotizacion_pedido.Visible = false;
-                return;
-            }
-
-            string Stipo = Cbo_Tipo_Operacion.SelectedValue.ToString();
-            switch (Stipo)
-            {
-                case "Cotizacion":
-
-                    Lbl_Fecha_Cotizacion_pedido.Visible = true;
-                    Dtp_fecha_cotizacion_pedido.Visible = true;
-                    Btn_Pagar.Enabled = false;
-                    break;
-
-                case "Pedido":
-                    Lbl_Fecha_Cotizacion_pedido.Text = "Fecha de entrega : ";
-                    Lbl_Fecha_Cotizacion_pedido.Visible = true;
-                    Dtp_fecha_cotizacion_pedido.Visible = true;
-                    Btn_Pagar.Enabled = false;
-                    break;
-                case "Venta":
-                    Lbl_Fecha_Cotizacion_pedido.Visible = false;
-                    Dtp_fecha_cotizacion_pedido.Visible = false;
-                    Btn_Pagar.Enabled = true;
-                    break;
-            }
-            }
-
-        //Brandon Hernandez  -- Seleccion de cotizacion y pedidos 
-
     }
 }
 
