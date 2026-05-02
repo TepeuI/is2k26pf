@@ -357,14 +357,14 @@ namespace Capa_Vista_Logista
 
         private void comprobanteVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form_Comprobante_Venta com_venta = new Form_Comprobante_Venta();
+            Frm_Comprobante_Venta com_venta = new Frm_Comprobante_Venta();
             com_venta.MdiParent = this;
             com_venta.Show();
         }
 
         private void comprobanteProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form_Comprobante_Produccion com_prod = new Form_Comprobante_Produccion();
+            Frm_Comprobante_Produccion com_prod = new Frm_Comprobante_Produccion();
             com_prod.MdiParent = this;
             com_prod.Show();
         }
@@ -455,6 +455,26 @@ namespace Capa_Vista_Logista
             Unidad.Show();
         }
 
+        private void devolucionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_inicio_devoluciones_d devolu = new Frm_inicio_devoluciones_d();
+            devolu.MdiParent = this;
+            devolu.Show();
 
+        }
+
+        private void tipoDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Tipo_Clientes TipoClientes = new Frm_Tipo_Clientes();
+            TipoClientes.MdiParent = this;
+            TipoClientes.Show();
+        }
+
+        private void politicasDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Politicas_Descuentos politicas_Descuentos = new Frm_Politicas_Descuentos();
+            politicas_Descuentos.MdiParent = this;
+            politicas_Descuentos.Show();
+        }
     }
 }
