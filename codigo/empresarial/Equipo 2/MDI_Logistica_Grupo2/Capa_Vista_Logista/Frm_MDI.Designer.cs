@@ -78,6 +78,7 @@
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.politicasDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -121,7 +122,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 73);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1371, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1371, 30);
             this.menuStrip1.TabIndex = 101;
             this.menuStrip1.Text = "MenuStrip";
             // 
@@ -131,7 +132,7 @@
             this.cerrarSesiónToolStripMenuItem});
             this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(62, 26);
             this.archivoToolStripMenuItem.Text = "Inicio";
             // 
             // cerrarSesiónToolStripMenuItem
@@ -160,7 +161,7 @@
             this.tipoDeClientesToolStripMenuItem});
             this.catálogosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
             this.catálogosToolStripMenuItem.Text = "Catálogos";
             // 
             // cuentaPorCobrarToolStripMenuItem
@@ -293,10 +294,11 @@
             this.toolStripMenuItem2,
             this.asignaciónVendedorClientesToolStripMenuItem,
             this.ordenDeCompraToolStripMenuItem,
-            this.devolucionesToolStripMenuItem});
+            this.devolucionesToolStripMenuItem,
+            this.politicasDescuentosToolStripMenuItem});
             this.procesosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
-            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
             this.procesosToolStripMenuItem.Text = "Procesos";
             // 
             // movimientoDeInventariosToolStripMenuItem
@@ -452,7 +454,7 @@
             this.reporteadorToolStripMenuItem});
             this.herramientasToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
             this.herramientasToolStripMenuItem.Text = "Reportes";
             // 
             // reporteadorToolStripMenuItem
@@ -466,7 +468,7 @@
             // 
             this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.asignacionesToolStripMenuItem.Name = "asignacionesToolStripMenuItem";
-            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(78, 26);
             this.asignacionesToolStripMenuItem.Text = "Ayudas";
             // 
             // seguridadToolStripMenuItem
@@ -476,7 +478,7 @@
             this.cambiarContraseñaToolStripMenuItem});
             this.seguridadToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
-            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
             this.seguridadToolStripMenuItem.Text = "Seguridad";
             // 
             // bitacoraToolStripMenuItem
@@ -510,6 +512,13 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 20);
             this.toolStripStatusLabel.Text = "Estado";
+            // 
+            // politicasDescuentosToolStripMenuItem
+            // 
+            this.politicasDescuentosToolStripMenuItem.Name = "politicasDescuentosToolStripMenuItem";
+            this.politicasDescuentosToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.politicasDescuentosToolStripMenuItem.Text = "Politicas Descuentos";
+            this.politicasDescuentosToolStripMenuItem.Click += new System.EventHandler(this.politicasDescuentosToolStripMenuItem_Click);
             // 
             // Frm_MDI
             // 
@@ -593,5 +602,6 @@
         private System.Windows.Forms.ToolStripMenuItem unidadDeMedidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem devolucionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem politicasDescuentosToolStripMenuItem;
     }
 }

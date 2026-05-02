@@ -11,9 +11,9 @@ using Capa_Controlador_NavegadorTrs;
 
 namespace Capa_Vista_Ventas
 {
-    public partial class Frm_Clientes : Form
+    public partial class Frm_Politicas_Descuentos : Form
     {
-        public Frm_Clientes()
+        public Frm_Politicas_Descuentos()
         {
             InitializeComponent();
             //navegadorTrs1.Load += (s, e) => navegadorTrs1.BotonesEstadoCRUD(true, true, true, true, true);
@@ -29,29 +29,21 @@ namespace Capa_Vista_Ventas
             };
 
             string[] columnas = {
-                        "Tbl_Clientes",
-                        "Pk_Id_Cliente",
-                        "Cmp_CuioNit",
-                        "Cmp_Nombre",
-                        "Cmp_Apellido",
-                        "Cmp_Telefono",
-                        "Cmp_Correo",
-                        "Cmp_Saldo_Total",
-                        "Cmp_Direccion",
+                        "tbl_politicas_descuento",
+                        "Pk_Id_Politica",
+                        "Cmp_Cantidad_Min",
+                        "Cmp_Cantidad_Max",
+                        "Cmp_Descuento",
                         "Fk_Id_Tipo_Cliente",
-                        "Cmp_Estado"
+                        "Cmp_Estado_politicas_Desc"
 
                      };
 
             string[] sEtiquetas = {
                         "ID",
-                        "Cui/Nit",
-                        "Nombre Cliente",
-                        "Apellido Cliente",
-                        "Teléfono",
-                        "Correo",
-                        "Saldo Total",
-                        "Dirección",
+                        "Cantidad Min",
+                        "Cantidad Max",
+                        "Descuento",
                         "ID Tipo Cliente",
                         "Estado"
                      };
@@ -74,10 +66,9 @@ namespace Capa_Vista_Ventas
                         }
                     },
 
-
                 };
 
-            int id_aplicacion = 702;
+            int id_aplicacion = 731;
             int id_modulo = 44;
 
             navegadorTrs1.IPkId_Aplicacion = id_aplicacion;

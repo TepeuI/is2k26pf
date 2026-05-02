@@ -18,8 +18,9 @@ namespace Capa_Vista_Ventas
         public Frm_Ventas_Generales()
         {
             InitializeComponent();
-           
-    }
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+        }
         private void Frm_Ventas_Generales_Load(object sender, EventArgs e)
         {
             fun_CargarVentas();
@@ -41,6 +42,11 @@ namespace Capa_Vista_Ventas
         {
             Frm_Detalle_Ventas detalle_Ventas = new Frm_Detalle_Ventas();
 
+
+            //(MDI + CENTRADO)
+            detalle_Ventas.MdiParent = this.MdiParent;
+            detalle_Ventas.StartPosition = FormStartPosition.CenterParent;
+
             //ESCUCHAR CUANDO SE GUARDA
             detalle_Ventas.VentaGuardada += () =>
             {
@@ -48,6 +54,11 @@ namespace Capa_Vista_Ventas
             };
 
             detalle_Ventas.Show();
+        }
+
+        private void Btn_Salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
