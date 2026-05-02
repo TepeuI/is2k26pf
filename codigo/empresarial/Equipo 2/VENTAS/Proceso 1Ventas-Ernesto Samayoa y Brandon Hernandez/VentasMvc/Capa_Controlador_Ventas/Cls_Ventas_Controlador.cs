@@ -114,8 +114,21 @@ namespace Capa_Controlador_Ventas
 
             return fSaldototal;
         }
+        //OBTENER BODEGAS POR PRODUCTO
+        public DataTable ObtenerBodegasPorProducto(int pk_inventario_id)
+        {
+            return dao.ObtenerBodegasPorProducto(pk_inventario_id);
+        }
 
+<<<<<<< HEAD
         public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucusal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fSaldototal, DataTable detalle, DateTime dCmp_Fecha_Vencimiento)
+=======
+
+        //GUARDAR VENTA-COTIZACION-PEDIDO
+        public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
+     string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,
+     DataTable detalle, DateTime dFecha_Especial, DateTime dCmp_Fecha_Vencimiento, bool bEsVenta)
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
         {
             if (detalle.Rows.Count == 0)
                 return false;

@@ -40,6 +40,7 @@ namespace Capa_Modelo_Ventas
         private static readonly string SQL_BODEGAS = @"
         SELECT 
         Pk_Id_Bodega,
+        Cmp_Nombre_Bodega,
         CONCAT(Pk_Id_Bodega, ' - ', Cmp_Nombre_Bodega) AS NombreBodega
         FROM tbl_bodega
         WHERE Cmp_Estado_Bodega = 'Activo'";
@@ -105,7 +106,19 @@ namespace Capa_Modelo_Ventas
         ORDER BY v.Pk_Id_Ventas ASC";
 
 
+<<<<<<< HEAD
 
+=======
+        //bodegas que contengan ciertos productos
+        private static readonly string SQL_BODEGAS_POR_PRODUCTO = @"
+        SELECT 
+        b.Pk_Id_Bodega,
+        b.Cmp_Nombre_Bodega,
+        CONCAT(b.Pk_Id_Bodega, ' - ', b.Cmp_Nombre_Bodega) AS NombreBodega
+        FROM tbl_existencias e
+        INNER JOIN tbl_bodega b ON e.fk_bodega_id = b.Pk_Id_Bodega
+        WHERE e.fk_inventario_id = ? AND e.stock > 0";
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
 
         public DataTable ObtenerClientes()
         {
@@ -296,7 +309,51 @@ namespace Capa_Modelo_Ventas
         }
 
 
+<<<<<<< HEAD
         public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal, string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, DataTable detalle,DateTime dCmp_Fecha_Vencimiento)
+=======
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string sTipo = reader["Cmp_Tipo"].ToString();
+                            float fDescuento = Convert.ToSingle(reader["Cmp_Descuento"]);
+
+                            return (sTipo, fDescuento);
+                        }
+                    }
+                }
+
+                conexion.desconexion(conn);
+            }
+
+            return ("Publico", 0); // fallback
+        }
+
+        //OBTENER BODEGAS CON PRODUCTOS HAY DISPONIBILIDAD STOCK
+        public DataTable ObtenerBodegasPorProducto(int pk_inventario_id)
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_BODEGAS_POR_PRODUCTO, conn))
+                {
+                    cmd.Parameters.AddWithValue("?", pk_inventario_id);
+
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        conexion.desconexion(conn);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
+    string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,
+    DataTable detalle, DateTime dFecha_Especial, DateTime dCmp_Fecha_Vencimiento, bool bEsVenta)
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
         {
             using (OdbcConnection conn = conexion.conexion())
             {

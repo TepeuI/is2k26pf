@@ -454,5 +454,26 @@ namespace Capa_Vista_Logista
             Unidad.MdiParent = this;
             Unidad.Show();
         }
+        private void devolucionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_inicio_devoluciones_d devolu = new Frm_inicio_devoluciones_d();
+            devolu.MdiParent = this;
+            devolu.Show();
+
+        }
+
+        private void tipoDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Tipo_Clientes TipoClientes = new Frm_Tipo_Clientes();
+            TipoClientes.MdiParent = this;
+            TipoClientes.Show();
+        }
+
+        private void politicasDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Politicas_Descuentos politicas_Descuentos = new Frm_Politicas_Descuentos();
+            politicas_Descuentos.MdiParent = this;
+            politicas_Descuentos.Show();
+        }
     }
 }

@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="Cls_Conexion_MYSQL.cs" />
     <Compile Include="Cls_Constructores.cs" />
+    <Compile Include="Cls_Constructor_Encabezado.cs" />
     <Compile Include="Cls_Dao_Inv.cs" />
     <Compile Include="Cls_Dao_Mov_Inv.cs" />
+    <Compile Include="Cls_Encabezado_MovInv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

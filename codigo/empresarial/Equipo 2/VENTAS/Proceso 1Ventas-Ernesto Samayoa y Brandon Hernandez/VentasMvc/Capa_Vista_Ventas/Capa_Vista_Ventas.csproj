@@ -78,6 +78,18 @@
     <Compile Include="Frm_Clientes.Designer.cs">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Politicas_Descuentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Politicas_Descuentos.Designer.cs">
+      <DependentUpon>Frm_Politicas_Descuentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Tipo_Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Tipo_Clientes.Designer.cs">
+      <DependentUpon>Frm_Tipo_Clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Cuentaporcobrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +212,12 @@
     <EmbeddedResource Include="Frm_Clientes.resx">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Politicas_Descuentos.resx">
+      <DependentUpon>Frm_Politicas_Descuentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Tipo_Clientes.resx">
+      <DependentUpon>Frm_Tipo_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Cuentaporcobrar.resx">
       <DependentUpon>Frm_Cuentaporcobrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +310,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\location_map_pin_mark_icon_148685.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mbrisale_99573.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

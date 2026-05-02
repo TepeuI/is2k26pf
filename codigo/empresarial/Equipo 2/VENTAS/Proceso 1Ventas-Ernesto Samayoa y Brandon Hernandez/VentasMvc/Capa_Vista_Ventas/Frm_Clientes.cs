@@ -26,6 +26,7 @@ namespace Capa_Vista_Ventas
                 Nombre = "dgv_empleados"
             };
             string[] columnas = {
+<<<<<<< HEAD
                     "Tbl_Clientes",
                     "Pk_Id_Cliente",
                     "Cmp_CuioNit",
@@ -37,6 +38,54 @@ namespace Capa_Vista_Ventas
                     "Cmp_Direccion",
                     "Cmp_Tipo",
                     "Cmp_Estado"
+=======
+                        "Tbl_Clientes",
+                        "Pk_Id_Cliente",
+                        "Cmp_CuioNit",
+                        "Cmp_Nombre",
+                        "Cmp_Apellido",
+                        "Cmp_Telefono",
+                        "Cmp_Correo",
+                        "Cmp_Saldo_Total",
+                        "Cmp_Direccion",
+                        "Fk_Id_Tipo_Cliente",
+                        "Cmp_Estado"
+
+                     };
+
+            string[] sEtiquetas = {
+                        "ID",
+                        "Cui/Nit",
+                        "Nombre Cliente",
+                        "Apellido Cliente",
+                        "Teléfono",
+                        "Correo",
+                        "Saldo Total",
+                        "Dirección",
+                        "ID Tipo Cliente",
+                        "Estado"
+                     };
+
+            // ─── CONFIGURACIÓN FK ────────────────────────────────────────────────
+            List<Cls_ConfiguracionFK> fks = new List<Cls_ConfiguracionFK>
+                {
+                    new Cls_ConfiguracionFK
+                    {
+                        CampoFK         = "Fk_Id_Tipo_Cliente",
+                        TablaReferencia = "Tbl_Tipo_Cliente",
+                        CampoPK         = "Id_Tipo_Cliente",
+                        CampoMostrar    = "Cmp_Tipo",
+
+                        CamposEditables = new List<Cls_CampoEditable>
+                        {
+                            new Cls_CampoEditable { NombreCampo = "Cmp_Descripcion",  Etiqueta = "Descripcion", SoloLectura = true  },
+
+
+                        }
+                    },
+
+
+>>>>>>> 98e060909a38870e0ca53b2cca3cb5a56b5db867
                 };
 
             string[] sEtiquetas = {
