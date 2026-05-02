@@ -75,5 +75,10 @@ namespace Capa_Controlador
         {
             return modelo.fun_ObtenerIdCliente();
         }
+
+        public DataTable Fun_Obtener_Detalle_Entrega_Compra(int I_Id_Entrega_Compra)
+        {
+            return modelo.Fun_Obtener_Detalle_Entrega_Compra(I_Id_Entrega_Compra);
+        }
     }
 }

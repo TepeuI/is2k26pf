@@ -9,6 +9,7 @@ namespace Capa_Vista_Comprobantes
     {
         Cls_Controlador_Sentencias controlador = new Cls_Controlador_Sentencias();
         private bool cargandoCombos = false;
+        private int I_Id_Entrega_Seleccionada = 0;
         public Frm_Comprobante_Compra()
         {
             InitializeComponent();
@@ -365,6 +366,7 @@ namespace Capa_Vista_Comprobantes
             }
 
             DataGridViewRow fila = Dvg_Comprobante_Compra.Rows[e.RowIndex];
+            I_Id_Entrega_Seleccionada = Convert.ToInt32(fila.Cells["Fk_ID_Entrega_Compra"].Value);
 
             Cbo_Id_Comprobante_Compra.SelectedValue = Convert.ToInt32(fila.Cells["Pk_ID_Comprobante_Compra"].Value);
             Cbo_Id_Entrega_Comprobante_Compra.SelectedValue = Convert.ToInt32(fila.Cells["Fk_ID_Entrega_Compra"].Value);
@@ -389,6 +391,46 @@ namespace Capa_Vista_Comprobantes
             Btn_Cancelar.Enabled = true;
             Btn_Modificar.Enabled = true;
             Btn_Limpiar_Comprobante.Enabled = true;
+        }
+
+        private void Btn_Ver_Detalle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (I_Id_Entrega_Seleccionada == 0)
+                {
+                    MessageBox.Show("Seleccione un comprobante para ver su detalle.");
+                    return;
+                }
+
+                Dgv_Detalle_Entrega.DataSource =
+                    controlador.Fun_Obtener_Detalle_Entrega_Compra(I_Id_Entrega_Seleccionada);
+
+                Dgv_Detalle_Entrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                Dgv_Detalle_Entrega.ReadOnly = true;
+                Dgv_Detalle_Entrega.AllowUserToAddRows = false;
+
+                Configurar_Dgv_Detalle_Entrega();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error al mostrar detalle: " + Ex.Message);
+            }
+        }
+
+        private void Configurar_Dgv_Detalle_Entrega()
+        {
+            Dgv_Detalle_Entrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Dgv_Detalle_Entrega.ReadOnly = true;
+            Dgv_Detalle_Entrega.AllowUserToAddRows = false;
+            Dgv_Detalle_Entrega.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            Dgv_Detalle_Entrega.Columns["Pk_ID_Entrega_Compra"].HeaderText = "No. Entrega";
+            Dgv_Detalle_Entrega.Columns["Fk_Id_OrdenCompra"].HeaderText = "Orden de Compra";
+            Dgv_Detalle_Entrega.Columns["Fk_Id_Transporte"].HeaderText = "Transporte Asignado";
+            Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección de Entrega";
+            Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Programada";
+            Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado de Entrega";
         }
     }
 }

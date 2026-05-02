@@ -246,5 +246,42 @@ namespace Capa_Modelo
 
             return tabla;
         }
+
+        public DataTable Fun_Obtener_Detalle_Entrega_Compra(int I_Id_Entrega_Compra)
+        {
+            DataTable Dt_Datos = new DataTable();
+            OdbcConnection Cn = conexion.fun_AbrirConexion();
+
+            try
+            {
+                string S_Query = @"
+                    SELECT 
+                        Pk_ID_Entrega_Compra,
+                        Fk_Id_OrdenCompra,
+                        Fk_Id_Transporte,
+                        Cmp_Direccion,
+                        Cmp_Fecha,
+                        Cmp_Estado_Entrega
+                    FROM tbl_entrega_compra
+                    WHERE Pk_ID_Entrega_Compra = ?;
+                ";
+
+                OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
+                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Compra);
+
+                OdbcDataAdapter Da = new OdbcDataAdapter(Cmd);
+                Da.Fill(Dt_Datos);
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception("Error al obtener detalle de entrega compra: " + Ex.Message);
+            }
+            finally
+            {
+                conexion.fun_CerrarConexion();
+            }
+
+            return Dt_Datos;
+        }
     }
 }
