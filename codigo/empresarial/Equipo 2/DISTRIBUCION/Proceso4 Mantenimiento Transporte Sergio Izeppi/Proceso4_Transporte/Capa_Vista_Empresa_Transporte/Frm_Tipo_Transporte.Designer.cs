@@ -32,22 +32,24 @@ namespace Capa_Vista_Empresa_Transporte
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Tipo_Transporte));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.Txt_TipoTransporte = new System.Windows.Forms.TextBox();
+            this.Txt_Numero_Transferencia = new System.Windows.Forms.TextBox();
+            this.Lbl_ID_Transporte = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Lbl_Tipo_Transporte = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.Lbl_ID_Empresa = new System.Windows.Forms.Label();
             this.Lbl_Estado_Transporte = new System.Windows.Forms.Label();
-            this.Txt_Piloto = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.Lbl_Capacidad = new System.Windows.Forms.Label();
-            this.Txt_Capacidad = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.Lbl_Nombre_Piloto = new System.Windows.Forms.Label();
-            this.Txt_Placa = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.Lbl_Placa = new System.Windows.Forms.Label();
             this.Cbo_Estado_Transporte = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Cbo_Empresa = new System.Windows.Forms.ComboBox();
             this.Dgv_Tipo_Transporte = new System.Windows.Forms.DataGridView();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
-            this.Btn_Guardar1 = new System.Windows.Forms.Button();
+            this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
             this.Btn_Modificar = new System.Windows.Forms.Button();
             this.Btn_Reporte = new System.Windows.Forms.Button();
@@ -81,69 +83,95 @@ namespace Capa_Vista_Empresa_Transporte
             this.label1.TabIndex = 0;
             this.label1.Text = "723 - INGRESO DE TIPO DE TRANSPORTE";
             // 
-            // Txt_TipoTransporte
+            // Txt_Numero_Transferencia
             // 
-            this.Txt_TipoTransporte.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_TipoTransporte.Location = new System.Drawing.Point(347, 59);
-            this.Txt_TipoTransporte.Name = "Txt_TipoTransporte";
-            this.Txt_TipoTransporte.Size = new System.Drawing.Size(187, 27);
-            this.Txt_TipoTransporte.TabIndex = 143;
+            this.Txt_Numero_Transferencia.BackColor = System.Drawing.SystemColors.Window;
+            this.Txt_Numero_Transferencia.Location = new System.Drawing.Point(38, 59);
+            this.Txt_Numero_Transferencia.Name = "Txt_Numero_Transferencia";
+            this.Txt_Numero_Transferencia.Size = new System.Drawing.Size(187, 27);
+            this.Txt_Numero_Transferencia.TabIndex = 141;
+            // 
+            // Lbl_ID_Transporte
+            // 
+            this.Lbl_ID_Transporte.AutoSize = true;
+            this.Lbl_ID_Transporte.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_ID_Transporte.Location = new System.Drawing.Point(35, 35);
+            this.Lbl_ID_Transporte.Name = "Lbl_ID_Transporte";
+            this.Lbl_ID_Transporte.Size = new System.Drawing.Size(116, 20);
+            this.Lbl_ID_Transporte.TabIndex = 140;
+            this.Lbl_ID_Transporte.Text = "ID Transporte";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox1.Location = new System.Drawing.Point(507, 59);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(187, 27);
+            this.textBox1.TabIndex = 143;
             // 
             // Lbl_Tipo_Transporte
             // 
             this.Lbl_Tipo_Transporte.AutoSize = true;
             this.Lbl_Tipo_Transporte.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Tipo_Transporte.Location = new System.Drawing.Point(344, 35);
+            this.Lbl_Tipo_Transporte.Location = new System.Drawing.Point(504, 35);
             this.Lbl_Tipo_Transporte.Name = "Lbl_Tipo_Transporte";
             this.Lbl_Tipo_Transporte.Size = new System.Drawing.Size(158, 20);
             this.Lbl_Tipo_Transporte.TabIndex = 142;
             this.Lbl_Tipo_Transporte.Text = "Tipo de Transporte";
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox2.Location = new System.Drawing.Point(285, 59);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(187, 27);
+            this.textBox2.TabIndex = 145;
+            // 
             // Lbl_ID_Empresa
             // 
             this.Lbl_ID_Empresa.AutoSize = true;
             this.Lbl_ID_Empresa.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_ID_Empresa.Location = new System.Drawing.Point(35, 35);
+            this.Lbl_ID_Empresa.Location = new System.Drawing.Point(282, 35);
             this.Lbl_ID_Empresa.Name = "Lbl_ID_Empresa";
-            this.Lbl_ID_Empresa.Size = new System.Drawing.Size(79, 20);
+            this.Lbl_ID_Empresa.Size = new System.Drawing.Size(100, 20);
             this.Lbl_ID_Empresa.TabIndex = 144;
-            this.Lbl_ID_Empresa.Text = "Empresa";
+            this.Lbl_ID_Empresa.Text = "ID Empresa";
             // 
             // Lbl_Estado_Transporte
             // 
             this.Lbl_Estado_Transporte.AutoSize = true;
             this.Lbl_Estado_Transporte.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Estado_Transporte.Location = new System.Drawing.Point(681, 108);
+            this.Lbl_Estado_Transporte.Location = new System.Drawing.Point(504, 108);
             this.Lbl_Estado_Transporte.Name = "Lbl_Estado_Transporte";
             this.Lbl_Estado_Transporte.Size = new System.Drawing.Size(181, 20);
             this.Lbl_Estado_Transporte.TabIndex = 146;
             this.Lbl_Estado_Transporte.Text = "Estado del Transporte";
             // 
-            // Txt_Piloto
+            // textBox4
             // 
-            this.Txt_Piloto.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_Piloto.Location = new System.Drawing.Point(39, 128);
-            this.Txt_Piloto.Name = "Txt_Piloto";
-            this.Txt_Piloto.Size = new System.Drawing.Size(187, 27);
-            this.Txt_Piloto.TabIndex = 149;
+            this.textBox4.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox4.Location = new System.Drawing.Point(39, 128);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(187, 27);
+            this.textBox4.TabIndex = 149;
             // 
             // Lbl_Capacidad
             // 
             this.Lbl_Capacidad.AutoSize = true;
             this.Lbl_Capacidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Capacidad.Location = new System.Drawing.Point(344, 105);
+            this.Lbl_Capacidad.Location = new System.Drawing.Point(283, 105);
             this.Lbl_Capacidad.Name = "Lbl_Capacidad";
             this.Lbl_Capacidad.Size = new System.Drawing.Size(93, 20);
             this.Lbl_Capacidad.TabIndex = 148;
             this.Lbl_Capacidad.Text = "Capacidad";
             // 
-            // Txt_Capacidad
+            // textBox5
             // 
-            this.Txt_Capacidad.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_Capacidad.Location = new System.Drawing.Point(348, 128);
-            this.Txt_Capacidad.Name = "Txt_Capacidad";
-            this.Txt_Capacidad.Size = new System.Drawing.Size(187, 27);
-            this.Txt_Capacidad.TabIndex = 151;
+            this.textBox5.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox5.Location = new System.Drawing.Point(287, 128);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(187, 27);
+            this.textBox5.TabIndex = 151;
             // 
             // Lbl_Nombre_Piloto
             // 
@@ -155,19 +183,19 @@ namespace Capa_Vista_Empresa_Transporte
             this.Lbl_Nombre_Piloto.TabIndex = 150;
             this.Lbl_Nombre_Piloto.Text = "Nombre Piloto";
             // 
-            // Txt_Placa
+            // textBox6
             // 
-            this.Txt_Placa.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_Placa.Location = new System.Drawing.Point(684, 59);
-            this.Txt_Placa.Name = "Txt_Placa";
-            this.Txt_Placa.Size = new System.Drawing.Size(187, 27);
-            this.Txt_Placa.TabIndex = 153;
+            this.textBox6.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox6.Location = new System.Drawing.Point(741, 59);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(187, 27);
+            this.textBox6.TabIndex = 153;
             // 
             // Lbl_Placa
             // 
             this.Lbl_Placa.AutoSize = true;
             this.Lbl_Placa.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Placa.Location = new System.Drawing.Point(681, 35);
+            this.Lbl_Placa.Location = new System.Drawing.Point(738, 35);
             this.Lbl_Placa.Name = "Lbl_Placa";
             this.Lbl_Placa.Size = new System.Drawing.Size(51, 20);
             this.Lbl_Placa.TabIndex = 152;
@@ -176,7 +204,7 @@ namespace Capa_Vista_Empresa_Transporte
             // Cbo_Estado_Transporte
             // 
             this.Cbo_Estado_Transporte.FormattingEnabled = true;
-            this.Cbo_Estado_Transporte.Location = new System.Drawing.Point(685, 132);
+            this.Cbo_Estado_Transporte.Location = new System.Drawing.Point(508, 132);
             this.Cbo_Estado_Transporte.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_Estado_Transporte.Name = "Cbo_Estado_Transporte";
             this.Cbo_Estado_Transporte.Size = new System.Drawing.Size(179, 28);
@@ -184,16 +212,18 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Cbo_Empresa);
-            this.groupBox1.Controls.Add(this.Txt_TipoTransporte);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.Cbo_Estado_Transporte);
-            this.groupBox1.Controls.Add(this.Txt_Placa);
+            this.groupBox1.Controls.Add(this.Lbl_ID_Transporte);
+            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.Txt_Numero_Transferencia);
             this.groupBox1.Controls.Add(this.Lbl_Placa);
             this.groupBox1.Controls.Add(this.Lbl_Tipo_Transporte);
-            this.groupBox1.Controls.Add(this.Txt_Capacidad);
+            this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.Lbl_ID_Empresa);
             this.groupBox1.Controls.Add(this.Lbl_Nombre_Piloto);
-            this.groupBox1.Controls.Add(this.Txt_Piloto);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.Lbl_Estado_Transporte);
             this.groupBox1.Controls.Add(this.Lbl_Capacidad);
             this.groupBox1.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -203,15 +233,6 @@ namespace Capa_Vista_Empresa_Transporte
             this.groupBox1.TabIndex = 155;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Transporte";
-            // 
-            // Cbo_Empresa
-            // 
-            this.Cbo_Empresa.FormattingEnabled = true;
-            this.Cbo_Empresa.Location = new System.Drawing.Point(39, 59);
-            this.Cbo_Empresa.Margin = new System.Windows.Forms.Padding(4);
-            this.Cbo_Empresa.Name = "Cbo_Empresa";
-            this.Cbo_Empresa.Size = new System.Drawing.Size(188, 28);
-            this.Cbo_Empresa.TabIndex = 155;
             // 
             // Dgv_Tipo_Transporte
             // 
@@ -227,11 +248,10 @@ namespace Capa_Vista_Empresa_Transporte
             this.Dgv_Tipo_Transporte.RowTemplate.Height = 24;
             this.Dgv_Tipo_Transporte.Size = new System.Drawing.Size(1042, 248);
             this.Dgv_Tipo_Transporte.TabIndex = 156;
-            this.Dgv_Tipo_Transporte.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Tipo_Transporte_CellClick);
             // 
             // Btn_Eliminar
             // 
-            this.Btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
             this.Btn_Eliminar.Location = new System.Drawing.Point(574, 71);
             this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(4);
@@ -241,55 +261,51 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Eliminar.Text = "ELIMINAR";
             this.Btn_Eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Eliminar.UseVisualStyleBackColor = true;
-            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
-            // Btn_Guardar1
+            // Btn_Guardar
             // 
-            this.Btn_Guardar1.BackColor = System.Drawing.Color.White;
-            this.Btn_Guardar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Guardar1.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar1.Image")));
-            this.Btn_Guardar1.Location = new System.Drawing.Point(336, 71);
-            this.Btn_Guardar1.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Guardar1.Name = "Btn_Guardar1";
-            this.Btn_Guardar1.Size = new System.Drawing.Size(101, 82);
-            this.Btn_Guardar1.TabIndex = 207;
-            this.Btn_Guardar1.Text = "GUARDAR";
-            this.Btn_Guardar1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Guardar1.UseVisualStyleBackColor = false;
-            this.Btn_Guardar1.Click += new System.EventHandler(this.Btn_Guardar1_Click_1);
+            this.Btn_Guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Btn_Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar.Image")));
+            this.Btn_Guardar.Location = new System.Drawing.Point(336, 71);
+            this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Guardar.Name = "Btn_Guardar";
+            this.Btn_Guardar.Size = new System.Drawing.Size(101, 82);
+            this.Btn_Guardar.TabIndex = 207;
+            this.Btn_Guardar.Text = "GUARDAR";
+            this.Btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Guardar.UseVisualStyleBackColor = false;
             // 
             // Btn_Salir
             // 
-            this.Btn_Salir.BackColor = System.Drawing.Color.White;
-            this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(921, 71);
+            this.Btn_Salir.Location = new System.Drawing.Point(930, 71);
             this.Btn_Salir.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(97, 82);
+            this.Btn_Salir.Size = new System.Drawing.Size(93, 82);
             this.Btn_Salir.TabIndex = 206;
             this.Btn_Salir.Text = "SALIR";
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Salir.UseVisualStyleBackColor = false;
-            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
             // Btn_Modificar
             // 
-            this.Btn_Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(215, 71);
+            this.Btn_Modificar.Location = new System.Drawing.Point(217, 71);
             this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(111, 82);
+            this.Btn_Modificar.Size = new System.Drawing.Size(100, 82);
             this.Btn_Modificar.TabIndex = 205;
             this.Btn_Modificar.Text = "MODIFICAR";
             this.Btn_Modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Modificar.UseVisualStyleBackColor = true;
-            this.Btn_Modificar.Click += new System.EventHandler(this.Btn_Modificar_Click);
             // 
             // Btn_Reporte
             // 
-            this.Btn_Reporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Reporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte.Image")));
             this.Btn_Reporte.Location = new System.Drawing.Point(692, 71);
             this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(4);
@@ -302,7 +318,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             // Btn_Ayuda
             // 
-            this.Btn_Ayuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ayuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
             this.Btn_Ayuda.Location = new System.Drawing.Point(811, 71);
             this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(4);
@@ -315,21 +331,20 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             // Btn_Cancelar
             // 
-            this.Btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(453, 71);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(455, 71);
             this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
-            this.Btn_Cancelar.Size = new System.Drawing.Size(111, 82);
+            this.Btn_Cancelar.Size = new System.Drawing.Size(99, 82);
             this.Btn_Cancelar.TabIndex = 202;
             this.Btn_Cancelar.Text = "CANCELAR";
             this.Btn_Cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
-            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
             // Btn_Ingresar
             // 
-            this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
             this.Btn_Ingresar.Location = new System.Drawing.Point(98, 71);
             this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(4);
@@ -346,7 +361,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 639);
             this.Controls.Add(this.Btn_Eliminar);
-            this.Controls.Add(this.Btn_Guardar1);
+            this.Controls.Add(this.Btn_Guardar);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Modificar);
             this.Controls.Add(this.Btn_Reporte);
@@ -373,27 +388,29 @@ namespace Capa_Vista_Empresa_Transporte
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Txt_TipoTransporte;
+        private System.Windows.Forms.TextBox Txt_Numero_Transferencia;
+        private System.Windows.Forms.Label Lbl_ID_Transporte;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label Lbl_Tipo_Transporte;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label Lbl_ID_Empresa;
         private System.Windows.Forms.Label Lbl_Estado_Transporte;
-        private System.Windows.Forms.TextBox Txt_Piloto;
+        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label Lbl_Capacidad;
-        private System.Windows.Forms.TextBox Txt_Capacidad;
+        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label Lbl_Nombre_Piloto;
-        private System.Windows.Forms.TextBox Txt_Placa;
+        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label Lbl_Placa;
         private System.Windows.Forms.ComboBox Cbo_Estado_Transporte;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView Dgv_Tipo_Transporte;
         private System.Windows.Forms.Button Btn_Eliminar;
-        private System.Windows.Forms.Button Btn_Guardar1;
+        private System.Windows.Forms.Button Btn_Guardar;
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button Btn_Modificar;
         private System.Windows.Forms.Button Btn_Reporte;
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Ingresar;
-        private System.Windows.Forms.ComboBox Cbo_Empresa;
     }
 }

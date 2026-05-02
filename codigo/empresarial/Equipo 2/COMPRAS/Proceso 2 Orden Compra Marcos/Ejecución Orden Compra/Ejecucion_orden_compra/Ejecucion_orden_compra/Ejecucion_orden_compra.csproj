@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Vista_Compras">
-      <HintPath>..\..\..\..\Proceso 2 cuentas por pagar  Danilo\proceso cuentas por pagar\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
-    </Reference>
     <Reference Include="Capa_vista_orden_compra">
       <HintPath>..\..\..\MVC Orden Compra\Frm_Orden_Compra\Capa_vista_orden_compra\bin\Debug\Capa_vista_orden_compra.dll</HintPath>
     </Reference>

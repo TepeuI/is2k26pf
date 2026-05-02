@@ -7,7 +7,6 @@ namespace Capa_Vista_Comprobantes
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -56,22 +55,23 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Crear_Comprobante = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Dgv_Detalle_Entrega = new System.Windows.Forms.DataGridView();
             this.Btn_Ver_Detalle = new System.Windows.Forms.Button();
-            this.Gb_Detalle = new System.Windows.Forms.GroupBox();
+            this.Btn_Eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dvg_Comprobante_Compra)).BeginInit();
             this.GB_Ventas.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle_Entrega)).BeginInit();
-            this.Gb_Detalle.SuspendLayout();
             this.SuspendLayout();
             // 
             // Dvg_Comprobante_Compra
             // 
             this.Dvg_Comprobante_Compra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dvg_Comprobante_Compra.Location = new System.Drawing.Point(15, 193);
+            this.Dvg_Comprobante_Compra.Location = new System.Drawing.Point(23, 185);
             this.Dvg_Comprobante_Compra.Name = "Dvg_Comprobante_Compra";
-            this.Dvg_Comprobante_Compra.Size = new System.Drawing.Size(853, 122);
+            this.Dvg_Comprobante_Compra.Size = new System.Drawing.Size(845, 109);
             this.Dvg_Comprobante_Compra.TabIndex = 60;
             this.Dvg_Comprobante_Compra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dvg_Comprobante_Compra_CellContentClick);
             // 
@@ -95,7 +95,7 @@ namespace Capa_Vista_Comprobantes
             this.GB_Ventas.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GB_Ventas.Location = new System.Drawing.Point(21, 185);
             this.GB_Ventas.Name = "GB_Ventas";
-            this.GB_Ventas.Size = new System.Drawing.Size(890, 334);
+            this.GB_Ventas.Size = new System.Drawing.Size(890, 329);
             this.GB_Ventas.TabIndex = 59;
             this.GB_Ventas.TabStop = false;
             this.GB_Ventas.Text = "Comprobante Compra";
@@ -237,7 +237,7 @@ namespace Capa_Vista_Comprobantes
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 80);
+            this.panel1.Size = new System.Drawing.Size(933, 80);
             this.panel1.TabIndex = 57;
             // 
             // label1
@@ -253,7 +253,7 @@ namespace Capa_Vista_Comprobantes
             // Btn_Limpiar_Comprobante
             // 
             this.Btn_Limpiar_Comprobante.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Limpiar_Comprobante.Image")));
-            this.Btn_Limpiar_Comprobante.Location = new System.Drawing.Point(483, 89);
+            this.Btn_Limpiar_Comprobante.Location = new System.Drawing.Point(583, 89);
             this.Btn_Limpiar_Comprobante.Name = "Btn_Limpiar_Comprobante";
             this.Btn_Limpiar_Comprobante.Size = new System.Drawing.Size(86, 80);
             this.Btn_Limpiar_Comprobante.TabIndex = 56;
@@ -266,7 +266,7 @@ namespace Capa_Vista_Comprobantes
             // 
             this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(756, 89);
+            this.Btn_Salir.Location = new System.Drawing.Point(859, 89);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(86, 80);
             this.Btn_Salir.TabIndex = 55;
@@ -289,7 +289,7 @@ namespace Capa_Vista_Comprobantes
             // Btn_Reporte
             // 
             this.Btn_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte.Image")));
-            this.Btn_Reporte.Location = new System.Drawing.Point(572, 89);
+            this.Btn_Reporte.Location = new System.Drawing.Point(675, 89);
             this.Btn_Reporte.Name = "Btn_Reporte";
             this.Btn_Reporte.Size = new System.Drawing.Size(86, 80);
             this.Btn_Reporte.TabIndex = 53;
@@ -300,7 +300,7 @@ namespace Capa_Vista_Comprobantes
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(664, 89);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(767, 89);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(86, 80);
             this.Btn_Ayuda.TabIndex = 52;
@@ -346,44 +346,55 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Guardar.UseVisualStyleBackColor = false;
             this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Dgv_Detalle_Entrega);
+            this.groupBox1.Controls.Add(this.Btn_Ver_Detalle);
+            this.groupBox1.Location = new System.Drawing.Point(21, 535);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(890, 194);
+            this.groupBox1.TabIndex = 61;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Detalle";
+            // 
             // Dgv_Detalle_Entrega
             // 
             this.Dgv_Detalle_Entrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Detalle_Entrega.Location = new System.Drawing.Point(20, 73);
+            this.Dgv_Detalle_Entrega.Location = new System.Drawing.Point(23, 67);
             this.Dgv_Detalle_Entrega.Name = "Dgv_Detalle_Entrega";
-            this.Dgv_Detalle_Entrega.Size = new System.Drawing.Size(848, 86);
-            this.Dgv_Detalle_Entrega.TabIndex = 62;
+            this.Dgv_Detalle_Entrega.Size = new System.Drawing.Size(840, 90);
+            this.Dgv_Detalle_Entrega.TabIndex = 1;
             // 
             // Btn_Ver_Detalle
             // 
-            this.Btn_Ver_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Ver_Detalle.Location = new System.Drawing.Point(88, 18);
+            this.Btn_Ver_Detalle.Location = new System.Drawing.Point(83, 19);
             this.Btn_Ver_Detalle.Name = "Btn_Ver_Detalle";
-            this.Btn_Ver_Detalle.Size = new System.Drawing.Size(93, 49);
-            this.Btn_Ver_Detalle.TabIndex = 63;
+            this.Btn_Ver_Detalle.Size = new System.Drawing.Size(78, 41);
+            this.Btn_Ver_Detalle.TabIndex = 0;
             this.Btn_Ver_Detalle.Text = "Ver Detalle";
             this.Btn_Ver_Detalle.UseVisualStyleBackColor = true;
             this.Btn_Ver_Detalle.Click += new System.EventHandler(this.Btn_Ver_Detalle_Click);
             // 
-            // Gb_Detalle
+            // Btn_Eliminar
             // 
-            this.Gb_Detalle.Controls.Add(this.Dgv_Detalle_Entrega);
-            this.Gb_Detalle.Controls.Add(this.Btn_Ver_Detalle);
-            this.Gb_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gb_Detalle.Location = new System.Drawing.Point(21, 525);
-            this.Gb_Detalle.Name = "Gb_Detalle";
-            this.Gb_Detalle.Size = new System.Drawing.Size(890, 179);
-            this.Gb_Detalle.TabIndex = 64;
-            this.Gb_Detalle.TabStop = false;
-            this.Gb_Detalle.Text = "Detalle";
+            this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
+            this.Btn_Eliminar.Location = new System.Drawing.Point(483, 91);
+            this.Btn_Eliminar.Name = "Btn_Eliminar";
+            this.Btn_Eliminar.Size = new System.Drawing.Size(94, 78);
+            this.Btn_Eliminar.TabIndex = 62;
+            this.Btn_Eliminar.Text = "ELIMINAR";
+            this.Btn_Eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Eliminar.UseVisualStyleBackColor = true;
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Frm_Comprobante_Compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 749);
-            this.Controls.Add(this.Gb_Detalle);
+            this.ClientSize = new System.Drawing.Size(971, 741);
+            this.Controls.Add(this.Btn_Eliminar);
             this.Controls.Add(this.Btn_Guardar);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GB_Ventas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Btn_Limpiar_Comprobante);
@@ -400,13 +411,15 @@ namespace Capa_Vista_Comprobantes
             this.GB_Ventas.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle_Entrega)).EndInit();
-            this.Gb_Detalle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView Dvg_Comprobante_Compra;
         private System.Windows.Forms.GroupBox GB_Ventas;
         private System.Windows.Forms.TextBox Txt_Observaciones;
         private System.Windows.Forms.TextBox Txt_Nombre_Receptor;
@@ -432,9 +445,9 @@ namespace Capa_Vista_Comprobantes
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Crear_Comprobante;
         private System.Windows.Forms.Button Btn_Guardar;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView Dgv_Detalle_Entrega;
         private System.Windows.Forms.Button Btn_Ver_Detalle;
-        private System.Windows.Forms.GroupBox Gb_Detalle;
-        private System.Windows.Forms.DataGridView Dvg_Comprobante_Compra;
+        private System.Windows.Forms.Button Btn_Eliminar;
     }
 }

@@ -70,10 +70,6 @@ namespace Capa_Vista_Mov_Inv
             this.ID_Bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Clm_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Btn_inicio = new System.Windows.Forms.Button();
-            this.Btn_anterior = new System.Windows.Forms.Button();
-            this.Btn_sig = new System.Windows.Forms.Button();
-            this.Btn_fin = new System.Windows.Forms.Button();
             this.GB_ENCABEZADO.SuspendLayout();
             this.panel1.SuspendLayout();
             this.GB_Detalle.SuspendLayout();
@@ -84,7 +80,7 @@ namespace Capa_Vista_Mov_Inv
             // BTN_LIMPIAR_ENCABEZADO
             // 
             this.BTN_LIMPIAR_ENCABEZADO.Image = ((System.Drawing.Image)(resources.GetObject("BTN_LIMPIAR_ENCABEZADO.Image")));
-            this.BTN_LIMPIAR_ENCABEZADO.Location = new System.Drawing.Point(571, 99);
+            this.BTN_LIMPIAR_ENCABEZADO.Location = new System.Drawing.Point(573, 99);
             this.BTN_LIMPIAR_ENCABEZADO.Name = "BTN_LIMPIAR_ENCABEZADO";
             this.BTN_LIMPIAR_ENCABEZADO.Size = new System.Drawing.Size(86, 80);
             this.BTN_LIMPIAR_ENCABEZADO.TabIndex = 29;
@@ -97,7 +93,7 @@ namespace Capa_Vista_Mov_Inv
             // 
             this.Btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(1105, 99);
+            this.Btn_Salir.Location = new System.Drawing.Point(846, 99);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(86, 80);
             this.Btn_Salir.TabIndex = 28;
@@ -109,7 +105,7 @@ namespace Capa_Vista_Mov_Inv
             // Btn_Modificar
             // 
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(295, 99);
+            this.Btn_Modificar.Location = new System.Drawing.Point(389, 99);
             this.Btn_Modificar.Name = "Btn_Modificar";
             this.Btn_Modificar.Size = new System.Drawing.Size(86, 80);
             this.Btn_Modificar.TabIndex = 25;
@@ -120,7 +116,7 @@ namespace Capa_Vista_Mov_Inv
             // Btn_Reporte
             // 
             this.Btn_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte.Image")));
-            this.Btn_Reporte.Location = new System.Drawing.Point(479, 99);
+            this.Btn_Reporte.Location = new System.Drawing.Point(662, 99);
             this.Btn_Reporte.Name = "Btn_Reporte";
             this.Btn_Reporte.Size = new System.Drawing.Size(86, 80);
             this.Btn_Reporte.TabIndex = 24;
@@ -131,7 +127,7 @@ namespace Capa_Vista_Mov_Inv
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(1013, 99);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(754, 99);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(86, 80);
             this.Btn_Ayuda.TabIndex = 23;
@@ -142,7 +138,7 @@ namespace Capa_Vista_Mov_Inv
             // Btn_Cancelar
             // 
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(203, 99);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(297, 99);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(86, 80);
             this.Btn_Cancelar.TabIndex = 22;
@@ -155,9 +151,9 @@ namespace Capa_Vista_Mov_Inv
             // 
             this.btn_Guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Guardar.Image")));
-            this.btn_Guardar.Location = new System.Drawing.Point(104, 99);
+            this.btn_Guardar.Location = new System.Drawing.Point(159, 99);
             this.btn_Guardar.Name = "btn_Guardar";
-            this.btn_Guardar.Size = new System.Drawing.Size(93, 80);
+            this.btn_Guardar.Size = new System.Drawing.Size(132, 80);
             this.btn_Guardar.TabIndex = 21;
             this.btn_Guardar.Text = "GUARDAR";
             this.btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -167,9 +163,9 @@ namespace Capa_Vista_Mov_Inv
             // Btn_Agregar_Movimiento
             // 
             this.Btn_Agregar_Movimiento.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Agregar_Movimiento.Image")));
-            this.Btn_Agregar_Movimiento.Location = new System.Drawing.Point(8, 98);
+            this.Btn_Agregar_Movimiento.Location = new System.Drawing.Point(21, 99);
             this.Btn_Agregar_Movimiento.Name = "Btn_Agregar_Movimiento";
-            this.Btn_Agregar_Movimiento.Size = new System.Drawing.Size(90, 80);
+            this.Btn_Agregar_Movimiento.Size = new System.Drawing.Size(132, 80);
             this.Btn_Agregar_Movimiento.TabIndex = 20;
             this.Btn_Agregar_Movimiento.Text = "ADD Movimiento";
             this.Btn_Agregar_Movimiento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -187,7 +183,7 @@ namespace Capa_Vista_Mov_Inv
             this.GB_ENCABEZADO.Controls.Add(this.Lbl_ID_TipoMovimiento);
             this.GB_ENCABEZADO.Controls.Add(this.Lbl_IDMovInv);
             this.GB_ENCABEZADO.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_ENCABEZADO.Location = new System.Drawing.Point(278, 203);
+            this.GB_ENCABEZADO.Location = new System.Drawing.Point(55, 203);
             this.GB_ENCABEZADO.Name = "GB_ENCABEZADO";
             this.GB_ENCABEZADO.Size = new System.Drawing.Size(693, 234);
             this.GB_ENCABEZADO.TabIndex = 19;
@@ -272,7 +268,7 @@ namespace Capa_Vista_Mov_Inv
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(3, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1287, 80);
+            this.panel1.Size = new System.Drawing.Size(1010, 80);
             this.panel1.TabIndex = 30;
             // 
             // label1
@@ -288,7 +284,7 @@ namespace Capa_Vista_Mov_Inv
             // btn_buscar
             // 
             this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
-            this.btn_buscar.Location = new System.Drawing.Point(387, 99);
+            this.btn_buscar.Location = new System.Drawing.Point(481, 99);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(86, 80);
             this.btn_buscar.TabIndex = 31;
@@ -312,7 +308,7 @@ namespace Capa_Vista_Mov_Inv
             this.GB_Detalle.Controls.Add(this.Btn_Agregar_Detalle);
             this.GB_Detalle.Controls.Add(this.DGV_DETALLE_MOVIMIENTO);
             this.GB_Detalle.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_Detalle.Location = new System.Drawing.Point(161, 443);
+            this.GB_Detalle.Location = new System.Drawing.Point(30, 443);
             this.GB_Detalle.Name = "GB_Detalle";
             this.GB_Detalle.Size = new System.Drawing.Size(999, 470);
             this.GB_Detalle.TabIndex = 32;
@@ -500,63 +496,11 @@ namespace Capa_Vista_Mov_Inv
             this.Clm_Cantidad.Name = "Clm_Cantidad";
             this.Clm_Cantidad.Width = 125;
             // 
-            // Btn_inicio
-            // 
-            this.Btn_inicio.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
-            this.Btn_inicio.Location = new System.Drawing.Point(663, 98);
-            this.Btn_inicio.Name = "Btn_inicio";
-            this.Btn_inicio.Size = new System.Drawing.Size(83, 81);
-            this.Btn_inicio.TabIndex = 9;
-            this.Btn_inicio.Text = "Inicio";
-            this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_inicio.UseVisualStyleBackColor = true;
-            // 
-            // Btn_anterior
-            // 
-            this.Btn_anterior.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
-            this.Btn_anterior.Location = new System.Drawing.Point(752, 98);
-            this.Btn_anterior.Name = "Btn_anterior";
-            this.Btn_anterior.Size = new System.Drawing.Size(81, 81);
-            this.Btn_anterior.TabIndex = 33;
-            this.Btn_anterior.Text = "Anterior";
-            this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_anterior.UseVisualStyleBackColor = true;
-            // 
-            // Btn_sig
-            // 
-            this.Btn_sig.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
-            this.Btn_sig.Location = new System.Drawing.Point(839, 100);
-            this.Btn_sig.Name = "Btn_sig";
-            this.Btn_sig.Size = new System.Drawing.Size(81, 79);
-            this.Btn_sig.TabIndex = 34;
-            this.Btn_sig.Text = "Siguiente";
-            this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_sig.UseVisualStyleBackColor = true;
-            // 
-            // Btn_fin
-            // 
-            this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
-            this.Btn_fin.Location = new System.Drawing.Point(926, 100);
-            this.Btn_fin.Name = "Btn_fin";
-            this.Btn_fin.Size = new System.Drawing.Size(81, 79);
-            this.Btn_fin.TabIndex = 35;
-            this.Btn_fin.Text = "Fin";
-            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_fin.UseVisualStyleBackColor = true;
-            // 
             // Frm_Encabezado_Transaccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 925);
-            this.Controls.Add(this.Btn_fin);
-            this.Controls.Add(this.Btn_sig);
-            this.Controls.Add(this.Btn_anterior);
-            this.Controls.Add(this.Btn_inicio);
+            this.ClientSize = new System.Drawing.Size(1061, 925);
             this.Controls.Add(this.GB_Detalle);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.panel1);
@@ -626,9 +570,5 @@ namespace Capa_Vista_Mov_Inv
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Bodega;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bodega;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clm_Cantidad;
-        private System.Windows.Forms.Button Btn_inicio;
-        private System.Windows.Forms.Button Btn_anterior;
-        private System.Windows.Forms.Button Btn_sig;
-        private System.Windows.Forms.Button Btn_fin;
     }
 }

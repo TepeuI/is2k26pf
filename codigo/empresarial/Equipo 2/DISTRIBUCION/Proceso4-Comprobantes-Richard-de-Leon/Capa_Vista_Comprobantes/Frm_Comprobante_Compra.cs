@@ -10,6 +10,8 @@ namespace Capa_Vista_Comprobantes
         Cls_Controlador_Sentencias controlador = new Cls_Controlador_Sentencias();
         private bool cargandoCombos = false;
         private int I_Id_Entrega_Seleccionada = 0;
+        private int I_Id_Comprobante_Seleccionado = 0;
+
         public Frm_Comprobante_Compra()
         {
             InitializeComponent();
@@ -30,7 +32,11 @@ namespace Capa_Vista_Comprobantes
             fun_CargarCombos();
             fun_CargarDataGrid();
             fun_LimpiarCampos();
+
             fun_BloquearFormularioInicial();
+
+            // IMPORTANTE: este debe ir al final
+            fun_EstadoBotonesInicio();
         }
         private void fun_CargarCombos()
         {
@@ -92,7 +98,9 @@ namespace Capa_Vista_Comprobantes
             Btn_Crear_Comprobante.Enabled = true;
             Btn_Guardar.Enabled = false;
             Btn_Cancelar.Enabled = false;
+
             Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
 
             Btn_Limpiar_Comprobante.Enabled = true;
             Btn_Reporte.Enabled = true;
@@ -105,9 +113,11 @@ namespace Capa_Vista_Comprobantes
             Btn_Crear_Comprobante.Enabled = false;
             Btn_Guardar.Enabled = true;
             Btn_Cancelar.Enabled = true;
-            Btn_Modificar.Enabled = false;
 
-            Btn_Limpiar_Comprobante.Enabled = false;
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+
+            Btn_Limpiar_Comprobante.Enabled = true;
             Btn_Reporte.Enabled = false;
             Btn_Ayuda.Enabled = false;
             Btn_Salir.Enabled = true;
@@ -118,7 +128,9 @@ namespace Capa_Vista_Comprobantes
             Btn_Crear_Comprobante.Enabled = true;
             Btn_Guardar.Enabled = false;
             Btn_Cancelar.Enabled = false;
+
             Btn_Modificar.Enabled = true;
+            Btn_Eliminar.Enabled = true; 
 
             Btn_Limpiar_Comprobante.Enabled = true;
             Btn_Reporte.Enabled = true;
@@ -248,8 +260,8 @@ namespace Capa_Vista_Comprobantes
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
-    fun_LimpiarCampos();
-    fun_BloquearFormularioInicial();
+            fun_LimpiarCampos();
+            fun_BloquearFormularioInicial();
         }
 
         private void Btn_Limpiar_Comprobante_Click(object sender, EventArgs e)
@@ -326,11 +338,13 @@ namespace Capa_Vista_Comprobantes
             Btn_Guardar.Enabled = false;
             Btn_Cancelar.Enabled = false;
             Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
 
-            Btn_Limpiar_Comprobante.Enabled = false; // 🔴 IMPORTANTE
+            Btn_Limpiar_Comprobante.Enabled = false; 
             Btn_Reporte.Enabled = true;
             Btn_Ayuda.Enabled = true;
             Btn_Salir.Enabled = true;
+
         }
 
         private void Btn_Limpiar_Comprobante_Click_1(object sender, EventArgs e)
@@ -366,6 +380,10 @@ namespace Capa_Vista_Comprobantes
             }
 
             DataGridViewRow fila = Dvg_Comprobante_Compra.Rows[e.RowIndex];
+
+            I_Id_Comprobante_Seleccionado = Convert.ToInt32(
+                fila.Cells["Pk_ID_Comprobante_Compra"].Value
+            );
             I_Id_Entrega_Seleccionada = Convert.ToInt32(fila.Cells["Fk_ID_Entrega_Compra"].Value);
 
             Cbo_Id_Comprobante_Compra.SelectedValue = Convert.ToInt32(fila.Cells["Pk_ID_Comprobante_Compra"].Value);
@@ -391,6 +409,7 @@ namespace Capa_Vista_Comprobantes
             Btn_Cancelar.Enabled = true;
             Btn_Modificar.Enabled = true;
             Btn_Limpiar_Comprobante.Enabled = true;
+            Btn_Eliminar.Enabled = true;
         }
 
         private void Btn_Ver_Detalle_Click(object sender, EventArgs e)
@@ -431,6 +450,63 @@ namespace Capa_Vista_Comprobantes
             Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección de Entrega";
             Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Programada";
             Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado de Entrega";
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (I_Id_Comprobante_Seleccionado == 0)
+                {
+                    MessageBox.Show("Seleccione un comprobante para eliminar.");
+                    return;
+                }
+
+                DialogResult R_Respuesta = MessageBox.Show(
+                    "¿Está seguro de eliminar este comprobante?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (R_Respuesta == DialogResult.No)
+                {
+                    return;
+                }
+
+                bool B_Resultado = controlador.Fun_Eliminar_Comprobante_Compra(
+                    I_Id_Comprobante_Seleccionado
+                );
+
+                if (B_Resultado)
+                {
+                    MessageBox.Show("Comprobante eliminado correctamente.");
+
+                    I_Id_Comprobante_Seleccionado = 0;
+                    Limpiar_Comprobante();
+
+                    Dvg_Comprobante_Compra.DataSource =
+                        controlador.MostrarComprobantes();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el comprobante.");
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error al eliminar: " + Ex.Message);
+            }
+        }
+
+        private void Limpiar_Comprobante()
+        {
+            Cbo_Id_Entrega_Comprobante_Compra.SelectedIndex = -1;
+            Cbo_Id_Cliente.SelectedIndex = -1;
+            Txt_Nombre_Receptor.Clear();
+            Txt_Observaciones.Clear();
+            Dtp_Fecha_Hora_Entrega.Value = DateTime.Now;
+            Cbo_Estado.SelectedIndex = -1;
         }
     }
 }

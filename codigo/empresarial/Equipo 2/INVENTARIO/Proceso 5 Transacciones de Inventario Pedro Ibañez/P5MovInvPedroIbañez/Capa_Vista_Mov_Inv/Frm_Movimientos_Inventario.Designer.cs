@@ -39,10 +39,6 @@ namespace Capa_Vista_Mov_Inv
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.Dgv_Encabezado_Movimiento_Inventarios = new System.Windows.Forms.DataGridView();
-            this.Btn_fin = new System.Windows.Forms.Button();
-            this.Btn_sig = new System.Windows.Forms.Button();
-            this.Btn_anterior = new System.Windows.Forms.Button();
-            this.Btn_inicio = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Encabezado_Movimiento_Inventarios)).BeginInit();
             this.SuspendLayout();
@@ -115,7 +111,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
             this.Btn_Salir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Salir.Location = new System.Drawing.Point(808, 86);
+            this.Btn_Salir.Location = new System.Drawing.Point(459, 86);
             this.Btn_Salir.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(75, 63);
@@ -173,71 +169,11 @@ namespace Capa_Vista_Mov_Inv
             this.Dgv_Encabezado_Movimiento_Inventarios.Size = new System.Drawing.Size(993, 420);
             this.Dgv_Encabezado_Movimiento_Inventarios.TabIndex = 32;
             // 
-            // Btn_fin
-            // 
-            this.Btn_fin.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_fin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
-            this.Btn_fin.Location = new System.Drawing.Point(722, 86);
-            this.Btn_fin.Name = "Btn_fin";
-            this.Btn_fin.Size = new System.Drawing.Size(81, 63);
-            this.Btn_fin.TabIndex = 39;
-            this.Btn_fin.Text = "Fin";
-            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_fin.UseVisualStyleBackColor = false;
-            // 
-            // Btn_sig
-            // 
-            this.Btn_sig.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_sig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_sig.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
-            this.Btn_sig.Location = new System.Drawing.Point(635, 86);
-            this.Btn_sig.Name = "Btn_sig";
-            this.Btn_sig.Size = new System.Drawing.Size(81, 63);
-            this.Btn_sig.TabIndex = 38;
-            this.Btn_sig.Text = "Siguiente";
-            this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_sig.UseVisualStyleBackColor = false;
-            // 
-            // Btn_anterior
-            // 
-            this.Btn_anterior.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_anterior.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
-            this.Btn_anterior.Location = new System.Drawing.Point(548, 86);
-            this.Btn_anterior.Name = "Btn_anterior";
-            this.Btn_anterior.Size = new System.Drawing.Size(81, 63);
-            this.Btn_anterior.TabIndex = 37;
-            this.Btn_anterior.Text = "Anterior";
-            this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_anterior.UseVisualStyleBackColor = false;
-            // 
-            // Btn_inicio
-            // 
-            this.Btn_inicio.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn_inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_inicio.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
-            this.Btn_inicio.Location = new System.Drawing.Point(459, 86);
-            this.Btn_inicio.Name = "Btn_inicio";
-            this.Btn_inicio.Size = new System.Drawing.Size(83, 63);
-            this.Btn_inicio.TabIndex = 36;
-            this.Btn_inicio.Text = "Inicio";
-            this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_inicio.UseVisualStyleBackColor = false;
-            // 
             // Frm_Movimientos_Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 595);
-            this.Controls.Add(this.Btn_fin);
-            this.Controls.Add(this.Btn_sig);
-            this.Controls.Add(this.Btn_anterior);
-            this.Controls.Add(this.Btn_inicio);
             this.Controls.Add(this.Dgv_Encabezado_Movimiento_Inventarios);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Btn_Ingresar);
@@ -266,9 +202,5 @@ namespace Capa_Vista_Mov_Inv
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView Dgv_Encabezado_Movimiento_Inventarios;
-        private System.Windows.Forms.Button Btn_fin;
-        private System.Windows.Forms.Button Btn_sig;
-        private System.Windows.Forms.Button Btn_anterior;
-        private System.Windows.Forms.Button Btn_inicio;
     }
 }

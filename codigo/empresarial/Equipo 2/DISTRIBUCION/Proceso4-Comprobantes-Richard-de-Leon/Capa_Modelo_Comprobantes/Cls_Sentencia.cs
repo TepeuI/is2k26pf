@@ -283,5 +283,31 @@ namespace Capa_Modelo
 
             return Dt_Datos;
         }
+
+        public bool Fun_Eliminar_Comprobante_Compra(int I_Id_Comprobante_Compra)
+        {
+            OdbcConnection Cn = conexion.fun_AbrirConexion();
+
+            try
+            {
+                string S_Query = @"
+            DELETE FROM tbl_comprobante_compra
+            WHERE Pk_ID_Comprobante_Compra = ?;
+        ";
+
+                OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
+                Cmd.Parameters.AddWithValue("?", I_Id_Comprobante_Compra);
+
+                return Cmd.ExecuteNonQuery() > 0;
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception("Error al eliminar comprobante de compra: " + Ex.Message);
+            }
+            finally
+            {
+                conexion.fun_CerrarConexion();
+            }
+        }
     }
 }

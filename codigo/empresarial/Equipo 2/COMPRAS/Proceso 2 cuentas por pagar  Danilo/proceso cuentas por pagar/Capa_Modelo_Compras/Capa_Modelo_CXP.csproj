@@ -46,8 +46,6 @@
     <Compile Include="Cls_Compras.cs" />
     <Compile Include="Cls_Compras_Sentencias.cs" />
     <Compile Include="Cls_Conexion.cs" />
-    <Compile Include="Cls_Devoluciones.cs" />
-    <Compile Include="Cls_Devoluciones_Sentencias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
