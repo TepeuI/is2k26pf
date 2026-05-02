@@ -469,5 +469,12 @@ namespace Capa_Vista_Logista
             TipoClientes.MdiParent = this;
             TipoClientes.Show();
         }
+
+        private void politicasDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Politicas_Descuentos politicas_Descuentos = new Frm_Politicas_Descuentos();
+            politicas_Descuentos.MdiParent = this;
+            politicas_Descuentos.Show();
+        }
     }
 }

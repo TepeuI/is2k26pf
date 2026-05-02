@@ -143,6 +143,16 @@ namespace Capa_Vista_Ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mbrisale_99573 {
+            get {
+                object obj = ResourceManager.GetObject("mbrisale_99573", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shopping_commerce_flower_supermarket_sale_cart_icon_255564 {
             get {
                 object obj = ResourceManager.GetObject("shopping_commerce_flower_supermarket_sale_cart_icon_255564", resourceCulture);

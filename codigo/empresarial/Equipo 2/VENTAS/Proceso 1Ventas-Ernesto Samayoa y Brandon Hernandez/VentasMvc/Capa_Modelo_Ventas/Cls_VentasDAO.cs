@@ -40,6 +40,7 @@ namespace Capa_Modelo_Ventas
         private static readonly string SQL_BODEGAS = @"
         SELECT 
         Pk_Id_Bodega,
+        Cmp_Nombre_Bodega,
         CONCAT(Pk_Id_Bodega, ' - ', Cmp_Nombre_Bodega) AS NombreBodega
         FROM tbl_bodega
         WHERE Cmp_Estado_Bodega = 'Activo'";
@@ -117,6 +118,16 @@ namespace Capa_Modelo_Ventas
         INNER JOIN tbl_tipo_cliente tc ON c.Fk_Id_Tipo_Cliente = tc.Pk_Id_Tipo_Cliente
         ORDER BY v.Pk_Id_Ventas ASC";
 
+
+        //bodegas que contengan ciertos productos
+        private static readonly string SQL_BODEGAS_POR_PRODUCTO = @"
+        SELECT 
+        b.Pk_Id_Bodega,
+        b.Cmp_Nombre_Bodega,
+        CONCAT(b.Pk_Id_Bodega, ' - ', b.Cmp_Nombre_Bodega) AS NombreBodega
+        FROM tbl_existencias e
+        INNER JOIN tbl_bodega b ON e.fk_bodega_id = b.Pk_Id_Bodega
+        WHERE e.fk_inventario_id = ? AND e.stock > 0";
 
         public DataTable ObtenerClientes()
         {
@@ -332,6 +343,26 @@ namespace Capa_Modelo_Ventas
             }
 
             return ("Publico", 0); // fallback
+        }
+
+        //OBTENER BODEGAS CON PRODUCTOS HAY DISPONIBILIDAD STOCK
+        public DataTable ObtenerBodegasPorProducto(int pk_inventario_id)
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_BODEGAS_POR_PRODUCTO, conn))
+                {
+                    cmd.Parameters.AddWithValue("?", pk_inventario_id);
+
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        conexion.desconexion(conn);
+                        return dt;
+                    }
+                }
+            }
         }
 
         public bool GuardarVentaCompleta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
