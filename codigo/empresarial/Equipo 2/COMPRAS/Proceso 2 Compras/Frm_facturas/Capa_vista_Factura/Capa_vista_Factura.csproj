@@ -120,5 +120,17 @@
   <ItemGroup>
     <None Include="Resources\delete_remove_trash_icon_1773041.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_direction_left_undo_previous_backward_back_icon_250686.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_play_backward_arrow_next_previous_back_icon_250674.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_forward_player_multimedia_video_play_button_icon_250680 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_right_play_arrow_arrows_fast_forward_icon_250672.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

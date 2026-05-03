@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_modelo_orden_compra">
-      <HintPath>..\..\..\Proceso 2 Orden Compra Marcos\MVC Orden Compra\Frm_Orden_Compra\Capa_modelo_orden_compra\bin\Debug\Capa_modelo_orden_compra.dll</HintPath>
+    <Reference Include="Capa_Controlador_CXP">
+      <HintPath>..\..\..\Proceso 2 cuentas por pagar  Danilo\proceso cuentas por pagar\Capa_Controlador_Compras\bin\Debug\Capa_Controlador_CXP.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

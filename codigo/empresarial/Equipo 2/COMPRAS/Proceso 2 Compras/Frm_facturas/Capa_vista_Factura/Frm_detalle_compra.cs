@@ -26,6 +26,7 @@ namespace Capa_vista_Factura
             cargarProveedores();
             cargarUnidadMedida();
             cargarProductos();
+            cargarBodegas();
 
 
             Cmb_proveedor.DataSource = cont.getProveedores();
@@ -41,6 +42,10 @@ namespace Capa_vista_Factura
             Lbl_fechavencimiento.Enabled = false;
             Txt_diascredito.Enabled = false;
             Dtp_FechaVencimiento.Enabled = false;
+
+
+
+            Txt_estado.Enabled = false;
         }
         public Frm_detalle_compra()
         {
@@ -88,10 +93,11 @@ namespace Capa_vista_Factura
             int idInventario = Convert.ToInt32(Cmb_producto.SelectedValue);
             string producto = Cmb_producto.Text;
             string unidad = Cmb_unidad.Text;
+
             decimal subtotal = cantidad * precio;
 
             
-            Dgv_DetalleProductos.Rows.Add(idInventario, producto, unidad, cantidad, precio, subtotal);
+            Dgv_DetalleProductos.Rows.Add(idInventario, producto, unidad, cantidad, precio, subtotal, subtotal );
             CalcularTotal();
 
             Txt_Cantidad.Clear();
@@ -187,9 +193,9 @@ namespace Capa_vista_Factura
 
                 decimal subtotal;
 
-                if (decimal.TryParse(row.Cells["ColumnSubtotal"].Value?.ToString(), out subtotal))
+                if (decimal.TryParse(row.Cells["Columntotal"].Value?.ToString(), out decimal valorTotal))
                 {
-                    total += subtotal;
+                    total += valorTotal;
                 }
             }
 
@@ -298,9 +304,9 @@ namespace Capa_vista_Factura
                 return;
             }
 
-            if (Cmb_proveedor.SelectedValue == null || Cmb_ordencompra.SelectedValue == null)
+            if (Cmb_proveedor.SelectedValue == null || Cmb_ordencompra.SelectedValue == null || Cmb_bodega.SelectedValue == null)
             {
-                MessageBox.Show("Seleccione proveedor y orden de compra.",
+                MessageBox.Show("Seleccione proveedor ,orden de compra y bodega.",
                     "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -351,22 +357,23 @@ namespace Capa_vista_Factura
                 string numero = Txt_NumeroFactura.Text.Trim();
                 DateTime fecha = Dtp_FechaVencimiento.Value;
                 string tipoPago = Cmb_tipo.SelectedItem.ToString();
+                int idBodega = Convert.ToInt32(Cmb_bodega.SelectedValue);
 
-                
+
                 int idCompra = cont.guardarCompra(
-                    idProveedor, idOrdenCompra, serie, numero,
+                    idProveedor, idOrdenCompra, idBodega, serie, numero,
                     fecha, tipoPago, subtotal, total,
                     diasCredito, fechaVencimiento);
 
-                
+
                 foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
                 {
                     if (fila.IsNewRow) continue;
 
-                    int idInventario = Convert.ToInt32(fila.Cells[0].Value);
-                    string unidad = fila.Cells[2].Value?.ToString();
-                    int cantidad = Convert.ToInt32(fila.Cells[3].Value);
-                    decimal precio = Convert.ToDecimal(fila.Cells[4].Value);
+                    int idInventario = Convert.ToInt32(fila.Cells["ColumnCodigo"].Value);
+                    string unidad = fila.Cells["ColumnUniad"].Value?.ToString();
+                    int cantidad = Convert.ToInt32(fila.Cells["ColumnCantidad"].Value);
+                    decimal precio = Convert.ToDecimal(fila.Cells["ColumnPrecio"].Value);
 
                     cont.guardarDetalleCompra(idCompra, idInventario, cantidad, unidad, precio);
                 }
@@ -411,23 +418,35 @@ namespace Capa_vista_Factura
         private void Cmb_tipo_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
-            if (Cmb_tipo.SelectedItem.ToString() == "credito")
+            string tipo = Cmb_tipo.SelectedItem?.ToString().Trim().ToLower();
 
+            if (tipo == "contado")
             {
-                Lbl_diascredito.Enabled = true;
-                Lbl_fechavencimiento.Enabled = true;
-                Txt_diascredito.Enabled = true;
-                Dtp_FechaVencimiento.Enabled = true;
-            }
-            else
-            {
-
                 Lbl_diascredito.Enabled = false;
                 Lbl_fechavencimiento.Enabled = false;
                 Txt_diascredito.Enabled = false;
                 Dtp_FechaVencimiento.Enabled = false;
 
+                Txt_estado.Text = "pagado"; // ← siempre pagado
+            }
+            else if (tipo == "credito")
+            {
+                Lbl_diascredito.Enabled = true;
+                Lbl_fechavencimiento.Enabled = true;
+                Txt_diascredito.Enabled = true;
+                Dtp_FechaVencimiento.Enabled = true;
 
+                Txt_estado.Text = "pendiente"; // ← siempre pendiente al crear
+            }
+            else
+            {
+                // Opción vacía
+                Lbl_diascredito.Enabled = false;
+                Lbl_fechavencimiento.Enabled = false;
+                Txt_diascredito.Enabled = false;
+                Dtp_FechaVencimiento.Enabled = false;
+
+                Txt_estado.Text = ""; // ← vacío por defecto
             }
         }
 
@@ -489,6 +508,7 @@ namespace Capa_vista_Factura
                     Dgv_DetalleProductos.Columns["ColumnCantidad"].DataPropertyName = "Cantidad";
                     Dgv_DetalleProductos.Columns["ColumnPrecio"].DataPropertyName = "Precio";
                     Dgv_DetalleProductos.Columns["ColumnSubtotal"].DataPropertyName = "Subtotal";
+                    Dgv_DetalleProductos.Columns["Columntotal"].DataPropertyName = "Total";
 
                     Dgv_DetalleProductos.DataSource = detalle;
 
@@ -590,10 +610,63 @@ namespace Capa_vista_Factura
                 
                 MessageBox.Show("No se pudo actualizar la factura: " + ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+
             
 
+        }
+
+
+
+        /*-------------Metodo PAra Actualizar Estado----------------*/
+
+        
+
+
+
+
+        private void Txt_estado_TextChanged(object sender, EventArgs e)
+        {
+
+            string tipo = Cmb_tipo.SelectedItem?.ToString().Trim().ToLower();
+
+            if (tipo == "credito")
+            {
+                Lbl_diascredito.Enabled = true;
+                Lbl_fechavencimiento.Enabled = true;
+                Txt_diascredito.Enabled = true;
+                Dtp_FechaVencimiento.Enabled = true;
+                Txt_estado.Text = "pendiente"; // ← inicia como pendiente
+            }
+            else
+            {
+                Lbl_diascredito.Enabled = false;
+                Lbl_fechavencimiento.Enabled = false;
+                Txt_diascredito.Enabled = false;
+                Dtp_FechaVencimiento.Enabled = false;
+                Txt_estado.Text = tipo == "contado" ? "pagado" : "";
+            }
 
         }
+
+
+
+
+
+        void cargarBodegas()
+        {
+
+
+
+            Cmb_bodega.DataSource = cont.llenarComboBodega();
+
+            Cmb_bodega.DisplayMember = "Cmp_Nombre_Bodega";           
+            Cmb_bodega.ValueMember = "Pk_Id_Bodega";
+        }
+
+
+
     }
 
 }

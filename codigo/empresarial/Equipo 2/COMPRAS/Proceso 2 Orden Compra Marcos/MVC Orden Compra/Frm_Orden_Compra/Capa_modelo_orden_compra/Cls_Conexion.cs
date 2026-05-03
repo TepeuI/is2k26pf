@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using System.Data.Odbc;
 
 namespace Capa_modelo_orden_compra
 {
     class Cls_Conexion
     {
-
-
-
 
         // Devuelve la cadena de conexión ODBC
         public string ObtenerCadenaConexion()
@@ -57,8 +55,27 @@ namespace Capa_modelo_orden_compra
 
 
 
+        public DataTable ObtenerDatos(string sql)
+        {
+            DataTable dt = new DataTable();
 
+            try
+            {
+                using (OdbcConnection conn = new OdbcConnection(ObtenerCadenaConexion()))
+                {
+                    conn.Open();
 
+                    OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en ObtenerDatos: " + ex.Message);
+            }
+
+            return dt;
+        }
 
 
 

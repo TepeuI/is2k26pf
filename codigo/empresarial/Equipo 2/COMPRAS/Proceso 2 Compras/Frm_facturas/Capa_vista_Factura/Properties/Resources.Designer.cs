@@ -83,6 +83,16 @@ namespace Capa_vista_Factura.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_direction_left_undo_previous_backward_back_icon_250686 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_direction_left_undo_previous_backward_back_icon_250686", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cancel_icon_icons_com_73703 {
             get {
                 object obj = ResourceManager.GetObject("Cancel_icon-icons.com_73703", resourceCulture);
@@ -123,9 +133,39 @@ namespace Capa_vista_Factura.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap direction_play_backward_arrow_next_previous_back_icon_250674 {
+            get {
+                object obj = ResourceManager.GetObject("direction_play_backward_arrow_next_previous_back_icon_250674", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_question_16768 {
             get {
                 object obj = ResourceManager.GetObject("help_question_16768", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_forward_player_multimedia_video_play_button_icon_250680__1_ {
+            get {
+                object obj = ResourceManager.GetObject("next_forward_player_multimedia_video_play_button_icon_250680 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_right_play_arrow_arrows_fast_forward_icon_250672 {
+            get {
+                object obj = ResourceManager.GetObject("next_right_play_arrow_arrows_fast_forward_icon_250672", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
