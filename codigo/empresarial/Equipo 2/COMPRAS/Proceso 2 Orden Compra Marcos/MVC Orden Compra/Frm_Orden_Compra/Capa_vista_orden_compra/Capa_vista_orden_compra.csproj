@@ -36,6 +36,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Odbc, Version=10.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Odbc.10.0.7\lib\net462\System.Data.Odbc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +81,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\add_insert_new_plus_button_icon_142943.png" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +110,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sign-emergency-code-sos_61_icon-icons.com_57216.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_direction_left_undo_previous_backward_back_icon_250686.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_play_backward_arrow_next_previous_back_icon_250674.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_forward_player_multimedia_video_play_button_icon_250680 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_right_play_arrow_arrows_fast_forward_icon_250672.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

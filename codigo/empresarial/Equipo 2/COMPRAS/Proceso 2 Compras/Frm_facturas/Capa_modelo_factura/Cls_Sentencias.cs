@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Odbc;
 using System.Data;
-
+using System.Data.SqlClient;
 
 namespace Capa_modelo_factura
 {
@@ -106,10 +106,10 @@ ORDER BY C.cmp_fecha DESC;";
 
 
 
-        // Guardar compra principal y retornar ID generado
+        // Guardar compra principal
 
-        // Guardar compra principal y retornar ID generado
-        public int guardarCompra(int idProveedor, int idOrdenCompra, string serie,
+        
+        public int guardarCompra(int idProveedor, int idOrdenCompra, int idBodega, string serie,
                            string numero, DateTime fecha, string tipoPago,
                            decimal subtotal, decimal total,
                            int diasCredito, DateTime? fechaVencimiento)
@@ -127,11 +127,11 @@ ORDER BY C.cmp_fecha DESC;";
                                   : "NULL";
 
             string sql = $@"INSERT INTO tbl_compra 
-           (fk_id_proveedor, fk_id_orden_compra, cmp_serie_factura, 
+           (fk_id_proveedor, fk_id_orden_compra, fk_id_bodega, cmp_serie_factura, 
             cmp_numero_factura, cmp_fecha, cmp_tipo_compra, 
             cmp_subtotal, cmp_total, cmp_estado,
             cmp_dias_credito, cmp_fecha_vencimiento) 
-           VALUES ({idProveedor}, {idOrdenCompra}, '{serie}', '{numero}', 
+           VALUES ({idProveedor}, {idOrdenCompra}, {idBodega}, '{serie}', '{numero}', 
                    '{fechaStr}', '{pagoLimpio}', 
                    {subtotalStr}, {totalStr}, 'pendiente', 
                    {diasStr}, {fechaVencStr})";
@@ -373,6 +373,36 @@ ORDER BY C.cmp_fecha DESC;";
                 cn.desconexion(conn);
             }
         }
+
+
+
+        /*---------------------Buscar Bodega---------------*/
+
+
+
+        public DataTable obtenerBodegas()
+        {
+            DataTable dt = new DataTable();
+            // Seleccionamos el ID para el valor interno y el Nombre para mostrar al usuario
+            string sql = "SELECT Pk_Id_Bodega, Cmp_Nombre_Bodega FROM tbl_bodega WHERE Cmp_Estado_Bodega = 'Activo';";
+
+            OdbcConnection conn = cn.conexion();
+            try
+            {
+                OdbcDataAdapter adapter = new OdbcDataAdapter(sql, conn);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener bodegas para combo: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+            return dt;
+        }
+
 
 
 

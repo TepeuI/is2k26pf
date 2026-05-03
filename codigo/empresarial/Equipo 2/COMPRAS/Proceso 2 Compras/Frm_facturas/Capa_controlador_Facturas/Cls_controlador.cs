@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Data;
 using Capa_modelo_factura;
-using Capa_modelo_orden_compra;
+
+using Capa_Controlador_CXP;
 namespace Capa_controlador_Facturas
 {
     public class Cls_controlador
     {
 
         Capa_modelo_factura.Cls_Sentencias sn = new Capa_modelo_factura.Cls_Sentencias();
+
+
+        /*----------Cuentas por pagar-----------*/
+
+
+        Cls_Compras_Controlador cxp = new Cls_Compras_Controlador();
 
         public DataTable llenarTblDetalle()
         {
@@ -53,12 +60,12 @@ namespace Capa_controlador_Facturas
         }
 
 
-        public int guardarCompra(int idProveedor, int idOrdenCompra, string serie,
+        public int guardarCompra(int idProveedor, int idOrdenCompra, int idbodega, string serie,
                           string numero, DateTime fecha, string tipoPago,
                           decimal subtotal, decimal total,
                           int diasCredito, DateTime? fechaVencimiento)
         {
-            return sn.guardarCompra(idProveedor, idOrdenCompra, serie, numero, fecha,
+            return sn.guardarCompra(idProveedor, idOrdenCompra,idbodega, serie, numero, fecha,
                                      tipoPago, subtotal, total, diasCredito, fechaVencimiento);
         }
 
@@ -79,7 +86,7 @@ namespace Capa_controlador_Facturas
             decimal total = 0;
             foreach (DataRow fila in dtDetalle.Rows)
             {
-                // Sumamos la columna 'Subtotal' que viene de tu consulta SQL
+                
                 total += Convert.ToDecimal(fila["Subtotal"]);
             }
             return total;
@@ -106,6 +113,14 @@ namespace Capa_controlador_Facturas
         {
             sn.eliminarDetalleCompra(idCompra);
         }
+
+        public DataTable llenarComboBodega()
+        {
+         
+            return sn.obtenerBodegas();
+        }
+
+
 
 
     }

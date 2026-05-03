@@ -20,6 +20,7 @@ namespace Capa_vista_orden_compra
         {
          
             llenarDataGridView();
+            Dgv_orden.DataSource = cont.MostrarDetalleOrden();
 
         }
 
@@ -51,38 +52,35 @@ namespace Capa_vista_orden_compra
         {
 
           
-                // MENSAJE 1: ¿Se está ejecutando el método?
-                MessageBox.Show("PASO 1: El método llenarDataGridView se ha iniciado.");
 
                 try
                 {
-                    // MENSAJE 2: Antes de llamar al controlador
-                    MessageBox.Show("PASO 2: Llamando al controlador...");
+
                     DataTable dt = cont.llenarTblDetalle();
 
                     // MENSAJE 3: ¿Qué regresó el controlador?
                     if (dt == null)
                     {
-                        MessageBox.Show("PASO 3: ¡ERROR! El DataTable regresó NULO. Revisa la conexión u ODBC.");
+                        
                         return;
                     }
 
-                    MessageBox.Show("PASO 4: El DataTable no es nulo. Cantidad de filas: " + dt.Rows.Count);
+                   
 
                     if (dt.Rows.Count > 0)
                     {
                         Dgv_orden.DataSource = dt;
-                        MessageBox.Show("PASO 5: Datos asignados al DataGridView con éxito.");
+                      
                     }
                     else
                     {
-                        MessageBox.Show("PASO 5: El DataTable está VACÍO (0 filas). Revisa los datos en Workbench con INNER JOIN.");
+                      
                         Dgv_orden.DataSource = null;
                     }
                 }
                 catch (Exception ex)
                 {
-                    // MENSAJE DE ERROR CRÍTICO
+                   
                     MessageBox.Show("PASO EXTRA: Ocurrió una excepción: " + ex.Message + "\n\nStack: " + ex.StackTrace);
                 }
             }
