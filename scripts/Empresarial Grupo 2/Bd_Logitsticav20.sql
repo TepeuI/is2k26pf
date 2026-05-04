@@ -748,13 +748,12 @@ DROP TABLE IF EXISTS `tbl_existencias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_existencias` (
- `pk_existencias_id` int NOT NULL AUTO_INCREMENT,
   `fk_inventario_id` int NOT NULL,
   `fk_bodega_id` int NOT NULL,
   `stock` float NOT NULL,
   `estado_existencia` int DEFAULT NULL,
   `fk_id_unidad_medida` int DEFAULT NULL,
-  PRIMARY KEY (`pk_existencias_id`),
+  PRIMARY KEY (`fk_inventario_id`,`fk_bodega_id`),
   KEY `fk_bodegas_inventario` (`fk_bodega_id`),
   KEY `FK_existencias_unidad` (`fk_id_unidad_medida`),
   CONSTRAINT `fk_bodegas_inventario` FOREIGN KEY (`fk_bodega_id`) REFERENCES `tbl_bodega` (`Pk_Id_Bodega`),
