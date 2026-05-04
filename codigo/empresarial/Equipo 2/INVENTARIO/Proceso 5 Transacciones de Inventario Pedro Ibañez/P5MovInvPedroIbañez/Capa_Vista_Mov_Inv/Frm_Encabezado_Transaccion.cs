@@ -282,9 +282,9 @@ namespace Capa_Vista_Mov_Inv
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (NUD_Cant_mov.Value > 5000)
+            if (NUD_Cant_mov.Value < 0)
             {
-                MessageBox.Show("Valor de cantidad no puede ser mayor a 5000", "Aviso",
+                MessageBox.Show("Valor de cantidad no puede ser menor a 0", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

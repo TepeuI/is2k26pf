@@ -153,7 +153,7 @@ namespace Capa_Controlador_Mov_Inv
                 if (!resultadoMovimiento) return false; //Si falla el movimiento, retornar false
 
                 // Actualizar existencias
-                bool resultadoExistencias = fun_Actualizar_Existencias(idTipoMovimiento, detalle);
+                bool resultadoExistencias = fun_CreacionApartadoExistencias(idTipoMovimiento, detalle);
                 if (!resultadoExistencias) return false; // Si falla el stock, retornar false
 
                 return true; //Todo salió bien

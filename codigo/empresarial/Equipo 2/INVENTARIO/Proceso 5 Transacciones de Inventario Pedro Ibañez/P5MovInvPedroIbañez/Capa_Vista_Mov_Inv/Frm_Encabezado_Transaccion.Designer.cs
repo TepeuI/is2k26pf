@@ -359,8 +359,8 @@ namespace Capa_Vista_Mov_Inv
             // 
             this.NUD_Cant_mov.Location = new System.Drawing.Point(698, 31);
             this.NUD_Cant_mov.Maximum = new decimal(new int[] {
-            5000,
-            0,
+            -1530494976,
+            232830,
             0,
             0});
             this.NUD_Cant_mov.Minimum = new decimal(new int[] {
