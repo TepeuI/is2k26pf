@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using Capa_Modelo_Ventas;
+using Capa_Controlador_Mov_Inv;
+using System.Linq;
 
 namespace Capa_Controlador_Ventas
 {
@@ -75,15 +77,15 @@ namespace Capa_Controlador_Ventas
 
 
         //NUEVO METODO PARA APLICAR DESCUENTO POR TIPO DE CLIENTE
-        public (string sTipoCliente, float fDescuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, int iCantidad)
+        public (string sTipoCliente, float fDescuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, float fCantidad)
         {
-            return dao.ObtenerDescuentoCliente(iFk_Id_Cliente, iCantidad);
+            return dao.ObtenerDescuentoCliente(iFk_Id_Cliente, fCantidad);
         }
 
         //CALCULAR SUBTOTAL CON DESCUENTO APLICADO
-        public float CalcularSubtotal(float fPrecio, int iCantidad, float fDescuento)
+        public float CalcularSubtotal(float fPrecio, float fCantidad, float fDescuento)
         {
-            float subtotal = fPrecio * iCantidad;
+            float subtotal = fPrecio * fCantidad;
             float descuentoAplicado = subtotal * fDescuento;
 
             return subtotal - descuentoAplicado;
@@ -115,9 +117,28 @@ namespace Capa_Controlador_Ventas
 
         //GUARDAR VENTA-COTIZACION-PEDIDO
         public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
-     string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,
-     DataTable detalle, DateTime dFecha_Especial, DateTime dCmp_Fecha_Vencimiento, bool bEsVenta)
+          string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total,
+          DataTable detalle, DateTime dFecha_Especial, DateTime dCmp_Fecha_Vencimiento, bool bEsVenta)
         {
+            // Mapear DataTable a lista de tuplas para el movimiento de inventario
+            var detalleInventario = detalle.AsEnumerable()
+                .Select(row => (
+                    idInventario: row.Field<int>("IdProducto"),
+                    idBodega: row.Field<int>("IdBodega"),
+                    cantidad: row.Field<float>("Cantidad"),
+                    1
+                    //idUnidad: row.Field<int>("Id_Unidad")
+                ))
+                .ToList();
+
+            Cls_Mov_Inv_Controlador inventario = new Cls_Mov_Inv_Controlador();
+            bool actualizacionStock = inventario.fun_GuardarMovimiento(
+                3,
+                dCmp_Fecha_Venta,
+                "Venta",
+                detalleInventario
+            );
+
             return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucursal,
                 sCmp_Estado_Venta, sCmp_Tipo_Operacion, fCmp_Saldo_Total, detalle,
                 dFecha_Especial, dCmp_Fecha_Vencimiento, bEsVenta);

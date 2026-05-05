@@ -124,7 +124,7 @@ namespace Capa_Vista_Ventas
             dtDetalle.Columns.Add("Bodega", typeof(string));
 
             dtDetalle.Columns.Add("Precio", typeof(float));
-            dtDetalle.Columns.Add("Cantidad", typeof(int));
+            dtDetalle.Columns.Add("Cantidad", typeof(float));
             dtDetalle.Columns.Add("Descuento", typeof(float));
             //NUEVAS COLUMNAS
             dtDetalle.Columns.Add("TipoCliente", typeof(string));
@@ -485,17 +485,17 @@ namespace Capa_Vista_Ventas
                 string sProducto = row["nombre_prod"].ToString();
                 string sDescripcion = row["descripcion"].ToString();
                 float fPrecio = Convert.ToSingle(row["precio_unitario"]);
-                int iCantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
+                float fCantidad = Convert.ToInt32(Nud_Cant_Prod.Value);
 
                 // BODEGA
                 int iIdBodega = Convert.ToInt32(rowBodega["Pk_Id_Bodega"]);
                 string sBodega = rowBodega["Cmp_Nombre_Bodega"].ToString();
 
                 // DESCUENTO
-                var info = controlador.ObtenerDescuentoCliente(iFk_Id_Cliente, iCantidad);
+                var info = controlador.ObtenerDescuentoCliente(iFk_Id_Cliente, fCantidad);
 
                 // SUBTOTAL
-                float subtotal = controlador.CalcularSubtotal(fPrecio, iCantidad, info.fDescuento);
+                float subtotal = controlador.CalcularSubtotal(fPrecio, fCantidad, info.fDescuento);
 
                 // GRID
                 dtDetalle.Rows.Add(
@@ -505,7 +505,7 @@ namespace Capa_Vista_Ventas
                     iIdBodega,
                     sBodega,
                     fPrecio,
-                    iCantidad,
+                    fCantidad,
                     info.fDescuento,
                     info.sTipoCliente,
                     subtotal

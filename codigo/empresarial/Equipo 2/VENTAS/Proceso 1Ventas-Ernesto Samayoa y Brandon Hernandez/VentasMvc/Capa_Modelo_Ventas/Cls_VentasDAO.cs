@@ -318,14 +318,14 @@ namespace Capa_Modelo_Ventas
         }
 
         //OBTENER LOS DESCUENTOS DE LOS CLIENTES 
-        public (string tipo, float descuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, int iCantidad)
+        public (string tipo, float descuento) ObtenerDescuentoCliente(int iFk_Id_Cliente, float fCantidad)
         {
             using (OdbcConnection conn = conexion.conexion())
             {
                 using (OdbcCommand cmd = new OdbcCommand(SQL_DESCUENTO, conn))
                 {
                     cmd.Parameters.AddWithValue("?", iFk_Id_Cliente);
-                    cmd.Parameters.AddWithValue("?", iCantidad);
+                    cmd.Parameters.AddWithValue("?", fCantidad);
 
                     using (OdbcDataReader reader = cmd.ExecuteReader())
                     {
