@@ -351,7 +351,8 @@ namespace Capa_Vista_Ventas
 
                 // FECHA VENCIMIENTO PARA CUENTA (30 días después)
                 DateTime dCmp_Fecha_Vencimiento = dCmp_Fecha_Venta.AddDays(30);
-
+                   _idVenta = Convert.ToInt32(Cbo_Id_Venta.SelectedItem ?? 0);
+                _montoTotal = Convert.ToDecimal(fSaldo_total);
                 // GUARDAR
                 bool resultado = controlador.GuardarVenta(
                     dCmp_Fecha_Venta,
@@ -365,7 +366,8 @@ namespace Capa_Vista_Ventas
                     dCmp_Fecha_Vencimiento,  // ← Para cuenta por cobrar
                     bEsVenta
                 );
-
+              
+             
                 if (resultado)
                 {
                     MessageBox.Show("Registro guardado correctamente.");
@@ -393,6 +395,7 @@ namespace Capa_Vista_Ventas
                     if (bEsVenta)
                     {
                         MessageBox.Show("Se ha registrado una cuenta por cobrar.");
+                        Btn_Pagar.Enabled = true;
                     }
                     else if (sCmp_Tipo_Operacion == "Pedido")
                     {
@@ -616,23 +619,55 @@ namespace Capa_Vista_Ventas
 
         private void Btn_Pagar_Click(object sender, EventArgs e)
         {
+            try
             {
-                /*if (_idVenta == 0)
+                // Validar que haya datos en la venta
+                if (Cbo_Id_Venta.SelectedIndex == -1)
                 {
                     MessageBox.Show("Primero guarde la venta.", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
-                }*/
+                }
 
-                using (var frmPagos = new Frm_Pagos(
-                    tipo: Cls_TipoOperacion.Pago,
-                    idCuentaPorCobrar: _idVenta,
-                    monto: _montoTotal,
-                    motivo: string.Empty
-                ))
+                if (_montoTotal <= 0)
                 {
+                    MessageBox.Show("El monto debe ser mayor a cero.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Obtener el ID de la venta
+
+                int idVenta = _idVenta;
+
+                if (idVenta == 0)
+                {
+                    MessageBox.Show("No se pudo obtener el ID de la venta.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                } 
+                // ✅ El controlador ya maneja los errores y mensajes
+                int idCXC = controlador.ObtenerIdCXCPorVenta(idVenta);
+
+                if (idCXC == 0)
+                {
+                    return; // El controlador ya mostró el mensaje
+                }
+
+                // ✅ SOLO 2 PARÁMETROS (como tu constructor)
+                using (var frmPagos = new Frm_Pagos(idCXC, (decimal)_montoTotal))
+                {
+                    frmPagos.StartPosition = FormStartPosition.CenterParent;
                     frmPagos.ShowDialog();
                 }
+
+                MessageBox.Show("Pago procesado exitosamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir formulario de pagos: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

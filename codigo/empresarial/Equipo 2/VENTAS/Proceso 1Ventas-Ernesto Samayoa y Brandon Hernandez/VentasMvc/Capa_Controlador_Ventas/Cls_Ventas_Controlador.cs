@@ -3,6 +3,7 @@ using System.Data;
 using Capa_Modelo_Ventas;
 using Capa_Controlador_Mov_Inv;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Capa_Controlador_Ventas
 {
@@ -156,9 +157,41 @@ namespace Capa_Controlador_Ventas
                 return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucursal,
                 sCmp_Estado_Venta, sCmp_Tipo_Operacion, fCmp_Saldo_Total, detalle,
                 dFecha_Especial, dCmp_Fecha_Vencimiento, bEsVenta);
-            }else
+            }
+            else
             {
                 return false;
+            }
+        }
+
+        public int ObtenerIdCXCPorVenta(int idVenta)
+        {
+            try
+            {
+                if (idVenta <= 0)
+                {
+                    MessageBox.Show("ID de venta inválido.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return 0;
+                }
+
+                int idCXC = dao.ObtenerIdCXCPorVenta(idVenta);
+
+                if (idCXC == 0)
+                {
+                    MessageBox.Show("No se encontró una cuenta por cobrar para esta venta.\n" +
+                        "Asegúrese de haber guardado la venta correctamente.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return 0;
+                }
+
+                return idCXC;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener CXC: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
     }
