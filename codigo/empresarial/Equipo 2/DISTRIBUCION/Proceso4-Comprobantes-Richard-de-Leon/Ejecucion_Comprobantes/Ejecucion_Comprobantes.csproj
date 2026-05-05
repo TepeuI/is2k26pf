@@ -33,7 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Vista_Comprobantes">
+    <Reference Include="Capa_Vista_Comprobantes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Capa_Vista_Comprobantes\bin\Debug\Capa_Vista_Comprobantes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
