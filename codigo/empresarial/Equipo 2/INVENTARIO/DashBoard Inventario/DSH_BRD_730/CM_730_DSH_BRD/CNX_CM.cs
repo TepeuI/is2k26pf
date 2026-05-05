@@ -2,7 +2,7 @@
 
 public class CNX
 {
-    private static string cadena = "DSN=bd_SIG;Uid=root;Pwd=Acces0F3R;";
+    private static string cadena = "DSN=bd_SIG;";
 
     public static OdbcConnection ObtenerConexion()
     {
