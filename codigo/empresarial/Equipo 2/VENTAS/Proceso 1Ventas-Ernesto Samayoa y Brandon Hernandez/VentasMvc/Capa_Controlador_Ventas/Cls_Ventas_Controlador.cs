@@ -151,10 +151,15 @@ namespace Capa_Controlador_Ventas
                 "Venta",
                 detalleInventario
             );
-
-            return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucursal,
+            if (actualizacionStock)
+            {
+                return dao.GuardarVentaCompleta(dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucursal,
                 sCmp_Estado_Venta, sCmp_Tipo_Operacion, fCmp_Saldo_Total, detalle,
                 dFecha_Especial, dCmp_Fecha_Vencimiento, bEsVenta);
+            }else
+            {
+                return false;
+            }
         }
     }
 }
