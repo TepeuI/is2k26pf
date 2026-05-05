@@ -35,15 +35,15 @@ namespace Capa_Modelo_Ventas
     {
         public int Fk_Id_Ventas { get; set; }
         public int Fk_Id_Inventario { get; set; }
-        public int Cmp_Cantidad_Producto { get; set; }
+        public float Cmp_Cantidad_Producto { get; set; }
         public float Cmp_Precio_Subtotal { get; set; }
         public float Cmp_Costo_Subtotal { get; set; }
         public Cls_Detalle_Ventas() { }
-        public Cls_Detalle_Ventas(int iFk_Id_Ventas, int iFk_Id_Inventario, int iCmp_Cantidad_Producto, float fCmp_Precio_Subtotal, float fCmp_Costo_Subtotal)
+        public Cls_Detalle_Ventas(int iFk_Id_Ventas, int iFk_Id_Inventario, float fCmp_Cantidad_Producto, float fCmp_Precio_Subtotal, float fCmp_Costo_Subtotal)
         {
             Fk_Id_Ventas = iFk_Id_Ventas;
             Fk_Id_Inventario = iFk_Id_Inventario;
-            Cmp_Cantidad_Producto = iCmp_Cantidad_Producto;
+            Cmp_Cantidad_Producto = fCmp_Cantidad_Producto;
             Cmp_Precio_Subtotal = fCmp_Precio_Subtotal;
             Cmp_Costo_Subtotal = fCmp_Costo_Subtotal;
 
