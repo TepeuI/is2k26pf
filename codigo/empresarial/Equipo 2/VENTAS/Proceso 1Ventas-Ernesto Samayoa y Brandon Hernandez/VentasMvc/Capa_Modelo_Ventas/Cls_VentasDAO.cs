@@ -46,6 +46,17 @@ namespace Capa_Modelo_Ventas
         WHERE Cmp_Estado_Bodega = 'Activo'";
 
 
+        //NUEVO UNIDAD DE MEDIDA PARA LLAMAR EN COMBOBOX
+        private static readonly string SQL_UNIDADES = @"
+        SELECT 
+        ID_Unidad,
+        Nombre_Unidad,
+        Abreviacion_Medida,
+        CONCAT(ID_Unidad, ' - ', Nombre_Unidad, ' (', Abreviacion_Medida, ')') AS UnidadMedida
+        FROM tbl_unidad_de_medida
+        WHERE Estado_Medida = 'Activo'";
+
+
 
         //NUEVO DE COMBOBOX DE ESTADO
         private static readonly string SQL_ESTADOVENTA=
@@ -103,6 +114,7 @@ namespace Capa_Modelo_Ventas
         ON tc.Pk_Id_Tipo_Cliente = pd.Fk_Id_Tipo_Cliente
         WHERE c.Pk_Id_Cliente = ?
         AND ? BETWEEN pd.Cmp_Cantidad_Min AND pd.Cmp_Cantidad_Max";
+
         //Primer Formulario Ventas Generales
         //GRID PARA VENTAS GENERALES //corregir tipoclientes
         private static readonly string SQL_VENTAS_LISTADO = @"
@@ -128,6 +140,19 @@ namespace Capa_Modelo_Ventas
         FROM tbl_existencias e
         INNER JOIN tbl_bodega b ON e.fk_bodega_id = b.Pk_Id_Bodega
         WHERE e.fk_inventario_id = ? AND e.stock > 0";
+
+
+        //NUEVO DE UNIDAD DE MEDIDA Y PRODUCTO
+        private static readonly string SQL_UNIDAD_POR_PRODUCTO = @"
+        SELECT DISTINCT
+        u.ID_Unidad,
+        u.Nombre_Unidad,
+        u.Abreviacion_Medida,
+        CONCAT(u.ID_Unidad, ' - ', u.Nombre_Unidad, ' (', u.Abreviacion_Medida, ')') AS UnidadMedida
+        FROM tbl_existencias e
+        INNER JOIN tbl_unidad_de_medida u 
+            ON e.fk_id_unidad_medida = u.ID_Unidad
+        WHERE e.fk_inventario_id = ?";
 
         public DataTable ObtenerClientes()
         {
@@ -179,6 +204,40 @@ namespace Capa_Modelo_Ventas
                     da.Fill(dt);
                     conexion.desconexion(conn);
                     return dt;
+                }
+            }
+        }
+
+        public DataTable ObtenerUnidades()
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcDataAdapter da = new OdbcDataAdapter(SQL_UNIDADES, conn))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    conexion.desconexion(conn);
+                    return dt;
+                }
+            }
+        }
+
+        //Nuevo para obtener la Unidad segun del producto
+        public DataTable ObtenerUnidadPorProducto(int iIdProducto)
+        {
+            using (OdbcConnection conn = conexion.conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(SQL_UNIDAD_POR_PRODUCTO, conn))
+                {
+                    cmd.Parameters.AddWithValue("?", iIdProducto);
+
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        conexion.desconexion(conn);
+                        return dt;
+                    }
                 }
             }
         }

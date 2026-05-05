@@ -58,6 +58,8 @@ namespace Capa_Vista_Ventas
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Ingresar_Ventas = new System.Windows.Forms.Button();
             this.GB_Detalle_Ventas = new System.Windows.Forms.GroupBox();
+            this.Cbo_Unidad_Medida = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Btn_Limpiar_Detalle_Ventas = new System.Windows.Forms.Button();
             this.Btn_Remover_Detalle_Ventas = new System.Windows.Forms.Button();
             this.Btn_Agregar_Detalle_Ventas = new System.Windows.Forms.Button();
@@ -414,6 +416,8 @@ namespace Capa_Vista_Ventas
             // 
             // GB_Detalle_Ventas
             // 
+            this.GB_Detalle_Ventas.Controls.Add(this.Cbo_Unidad_Medida);
+            this.GB_Detalle_Ventas.Controls.Add(this.label4);
             this.GB_Detalle_Ventas.Controls.Add(this.Btn_Limpiar_Detalle_Ventas);
             this.GB_Detalle_Ventas.Controls.Add(this.Btn_Remover_Detalle_Ventas);
             this.GB_Detalle_Ventas.Controls.Add(this.Btn_Agregar_Detalle_Ventas);
@@ -437,10 +441,30 @@ namespace Capa_Vista_Ventas
             this.GB_Detalle_Ventas.TabStop = false;
             this.GB_Detalle_Ventas.Text = "Detalle de ventas";
             // 
+            // Cbo_Unidad_Medida
+            // 
+            this.Cbo_Unidad_Medida.FormattingEnabled = true;
+            this.Cbo_Unidad_Medida.Location = new System.Drawing.Point(858, 95);
+            this.Cbo_Unidad_Medida.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_Unidad_Medida.Name = "Cbo_Unidad_Medida";
+            this.Cbo_Unidad_Medida.Size = new System.Drawing.Size(199, 30);
+            this.Cbo_Unidad_Medida.TabIndex = 173;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(693, 101);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(133, 20);
+            this.label4.TabIndex = 172;
+            this.label4.Text = "Unidad Medida:";
+            // 
             // Btn_Limpiar_Detalle_Ventas
             // 
             this.Btn_Limpiar_Detalle_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Limpiar_Detalle_Ventas.Image = global::Capa_Vista_Ventas.Properties.Resources.icono_limpiar__1_;
+            this.Btn_Limpiar_Detalle_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Limpiar_Detalle_Ventas.Image")));
             this.Btn_Limpiar_Detalle_Ventas.Location = new System.Drawing.Point(1220, 332);
             this.Btn_Limpiar_Detalle_Ventas.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Limpiar_Detalle_Ventas.Name = "Btn_Limpiar_Detalle_Ventas";
@@ -481,12 +505,10 @@ namespace Capa_Vista_Ventas
             // 
             // Cbo_Id_Bodega
             // 
-            this.Cbo_Id_Bodega.FormattingEnabled = true;
-            this.Cbo_Id_Bodega.Location = new System.Drawing.Point(141, 95);
-            this.Cbo_Id_Bodega.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_Id_Bodega.Location = new System.Drawing.Point(137, 95);
             this.Cbo_Id_Bodega.Name = "Cbo_Id_Bodega";
-            this.Cbo_Id_Bodega.Size = new System.Drawing.Size(361, 30);
-            this.Cbo_Id_Bodega.TabIndex = 168;
+            this.Cbo_Id_Bodega.Size = new System.Drawing.Size(365, 30);
+            this.Cbo_Id_Bodega.TabIndex = 174;
             // 
             // label2
             // 
@@ -731,5 +753,7 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.ComboBox Cbo_Estado;
         private System.Windows.Forms.DateTimePicker Dtp_fecha_cotizacion_pedido;
         private System.Windows.Forms.Label Lbl_Fecha_Cotizacion_pedido;
+        private System.Windows.Forms.ComboBox Cbo_Unidad_Medida;
+        private System.Windows.Forms.Label label4;
     }
 }

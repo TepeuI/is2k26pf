@@ -29,6 +29,14 @@ namespace Capa_Controlador_Ventas
         {
             return dao.ObtenerBodegas();
         }
+
+        //OBTENER UNIDADES DE MEDIAS COMOBOX
+        public DataTable ObtenerUnidades()
+        {
+            return dao.ObtenerUnidades();
+        }
+
+
         //OBTENER INVENTARIOS PARA GRID
         public DataTable ObtenerInventarioGrid()
         {
@@ -108,12 +116,18 @@ namespace Capa_Controlador_Ventas
 
             return fSaldototal;
         }
+
+        //OBTENER UNIDAD DE MEDIDA POR PRODUCTOS
+        public DataTable ObtenerUnidadPorProducto(int iIdProducto)
+        {
+            return dao.ObtenerUnidadPorProducto(iIdProducto);
+        }
+
         //OBTENER BODEGAS POR PRODUCTO
         public DataTable ObtenerBodegasPorProducto(int pk_inventario_id)
         {
             return dao.ObtenerBodegasPorProducto(pk_inventario_id);
         }
-
 
         //GUARDAR VENTA-COTIZACION-PEDIDO
         public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
@@ -126,8 +140,7 @@ namespace Capa_Controlador_Ventas
                     idInventario: row.Field<int>("IdProducto"),
                     idBodega: row.Field<int>("IdBodega"),
                     cantidad: row.Field<float>("Cantidad"),
-                    1
-                    //idUnidad: row.Field<int>("Id_Unidad")
+                    idUnidad: row.Field<int>("IdUnidad")
                 ))
                 .ToList();
 

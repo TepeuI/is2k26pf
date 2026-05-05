@@ -112,6 +112,30 @@ namespace Capa_Vista_Ventas
                 MessageBox.Show("Error al cargar bodegas: " + ex.Message);
             }
         }
+
+        private void fun_CargarUnidadMedida(int iIdProducto)
+        {
+            try
+            {
+                DataTable dt = controlador.ObtenerUnidadPorProducto(iIdProducto);
+
+                Cbo_Unidad_Medida.DataSource = dt;
+                Cbo_Unidad_Medida.DisplayMember = "UnidadMedida";
+                Cbo_Unidad_Medida.ValueMember = "ID_Unidad";
+
+                if (dt.Rows.Count > 0)
+                    Cbo_Unidad_Medida.SelectedIndex = 0;
+                else
+                    Cbo_Unidad_Medida.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar unidad de medida: " + ex.Message);
+            }
+        }
+
+
+
         private void fun_InicializarDetalle()
         {
             dtDetalle.Columns.Clear();
@@ -122,6 +146,9 @@ namespace Capa_Vista_Ventas
 
             dtDetalle.Columns.Add("IdBodega", typeof(int));
             dtDetalle.Columns.Add("Bodega", typeof(string));
+
+            dtDetalle.Columns.Add("IdUnidad", typeof(int));
+            dtDetalle.Columns.Add("UnidadMedida", typeof(string));
 
             dtDetalle.Columns.Add("Precio", typeof(float));
             dtDetalle.Columns.Add("Cantidad", typeof(float));
@@ -203,6 +230,7 @@ namespace Capa_Vista_Ventas
             Cbo_Id_Inventario.Enabled = false;
             Cbo_Id_Bodega.Enabled = false;
             Nud_Cant_Prod.Enabled = false;
+            Cbo_Unidad_Medida.Enabled = false;
             Dtp_Fecha_Venta.Enabled = false;
 
             Dgv_Detalle_Venta.Enabled = false;
@@ -218,8 +246,13 @@ namespace Capa_Vista_Ventas
             Cbo_Tipo_Operacion.SelectedIndex = -1;
             Cbo_Id_Inventario.SelectedIndex = -1;
             Cbo_Id_Bodega.SelectedIndex = -1;
-
             Nud_Cant_Prod.Value = 1;
+
+            // LIMPIAR UNIDAD DE MEDIDA
+            Cbo_Unidad_Medida.DataSource = null;
+            Cbo_Unidad_Medida.Items.Clear();
+            Cbo_Unidad_Medida.SelectedIndex = -1;
+            Cbo_Unidad_Medida.Enabled = false;
 
             //RECARGAR ID
             fun_CargarIdVenta();
@@ -237,7 +270,7 @@ namespace Capa_Vista_Ventas
             Cbo_Id_Inventario.Enabled = true;
             Cbo_Id_Bodega.Enabled = true;
             Nud_Cant_Prod.Enabled = true;
-
+            Cbo_Unidad_Medida.Enabled = true;
             Dgv_Detalle_Venta.Enabled = true;
 
             //ID SIEMPRE BLOQUEADO
@@ -336,7 +369,7 @@ namespace Capa_Vista_Ventas
                 if (resultado)
                 {
                     MessageBox.Show("Registro guardado correctamente.");
-
+                    fun_CargarInventario(); 
                     // LIMPIAR
                     dtDetalle.Clear();
                     Txt_Saldo_Total.Text = "0.00";
@@ -347,6 +380,12 @@ namespace Capa_Vista_Ventas
                     Cbo_Id_Inventario.SelectedIndex = -1;
                     Cbo_Id_Bodega.SelectedIndex = -1;
                     Nud_Cant_Prod.Value = 1;
+
+                    // LIMPIAR UNIDAD DE MEDIDA
+                    Cbo_Unidad_Medida.DataSource = null;
+                    Cbo_Unidad_Medida.Items.Clear();
+                    Cbo_Unidad_Medida.SelectedIndex = -1;
+                    Cbo_Unidad_Medida.Enabled = false;
 
                     fun_CargarIdVenta();
                     VentaGuardada?.Invoke();
@@ -394,6 +433,12 @@ namespace Capa_Vista_Ventas
 
             Nud_Cant_Prod.Value = 1;
 
+            // LIMPIAR UNIDAD DE MEDIDA
+            Cbo_Unidad_Medida.DataSource = null;
+            Cbo_Unidad_Medida.Items.Clear();
+            Cbo_Unidad_Medida.SelectedIndex = -1;
+            Cbo_Unidad_Medida.Enabled = false;
+
             fun_CargarIdVenta();
         }
 
@@ -411,39 +456,63 @@ namespace Capa_Vista_Ventas
         {
             try
             {
-
-                if (Cbo_Id_Inventario.SelectedIndex == -1)
+                if (Cbo_Id_Inventario.SelectedIndex == -1 ||
+                    Cbo_Id_Inventario.SelectedValue == null ||
+                    Cbo_Id_Inventario.SelectedValue is DataRowView)
+                {
+                    // Limpiar dependientes
+                    Cbo_Id_Bodega.DataSource = null;
+                    Cbo_Unidad_Medida.DataSource = null;
                     return;
-
-                if (Cbo_Id_Inventario.SelectedValue == null)
-                    return;
-
-                if (Cbo_Id_Inventario.SelectedValue is DataRowView)
-                    return;
+                }
 
                 if (!(Cbo_Id_Inventario.SelectedItem is DataRowView row))
                     return;
 
-                int idProducto = Convert.ToInt32(row["pk_inventario_id"]);
+                int iIdProducto = Convert.ToInt32(row["pk_inventario_id"]);
 
-                DataTable dtBodegas = controlador.ObtenerBodegasPorProducto(idProducto);
+                //LIMPIAR ANTES DE RECARGAR
+                Cbo_Id_Bodega.DataSource = null;
+                Cbo_Unidad_Medida.DataSource = null;
 
-                Cbo_Id_Bodega.DataSource = dtBodegas;
-                Cbo_Id_Bodega.DisplayMember = "NombreBodega";
-                Cbo_Id_Bodega.ValueMember = "Pk_Id_Bodega";
-                Cbo_Id_Bodega.SelectedIndex = -1;
+                //BODEGA
+                DataTable dtBodegas = controlador.ObtenerBodegasPorProducto(iIdProducto);
 
-                if (dtBodegas.Rows.Count == 0)
+                if (dtBodegas.Rows.Count > 0)
+                {
+                    Cbo_Id_Bodega.DataSource = dtBodegas;
+                    Cbo_Id_Bodega.DisplayMember = "NombreBodega";
+                    Cbo_Id_Bodega.ValueMember = "Pk_Id_Bodega";
+                    Cbo_Id_Bodega.SelectedIndex = -1;
+                }
+                else
                 {
                     MessageBox.Show("Este producto no tiene stock en ninguna bodega.");
+                }
+
+                //UNIDAD
+                DataTable dtUnidad = controlador.ObtenerUnidadPorProducto(iIdProducto);
+
+                if (dtUnidad.Rows.Count > 0)
+                {
+                    Cbo_Unidad_Medida.DataSource = dtUnidad;
+                    Cbo_Unidad_Medida.DisplayMember = "UnidadMedida";
+                    Cbo_Unidad_Medida.ValueMember = "ID_Unidad";
+                    Cbo_Unidad_Medida.SelectedIndex = 0;
+                }
+                else
+                {
+                    if (Cbo_Id_Inventario.Focused)
+                    {
+                        MessageBox.Show("El producto no tiene unidad de medida.");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar bodegas: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
-
         private void Btn_Agregar_Detalle_Ventas_Click(object sender, EventArgs e)
         {
             try
@@ -471,11 +540,18 @@ namespace Capa_Vista_Ventas
                     return;
                 }
 
+                if (!(Cbo_Unidad_Medida.SelectedItem is DataRowView rowUnidad))
+                {
+                    MessageBox.Show("Seleccione unidad de medida.");
+                    return;
+                }
+
                 if (Nud_Cant_Prod.Value <= 0)
                 {
                     MessageBox.Show("Ingrese una cantidad válida.");
                     return;
                 }
+
 
                 //OBTENER CLIENTE
                 int iFk_Id_Cliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
@@ -491,6 +567,10 @@ namespace Capa_Vista_Ventas
                 int iIdBodega = Convert.ToInt32(rowBodega["Pk_Id_Bodega"]);
                 string sBodega = rowBodega["Cmp_Nombre_Bodega"].ToString();
 
+                //UNIDAD DE MEDIDA
+                int iIdUnidad = Convert.ToInt32(rowUnidad["ID_Unidad"]);
+                string sUnidad = rowUnidad["Nombre_Unidad"].ToString();
+
                 // DESCUENTO
                 var info = controlador.ObtenerDescuentoCliente(iFk_Id_Cliente, fCantidad);
 
@@ -504,6 +584,8 @@ namespace Capa_Vista_Ventas
                     sDescripcion,
                     iIdBodega,
                     sBodega,
+                    iIdUnidad,
+                    sUnidad,
                     fPrecio,
                     fCantidad,
                     info.fDescuento,
@@ -580,6 +662,7 @@ namespace Capa_Vista_Ventas
                     Cbo_Id_Inventario.Enabled = true;
                     Cbo_Id_Bodega.Enabled = true;
                     Nud_Cant_Prod.Enabled = true;
+                    Cbo_Unidad_Medida.Enabled = true;
                     Btn_Agregar_Detalle_Ventas.Enabled = true;
                     Btn_Remover_Detalle_Ventas.Enabled = true;
                     Btn_Limpiar_Detalle_Ventas.Enabled = true;
@@ -594,6 +677,7 @@ namespace Capa_Vista_Ventas
                     Cbo_Id_Inventario.Enabled = false;
                     Cbo_Id_Bodega.Enabled = false;
                     Nud_Cant_Prod.Enabled = false;
+                    Cbo_Unidad_Medida.Enabled = false;
                     Btn_Agregar_Detalle_Ventas.Enabled = false;
                     Btn_Remover_Detalle_Ventas.Enabled = false;
                     Btn_Limpiar_Detalle_Ventas.Enabled = false;
@@ -672,9 +756,16 @@ namespace Capa_Vista_Ventas
                 Cbo_Id_Inventario.SelectedIndex = -1;
                 Cbo_Id_Bodega.SelectedIndex = -1;
 
+                // LIMPIAR UNIDAD DE MEDIDA
+                Cbo_Unidad_Medida.DataSource = null;
+                Cbo_Unidad_Medida.Items.Clear();
+                Cbo_Unidad_Medida.SelectedIndex = -1;
+                Cbo_Unidad_Medida.Enabled = false;
+
                 // Reset cantidad
                 Nud_Cant_Prod.Value = 1;
 
+                Cbo_Unidad_Medida.Enabled = false;
                 // Nuevo ID de venta
                 fun_CargarIdVenta();
 
@@ -717,10 +808,9 @@ namespace Capa_Vista_Ventas
                     Btn_Pagar.Enabled = true;
                     break;
             }
-            }
-
-        //Brandon Hernandez  -- Seleccion de cotizacion y pedidos 
-
+        }
     }
+    //Brandon Hernandez  -- Seleccion de cotizacion y pedidos 
 }
+
 

@@ -65,7 +65,7 @@ namespace Capa_Vista_Ventas
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Capa_Vista_Ventas.Properties.Resources._4105943_accounts_group_people_user_user_group_users_113923;
-            this.pictureBox1.Location = new System.Drawing.Point(247, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(274, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(71, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
