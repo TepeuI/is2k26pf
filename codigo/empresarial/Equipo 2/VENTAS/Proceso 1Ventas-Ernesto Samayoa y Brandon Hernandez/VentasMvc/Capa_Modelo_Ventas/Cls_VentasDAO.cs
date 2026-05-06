@@ -540,6 +540,50 @@ namespace Capa_Modelo_Ventas
                 }
             }
         }
-    }
+            
+                public int ObtenerIdCXCPorVenta(int idVenta)
+            {
+                Cls_ConexionBD conexionBD = new Cls_ConexionBD();
+                OdbcConnection conn = null;
+
+                try
+                {
+                    conn = conexionBD.AbrirConexion();
+
+                    string query = @"
+                    SELECT Pk_Id_Cuenta_Por_Cobrar 
+                    FROM tbl_cuentas_por_cobrar 
+                    WHERE Fk_Id_Venta = ?";
+
+                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("@idVenta", OdbcType.Int).Value = idVenta;
+                        object resultado = cmd.ExecuteScalar();
+
+                        if (resultado != null && int.TryParse(resultado.ToString(), out int idCXC))
+                        {
+                            return idCXC;
+                        }
+                    }
+
+                    return 0; // Retorna 0 si no encuentra CXC
+                }
+                catch (Exception ex)
+                {
+                    // Solo registrar en consola, NO mostrar MessageBox aquí
+                    Console.WriteLine("Error en ObtenerIdCXCPorVenta: " + ex.Message);
+                    throw; // Relanza la excepción para que la vista la maneje
+                }
+                finally
+                {
+                    if (conn != null)
+                    {
+                        conexionBD.desconexion(conn);
+                    }
+                }
+            }
         }
 
+            }
+
+ 

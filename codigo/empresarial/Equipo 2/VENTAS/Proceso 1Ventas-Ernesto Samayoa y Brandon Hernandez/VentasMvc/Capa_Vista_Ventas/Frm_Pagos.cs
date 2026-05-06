@@ -15,15 +15,40 @@ namespace Capa_Vista_Ventas
         private int _idCuentaPorCobrar;
         private decimal _monto;
         private string _motivo;
+        private string _nombreCliente;
+        private DateTime _fechaVencimiento;
 
-        // Constructor normal — desde ventas
-        public Frm_Pagos()
+    
+        public Frm_Pagos(int idCuentaPorCobrar, decimal monto)
         {
             InitializeComponent();
-            _tipo = Cls_TipoOperacion.Pago;
+            _tipo = Cls_TipoOperacion.Pago;  // ← Automáticamente es PAGO
+            _idCuentaPorCobrar = idCuentaPorCobrar;
+            _monto = monto;
+            _motivo = string.Empty;
+
             fun_CargarMetodosPago();
             fun_CargarEstadosPago();
-            fun_CargarCXC();
+           fun_PrecargarDesdVentas();
+        }
+
+        private void fun_PrecargarDesdVentas()
+        {
+            // Precargar CXC
+            Cbo_CXC.Text = _idCuentaPorCobrar.ToString();
+            Cbo_CXC.Enabled = false;
+
+            // Precargar Monto
+            Txt_Monto.Text = _monto.ToString("F2");
+            Txt_Monto.ReadOnly = true;
+
+            // Fecha por defecto
+            Dtp_Fecha_Pago.Value = DateTime.Now;
+
+            // Estado por defecto = Pendiente
+            Cbo_Estado.SelectedIndex = 0;
+
+            Cbo_MetodoPago.Focus();
         }
 
         // Constructor desde devolución
@@ -119,6 +144,12 @@ namespace Capa_Vista_Ventas
             Txt_Monto.Enabled = true;
         }
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
             string sMet = Cbo_MetodoPago.SelectedItem?.ToString();
@@ -138,11 +169,6 @@ namespace Capa_Vista_Ventas
             }
 
             AbrirSubformulario(sMet, _idCuentaPorCobrar, monto);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

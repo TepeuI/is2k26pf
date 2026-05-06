@@ -278,12 +278,12 @@ namespace Capa_Vista_Logista
             CXP.Show();
         }
 
-        private void pagosVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        /*private void pagosVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Pagos pagos = new Frm_Pagos();
             pagos.MdiParent = this;
             pagos.Show();
-        }
+        }*/
 
         private void movimientoDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
