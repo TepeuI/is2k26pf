@@ -89,6 +89,9 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CV_730_DSH_BRD">
+      <HintPath>..\..\INVENTARIO\DashBoard Inventario\DSH_BRD_730\CV_730_DSH_BRD\bin\Debug\CV_730_DSH_BRD.dll</HintPath>
+    </Reference>
     <Reference Include="Mantenimiento_cuentas_por_pagar">
       <HintPath>..\..\COMPRAS\proseso 2 mantenimiento CXP Danilo\Mantenimiento_cuentas_por_pagar\Mantenimiento_cuentas_por_pagar\bin\Debug\Mantenimiento_cuentas_por_pagar.dll</HintPath>
     </Reference>

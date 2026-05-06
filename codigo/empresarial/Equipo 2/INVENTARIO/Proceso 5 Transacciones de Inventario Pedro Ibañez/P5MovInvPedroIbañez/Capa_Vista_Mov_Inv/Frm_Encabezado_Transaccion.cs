@@ -191,6 +191,7 @@ namespace Capa_Vista_Mov_Inv
             EstadoInicialControles();
             EstadoInicialBotones();
             LimpiarControlesEncabezado();
+            DGV_DETALLE_MOVIMIENTO.Rows.Clear();
         }
 
 

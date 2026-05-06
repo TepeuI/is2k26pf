@@ -27,6 +27,7 @@ using Capa_Controlador_Seguridad;
 //using Capa_Vista_MOVINV;
 using Capa_vista_orden_compra;
 //using Capa_Vista_MOVINV;
+using CV_730_DSH_BRD;
 using System.Drawing.Imaging;
 using Capa_Vista_CXP;
 
@@ -428,9 +429,9 @@ namespace Capa_Vista_Logista
 
         private void consultaDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*Frm_consulta_INV Consulta_inv = new Frm_consulta_INV();
-            Consulta_inv.MdiParent = this;
-            Consulta_inv.Show();*/
+            DSH_BRD_FRM consulta = new DSH_BRD_FRM();
+            consulta.MdiParent = this;
+            consulta.Show();
         }
 
         private void cuentasPorPagarToolStripMenuItem1_Click(object sender, EventArgs e)

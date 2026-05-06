@@ -160,6 +160,7 @@ namespace Capa_Controlador_Mov_Inv
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error en fun_ApartarStock");
                 return false;
                 throw new Exception("Error al guardar movimiento " + ex.Message);
             }
@@ -183,8 +184,8 @@ namespace Capa_Controlador_Mov_Inv
                     // Calcular nuevo stock según tipo de movimiento
                     float stockNuevo = fun_CalcularApartado(stockActual, item.cantidad, idTipoMovimiento);
 
-                    // 3 es apartado
-                    int EstadoExis = 3; 
+                    // Calcular EstadoExis internamente 
+                    int EstadoExis = fun_CalcularEstadoExistencia(stockNuevo);
 
                     listaStock.Add((item.idInventario, item.idBodega, stockNuevo,item.cantidad, EstadoExis, item.idUnidad));
                 }
@@ -195,7 +196,9 @@ namespace Capa_Controlador_Mov_Inv
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error al apartar stock Controlador");
                 return false;
+               
                 throw new Exception("Error en al actualizar existencias " + ex.Message);
             }
 
@@ -211,6 +214,7 @@ namespace Capa_Controlador_Mov_Inv
             }
             catch
             {
+                Console.WriteLine("Error al calcular apartado de stock");
                 throw new Exception($"Error al calcular apartado {idTipoMovimiento}");
             }
         }
