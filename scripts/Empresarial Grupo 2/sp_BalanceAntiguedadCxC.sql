@@ -45,12 +45,12 @@ BEGIN
             WHEN DATEDIFF(p_FechaHasta, DATE(cxc.Cmp_Fecha_Vencimiento)) <= 0
                 THEN 'Corriente'
             WHEN DATEDIFF(p_FechaHasta, DATE(cxc.Cmp_Fecha_Vencimiento)) <= 30
-                THEN '1-30 dias'
+                THEN '1-30 días'
             WHEN DATEDIFF(p_FechaHasta, DATE(cxc.Cmp_Fecha_Vencimiento)) <= 60
-                THEN '31-60 dias'
+                THEN '31-60 días'
             WHEN DATEDIFF(p_FechaHasta, DATE(cxc.Cmp_Fecha_Vencimiento)) <= 90
-                THEN '61-90 dias'
-            ELSE 'Mas de 90 dias'
+                THEN '61-90 días'
+            ELSE 'Más de 90 días'
         END                                              AS RangoAntiguedad,
         -- Monto por rango (columnas horizontales en el reporte)
         CAST(CASE

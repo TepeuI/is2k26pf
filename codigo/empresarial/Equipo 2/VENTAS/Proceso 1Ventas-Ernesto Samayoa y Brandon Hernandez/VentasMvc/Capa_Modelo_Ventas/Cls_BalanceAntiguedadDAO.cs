@@ -37,7 +37,6 @@ namespace Capa_Modelo_Ventas
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error en ObtenerBalanceAntiguedad: " + ex.Message);
                 throw;
             }
             finally
