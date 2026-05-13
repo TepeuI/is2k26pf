@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_BalanceAntiguedad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BalanceAntiguedad.Designer.cs">
+      <DependentUpon>Frm_BalanceAntiguedad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_CXC_Detalle_NAV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,7 @@
     <Compile Include="Reporte_Asig_Clientes.Designer.cs">
       <DependentUpon>Reporte_Asig_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rpt_BalanceAntiguedad.cs" />
     <Compile Include="Rpt_Asignaciones_Clientes.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,6 +241,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_BalanceAntiguedad.resx">
+      <DependentUpon>Frm_BalanceAntiguedad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_CXC_Detalle_NAV.resx">
       <DependentUpon>Frm_CXC_Detalle_NAV.cs</DependentUpon>
     </EmbeddedResource>

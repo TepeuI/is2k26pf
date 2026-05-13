@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cls_BalanceAntiguedad_Controlador.cs" />
     <Compile Include="Cls_Asignacion_Clientes_Controlador.cs" />
     <Compile Include="Cls_CXCDetalle_Controlador.cs" />
     <Compile Include="Cls_Ventas_Controlador.cs" />
